@@ -10,8 +10,7 @@ import java.util.List;
 /**
  * This class represents a service that handles Customer-related operations in the application.
  * It provides functionality to Create, Read, Update, and Delete Customer information in the database.
- * This service communicates with the CustomerRepository to perform CRUD operations on Customer_db entities.
- *
+ * This service communicates with the CustomerRepository to perform CRUD operations on erp_db entities.
  * Usage:
  * The CustomerService should be autowired into other components that require Customer-related functionalities.
  */
@@ -35,14 +34,14 @@ public class CustomerService {
     /**
      * Get customer information by the specified customer ID.
      *
-     * @param Id The ID of the customer to retrieve.
+     * @param customerId The ID of the customer to retrieve.
      * @return The Customer object corresponding to the given ID.
      */
-    public Customer getCustomerById(int Id){
+    public Customer getCustomerById(int customerId){
         List<Customer> customers = customerRep.findAll();
         Customer customer = null;
         for(Customer c: customers){
-            if(c.getCustomerId() == Id){
+            if(c.getCustomerId() == customerId){
                 customer = c;
             }
         }
@@ -50,17 +49,17 @@ public class CustomerService {
     }
 
     /**
-     * Create a new customer with the provided customer object.
+     * Create a new customer with the provided Customer object.
      *
      * @param customer The Customer object representing the customer to be created.
-     * @return The newly created customer object with a generated ID.
+     * @return The newly created Customer object with a generated ID.
      */
     public Customer createCustomer(Customer customer){
         return customerRep.save(customer);
     }
 
     /**
-     * Update a new customer with the provided customer object.
+     * Update a new customer with the provided Customer object.
      *
      * @param customer The Customer object representing the customer to be updated.
      * @return The updated Customer object.
@@ -73,14 +72,14 @@ public class CustomerService {
     /**
      * Delete a customer with the provided customerId.
      *
-     * @param Id The ID of the customer to delete.
+     * @param customerId The ID of the customer to delete.
      * @return The deleted customerId.
      */
-    public AddResponse deleteCustomer(int Id){
-            customerRep.deleteById(Id);
+    public AddResponse deleteCustomer(int customerId){
+            customerRep.deleteById(customerId);
             AddResponse res = new AddResponse();
             res.setMsg("Customer deleted");
-            res.setId(Id);
+            res.setId(customerId);
             return res;
     }
 }

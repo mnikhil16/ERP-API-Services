@@ -14,11 +14,11 @@ import java.util.List;
  * The StockItemController maps incoming HTTP requests to appropriate methods to process them.
  * It interacts with the StockItemService to perform operations on item data.
  * Endpoints:
- * - GET /items: Retrieves all the items' information.
- * - GET /getItemById/{itemId}: Retrieve item information by the specified ID.
- * - POST /createItem: Creates a new item using the provided customer data.
- * - PUT /updateItem: Update customer information.
- * - DELETE /deleteItemById/{itemId}: Delete the item with the given ID from the system.
+ * - GET /stockItems: Retrieves all the stockItems information.
+ * - GET /getStockItemById/{itemId}: Retrieve stockItem information by the specified ID.
+ * - POST /createStockItem: Creates a new stockItem using the provided customer data.
+ * - PUT /updateStockItem: Update stockItems' information.
+ * - DELETE /deleteStockItemById/{stockItemId}: Delete the stockItem with the given ID from the system.
  * Usage:
  * The StockItemController should be registered with the Spring application context and
  * automatically handle incoming HTTP requests to the specified endpoints.
@@ -30,27 +30,27 @@ public class StockItemController {
     StockItemService service;
 
     /**
-     * Returns all the customer objects.
-     * URL : "http://localhost8080/Items"
-     * @return  All items as an arrayList of item JSON objects.
+     * Returns all the stock item objects.
+     * URL : "http://localhost8080/StockItems"
+     * @return  All stock items as an arrayList of item JSON objects.
      */
-    @GetMapping("/Items")
-    public List<StockItem> getAllItems(){
-        return service.getItems();
+    @GetMapping("/StockItems")
+    public List<StockItem> getAllStockItems(){
+        return service.getStockItems();
     }
 
     /**
      * Returns the StockItem object with given itemId.
-     * URL : "http://localhost8080/getItemById/"
-     * @param itemId as an input.
+     * URL : "http://localhost8080/getStockItemById/"
+     * @param stockItemId as an input.
      * @return ResponseEntity with item information if found, or 404 if not found.
-     * @throws if item object not found with given Id.
+     * @throws if stock item object not found with given stockItemId.
      */
-    @GetMapping("/getItemById/{itemId}")
-    public ResponseEntity<StockItem> getItemById(@PathVariable(value = "itemId") int itemId) {
+    @GetMapping("/getStockItemById/{stockItemId}")
+    public ResponseEntity<StockItem> getStockItemById(@PathVariable(value = "stockItemId") int stockItemId) {
 
         try {
-            StockItem stockItem = service.getItemById(itemId);
+            StockItem stockItem = service.getStockItemById(stockItemId);
             return new ResponseEntity<StockItem>(stockItem, HttpStatus.OK);
         }
         catch(Exception e){
@@ -60,27 +60,27 @@ public class StockItemController {
 
     /**
      * Creates the stockItem object.
-     * URL : "http://localhost8080/createItem"
+     * URL : "http://localhost8080/createStockItem"
      * @param  stockItem object as an input.
      * @return  stockItem JSON object.
      */
-    @PostMapping("/createItem")
-    public StockItem createItem(@RequestBody StockItem stockItem){
+    @PostMapping("/createStockItem")
+    public StockItem createStockItem(@RequestBody StockItem stockItem){
 
         return service.createItem(stockItem);
     }
 
     /**
      * Updates the stockItem object.
-     * URL : "http://localhost8080/updateItem"
+     * URL : "http://localhost8080/updateStockItem"
      * @param  stockItem object as an input.
      * @return ResponseEntity with stockItem information if updated, or 404 if not found.
      * @throws  if stockItem object not found.
      */
-    @PutMapping("/updateItem")
-    public ResponseEntity<StockItem> updateItem(@RequestBody StockItem stockItem){
+    @PutMapping("/updateStockItem")
+    public ResponseEntity<StockItem> updateStockItem(@RequestBody StockItem stockItem){
         try{
-            StockItem updatedStockItem = service.updateItem(stockItem);
+            StockItem updatedStockItem = service.updateStockItem(stockItem);
             return new ResponseEntity<StockItem>(updatedStockItem,HttpStatus.OK);
         }
         catch(Exception e){
@@ -90,13 +90,13 @@ public class StockItemController {
     }
 
     /**
-     * Deletes the item object with specific id
+     * Deletes the stock item object with specific id
      * URL : "http://localhost8080/deleteItemById/"
-     * @param itemId as an input.
-     * @return AddResponse with itemId which is deleted.
+     * @param stockItemId as an input.
+     * @return AddResponse with stockItemId which is deleted.
      */
-    @DeleteMapping("/deleteItemById/{itemId}")
-    public AddResponse deleteItem(@PathVariable(value = "itemId") int itemId){
-        return service.deleteItem(itemId);
+    @DeleteMapping("/deleteStockItemById/{stockItemId}")
+    public AddResponse deleteStockItem(@PathVariable(value = "stockItemId") int stockItemId){
+        return service.deleteStockItemById(stockItemId);
     }
 }

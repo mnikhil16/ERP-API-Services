@@ -32,7 +32,7 @@ public class StoreController {
     /**
      * Returns all the store objects.
      * URL : "http://localhost8080/Stores"
-     * @return  All store as an arrayList of store JSON objects.
+     * @return  All stores as an arrayList of store JSON objects.
      */
     @GetMapping("/stores")
     public List<Store> getAllStores(){
@@ -95,7 +95,7 @@ public class StoreController {
      * @return AddResponse with storeId which is deleted.
      */
     @DeleteMapping("/deleteStoreById/{storeId}")
-    public AddResponse deleteStore(@PathVariable(value = "storeId") int storeId){
-        return service.deleteStore(storeId);
+    public AddResponse deleteStoreById(@PathVariable(value = "storeId") int storeId){
+        return service.deleteStoreById(storeId);
     }
 }

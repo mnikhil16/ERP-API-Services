@@ -1,7 +1,9 @@
 package com.customer;
 
 import com.customer.beans.Address;
+import com.customer.beans.Company;
 import com.customer.beans.Customer;
+import com.customer.beans.Store;
 import com.customer.controller.AddResponse;
 import com.customer.controller.CustomerController;
 import com.customer.service.CustomerService;
@@ -24,17 +26,14 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the CustomerController using Mockito framework.
  * It tests the behaviour of the CustomerController methods in isolation.
- *
  * The CustomerControllerMockitoTest class uses Mockito to mock dependencies, such as the
  * CustomerService, to focus solely on testing the controller layer.
- *
  * Test Cases:
  * - Test all customers retrieval and verify that the CustomerService getCustomers method is called.
  * - Test customer retrieval by ID and verify that the getCustomerById method is called.
  * - Test customer creation and verify that the CustomerService createCustomer method is called.
  * - Test customer update and verify that the CustomerService updateCustomer method is called.
  * - Test customer deletion and verify that the CustomerService deleteCustomer method is called.
- *
  * Usage:
  * This class should be executed as a JUnit test to validate the correctness of the
  * CustomerController implementation using Mockito mocks for dependency isolation.
@@ -61,8 +60,12 @@ public class CustomerControllerMockitoTests {
     public void test_getAllCustomers(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         customers.add(customer1);
         customers.add(customer2);
 
@@ -79,8 +82,12 @@ public class CustomerControllerMockitoTests {
     public void test_getCustomerById(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         customers.add(customer1);
         customers.add(customer2);
 
@@ -98,7 +105,9 @@ public class CustomerControllerMockitoTests {
     @Order(3)
     public void test_createCustomer(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
 
         when(customerService.createCustomer(customer)).thenReturn(customer);
         assertEquals(customer,customerController.createCustomer(customer));
@@ -112,7 +121,9 @@ public class CustomerControllerMockitoTests {
     @Order(4)
     public void test_updateCustomer(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
 
         when(customerService.updateCustomer(customer)).thenReturn(customer);
         ResponseEntity<Customer> res = customerController.updateCustomer(customer);
@@ -126,15 +137,17 @@ public class CustomerControllerMockitoTests {
      */
     @Test
     @Order(5)
-    public void test_deleteCustomer(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
+    public void test_deleteCustomerById(){
+        Address add = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Company com = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add);
+        Store s = new Store(1,"Laundry","Washington St.", com, add);
+        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add, com, s);
         customers.add(customer);
 
         AddResponse addResponse = new AddResponse();
         addResponse.setId(1);
         addResponse.setMsg("Customer deleted");
         when(customerService.deleteCustomer(1)).thenReturn(addResponse);
-        assertEquals(addResponse,customerController.deleteCustomer(1));
+        assertEquals(addResponse,customerController.deleteCustomerById(1));
     }
 }

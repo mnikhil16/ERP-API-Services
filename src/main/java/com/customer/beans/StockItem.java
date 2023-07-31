@@ -15,7 +15,7 @@ public class StockItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stock_item_id")
-    Integer itemId;
+    Integer stockItemId;
 
     @Column(name = "item_name")
     String itemName;
@@ -38,24 +38,25 @@ public class StockItem {
     @Column(name = "description")
     String description;
 
+    @OneToOne(cascade = CascadeType.ALL)
     @Column(name = "company_id")
-    Integer companyId;
+    Company company;
 
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
-     * @param itemId               The storeId of an item.
+     * @param stockItemId               The storeId of an item.
      * @param itemName             The name of an item.
      * @param itemType             The type of item.
-     * @param brandName           The brand of an item.
-     * @param price            The price of an item.
-     * @param manufacturedDate The manufactured date of an item.
-     * @param expiryDate       The expiryDate of an item.
-     * @param description      The description of an item.
-     * @param companyId       The quantity of items left.
+     * @param brandName            The brand of an item.
+     * @param price                The price of an item.
+     * @param manufacturedDate     The manufactured date of an item.
+     * @param expiryDate           The expiryDate of an item.
+     * @param description          The description of an item.
+     * @param company            The Id of a company.
      */
-    public StockItem(Integer itemId, String itemName, String itemType, String brandName, Double price, String manufacturedDate, String expiryDate, String description, Integer companyId) {
-        this.itemId = itemId;
+    public StockItem(Integer stockItemId, String itemName, String itemType, String brandName, Double price, String manufacturedDate, String expiryDate, String description, Company company) {
+        this.stockItemId = stockItemId;
         this.itemName = itemName;
         this.itemType = itemType;
         this.brandName = brandName;
@@ -63,15 +64,15 @@ public class StockItem {
         this.manufacturedDate = manufacturedDate;
         this.expiryDate = expiryDate;
         this.description = description;
-        this.companyId = companyId;
+        this.company = company;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getStockItemId() {
+        return stockItemId;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setStockItemId(Integer stockItemId) {
+        this.stockItemId = stockItemId;
     }
 
     public String getItemName() {
@@ -130,11 +131,11 @@ public class StockItem {
         this.description = description;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

@@ -26,22 +26,22 @@ public class StockInventoryService {
      *
      * @return All the StockInventory objects.
      */
-    public List<StockInventory> getInventories(){
+    public List<StockInventory> getStockInventories(){
         return inventoryRep.findAll();
     }
 
 
     /**
-     * Get inventory information by the specified inventory ID.
+     * Get stock inventory information by the specified stock inventory ID.
      *
-     * @param Id The ID of the inventory to retrieve.
+     * @param stockInventoryId The ID of the stock inventory to retrieve.
      * @return The StockInventory object corresponding to the given ID.
      */
-    public StockInventory getInventoryById(int inventoryId){
+    public StockInventory getStockInventoryById(int stockInventoryId){
         List<StockInventory> stockInventories = inventoryRep.findAll();
         StockInventory stockInventory = null;
         for(StockInventory i: stockInventories){
-            if(i.getInventoryId() == inventoryId){
+            if(i.getStockInventoryId() == stockInventoryId){
                 stockInventory = i;
             }
         }
@@ -54,7 +54,7 @@ public class StockInventoryService {
      * @param stockInventory The StockInventory object representing the stockInventory to be created.
      * @return The newly created stockInventory object with a generated ID.
      */
-    public StockInventory createInventory(StockInventory stockInventory){
+    public StockInventory createStockInventory(StockInventory stockInventory){
         return inventoryRep.save(stockInventory);
     }
 
@@ -64,22 +64,22 @@ public class StockInventoryService {
      * @param stockInventory The StockInventory object representing the stockInventory to be updated.
      * @return The updated StockInventory object.
      */
-    public StockInventory updateInventory(StockInventory stockInventory){
+    public StockInventory updateStockInventory(StockInventory stockInventory){
         return inventoryRep.save(stockInventory);
     }
 
 
     /**
-     * Delete an inventory with the provided Id.
+     * Delete a stockInventory with the provided Id.
      *
-     * @param inventoryId The ID of the inventory to delete.
+     * @param stockInventoryId The ID of the stock inventory to delete.
      * @return The deleted Id.
      */
-    public AddResponse deleteInventory(int inventoryId){
-        inventoryRep.deleteById(inventoryId);
+    public AddResponse deleteStockInventoryById(int stockInventoryId){
+        inventoryRep.deleteById(stockInventoryId);
         AddResponse res = new AddResponse();
         res.setMsg("StockInventory deleted");
-        res.setId(inventoryId);
+        res.setId(stockInventoryId);
         return res;
     }
 }

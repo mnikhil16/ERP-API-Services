@@ -73,14 +73,14 @@ public class StoreService {
     /**
      * Delete a store with the provided Id.
      *
-     * @param Id The ID of the store to delete.
+     * @param storeId The ID of the store to delete.
      * @return The deleted Id.
      */
-    public AddResponse deleteStore(int Id){
-        storeRep.deleteById(Id);
+    public AddResponse deleteStoreById(int storeId){
+        storeRep.deleteById(storeId);
         AddResponse res = new AddResponse();
         res.setMsg("Store deleted");
-        res.setId(Id);
+        res.setId(storeId);
         return res;
     }
 }

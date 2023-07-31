@@ -1,7 +1,9 @@
 package com.customer;
 
 import com.customer.beans.Address;
+import com.customer.beans.Company;
 import com.customer.beans.Customer;
+import com.customer.beans.Store;
 import com.customer.repository.CustomerRepository;
 import com.customer.service.CustomerService;
 import org.junit.jupiter.api.*;
@@ -18,17 +20,14 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the CustomerService using Mockito framework.
  * It tests the business logic and functionality of the CustomerService methods in isolation.
- *
  * The CustomerServiceMockitoTest class uses Mockito to mock dependencies, such as the
  * CustomerRepository or other external services, to focus solely on testing the service layer.
- *
  * Test Cases:
  * - Test all customers retrieval and verify the expected customer objects are returned.
  * - Test customer retrieval by ID and verify the expected customer object is returned.
  * - Test customer creation and verify that the CustomerRepository save method is called.
  * - Test customer update and verify that the CustomerRepository save method is called.
  * - Test customer deletion and verify that the CustomerRepository delete method is called.
- *
  * Usage:
  * This class should be executed as a JUnit test to validate the correctness of the
  * CustomerService implementation using Mockito mocks for dependency isolation.
@@ -43,6 +42,7 @@ public class CustomerServiceMockitoTest {
     @InjectMocks
     CustomerService customerSer;
 
+    List<Customer> customer = new ArrayList<>();
 
     /**
      * Test the getCustomers method of CustomerService.
@@ -50,12 +50,15 @@ public class CustomerServiceMockitoTest {
      */
     @Test
     @Order(1)
-    public void test_getCustomers(){
-        List<Customer> customer = new ArrayList<>();
+    public void test_getAllCustomers(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         customer.add(customer1);
         customer.add(customer2);
 
@@ -70,11 +73,14 @@ public class CustomerServiceMockitoTest {
     @Test
     @Order(2)
     public void test_getCustomerById(){
-        List<Customer> customer = new ArrayList<>();
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         customer.add(customer1);
         customer.add(customer2);
         int id=1;
@@ -91,9 +97,10 @@ public class CustomerServiceMockitoTest {
     @Test
     @Order(3)
     public void test_createCustomer(){
-        List<Customer> customer = new ArrayList<>();
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
         customer.add(customer1);
 
         when(customerRep.save(customer1)).thenReturn(customer1);
@@ -108,9 +115,10 @@ public class CustomerServiceMockitoTest {
     @Test
     @Order(4)
     public void test_updateCustomer(){
-        List<Customer> customer = new ArrayList<>();
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
         customer.add(customer1);
 
         when(customerRep.save(customer1)).thenReturn(customer1);
@@ -124,11 +132,11 @@ public class CustomerServiceMockitoTest {
      */
     @Test
     @Order(5)
-    public void test_deleteCustomer(){
-        List<Customer> customer = new ArrayList<>();
+    public void test_deleteCustomerById(){
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2);
-
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         customer.add(customer2);
 
         customerSer.deleteCustomer(customer2.getCustomerId());
@@ -136,4 +144,3 @@ public class CustomerServiceMockitoTest {
     }
 
 }
-

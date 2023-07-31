@@ -10,8 +10,7 @@ import java.util.List;
 /**
  * This class represents a service that handles StockItem-related operations in the application.
  * It provides functionality to Create, Read, Update, and Delete StockItem information in the database.
- * This service communicates with the StockItemRepository to perform CRUD operations on Customer_db entities.
- *
+ * This service communicates with the StockItemRepository to perform CRUD operations on erp_db entities.
  * Usage:
  * The StockItemService should be autowired into other components that require StockItem-related functionalities.
  */
@@ -23,26 +22,26 @@ public class StockItemService {
     StockItemRepository itemRep;
 
     /**
-     * Get item information by the specified item ID.
+     * Get stock item information by the specified stock item ID.
      *
      * @return All the Customer objects.
      */
-    public List<StockItem> getItems(){
+    public List<StockItem> getStockItems(){
         return itemRep.findAll();
     }
 
 
     /**
-     * Get item information by the specified item ID.
+     * Get stock item information by the specified stock item ID.
      *
-     * @param Id The ID of the item to retrieve.
+     * @param stockItemId The ID of the item to retrieve.
      * @return The StockItem object corresponding to the given ID.
      */
-    public StockItem getItemById(int Id){
+    public StockItem getStockItemById(int stockItemId){
         List<StockItem> stockItems = itemRep.findAll();
         StockItem stockItem = null;
         for(StockItem i: stockItems){
-            if(i.getItemId() == Id){
+            if(i.getStockItemId() == stockItemId){
                 stockItem = i;
             }
         }
@@ -65,7 +64,7 @@ public class StockItemService {
      * @param stockItem The StockItem object representing the stockItem to be updated.
      * @return The updated StockItem object.
      */
-    public StockItem updateItem(StockItem stockItem){
+    public StockItem updateStockItem(StockItem stockItem){
         return itemRep.save(stockItem);
     }
 
@@ -73,14 +72,14 @@ public class StockItemService {
     /**
      * Delete an item with the provided Id.
      *
-     * @param Id The ID of the item to delete.
+     * @param stockItemId The ID of the item to delete.
      * @return The deleted Id.
      */
-    public AddResponse deleteItem(int Id){
-        itemRep.deleteById(Id);
+    public AddResponse deleteStockItemById(int stockItemId){
+        itemRep.deleteById(stockItemId);
         AddResponse res = new AddResponse();
         res.setMsg("StockItem deleted");
-        res.setId(Id);
+        res.setId(stockItemId);
         return res;
     }
 }

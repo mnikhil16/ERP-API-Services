@@ -44,7 +44,7 @@ public class CustomerController {
         * URL : "http://localhost8080/getCustomerById/"
         * @param customerId as an input.
         * @return ResponseEntity with customer information if found, or 404 if not found.
-        * @throws if customer object not found with given customerId.
+        * @throws if Customer object not found with given customerId.
         */
         @GetMapping("/getCustomerById/{customerId}")
         public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "customerId") int customerId) {
@@ -75,7 +75,7 @@ public class CustomerController {
         * URL : "http://localhost8080/updateCustomer"
         * @param  customer object as an input.
         * @return ResponseEntity with customer information if updated, or 404 if not found.
-        * @throws  if customer object not found.
+        * @throws  if Customer object not found.
         */
         @PutMapping("/updateCustomer")
         public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
@@ -96,7 +96,7 @@ public class CustomerController {
         * @return AddResponse with customerId which is deleted.
         */
         @DeleteMapping("/deleteCustomerById/{customerId}")
-        public AddResponse deleteCustomer(@PathVariable(value = "customerId") int customerId){
+        public AddResponse deleteCustomerById(@PathVariable(value = "customerId") int customerId){
             return service.deleteCustomer(customerId);
         }
 }
