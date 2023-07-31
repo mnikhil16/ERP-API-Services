@@ -77,7 +77,7 @@ public class PurchaseOrderItemsService {
      * @param purchaseOrderItemsId The ID of the purchaseOrderItems to delete.
      * @return The deleted purchaseOrderItemsId.
      */
-    public AddResponse deletePurchaseOrderItems(int purchaseOrderItemsId){
+    public AddResponse deletePurchaseOrderItemById(int purchaseOrderItemsId){
         purchaseOrderItemsRep.deleteById(purchaseOrderItemsId);
         AddResponse res = new AddResponse();
         res.setMsg("purchaseOrderItems deleted");

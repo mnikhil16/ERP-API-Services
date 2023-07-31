@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 /**
  * This class represents a purchase order items object with details like purchaseOrderItemsId, quantity, storeId, stockItemId and purchaseOrderId.
  * It is a Java bean class with getters, setters, and a parameterized constructor for easy data access.
- *
  * Usage:
  * The purchase order items class can be used to store and retrieve information about a purchase order items in the system.
  */

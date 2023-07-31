@@ -67,7 +67,7 @@ public class StockItemController {
     @PostMapping("/createStockItem")
     public StockItem createStockItem(@RequestBody StockItem stockItem){
 
-        return service.createItem(stockItem);
+        return service.createStockItem(stockItem);
     }
 
     /**

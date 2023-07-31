@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the CustomerService using Mockito framework.
  * It tests the business logic and functionality of the CustomerService methods in isolation.
- * The CustomerServiceMockitoTest class uses Mockito to mock dependencies, such as the
+ * The CustomerServiceMockitoTest class uses Mockito to mock dependencies.
  * CustomerRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all customers retrieval and verify the expected customer objects are returned.
@@ -142,5 +142,4 @@ public class CustomerServiceMockitoTest {
         customerSer.deleteCustomer(customer2.getCustomerId());
         verify(customerRep,times(1));
     }
-
 }

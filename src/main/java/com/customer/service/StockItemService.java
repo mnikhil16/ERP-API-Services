@@ -54,7 +54,7 @@ public class StockItemService {
      * @param stockItem The StockItem object representing the stockItem to be created.
      * @return The newly created stockItem object with a generated ID.
      */
-    public StockItem createItem(StockItem stockItem){
+    public StockItem createStockItem(StockItem stockItem){
         return itemRep.save(stockItem);
     }
 
