@@ -1,4 +1,4 @@
-package com.customer;
+package com.service;
 
 import com.customer.beans.Address;
 import com.customer.beans.Company;

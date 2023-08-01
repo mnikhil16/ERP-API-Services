@@ -1,7 +1,8 @@
-package com.customer;
+package com.controller;
 
 import com.customer.beans.*;
-import com.customer.repository.SalesInvoiceRepository;
+import com.customer.controller.AddResponse;
+import com.customer.controller.SalesInvoiceController;
 import com.customer.service.SalesInvoiceService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -10,47 +11,49 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 /**
- * This class contains unit tests for the SalesInvoiceService using Mockito framework.
- * It tests the business logic and functionality of the SalesInvoiceService methods in isolation.
- * The SalesInvoiceServiceMockitoTest class uses Mockito to mock dependencies.
- * SalesInvoiceRepository or other external services, to focus solely on testing the service layer.
+ * This class contains unit tests for the SalesInvoiceController using Mockito framework.
+ * It tests the behaviour of the SalesInvoiceController methods in isolation.
+ * The SalesInvoiceControllerMockitoTest class uses Mockito to mock dependencies, such as the
+ * SalesInvoiceService, to focus solely on testing the controller layer.
  * Test Cases:
- * - Test all salesInvoices retrieval and verify the expected salesInvoice objects are returned.
- * - Test salesInvoice retrieval by ID and verify the expected purchaseInvoice object is returned.
- * - Test salesInvoice creation and verify that the SalesInvoiceRepository save method is called.
- * - Test salesInvoice update and verify that the salesInvoiceRepository save method is called.
- * - Test salesInvoice deletion and verify that the salesInvoiceRepository delete method is called.
+ * - Test all salesInvoices retrieval and verify that the SalesInvoiceService getSalesInvoices method is called.
+ * - Test salesInvoice retrieval by ID and verify that the getSalesInvoiceById method is called.
+ * - Test salesInvoice creation and verify that the SalesInvoiceService createSalesInvoice method is called.
+ * - Test salesInvoice update and verify that the SalesInvoiceService updateSalesInvoice method is called.
+ * - Test salesInvoice deletion and verify that the SalesInvoiceService deleteSalesInvoiceById method is called.
  * Usage:
  * This class should be executed as a JUnit test to validate the correctness of the
- * SalesInvoiceService implementation using Mockito mocks for dependency isolation.
+ * SalesInvoiceController implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockInventoryServiceMockitoTest.class})
-class SalesInvoiceServiceMockitoTest {
+@SpringBootTest(classes = {SalesInvoiceControllerMockitoTests.class})
+public class SalesInvoiceControllerMockitoTests {
 
     @Mock
-    SalesInvoiceRepository salesInvoiceRep;
+    SalesInvoiceService salesInvoiceService;
 
     @InjectMocks
-    SalesInvoiceService salesInvoiceSer;
+    SalesInvoiceController salesInvoiceController;
 
     List<SalesInvoice> salesInvoices = new ArrayList<>();
 
     /**
-     * Test the getSalesInvoices method of SalesInvoiceService.
+     * Test the getAllSalesInvoices method of SalesInvoiceController.
      * Verify that all the salesInvoice objects are returned.
      */
     @Test
     @Order(1)
-    public void test_getAllSalesInvoices() {
+    public void test_getAllSalesInvoices(){
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
@@ -67,17 +70,17 @@ class SalesInvoiceServiceMockitoTest {
         SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h",com2, supplier2, s2, customer2);
         salesInvoices.add(salesInvoice2);
 
-        when(salesInvoiceRep.findAll()).thenReturn(salesInvoices);
-        assertEquals(2, salesInvoiceSer.getSalesInvoices().size());
+        when(salesInvoiceService.getSalesInvoices()).thenReturn(salesInvoices);
+        assertEquals(2,salesInvoiceController.getAllSalesInvoices().size());
     }
 
     /**
-     * Test the getSalesInvoiceById method of SalesInvoiceService.
+     * Test the getSalesInvoiceById method of PurchaseSalesController.
      * Verify that the correct salesInvoice object is returned for a given salesInvoice ID.
      */
     @Test
     @Order(2)
-    public void test_getSalesInvoiceById() {
+    public void test_getSalesInvoiceById(){
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
@@ -93,20 +96,20 @@ class SalesInvoiceServiceMockitoTest {
         Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
         SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h",com2, supplier2, s2, customer2);
         salesInvoices.add(salesInvoice2);
-        int id = 1;
 
-        when(salesInvoiceRep.findAll()).thenReturn(salesInvoices);
-
-        assertEquals(id, salesInvoiceSer.getSalesInvoiceById(id).getSalesInvoiceId());
+        when(salesInvoiceService.getSalesInvoiceById(1)).thenReturn(salesInvoice1);
+        ResponseEntity<SalesInvoice> res  = salesInvoiceController.getSalesInvoiceById(1);
+        assertEquals(HttpStatus.OK,res.getStatusCode());
+        assertEquals(1, res.getBody().getSalesInvoiceId());
     }
 
     /**
-     * Test the createSalesInvoice method of SalesInvoiceService.
-     * Verify that the SalesInvoice object is saved using the SalesInvoiceRepository save method.
+     * Test the createSalesInvoice method of PurchaseSalesController.
+     * Verify that the salesInvoice object is saved using the SalesInvoiceRepository save method.
      */
     @Test
     @Order(3)
-    public void test_createSalesInvoice() {
+    public void test_createSalesInvoice(){
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
@@ -114,18 +117,26 @@ class SalesInvoiceServiceMockitoTest {
         Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
         SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j",com1, supplier1, s1, customer1);
         salesInvoices.add(salesInvoice1);
-        when(salesInvoiceRep.save(salesInvoice1)).thenReturn(salesInvoice1);
 
-        assertEquals(salesInvoice1, salesInvoiceSer.createSalesInvoice(salesInvoice1));
+        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
+        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h",com2, supplier2, s2, customer2);
+        salesInvoices.add(salesInvoice2);
+
+        when(salesInvoiceService.createSalesInvoice(salesInvoice1)).thenReturn(salesInvoice1);
+        assertEquals(salesInvoice1,salesInvoiceController.createSalesInvoice(salesInvoice1));
     }
 
     /**
-     * Test the updateSalesInvoice method of SalesInvoiceService.
+     * Test the updateSalesInvoice method of SalesInvoiceController.
      * Verify that the salesInvoice object is updated using the SalesInvoiceRepository save method.
      */
     @Test
     @Order(4)
-    public void test_updateSalesInvoice() {
+    public void test_updateSalesInvoice(){
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
@@ -134,18 +145,6 @@ class SalesInvoiceServiceMockitoTest {
         SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j",com1, supplier1, s1, customer1);
         salesInvoices.add(salesInvoice1);
 
-        when(salesInvoiceRep.save(salesInvoice1)).thenReturn(salesInvoice1);
-
-        assertEquals(salesInvoice1, salesInvoiceSer.updateSalesInvoice(salesInvoice1));
-    }
-
-    /**
-     * Test the deleteSalesInvoiceById method of SalesInvoiceService.
-     * Verify that the correct salesInvoice object is deleted for a given salesInvoice ID.
-     */
-    @Test
-    @Order(5)
-    public void test_deleteSalesInvoiceById() {
         Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
         Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
         Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
@@ -154,7 +153,39 @@ class SalesInvoiceServiceMockitoTest {
         SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h",com2, supplier2, s2, customer2);
         salesInvoices.add(salesInvoice2);
 
-        salesInvoiceSer.deleteSalesInvoiceById(salesInvoice2.getSalesInvoiceId());
-        verify(salesInvoiceRep, times(1));
+        when(salesInvoiceService.updateSalesInvoice(salesInvoice1)).thenReturn(salesInvoice1);
+        ResponseEntity<SalesInvoice> res = salesInvoiceController.updateSalesInvoice(salesInvoice1);
+        assertEquals(HttpStatus.OK,res.getStatusCode());
+        assertEquals(salesInvoice1,res.getBody());
+    }
+
+    /**
+     * Test the deleteSalesInvoiceById method of PurchaseSalesController.
+     * Verify that the correct salesInvoice object is deleted for a given salesInvoice ID.
+     */
+    @Test
+    @Order(5)
+    public void test_deleteSalesInvoiceById(){
+        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j",com1, supplier1, s1, customer1);
+        salesInvoices.add(salesInvoice1);
+
+        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
+        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h",com2, supplier2, s2, customer2);
+        salesInvoices.add(salesInvoice2);
+
+        AddResponse addResponse = new AddResponse();
+        addResponse.setId(2);
+        addResponse.setMsg("PurchaseInvoice deleted");
+        when(salesInvoiceService.deleteSalesInvoiceById(2)).thenReturn(addResponse);
+        assertEquals(addResponse,salesInvoiceController.deleteSalesInvoiceById(2));
     }
 }

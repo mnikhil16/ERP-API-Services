@@ -1,21 +1,15 @@
-package com.customer;
+package com.service;
 
 import com.customer.beans.Address;
 import com.customer.beans.Company;
 import com.customer.beans.Customer;
 import com.customer.beans.Store;
-import com.customer.controller.AddResponse;
-import com.customer.controller.CustomerController;
+import com.customer.repository.CustomerRepository;
 import com.customer.service.CustomerService;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,35 +18,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 /**
- * This class contains unit tests for the CustomerController using Mockito framework.
- * It tests the behaviour of the CustomerController methods in isolation.
- * The CustomerControllerMockitoTest class uses Mockito to mock dependencies, such as the
- * CustomerService, to focus solely on testing the controller layer.
+ * This class contains unit tests for the CustomerService using Mockito framework.
+ * It tests the business logic and functionality of the CustomerService methods in isolation.
+ * The CustomerServiceMockitoTest class uses Mockito to mock dependencies.
+ * CustomerRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
- * - Test all customers retrieval and verify that the CustomerService getCustomers method is called.
- * - Test customer retrieval by ID and verify that the getCustomerById method is called.
- * - Test customer creation and verify that the CustomerService createCustomer method is called.
- * - Test customer update and verify that the CustomerService updateCustomer method is called.
- * - Test customer deletion and verify that the CustomerService deleteCustomer method is called.
+ * - Test all customers retrieval and verify the expected customer objects are returned.
+ * - Test customer retrieval by ID and verify the expected customer object is returned.
+ * - Test customer creation and verify that the CustomerRepository save method is called.
+ * - Test customer update and verify that the CustomerRepository save method is called.
+ * - Test customer deletion and verify that the CustomerRepository delete method is called.
  * Usage:
  * This class should be executed as a JUnit test to validate the correctness of the
- * CustomerController implementation using Mockito mocks for dependency isolation.
+ * CustomerService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {CustomerControllerMockitoTests.class})
-public class CustomerControllerMockitoTests {
+@SpringBootTest(classes = {CustomerServiceMockitoTest.class})
+public class CustomerServiceMockitoTest {
 
     @Mock
-    CustomerService customerService;
+    CustomerRepository customerRep;
 
     @InjectMocks
-    CustomerController customerController;
+    CustomerService customerSer;
 
-    List<Customer> customers = new ArrayList<>();
-    Customer customer;
+    List<Customer> customer = new ArrayList<>();
 
     /**
-     * Test the getAllCustomers method of CustomerController.
+     * Test the getCustomers method of CustomerService.
      * Verify that all the customer objects are returned.
      */
     @Test
@@ -66,15 +59,15 @@ public class CustomerControllerMockitoTests {
         Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
         Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
         Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
-        customers.add(customer1);
-        customers.add(customer2);
+        customer.add(customer1);
+        customer.add(customer2);
 
-        when(customerService.getCustomers()).thenReturn(customers);
-        assertEquals(2,customerController.getAllCustomers().size());
+        when(customerRep.findAll()).thenReturn(customer);
+        assertEquals(2, customerSer.getCustomers().size());
     }
 
     /**
-     * Test the getCustomerById method of CustomerController.
+     * Test the getCustomerById method of CustomerService.
      * Verify that the correct customer object is returned for a given customer ID.
      */
     @Test
@@ -88,17 +81,17 @@ public class CustomerControllerMockitoTests {
         Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
         Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
         Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
-        customers.add(customer1);
-        customers.add(customer2);
+        customer.add(customer1);
+        customer.add(customer2);
+        int id=1;
 
-        when(customerService.getCustomerById(1)).thenReturn(customer1);
-        ResponseEntity<Customer> res  = customerController.getCustomerById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getCustomerId());
+        when(customerRep.findAll()).thenReturn(customer);
+
+        assertEquals(id, customerSer.getCustomerById(id).getCustomerId());
     }
 
     /**
-     * Test the createCustomer method of CustomerController.
+     * Test the createCustomer method of CustomerService.
      * Verify that the customer object is saved using the CustomerRepository save method.
      */
     @Test
@@ -108,13 +101,15 @@ public class CustomerControllerMockitoTests {
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
         Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        customer.add(customer1);
 
-        when(customerService.createCustomer(customer)).thenReturn(customer);
-        assertEquals(customer,customerController.createCustomer(customer));
+        when(customerRep.save(customer1)).thenReturn(customer1);
+
+        assertEquals(customer1, customerSer.createCustomer(customer1));
     }
 
     /**
-     * Test the updateCustomer method of CustomerController.
+     * Test the updateCustomer method of CustomerService.
      * Verify that the customer object is updated using the CustomerRepository save method.
      */
     @Test
@@ -124,30 +119,27 @@ public class CustomerControllerMockitoTests {
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
         Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        customer.add(customer1);
 
-        when(customerService.updateCustomer(customer)).thenReturn(customer);
-        ResponseEntity<Customer> res = customerController.updateCustomer(customer);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(customer,res.getBody());
+        when(customerRep.save(customer1)).thenReturn(customer1);
+
+        assertEquals(customer1, customerSer.updateCustomer(customer1));
     }
 
     /**
-     * Test the deleteCustomer method of CustomerController.
+     * Test the deleteCustomer method of CustomerService.
      * Verify that the correct customer object is deleted for a given customer ID.
      */
     @Test
     @Order(5)
     public void test_deleteCustomerById(){
-        Address add = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add);
-        Store s = new Store(1,"Laundry","Washington St.", com, add);
-        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add, com, s);
-        customers.add(customer);
+        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
+        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
+        customer.add(customer2);
 
-        AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
-        addResponse.setMsg("Customer deleted");
-        when(customerService.deleteCustomer(1)).thenReturn(addResponse);
-        assertEquals(addResponse,customerController.deleteCustomerById(1));
+        customerSer.deleteCustomer(customer2.getCustomerId());
+        verify(customerRep,times(1));
     }
 }

@@ -1,4 +1,4 @@
-package com.customer;
+package com.service;
 
 import com.customer.beans.*;
 import com.customer.repository.PurchaseOrderRepository;

@@ -1,5 +1,6 @@
-package com.customer;
+package com.controller;
 
+import com.controller.CustomerControllerMockitoTests;
 import com.customer.beans.Address;
 import com.customer.beans.Company;
 import com.customer.beans.Customer;

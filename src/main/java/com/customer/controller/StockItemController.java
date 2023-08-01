@@ -96,7 +96,7 @@ public class StockItemController {
      * @return AddResponse with stockItemId which is deleted.
      */
     @DeleteMapping("/deleteStockItemById/{stockItemId}")
-    public AddResponse deleteStockItem(@PathVariable(value = "stockItemId") int stockItemId){
+    public AddResponse deleteStockItemById(@PathVariable(value = "stockItemId") int stockItemId){
         return service.deleteStockItemById(stockItemId);
     }
 }
