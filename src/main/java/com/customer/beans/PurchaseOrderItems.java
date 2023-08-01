@@ -21,15 +21,15 @@ public class PurchaseOrderItems {
     Integer quantity;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     Store store;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "stock_item_id")
+    @JoinColumn(name = "stock_item_id")
     StockItem stockItem;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "purchase_order_id")
+    @JoinColumn(name = "purchase_order_id")
     PurchaseOrder purchaseOrder;
 
     /**

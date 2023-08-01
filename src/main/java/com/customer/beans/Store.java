@@ -3,7 +3,7 @@ package com.customer.beans;
 import jakarta.persistence.*;
 
 /**
- * This class represents a Store object with details like storeId, storeName, branch, company Id, address Id.
+ * This class represents a Store object with details like storeId, storeName, branch, companyId, address.
  * It is a Java bean class with getters, setters, and a parameterized constructor for easy data access.
  *
  * Usage:
@@ -23,12 +23,12 @@ public class Store {
     @Column(name = "branch")
     String branch;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @Column(name = "company_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_id")
     Company company;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "addressId")
+    @JoinColumn(name = "addressId")
     Address address;
 
     /**

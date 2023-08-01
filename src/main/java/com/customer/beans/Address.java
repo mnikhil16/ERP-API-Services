@@ -19,8 +19,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "addressId")
     Integer addressId;
-    @Column(name = "dno")
-    String dNo;
+    @Column(name = "d_no")
+    String dno;
     @Column(name = "street")
     String street;
     @Column(name = "city")
@@ -38,15 +38,15 @@ public class Address {
     /**
      * Parameterized constructor to create an Address object with specified details.
      * @param addressId  The address id of the address
-     * @param dNo       The door number.
+     * @param dno       The door number.
      * @param street     The street address.
      * @param city       The city name.
      * @param state      The state name.
      * @param pinCode    The pin code or ZIP code.
      */
-    public Address(Integer addressId, String dNo, String street, String city, String state, Integer pinCode) {
+    public Address(Integer addressId, String dno, String street, String city, String state, Integer pinCode) {
         this.addressId = addressId;
-        this.dNo = dNo;
+        this.dno = dno;
         this.street = street;
         this.city = city;
         this.state = state;
@@ -62,11 +62,11 @@ public class Address {
     }
 
     public String getDNo() {
-        return dNo;
+        return dno;
     }
 
-    public void setDNo(String dNo) {
-        this.dNo = dNo;
+    public void setDNo(String dno) {
+        this.dno = dno;
     }
 
     public String getStreet() {

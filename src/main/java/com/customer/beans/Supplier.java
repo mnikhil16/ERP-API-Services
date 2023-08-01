@@ -31,15 +31,15 @@ public class Supplier {
     String phoneNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     Store store;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "company_id")
+    @JoinColumn(name = "company_id")
     Company company;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "address_id")
+    @JoinColumn(name = "address_id")
     Address address;
 
     public Supplier(){

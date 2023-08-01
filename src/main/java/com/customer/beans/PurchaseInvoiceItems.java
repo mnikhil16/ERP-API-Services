@@ -25,15 +25,15 @@ public class PurchaseInvoiceItems {
     Double amount;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     Store store;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "stock_item_id")
+    @JoinColumn(name = "stock_item_id")
     StockItem stockItem;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "purchase_invoice_id")
+    @JoinColumn(name = "purchase_invoice_id")
     PurchaseInvoice purchaseInvoice;
 
     /**

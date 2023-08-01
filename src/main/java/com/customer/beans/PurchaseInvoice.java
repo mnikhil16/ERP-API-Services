@@ -31,11 +31,11 @@ public class PurchaseInvoice {
     String supplierInvoiceNo;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "company_id")
+    @JoinColumn(name = "company_id")
     Company company;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "supplier_id")
+    @JoinColumn(name = "supplier_id")
     Supplier supplier;
 
     /**

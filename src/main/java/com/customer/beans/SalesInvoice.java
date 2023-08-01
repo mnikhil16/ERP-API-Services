@@ -31,19 +31,19 @@ public class SalesInvoice {
     String salesInvoiceNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "company_id")
+    @JoinColumn(name = "company_id")
     Company company;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "supplier_id")
+    @JoinColumn(name = "supplier_id")
     Supplier supplier;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     Store store;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "customer_id")
+    @JoinColumn(name = "customer_id")
     Customer customer;
 
 

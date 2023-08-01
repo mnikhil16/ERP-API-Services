@@ -31,7 +31,7 @@ public class StoreController {
 
     /**
      * Returns all the store objects.
-     * URL : "http://localhost8080/Stores"
+     * URL : "http://localhost:8080/Stores"
      * @return  All stores as an arrayList of store JSON objects.
      */
     @GetMapping("/stores")
@@ -41,7 +41,7 @@ public class StoreController {
 
     /**
      * Returns the store object with given storeId.
-     * URL : "http://localhost8080/getStoreById/"
+     * URL : "http://localhost:8080/getStoreById/"
      * @param storeId as an input.
      * @return ResponseEntity with store information if found, or 404 if not found.
      * @throws if store object not found with given storeId.
@@ -60,7 +60,7 @@ public class StoreController {
 
     /**
      * Creates the store object.
-     * URL : "http://localhost8080/createStore"
+     * URL : "http://localhost:8080/createStore"
      * @param  store object as an input.
      * @return  store JSON object.
      */
@@ -72,7 +72,7 @@ public class StoreController {
 
     /**
      * Updates the store object.
-     * URL : "http://localhost8080/updateStore"
+     * URL : "http://localhost:8080/updateStore"
      * @param  store object as an input.
      * @return ResponseEntity with store information if updated, or 404 if not found.
      * @throws  if store object not found.
@@ -90,7 +90,7 @@ public class StoreController {
 
     /**
      * Deletes the store object with specific id
-     * URL : "http://localhost8080/deleteStoreById/"
+     * URL : "http://localhost:8080/deleteStoreById/"
      * @param storeId as an input.
      * @return AddResponse with storeId which is deleted.
      */

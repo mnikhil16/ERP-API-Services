@@ -30,7 +30,7 @@ public class Company {
     String  gst;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "address_id")
+    @JoinColumn(name = "address_id")
     Address address;
 
     /**
@@ -51,6 +51,8 @@ public class Company {
         this.gst = gst;
         this.address = address;
     }
+
+    public Company(){}
 
     public Integer getCompanyId() {
         return companyId;

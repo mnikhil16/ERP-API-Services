@@ -39,7 +39,7 @@ public class StockItem {
     String description;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "company_id")
+    @JoinColumn(name = "company_id")
     Company company;
 
     /**

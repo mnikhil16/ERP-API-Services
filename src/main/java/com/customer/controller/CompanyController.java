@@ -32,7 +32,7 @@ public class CompanyController {
 
     /**
      * Returns all the company objects.
-     * URL : "http://localhost8080/Companies"
+     * URL : "http://localhost:8080/Companies"
      * @return  All companies as an arrayList of company JSON objects.
      */
     @GetMapping("/Companies")
@@ -42,7 +42,7 @@ public class CompanyController {
 
     /**
      * Returns the company object with given customerId.
-     * URL : "http://localhost8080/getCustomerById/"
+     * URL : "http://localhost:8080/getCustomerById/"
      * @param companyId as an input.
      * @return ResponseEntity with company information if found, or 404 if not found.
      * @throws  if company object not found with given companyId.
@@ -61,7 +61,7 @@ public class CompanyController {
 
     /**
      * Creates the company object.
-     * URL : "http://localhost8080/createCompany"
+     * URL : "http://localhost:8080/createCompany"
      * @param  company object as an input.
      * @return  company JSON object.
      */
@@ -73,7 +73,7 @@ public class CompanyController {
 
     /**
      * Updates the company object.
-     * URL : "http://localhost8080/updateCompany"
+     * URL : "http://localhost:8080/updateCompany"
      * @param  company object as an input.
      * @return ResponseEntity with company information if updated, or 404 if not found.
      * @throws  if company object not found.
@@ -92,7 +92,7 @@ public class CompanyController {
 
     /**
      * Deletes the company object with specific id
-     * URL : "http://localhost8080/deleteCompanyById/"
+     * URL : "http://localhost:8080/deleteCompanyById/"
      * @param companyId as an input.
      * @return AddResponse with companyId which is deleted.
      */

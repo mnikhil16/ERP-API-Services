@@ -24,11 +24,11 @@ public class SalesItems {
     Double amount;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Column(name = "store_id")
+    @JoinColumn(name = "store_id")
     Store store;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "sales_invoice_id")
+    @JoinColumn(name = "sales_invoice_id")
     SalesInvoice salesInvoice;
 
     /**
