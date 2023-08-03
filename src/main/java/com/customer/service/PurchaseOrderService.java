@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class PurchaseOrderService {
     @Autowired
-    PurchaseOrderRepository purchaseOrderRep;
+    PurchaseOrderRepository purchaseOrderRepository;
 
     /**
      * Get all the purchase order information.
@@ -26,7 +26,7 @@ public class PurchaseOrderService {
      * @return All the PurchaseOrder objects.
      */
     public List<PurchaseOrder> getPurchaseOrders(){
-        return purchaseOrderRep.findAll();
+        return purchaseOrderRepository.findAll();
     }
 
 
@@ -37,7 +37,7 @@ public class PurchaseOrderService {
      * @return The PurchaseOrder object corresponding to the given ID.
      */
     public PurchaseOrder getPurchaseOrderById(int purchaseOrderId){
-        List<PurchaseOrder> purchaseOrders = purchaseOrderRep.findAll();
+        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.findAll();
         PurchaseOrder purchaseOrder = null;
         for(PurchaseOrder po: purchaseOrders){
             if(po.getPurchaseOrderId() == purchaseOrderId){
@@ -54,7 +54,7 @@ public class PurchaseOrderService {
      * @return The newly created purchaseOrder object with a generated ID.
      */
     public PurchaseOrder createPurchaseOrder(PurchaseOrder purchaseOrder){
-        return purchaseOrderRep.save(purchaseOrder);
+        return purchaseOrderRepository.save(purchaseOrder);
     }
 
     /**
@@ -64,7 +64,7 @@ public class PurchaseOrderService {
      * @return The updated PurchaseOrder object.
      */
     public PurchaseOrder updatePurchaseOrder(PurchaseOrder purchaseOrder){
-        return purchaseOrderRep.save(purchaseOrder);
+        return purchaseOrderRepository.save(purchaseOrder);
     }
 
 
@@ -75,7 +75,7 @@ public class PurchaseOrderService {
      * @return The deleted purchaseOrderId.
      */
     public AddResponse deletePurchaseOrderById(int purchaseOrderId){
-        purchaseOrderRep.deleteById(purchaseOrderId);
+        purchaseOrderRepository.deleteById(purchaseOrderId);
         AddResponse res = new AddResponse();
         res.setMsg("PurchaseOrder deleted");
         res.setId(purchaseOrderId);

@@ -40,12 +40,13 @@ public class StockItem {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    Company company;
+    Integer companyId;
 
+    public StockItem(){}
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
-     * @param stockItemId               The storeId of an item.
+     * @param stockItemId          The storeId of an item.
      * @param itemName             The name of an item.
      * @param itemType             The type of item.
      * @param brandName            The brand of an item.
@@ -53,9 +54,9 @@ public class StockItem {
      * @param manufacturedDate     The manufactured date of an item.
      * @param expiryDate           The expiryDate of an item.
      * @param description          The description of an item.
-     * @param company            The Id of a company.
+     * @param companyId            The Id of a company.
      */
-    public StockItem(Integer stockItemId, String itemName, String itemType, String brandName, Double price, String manufacturedDate, String expiryDate, String description, Company company) {
+    public StockItem(Integer stockItemId, String itemName, String itemType, String brandName, Double price, String manufacturedDate, String expiryDate, String description, Integer companyId) {
         this.stockItemId = stockItemId;
         this.itemName = itemName;
         this.itemType = itemType;
@@ -64,7 +65,7 @@ public class StockItem {
         this.manufacturedDate = manufacturedDate;
         this.expiryDate = expiryDate;
         this.description = description;
-        this.company = company;
+        this.companyId = companyId;
     }
 
     public Integer getStockItemId() {
@@ -131,11 +132,11 @@ public class StockItem {
         this.description = description;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 }

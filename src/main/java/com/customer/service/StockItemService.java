@@ -19,7 +19,7 @@ import java.util.List;
 public class StockItemService {
 
     @Autowired
-    StockItemRepository itemRep;
+    StockItemRepository stockItemRepository;
 
     /**
      * Get stock item information by the specified stock item ID.
@@ -27,7 +27,7 @@ public class StockItemService {
      * @return All the Customer objects.
      */
     public List<StockItem> getStockItems(){
-        return itemRep.findAll();
+        return stockItemRepository.findAll();
     }
 
 
@@ -38,7 +38,7 @@ public class StockItemService {
      * @return The StockItem object corresponding to the given ID.
      */
     public StockItem getStockItemById(int stockItemId){
-        List<StockItem> stockItems = itemRep.findAll();
+        List<StockItem> stockItems = stockItemRepository.findAll();
         StockItem stockItem = null;
         for(StockItem i: stockItems){
             if(i.getStockItemId() == stockItemId){
@@ -55,7 +55,7 @@ public class StockItemService {
      * @return The newly created stockItem object with a generated ID.
      */
     public StockItem createStockItem(StockItem stockItem){
-        return itemRep.save(stockItem);
+        return stockItemRepository.save(stockItem);
     }
 
     /**
@@ -65,7 +65,7 @@ public class StockItemService {
      * @return The updated StockItem object.
      */
     public StockItem updateStockItem(StockItem stockItem){
-        return itemRep.save(stockItem);
+        return stockItemRepository.save(stockItem);
     }
 
 
@@ -76,7 +76,7 @@ public class StockItemService {
      * @return The deleted Id.
      */
     public AddResponse deleteStockItemById(int stockItemId){
-        itemRep.deleteById(stockItemId);
+        stockItemRepository.deleteById(stockItemId);
         AddResponse res = new AddResponse();
         res.setMsg("StockItem deleted");
         res.setId(stockItemId);

@@ -28,7 +28,7 @@ import java.util.List;
 public class PurchaseInvoiceController {
 
     @Autowired
-    PurchaseInvoiceService service;
+    PurchaseInvoiceService purchaseInvoiceService;
 
     /**
      * Returns all the purchaseInvoice objects.
@@ -37,7 +37,7 @@ public class PurchaseInvoiceController {
      */
     @GetMapping("/PurchaseInvoices")
     public List<PurchaseInvoice> getAllPurchaseInvoices(){
-        return service.getPurchaseInvoices();
+        return purchaseInvoiceService.getPurchaseInvoices();
     }
 
     /**
@@ -51,8 +51,8 @@ public class PurchaseInvoiceController {
     public ResponseEntity<PurchaseInvoice> getPurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId) {
 
         try {
-            PurchaseInvoice purchaseInvoice = service.getPurchaseInvoiceById(purchaseInvoiceId);
-            return new ResponseEntity<PurchaseInvoice>(purchaseInvoice, HttpStatus.OK);
+            PurchaseInvoice purchaseInvoice = purchaseInvoiceService.getPurchaseInvoiceById(purchaseInvoiceId);
+            return new ResponseEntity<>(purchaseInvoice, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class PurchaseInvoiceController {
     @PostMapping("/createPurchaseInvoice")
     public PurchaseInvoice createPurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice){
 
-        return service.createPurchaseInvoice(purchaseInvoice);
+        return purchaseInvoiceService.createPurchaseInvoice(purchaseInvoice);
     }
 
     /**
@@ -81,8 +81,8 @@ public class PurchaseInvoiceController {
     @PutMapping("/updatePurchaseInvoice")
     public ResponseEntity<PurchaseInvoice> updatePurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice){
         try{
-            PurchaseInvoice updatedPurchaseInvoice = service.updatePurchaseInvoice(purchaseInvoice);
-            return new ResponseEntity<PurchaseInvoice>(updatedPurchaseInvoice,HttpStatus.OK);
+            PurchaseInvoice updatedPurchaseInvoice = purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoice);
+            return new ResponseEntity<>(updatedPurchaseInvoice,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -98,6 +98,6 @@ public class PurchaseInvoiceController {
      */
     @DeleteMapping("/deletePurchaseInvoiceById/{purchaseInvoiceId}")
     public AddResponse deletePurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId){
-        return service.deletePurchaseInvoiceById(purchaseInvoiceId);
+        return purchaseInvoiceService.deletePurchaseInvoiceById(purchaseInvoiceId);
     }
 }

@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -56,12 +57,8 @@ public class SupplierControllerMockitoTests {
     public void test_getAllSuppliers(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
+        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", 1, 1, add1);
+        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", 2, 2, add2);
         suppliers.add(supplier1);
         suppliers.add(supplier2);
 
@@ -78,19 +75,15 @@ public class SupplierControllerMockitoTests {
     public void test_getSupplierById(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
+        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", 1, 1, add1);
+        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", 2, 2, add2);
         suppliers.add(supplier1);
         suppliers.add(supplier2);
 
         when(supplierService.getSupplierById(1)).thenReturn(supplier1);
         ResponseEntity<Supplier> res  = supplierController.getSupplierById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getSupplierId());
+        assertEquals(1, Objects.requireNonNull(res.getBody()).getSupplierId());
     }
 
     /**
@@ -102,12 +95,8 @@ public class SupplierControllerMockitoTests {
     public void test_createSupplier(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
+        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", 1, 1, add1);
+        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", 2, 2, add2);
         suppliers.add(supplier1);
         suppliers.add(supplier2);
 
@@ -124,9 +113,7 @@ public class SupplierControllerMockitoTests {
     @Order(4)
     public void test_updateSupplier(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
+        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", 1, 1, add1);
         suppliers.add(supplier1);
 
         when(supplierService.updateSupplier(supplier1)).thenReturn(supplier1);
@@ -143,9 +130,7 @@ public class SupplierControllerMockitoTests {
     @Order(5)
     public void test_deleteSupplierById(){
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
+        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", 2, 2, add2);
         suppliers.add(supplier2);
 
         AddResponse addResponse = new AddResponse();

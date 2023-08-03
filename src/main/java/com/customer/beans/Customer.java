@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 /**
  * This class represents a Customer object with details like customerId, first_name, last_name, display_name, dob, age, email, phone number, companyId, storeId and address.
  * It is a Java bean class with getters, setters, and a parameterized constructor for easy data access.
- *
  * Usage:
  * The Customer class can be used to store and retrieve information about a customer in the system.
  */
@@ -38,16 +37,12 @@ public class Customer {
     String phoneNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id")
-    Company company;
+    @JoinColumn(name = "address_id")
+    Address address;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "store_id")
-    Store store;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
-    Address address;
+    Integer storeId;
 
     public Customer() {
     }
@@ -64,10 +59,9 @@ public class Customer {
      * @param email         The email of the customer.
      * @param phoneNumber   The phone number of the customer.
      * @param address       The Address object representing the customer's address.
-     * @param company     The companyId of the customer.
-     * @param store       The storeId of the customer.
+     * @param storeId       The storeId of the customer.
      */
-    public Customer(Integer customerId, String firstName, String lastName, String displayName, String dateOfBirth, Integer age, String email, String phoneNumber, Address address,Company company, Store store) {
+    public Customer(Integer customerId, String firstName, String lastName, String displayName, String dateOfBirth, Integer age, String email, String phoneNumber, Integer storeId, Address address) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -76,9 +70,8 @@ public class Customer {
         this.age = age;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.storeId = storeId;
         this.address = address;
-        this.company = company;
-        this.store = store;
     }
 
     public Integer getCustomerId() {
@@ -145,27 +138,19 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
+    }
+
     public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 }

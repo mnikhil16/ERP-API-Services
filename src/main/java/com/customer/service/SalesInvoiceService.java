@@ -20,7 +20,7 @@ import java.util.List;
 public class SalesInvoiceService {
 
     @Autowired
-    SalesInvoiceRepository salesInvoiceRep;
+    SalesInvoiceRepository salesInvoiceRepository;
 
     /**
      * Get all the salesInvoice information.
@@ -28,7 +28,7 @@ public class SalesInvoiceService {
      * @return All the SalesInvoice objects.
      */
     public List<SalesInvoice> getSalesInvoices(){
-        return salesInvoiceRep.findAll();
+        return salesInvoiceRepository.findAll();
     }
 
 
@@ -39,7 +39,7 @@ public class SalesInvoiceService {
      * @return The SalesInvoice object corresponding to the given ID.
      */
     public SalesInvoice getSalesInvoiceById(int salesInvoiceId){
-        List<SalesInvoice> salesInvoices = salesInvoiceRep.findAll();
+        List<SalesInvoice> salesInvoices = salesInvoiceRepository.findAll();
         SalesInvoice salesInvoice = null;
         for(SalesInvoice si: salesInvoices){
             if(si.getSalesInvoiceId() == salesInvoiceId){
@@ -56,7 +56,7 @@ public class SalesInvoiceService {
      * @return The newly created SalesInvoice object with a generated ID.
      */
     public SalesInvoice createSalesInvoice(SalesInvoice salesInvoice){
-        return salesInvoiceRep.save(salesInvoice);
+        return salesInvoiceRepository.save(salesInvoice);
     }
 
     /**
@@ -66,7 +66,7 @@ public class SalesInvoiceService {
      * @return The updated SalesInvoice object.
      */
     public SalesInvoice updateSalesInvoice(SalesInvoice salesInvoice){
-        return salesInvoiceRep.save(salesInvoice);
+        return salesInvoiceRepository.save(salesInvoice);
     }
 
 
@@ -77,7 +77,7 @@ public class SalesInvoiceService {
      * @return The deleted salesInvoiceId.
      */
     public AddResponse deleteSalesInvoiceById(int salesInvoiceId){
-        salesInvoiceRep.deleteById(salesInvoiceId);
+        salesInvoiceRepository.deleteById(salesInvoiceId);
         AddResponse res = new AddResponse();
         res.setMsg("SalesInvoice deleted");
         res.setId(salesInvoiceId);

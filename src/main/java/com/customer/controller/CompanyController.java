@@ -28,7 +28,7 @@ import java.util.List;
 public class CompanyController {
 
     @Autowired
-    CompanyService service;
+    CompanyService companyService;
 
     /**
      * Returns all the company objects.
@@ -37,7 +37,7 @@ public class CompanyController {
      */
     @GetMapping("/Companies")
     public List<Company> getAllCompanies(){
-        return service.getCompanies();
+        return companyService.getCompanies();
     }
 
     /**
@@ -51,8 +51,8 @@ public class CompanyController {
     public ResponseEntity<Company> getCompanyById(@PathVariable(value = "companyId") int companyId) {
 
         try {
-            Company company = service.getCompanyById(companyId);
-            return new ResponseEntity<Company>(company, HttpStatus.OK);
+            Company company = companyService.getCompanyById(companyId);
+            return new ResponseEntity<>(company, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class CompanyController {
     @PostMapping("/createCompany")
     public Company createCompany(@RequestBody Company company){
 
-        return service.createCompany(company);
+        return companyService.createCompany(company);
     }
 
     /**
@@ -81,8 +81,8 @@ public class CompanyController {
     @PutMapping("/updateCompany")
     public ResponseEntity<Company> updateCompany(@RequestBody Company company){
         try{
-            Company updatedCompany = service.updateCompany(company);
-            return new ResponseEntity<Company>(updatedCompany,HttpStatus.OK);
+            Company updatedCompany = companyService.updateCompany(company);
+            return new ResponseEntity<>(updatedCompany,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -98,6 +98,6 @@ public class CompanyController {
      */
     @DeleteMapping("/deleteCompanyById/{companyId}")
     public AddResponse deleteCompanyById(@PathVariable(value = "companyId") int companyId){
-        return service.deleteCompanyById(companyId);
+        return companyService.deleteCompanyById(companyId);
     }
 }

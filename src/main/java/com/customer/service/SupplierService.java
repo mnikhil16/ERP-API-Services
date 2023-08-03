@@ -1,6 +1,5 @@
 package com.customer.service;
 
-import com.customer.beans.Customer;
 import com.customer.beans.Supplier;
 import com.customer.controller.AddResponse;
 import com.customer.repository.SupplierRepository;
@@ -21,7 +20,7 @@ import java.util.List;
 public class SupplierService {
 
     @Autowired
-    SupplierRepository supplierRep;
+    SupplierRepository supplierRepository;
 
     /**
      * Get all the supplier information.
@@ -29,7 +28,7 @@ public class SupplierService {
      * @return All the Supplier objects.
      */
     public List<Supplier> getSuppliers(){
-        return supplierRep.findAll();
+        return supplierRepository.findAll();
     }
 
 
@@ -40,7 +39,7 @@ public class SupplierService {
      * @return The Supplier object corresponding to the given ID.
      */
     public Supplier getSupplierById(int supplierId){
-        List<Supplier> suppliers = supplierRep.findAll();
+        List<Supplier> suppliers = supplierRepository.findAll();
         Supplier supplier = null;
         for(Supplier s: suppliers){
             if(s.getSupplierId() == supplierId){
@@ -57,7 +56,7 @@ public class SupplierService {
      * @return The newly created supplier object with a generated ID.
      */
     public Supplier createSupplier(Supplier supplier){
-        return supplierRep.save(supplier);
+        return supplierRepository.save(supplier);
     }
 
     /**
@@ -67,7 +66,7 @@ public class SupplierService {
      * @return The updated Supplier object.
      */
     public Supplier updateSupplier(Supplier supplier){
-        return supplierRep.save(supplier);
+        return supplierRepository.save(supplier);
     }
 
 
@@ -78,7 +77,7 @@ public class SupplierService {
      * @return The deleted supplierId.
      */
     public AddResponse deleteSupplierById(int supplierId){
-        supplierRep.deleteById(supplierId);
+        supplierRepository.deleteById(supplierId);
         AddResponse res = new AddResponse();
         res.setMsg("Supplier deleted");
         res.setId(supplierId);

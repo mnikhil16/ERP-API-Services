@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.customer.beans.Address;
-import com.customer.beans.Company;
 import com.customer.beans.Store;
 import com.customer.controller.AddResponse;
 import com.customer.controller.StoreController;
@@ -18,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -58,10 +58,8 @@ public class StoreControllerMockitoTests {
     public void test_getAllStores(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
+        Store s2 = new Store(2, "Food Store", "Washington St.", 2, add2);
         stores.add(s1);
         stores.add(s2);
 
@@ -78,17 +76,15 @@ public class StoreControllerMockitoTests {
     public void test_getStoreById(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
+        Store s2 = new Store(2, "Food Store", "Washington St.", 2, add2);
         stores.add(s1);
         stores.add(s2);
 
         when(storeService.getStoreById(1)).thenReturn(s1);
         ResponseEntity<Store> res  = storeController.getStoreById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getStoreId());
+        assertEquals(1, Objects.requireNonNull(res.getBody()).getStoreId());
     }
 
     /**
@@ -99,8 +95,7 @@ public class StoreControllerMockitoTests {
     @Order(3)
     public void test_createStore(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
         stores.add(s1);
 
 
@@ -116,8 +111,7 @@ public class StoreControllerMockitoTests {
     @Order(4)
     public void test_updateStore(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
         stores.add(s1);
 
         when(storeService.updateStore(s1)).thenReturn(s1);
@@ -134,8 +128,7 @@ public class StoreControllerMockitoTests {
     @Order(5)
     public void test_deleteStoreById(){
         Address add = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add);
-        Store s = new Store(2, "Food Store", "Washington St.", com, add);
+        Store s = new Store(1, "Food Store", "Washington St.", 1, add);
         stores.add(s);
 
         AddResponse addResponse = new AddResponse();

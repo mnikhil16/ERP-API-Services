@@ -25,11 +25,13 @@ public class Store {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    Company company;
+    Integer companyId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressId")
     Address address;
+
+    public Store(){};
 
     /**
      * Parameterized constructor to create a Customer object with specified details.
@@ -37,14 +39,14 @@ public class Store {
      * @param storeId       The storeId of the store.
      * @param storeName     The name of the store.
      * @param branch        The branch of the store.
-     * @param company     The storeId of the customer who purchases items in the store.
+     * @param companyId     The storeId of the customer who purchases items in the store.
      * @param address       The Address object representing the store's address.
      */
-    public Store(Integer storeId, String storeName, String branch, Company company, Address address) {
+    public Store(Integer storeId, String storeName, String branch, Integer companyId, Address address) {
         this.storeId = storeId;
         this.storeName = storeName;
         this.branch = branch;
-        this.company = company;
+        this.companyId = companyId;
         this.address = address;
     }
 
@@ -72,12 +74,12 @@ public class Store {
         this.branch = branch;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyId(Company company) {
-        this.company = company;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public Address getAddress() {

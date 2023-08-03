@@ -19,7 +19,7 @@ import java.util.List;
 public class CustomerService {
 
     @Autowired
-    CustomerRepository customerRep;
+    CustomerRepository customerRepository;
 
     /**
      * Get all the customer information.
@@ -27,7 +27,7 @@ public class CustomerService {
      * @return All the Customer objects.
      */
     public List<Customer> getCustomers(){
-       return customerRep.findAll();
+       return customerRepository.findAll();
     }
 
 
@@ -38,7 +38,7 @@ public class CustomerService {
      * @return The Customer object corresponding to the given ID.
      */
     public Customer getCustomerById(int customerId){
-        List<Customer> customers = customerRep.findAll();
+        List<Customer> customers = customerRepository.findAll();
         Customer customer = null;
         for(Customer c: customers){
             if(c.getCustomerId() == customerId){
@@ -55,7 +55,7 @@ public class CustomerService {
      * @return The newly created Customer object with a generated ID.
      */
     public Customer createCustomer(Customer customer){
-        return customerRep.save(customer);
+        return customerRepository.save(customer);
     }
 
     /**
@@ -65,7 +65,7 @@ public class CustomerService {
      * @return The updated Customer object.
      */
     public Customer updateCustomer(Customer customer){
-        return customerRep.save(customer);
+        return customerRepository.save(customer);
     }
 
 
@@ -76,7 +76,7 @@ public class CustomerService {
      * @return The deleted customerId.
      */
     public AddResponse deleteCustomer(int customerId){
-            customerRep.deleteById(customerId);
+            customerRepository.deleteById(customerId);
             AddResponse res = new AddResponse();
             res.setMsg("Customer deleted");
             res.setId(customerId);

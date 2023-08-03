@@ -27,7 +27,7 @@ import java.util.List;
 public class StockInventoryController {
 
     @Autowired
-    StockInventoryService service;
+    StockInventoryService stockInventoryService;
 
     /**
      * Returns all the inventory objects.
@@ -36,7 +36,7 @@ public class StockInventoryController {
      */
     @GetMapping("/StockInventories")
     public List<StockInventory> getAllStockInventories(){
-        return service.getStockInventories();
+        return stockInventoryService.getStockInventories();
     }
 
     /**
@@ -50,8 +50,8 @@ public class StockInventoryController {
     public ResponseEntity<StockInventory> getStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId) {
 
         try {
-            StockInventory stockInventory = service.getStockInventoryById(stockInventoryId);
-            return new ResponseEntity<StockInventory>(stockInventory, HttpStatus.OK);
+            StockInventory stockInventory = stockInventoryService.getStockInventoryById(stockInventoryId);
+            return new ResponseEntity<>(stockInventory, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class StockInventoryController {
     @PostMapping("/createStockInventory")
     public StockInventory createStockInventory(@RequestBody StockInventory stockInventory){
 
-        return service.createStockInventory(stockInventory);
+        return stockInventoryService.createStockInventory(stockInventory);
     }
 
     /**
@@ -80,8 +80,8 @@ public class StockInventoryController {
     @PutMapping("/updateStockInventory")
     public ResponseEntity<StockInventory> updateStockInventory(@RequestBody StockInventory stockInventory){
         try{
-            StockInventory updatedStockInventory = service.updateStockInventory(stockInventory);
-            return new ResponseEntity<StockInventory>(updatedStockInventory,HttpStatus.OK);
+            StockInventory updatedStockInventory = stockInventoryService.updateStockInventory(stockInventory);
+            return new ResponseEntity<>(updatedStockInventory,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -97,6 +97,6 @@ public class StockInventoryController {
      */
     @DeleteMapping("/deleteStockInventoryById/{stockInventoryId}")
     public AddResponse deleteStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId){
-        return service.deleteStockInventoryById(stockInventoryId);
+        return stockInventoryService.deleteStockInventoryById(stockInventoryId);
     }
 }

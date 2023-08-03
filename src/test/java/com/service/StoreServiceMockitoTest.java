@@ -1,7 +1,6 @@
 package com.service;
 
 import com.customer.beans.Address;
-import com.customer.beans.Company;
 import com.customer.beans.Store;
 import com.customer.repository.StoreRepository;
 import com.customer.service.StoreService;
@@ -55,10 +54,8 @@ public class StoreServiceMockitoTest {
     public void test_getAllStores() {
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
+        Store s2 = new Store(2, "Food Store", "Washington St.", 2, add2);
         stores.add(s1);
         stores.add(s2);
 
@@ -75,10 +72,8 @@ public class StoreServiceMockitoTest {
     public void test_getCustomerById() {
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
+        Store s2 = new Store(2, "Food Store", "Washington St.", 2, add2);
         stores.add(s1);
         stores.add(s2);
         int id = 1;
@@ -96,8 +91,7 @@ public class StoreServiceMockitoTest {
     @Order(3)
     public void test_createCustomer() {
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
         stores.add(s1);
 
         when(storeRep.save(s1)).thenReturn(s1);
@@ -113,8 +107,7 @@ public class StoreServiceMockitoTest {
     @Order(4)
     public void test_updateStore() {
         Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        Store s1 = new Store(1, "Laundry", "Washington St.", 1, add1);
         stores.add(s1);
 
         when(storeRep.save(s1)).thenReturn(s1);
@@ -130,8 +123,7 @@ public class StoreServiceMockitoTest {
     @Order(5)
     public void test_deleteStoreById() {
         Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
+        Store s2 = new Store(2, "Food Store", "Washington St.", 2, add2);
         stores.add(s2);
 
         storeSer.deleteStoreById(s2.getStoreId());

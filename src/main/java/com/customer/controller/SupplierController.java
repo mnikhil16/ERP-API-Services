@@ -28,7 +28,7 @@ import java.util.List;
 public class SupplierController {
 
     @Autowired
-    SupplierService service;
+    SupplierService supplierService;
 
     /**
      * Returns all the supplier objects.
@@ -37,7 +37,7 @@ public class SupplierController {
      */
     @GetMapping("/Suppliers")
     public List<Supplier> getAllSuppliers(){
-        return service.getSuppliers();
+        return supplierService.getSuppliers();
     }
 
     /**
@@ -51,8 +51,8 @@ public class SupplierController {
     public ResponseEntity<Supplier> getSupplierById(@PathVariable(value = "supplierId") int supplierId) {
 
         try {
-            Supplier supplier = service.getSupplierById(supplierId);
-            return new ResponseEntity<Supplier>(supplier, HttpStatus.OK);
+            Supplier supplier = supplierService.getSupplierById(supplierId);
+            return new ResponseEntity<>(supplier, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class SupplierController {
     @PostMapping("/createSupplier")
     public Supplier createSupplier(@RequestBody Supplier supplier){
 
-        return service.createSupplier(supplier);
+        return supplierService.createSupplier(supplier);
     }
 
     /**
@@ -81,8 +81,8 @@ public class SupplierController {
     @PutMapping("/updateSupplier")
     public ResponseEntity<Supplier> updateSupplier(@RequestBody Supplier supplier){
         try{
-            Supplier updatedSupplier = service.updateSupplier(supplier);
-            return new ResponseEntity<Supplier>(updatedSupplier,HttpStatus.OK);
+            Supplier updatedSupplier = supplierService.updateSupplier(supplier);
+            return new ResponseEntity<>(updatedSupplier,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -98,6 +98,6 @@ public class SupplierController {
      */
     @DeleteMapping("/deleteSupplierById/{customerId}")
     public AddResponse deleteSupplierById(@PathVariable(value = "supplierId") int supplierId){
-        return service.deleteSupplierById(supplierId);
+        return supplierService.deleteSupplierById(supplierId);
     }
 }

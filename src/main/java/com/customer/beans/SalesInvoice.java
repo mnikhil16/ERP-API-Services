@@ -7,7 +7,6 @@ import java.util.ArrayList;
 /**
  * This class represents a SalesInvoice object with details like salesInvoiceId, totalAmount, salesDate, salesInvoiceNumber, supplierInvoiceNumber, companyId, supplierId, storeId.
  * It is a Java bean class with getters, setters, and a parameterized constructor for easy data access.
- *
  * Usage:
  * The SalesInvoice class can be used to store and retrieve information about a sales invoice in the system.
  */
@@ -32,30 +31,38 @@ public class SalesInvoice {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    Company company;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "supplier_id")
-    Supplier supplier;
+    Integer companyId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "store_id")
-    Store store;
+    Integer storeId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-    Customer customer;
+    Integer customerId;
 
 
-    public SalesInvoice(Integer salesInvoiceId, Double totalAmount, String salesDate, String salesInvoiceNumber, Company company, Supplier supplier, Store store, Customer customer) {
+    public SalesInvoice(){}
+
+    /**
+     * Parameterized constructor to create a Customer object with specified details.
+     *
+     * @param salesInvoiceId       The Id of the sales invoice.
+     * @param totalAmount          Total amount of the sales invoice.
+     * @param salesDate            The date of the sales invoice.
+     * @param salesInvoiceNumber   The number of the sales invoice.
+     * @param companyId            The companyId of the sales invoice.
+     * @param storeId              The storeId of the sales invoice.
+     * @param customerId           The customerId of the sales invoice.
+     */
+    public SalesInvoice(Integer salesInvoiceId, Double totalAmount, String salesDate, String salesInvoiceNumber, Integer companyId, Integer storeId, Integer customerId) {
         this.salesInvoiceId = salesInvoiceId;
         this.totalAmount = totalAmount;
         this.salesDate = salesDate;
         this.salesInvoiceNumber = salesInvoiceNumber;
-        this.company = company;
-        this.supplier = supplier;
-        this.store = store;
-        this.customer = customer;
+        this.companyId = companyId;
+        this.storeId = storeId;
+        this.customerId = customerId;
     }
 
     public Integer getSalesInvoiceId() {
@@ -90,35 +97,27 @@ public class SalesInvoice {
         this.salesInvoiceNumber = salesInvoiceNumber;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Integer getStoreId() {
+        return storeId;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
-    public Store getStore() {
-        return store;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
  * This class represents a service that handles Store-related operations in the application.
  * It provides functionality to Create, Read, Update, and Delete Store information in the database.
  * This service communicates with the StoreRepository to perform CRUD operations on Customer_db entities.
- *
  * Usage:
  * The StoreService should be autowired into other components that require Store-related functionalities.
  */
@@ -20,7 +19,7 @@ import java.util.List;
 public class StoreService {
 
     @Autowired
-    StoreRepository storeRep;
+    StoreRepository storeRepository;
 
     /**
      * Get all the store information.
@@ -28,7 +27,7 @@ public class StoreService {
      * @return All the Store objects.
      */
     public List<Store> getStores(){
-        return storeRep.findAll();
+        return storeRepository.findAll();
     }
 
 
@@ -39,7 +38,7 @@ public class StoreService {
      * @return The Store object corresponding to the given ID.
      */
     public Store getStoreById(int Id){
-        List<Store> stores = storeRep.findAll();
+        List<Store> stores = storeRepository.findAll();
         Store store = null;
         for(Store s: stores){
             if(s.getStoreId() == Id){
@@ -56,7 +55,7 @@ public class StoreService {
      * @return The newly created store object with a generated ID.
      */
     public Store createStore(Store store){
-        return storeRep.save(store);
+        return storeRepository.save(store);
     }
 
     /**
@@ -66,7 +65,7 @@ public class StoreService {
      * @return The updated Store object.
      */
     public Store updateStore(Store store){
-        return storeRep.save(store);
+        return storeRepository.save(store);
     }
 
 
@@ -77,7 +76,7 @@ public class StoreService {
      * @return The deleted Id.
      */
     public AddResponse deleteStoreById(int storeId){
-        storeRep.deleteById(storeId);
+        storeRepository.deleteById(storeId);
         AddResponse res = new AddResponse();
         res.setMsg("Store deleted");
         res.setId(storeId);

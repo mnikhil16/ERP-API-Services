@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -72,18 +73,18 @@ public class CompanyControllerMockitoTests {
      */
     @Test
     @Order(2)
-    public void test_getCompanyById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    public void test_getCompanyById() {
+        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
         companies.add(com1);
         companies.add(com2);
 
-        when(companyService.getCompanyById(1)).thenReturn(com1);
-        ResponseEntity<Company> res  = companyController.getCompanyById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getCompanyId());
+            when(companyService.getCompanyById(1)).thenReturn(com1);
+            ResponseEntity<Company> res = companyController.getCompanyById(1);
+            assertEquals(HttpStatus.OK, res.getStatusCode());
+            assertEquals(1, Objects.requireNonNull(res.getBody()).getCompanyId());
     }
 
     /**
@@ -96,7 +97,6 @@ public class CompanyControllerMockitoTests {
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         companies.add(com1);
-
 
         when(companyService.createCompany(com1)).thenReturn(com1);
         assertEquals(com1,companyController.createCompany(com1));

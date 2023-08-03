@@ -1,7 +1,6 @@
 package com.customer.service;
 
 import com.customer.beans.Company;
-import com.customer.beans.Customer;
 import com.customer.controller.AddResponse;
 import com.customer.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import java.util.List;
  * This class represents a service that handles Company-related operations in the application.
  * It provides functionality to Create, Read, Update, and Delete Company information in the database.
  * This service communicates with the CompanyRepository to perform CRUD operations on erp_db entities.
- *
  * Usage:
  * The CompanyService should be autowired into other components that require Company-related functionalities.
  */
@@ -22,7 +20,7 @@ import java.util.List;
 public class CompanyService {
 
     @Autowired
-    CompanyRepository companyRep;
+    CompanyRepository companyRepository;
 
     /**
      * Get all the company information.
@@ -30,7 +28,7 @@ public class CompanyService {
      * @return All the Company objects.
      */
     public List<Company> getCompanies(){
-        return companyRep.findAll();
+        return companyRepository.findAll();
     }
 
 
@@ -41,7 +39,7 @@ public class CompanyService {
      * @return The Company object corresponding to the given ID.
      */
     public Company getCompanyById(int Id){
-        List<Company> companies = companyRep.findAll();
+        List<Company> companies = companyRepository.findAll();
         Company company = null;
         for(Company c: companies){
             if(c.getCompanyId() == Id){
@@ -58,7 +56,7 @@ public class CompanyService {
      * @return The newly created company object with a generated ID.
      */
     public Company createCompany(Company company){
-        return companyRep.save(company);
+        return companyRepository.save(company);
     }
 
     /**
@@ -68,7 +66,7 @@ public class CompanyService {
      * @return The updated Company object.
      */
     public Company updateCompany(Company company){
-        return companyRep.save(company);
+        return companyRepository.save(company);
     }
 
 
@@ -79,7 +77,7 @@ public class CompanyService {
      * @return The deleted companyId.
      */
     public AddResponse deleteCompanyById(int companyId){
-        companyRep.deleteById(companyId);
+        companyRepository.deleteById(companyId);
         AddResponse res = new AddResponse();
         res.setMsg("Company deleted");
         res.setId(companyId);

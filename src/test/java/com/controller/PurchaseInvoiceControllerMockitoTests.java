@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -54,16 +55,8 @@ public class PurchaseInvoiceControllerMockitoTests {
     @Test
     @Order(1)
     public void test_getAllPurchaseInvoices(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
+        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", 1, 1);
+        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", 2, 2);
         purchaseInvoices.add(purchaseInvoice1);
         purchaseInvoices.add(purchaseInvoice2);
 
@@ -78,23 +71,15 @@ public class PurchaseInvoiceControllerMockitoTests {
     @Test
     @Order(2)
     public void test_getPurchaseInvoiceById(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
+        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", 1, 1);
+        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", 2, 2);
         purchaseInvoices.add(purchaseInvoice1);
         purchaseInvoices.add(purchaseInvoice2);
 
         when(purchaseInvoiceService.getPurchaseInvoiceById(1)).thenReturn(purchaseInvoice1);
-        ResponseEntity<PurchaseInvoice> res  = purchaseInvoiceController.getPurchaseInvoiceById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getPurchaseInvoiceId());
+        ResponseEntity<PurchaseInvoice> res = purchaseInvoiceController.getPurchaseInvoiceById(1);
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(res.getBody()).getPurchaseInvoiceId());
     }
 
     /**
@@ -104,18 +89,8 @@ public class PurchaseInvoiceControllerMockitoTests {
     @Test
     @Order(3)
     public void test_createPurchaseInvoice(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
+        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", 1, 1);
         purchaseInvoices.add(purchaseInvoice1);
-        purchaseInvoices.add(purchaseInvoice2);
 
         when(purchaseInvoiceService.createPurchaseInvoice(purchaseInvoice1)).thenReturn(purchaseInvoice1);
         assertEquals(purchaseInvoice1,purchaseInvoiceController.createPurchaseInvoice(purchaseInvoice1));
@@ -128,18 +103,8 @@ public class PurchaseInvoiceControllerMockitoTests {
     @Test
     @Order(4)
     public void test_updatePurchaseInvoice(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
+        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", 1, 1);
         purchaseInvoices.add(purchaseInvoice1);
-        purchaseInvoices.add(purchaseInvoice2);
 
         when(purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoice1)).thenReturn(purchaseInvoice1);
         ResponseEntity<PurchaseInvoice> res = purchaseInvoiceController.updatePurchaseInvoice(purchaseInvoice1);
@@ -154,17 +119,7 @@ public class PurchaseInvoiceControllerMockitoTests {
     @Test
     @Order(5)
     public void test_deletePurchaseInvoiceById(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1, "James", "Smith", "jsmith@gmail.com", "(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2, "John", "Doe", "jdoe@gmail.com", "(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
-        purchaseInvoices.add(purchaseInvoice1);
+        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", 2, 2);
         purchaseInvoices.add(purchaseInvoice2);
 
         AddResponse addResponse = new AddResponse();

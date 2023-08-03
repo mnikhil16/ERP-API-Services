@@ -28,7 +28,7 @@ import java.util.List;
 public class PurchaseOrderController {
 
     @Autowired
-    PurchaseOrderService service;
+    PurchaseOrderService purchaseOrderService;
 
     /**
      * Returns all the purchaseOrder objects.
@@ -37,7 +37,7 @@ public class PurchaseOrderController {
      */
     @GetMapping("/PurchaseOrders")
     public List<PurchaseOrder> getAllPurchaseOrders(){
-        return service.getPurchaseOrders();
+        return purchaseOrderService.getPurchaseOrders();
     }
 
     /**
@@ -51,8 +51,8 @@ public class PurchaseOrderController {
     public ResponseEntity<PurchaseOrder> getPurchaseOrderById(@PathVariable(value = "purchaseOrderId") int purchaseOrderId) {
 
         try {
-            PurchaseOrder purchaseOrder = service.getPurchaseOrderById(purchaseOrderId);
-            return new ResponseEntity<PurchaseOrder>(purchaseOrder, HttpStatus.OK);
+            PurchaseOrder purchaseOrder = purchaseOrderService.getPurchaseOrderById(purchaseOrderId);
+            return new ResponseEntity<>(purchaseOrder, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class PurchaseOrderController {
     @PostMapping("/createPurchaseOrder")
     public PurchaseOrder createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder){
 
-        return service.createPurchaseOrder(purchaseOrder);
+        return purchaseOrderService.createPurchaseOrder(purchaseOrder);
     }
 
     /**
@@ -81,8 +81,8 @@ public class PurchaseOrderController {
     @PutMapping("/updatePurchaseOrder")
     public ResponseEntity<PurchaseOrder> updatePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder){
         try{
-            PurchaseOrder updatedPurchaseOrder = service.updatePurchaseOrder(purchaseOrder);
-            return new ResponseEntity<PurchaseOrder>(updatedPurchaseOrder,HttpStatus.OK);
+            PurchaseOrder updatedPurchaseOrder = purchaseOrderService.updatePurchaseOrder(purchaseOrder);
+            return new ResponseEntity<>(updatedPurchaseOrder,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -98,6 +98,6 @@ public class PurchaseOrderController {
      */
     @DeleteMapping("/deletePurchaseOrderById/{purchaseOrderId}")
     public AddResponse deletePurchaseOrderById(@PathVariable(value = "purchaseOrderId") int purchaseOrderId){
-        return service.deletePurchaseOrderById(purchaseOrderId);
+        return purchaseOrderService.deletePurchaseOrderById(purchaseOrderId);
     }
 }

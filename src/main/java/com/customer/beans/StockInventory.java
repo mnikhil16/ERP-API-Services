@@ -25,39 +25,34 @@ public class StockInventory {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "stock_item_id")
-    StockItem stockItem;
+    Integer stockItemId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "store_id")
-    Store store;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id")
-    Company company;
+    Integer storeId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
-    Supplier supplier;
+    Integer supplierId;
 
+    public StockInventory(){}
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
-     * @param stockInventoryId    The storeId of the inventory.
-     * @param quantity       The quantity of items left in the inventory
-     * @param lastStockDate  The date of last stock arrived in the inventory.
-     * @param stockItem        The storeId's of the items present in the inventory.
-     * @param store        The Id of the store.
-     * @param company      The Id of the company.
-     * @param supplier     The Id of the supplier.
+     * @param stockInventoryId   The storeId of the inventory.
+     * @param quantity           The quantity of items left in the inventory
+     * @param lastStockDate      The date of last stock arrived in the inventory.
+     * @param stockItemId        The storeId's of the items present in the inventory.
+     * @param storeId            The Id of the store.
+     * @param supplierId         The Id of the supplier.
      */
-    public StockInventory(Integer stockInventoryId, Integer quantity, String lastStockDate, StockItem stockItem, Store store, Company company, Supplier supplier) {
+    public StockInventory(Integer stockInventoryId, Integer quantity, String lastStockDate, Integer stockItemId, Integer storeId, Integer supplierId) {
         this.stockInventoryId = stockInventoryId;
         this.quantity = quantity;
         this.lastStockDate = lastStockDate;
-        this.stockItem = stockItem;
-        this.store = store;
-        this.company = company;
-        this.supplier = supplier;
+        this.stockItemId = stockItemId;
+        this.storeId = storeId;
+        this.supplierId = supplierId;
     }
 
     public Integer getStockInventoryId() {
@@ -84,35 +79,27 @@ public class StockInventory {
         this.lastStockDate = lastStockDate;
     }
 
-    public StockItem getStockItem() {
-        return stockItem;
+    public Integer getStockItemId() {
+        return stockItemId;
     }
 
-    public void setStockItem(StockItem stockItem) {
-        this.stockItem = stockItem;
+    public void setStockItemId(Integer stockItemId) {
+        this.stockItemId = stockItemId;
     }
 
-    public Store getStore() {
-        return store;
+    public Integer getStoreId() {
+        return storeId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getSupplierId() {
+        return supplierId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 }

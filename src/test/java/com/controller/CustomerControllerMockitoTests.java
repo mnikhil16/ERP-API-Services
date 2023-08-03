@@ -1,9 +1,7 @@
 package com.controller;
 
 import com.customer.beans.Address;
-import com.customer.beans.Company;
 import com.customer.beans.Customer;
-import com.customer.beans.Store;
 import com.customer.controller.AddResponse;
 import com.customer.controller.CustomerController;
 import com.customer.service.CustomerService;
@@ -19,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -59,12 +58,8 @@ public class CustomerControllerMockitoTests {
     public void test_getAllCustomers(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
         Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", 1, add1);
+        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", 1, add2);
         customers.add(customer1);
         customers.add(customer2);
 
@@ -78,22 +73,19 @@ public class CustomerControllerMockitoTests {
      */
     @Test
     @Order(2)
-    public void test_getCustomerById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Store s2 = new Store(2,"Food Store","Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", add2, com2, s2);
+    public void test_getCustomerById() {
+        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Customer customer1 = new Customer(1, "James", "Smith", "JSmith", "2002-01-19", 21, "jsmith@gmail.com", "(+1) 555 1234567", 1, add1);
+        Customer customer2 = new Customer(2, "John", "Doe", "JDoe", "2003-02-20", 20, "jdoe@gmail.com", "(+1) 555 1234567", 1, add2);
         customers.add(customer1);
         customers.add(customer2);
 
         when(customerService.getCustomerById(1)).thenReturn(customer1);
-        ResponseEntity<Customer> res  = customerController.getCustomerById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, res.getBody().getCustomerId());
+        ResponseEntity<Customer> res = customerController.getCustomerById(1);
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(res.getBody()).getCustomerId());
+
     }
 
     /**
@@ -104,9 +96,7 @@ public class CustomerControllerMockitoTests {
     @Order(3)
     public void test_createCustomer(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", 1, add1);
 
 
         when(customerService.createCustomer(customer1)).thenReturn(customer1);
@@ -121,9 +111,7 @@ public class CustomerControllerMockitoTests {
     @Order(4)
     public void test_updateCustomer(){
         Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1,"Laundry","Washington St.", com1, add1);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add1, com1, s1);
+        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", 1, add1);
 
         when(customerService.updateCustomer(customer1)).thenReturn(customer1);
         ResponseEntity<Customer> res = customerController.updateCustomer(customer1);
@@ -138,10 +126,8 @@ public class CustomerControllerMockitoTests {
     @Test
     @Order(5)
     public void test_deleteCustomerById(){
-        Address add = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add);
-        Store s = new Store(1,"Laundry","Washington St.", com, add);
-        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", add, com, s);
+        Address add = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Customer customer = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", 1, add);
         customers.add(customer);
 
         AddResponse addResponse = new AddResponse();

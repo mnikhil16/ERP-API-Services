@@ -27,7 +27,7 @@ import java.util.List;
 public class StockItemController {
 
     @Autowired
-    StockItemService service;
+    StockItemService stockItemService;
 
     /**
      * Returns all the stock item objects.
@@ -36,7 +36,7 @@ public class StockItemController {
      */
     @GetMapping("/StockItems")
     public List<StockItem> getAllStockItems(){
-        return service.getStockItems();
+        return stockItemService.getStockItems();
     }
 
     /**
@@ -50,8 +50,8 @@ public class StockItemController {
     public ResponseEntity<StockItem> getStockItemById(@PathVariable(value = "stockItemId") int stockItemId) {
 
         try {
-            StockItem stockItem = service.getStockItemById(stockItemId);
-            return new ResponseEntity<StockItem>(stockItem, HttpStatus.OK);
+            StockItem stockItem = stockItemService.getStockItemById(stockItemId);
+            return new ResponseEntity<>(stockItem, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class StockItemController {
     @PostMapping("/createStockItem")
     public StockItem createStockItem(@RequestBody StockItem stockItem){
 
-        return service.createStockItem(stockItem);
+        return stockItemService.createStockItem(stockItem);
     }
 
     /**
@@ -80,8 +80,8 @@ public class StockItemController {
     @PutMapping("/updateStockItem")
     public ResponseEntity<StockItem> updateStockItem(@RequestBody StockItem stockItem){
         try{
-            StockItem updatedStockItem = service.updateStockItem(stockItem);
-            return new ResponseEntity<StockItem>(updatedStockItem,HttpStatus.OK);
+            StockItem updatedStockItem = stockItemService.updateStockItem(stockItem);
+            return new ResponseEntity<>(updatedStockItem,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -97,6 +97,6 @@ public class StockItemController {
      */
     @DeleteMapping("/deleteStockItemById/{stockItemId}")
     public AddResponse deleteStockItemById(@PathVariable(value = "stockItemId") int stockItemId){
-        return service.deleteStockItemById(stockItemId);
+        return stockItemService.deleteStockItemById(stockItemId);
     }
 }

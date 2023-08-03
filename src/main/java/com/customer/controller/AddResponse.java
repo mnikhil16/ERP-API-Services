@@ -3,7 +3,6 @@ package com.customer.controller;
 /**
  * This class represents an AddResponse object returned by the API endpoints.
  * It contains information about the response status and an optional message.
- *
  * Usage:
  * The AddResponse class is used to return the outcome of operations that add or create entities.
  * For example, after adding a new customer to the system, an instance of this class can be returned

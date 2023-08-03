@@ -20,7 +20,7 @@ import java.util.List;
 public class PurchaseInvoiceService {
 
     @Autowired
-    PurchaseInvoiceRepository purchaseInvoiceRep;
+    PurchaseInvoiceRepository purchaseInvoiceRepository;
 
     /**
      * Get all the customer information.
@@ -28,7 +28,7 @@ public class PurchaseInvoiceService {
      * @return All the Customer objects.
      */
     public List<PurchaseInvoice> getPurchaseInvoices(){
-        return purchaseInvoiceRep.findAll();
+        return purchaseInvoiceRepository.findAll();
     }
 
 
@@ -39,7 +39,7 @@ public class PurchaseInvoiceService {
      * @return The PurchaseInvoice object corresponding to the given ID.
      */
     public PurchaseInvoice getPurchaseInvoiceById(int purchaseInvoiceId){
-        List<PurchaseInvoice> purchaseInvoices = purchaseInvoiceRep.findAll();
+        List<PurchaseInvoice> purchaseInvoices = purchaseInvoiceRepository.findAll();
         PurchaseInvoice purchaseInvoice = null;
         for(PurchaseInvoice pi: purchaseInvoices){
             if(pi.getPurchaseInvoiceId() == purchaseInvoiceId){
@@ -56,7 +56,7 @@ public class PurchaseInvoiceService {
      * @return The newly created PurchaseInvoice object with a generated ID.
      */
     public PurchaseInvoice createPurchaseInvoice(PurchaseInvoice purchaseInvoice){
-        return purchaseInvoiceRep.save(purchaseInvoice);
+        return purchaseInvoiceRepository.save(purchaseInvoice);
     }
 
     /**
@@ -66,7 +66,7 @@ public class PurchaseInvoiceService {
      * @return The updated PurchaseInvoice object.
      */
     public PurchaseInvoice updatePurchaseInvoice(PurchaseInvoice purchaseInvoice){
-        return purchaseInvoiceRep.save(purchaseInvoice);
+        return purchaseInvoiceRepository.save(purchaseInvoice);
     }
 
 
@@ -77,7 +77,7 @@ public class PurchaseInvoiceService {
      * @return The deleted purchaseInvoiceId.
      */
     public AddResponse deletePurchaseInvoiceById(int purchaseInvoiceId){
-        purchaseInvoiceRep.deleteById(purchaseInvoiceId);
+        purchaseInvoiceRepository.deleteById(purchaseInvoiceId);
         AddResponse res = new AddResponse();
         res.setMsg("PurchaseInvoice deleted");
         res.setId(purchaseInvoiceId);

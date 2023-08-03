@@ -32,12 +32,13 @@ public class PurchaseInvoice {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    Company company;
+    Integer companyId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
-    Supplier supplier;
+    Integer supplierId;
 
+    public PurchaseInvoice(){}
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
@@ -46,17 +47,17 @@ public class PurchaseInvoice {
      * @param purchaseDate         The date of purchase invoice.
      * @param purchaseInvoiceNo    The number of purchase invoice.
      * @param supplierInvoiceNo    The number of supplier invoice.
-     * @param company            The companyId of purchase invoice.
-     * @param supplier          The supplierId of the purchase invoice.
+     * @param companyId            The companyId of purchase invoice.
+     * @param supplierId          The supplierId of the purchase invoice.
      */
-    public PurchaseInvoice(Integer purchaseInvoiceId, Double amount, String purchaseDate, String purchaseInvoiceNo, String supplierInvoiceNo, Company company, Supplier supplier) {
+    public PurchaseInvoice(Integer purchaseInvoiceId, Double amount, String purchaseDate, String purchaseInvoiceNo, String supplierInvoiceNo, Integer companyId, Integer supplierId) {
         this.purchaseInvoiceId = purchaseInvoiceId;
         this.amount = amount;
         this.purchaseDate = purchaseDate;
         this.purchaseInvoiceNo = purchaseInvoiceNo;
         this.supplierInvoiceNo = supplierInvoiceNo;
-        this.company = company;
-        this.supplier = supplier;
+        this.companyId = companyId;
+        this.supplierId = supplierId;
     }
 
     public Integer getPurchaseInvoiceId() {
@@ -99,19 +100,19 @@ public class PurchaseInvoice {
         this.supplierInvoiceNo = supplierInvoiceNo;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Integer getSupplierId() {
+        return supplierId;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 }

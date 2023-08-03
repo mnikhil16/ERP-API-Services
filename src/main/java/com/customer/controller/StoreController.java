@@ -27,7 +27,7 @@ import java.util.List;
 public class StoreController {
 
     @Autowired
-    StoreService service;
+    StoreService storeService;
 
     /**
      * Returns all the store objects.
@@ -36,7 +36,7 @@ public class StoreController {
      */
     @GetMapping("/stores")
     public List<Store> getAllStores(){
-        return service.getStores();
+        return storeService.getStores();
     }
 
     /**
@@ -50,8 +50,8 @@ public class StoreController {
     public ResponseEntity<Store> getStoreById(@PathVariable(value = "storeId") int storeId) {
 
         try {
-            Store store = service.getStoreById(storeId);
-            return new ResponseEntity<Store>(store, HttpStatus.OK);
+            Store store = storeService.getStoreById(storeId);
+            return new ResponseEntity<>(store, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class StoreController {
     @PostMapping("/createStore")
     public Store createStore(@RequestBody Store store){
 
-        return service.createStore(store);
+        return storeService.createStore(store);
     }
 
     /**
@@ -80,8 +80,8 @@ public class StoreController {
     @PutMapping("/updateStore")
     public ResponseEntity<Store> updateStore(@RequestBody Store store){
         try{
-            Store updatedStore = service.updateStore(store);
-            return new ResponseEntity<Store>(updatedStore,HttpStatus.OK);
+            Store updatedStore = storeService.updateStore(store);
+            return new ResponseEntity<>(updatedStore,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -96,6 +96,6 @@ public class StoreController {
      */
     @DeleteMapping("/deleteStoreById/{storeId}")
     public AddResponse deleteStoreById(@PathVariable(value = "storeId") int storeId){
-        return service.deleteStoreById(storeId);
+        return storeService.deleteStoreById(storeId);
     }
 }

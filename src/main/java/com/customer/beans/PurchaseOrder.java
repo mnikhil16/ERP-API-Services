@@ -25,31 +25,32 @@ public class PurchaseOrder {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "store_id")
-    Store store;
+    Integer storeId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
-    Company company;
+    Integer companyId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "supplier_id")
-    Supplier supplier;
+    Integer supplierId;
 
+    public PurchaseOrder(){}
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
      * @param purchaseOrderId   The Id of the purchase order.
      * @param totalAmount       The total amount of the purchase order.
-     * @param store           The storeId of the purchase order.
-     * @param company         The companyId of the purchase order.
-     * @param supplier        The supplierId of the purchase order.
+     * @param storeId           The storeId of the purchase order.
+     * @param companyId         The companyId of the purchase order.
+     * @param supplierId        The supplierId of the purchase order.
      */
-    public PurchaseOrder(Integer purchaseOrderId, Double totalAmount, Store store, Company company, Supplier supplier) {
+    public PurchaseOrder(Integer purchaseOrderId, Double totalAmount, Integer storeId, Integer companyId, Integer supplierId) {
         this.purchaseOrderId = purchaseOrderId;
         this.totalAmount = totalAmount;
-        this.store = store;
-        this.company = company;
-        this.supplier = supplier;
+        this.storeId = storeId;
+        this.companyId = companyId;
+        this.supplierId = supplierId;
     }
 
     public Integer getPurchaseOrderId() {
@@ -68,27 +69,27 @@ public class PurchaseOrder {
         this.totalAmount = totalAmount;
     }
 
-    public Store getStore() {
-        return store;
+    public Integer getStoreId() {
+        return storeId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
     }
 
-    public Company getCompany() {
-        return company;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Integer getSupplierId() {
+        return supplierId;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 }

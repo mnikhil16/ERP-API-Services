@@ -19,7 +19,7 @@ import java.util.List;
 public class StockInventoryService {
 
     @Autowired
-    StockInventoryRepository inventoryRep;
+    StockInventoryRepository stockInventoryRepository;
 
     /**
      * Get inventory information.
@@ -27,7 +27,7 @@ public class StockInventoryService {
      * @return All the StockInventory objects.
      */
     public List<StockInventory> getStockInventories(){
-        return inventoryRep.findAll();
+        return stockInventoryRepository.findAll();
     }
 
 
@@ -38,7 +38,7 @@ public class StockInventoryService {
      * @return The StockInventory object corresponding to the given ID.
      */
     public StockInventory getStockInventoryById(int stockInventoryId){
-        List<StockInventory> stockInventories = inventoryRep.findAll();
+        List<StockInventory> stockInventories = stockInventoryRepository.findAll();
         StockInventory stockInventory = null;
         for(StockInventory i: stockInventories){
             if(i.getStockInventoryId() == stockInventoryId){
@@ -55,7 +55,7 @@ public class StockInventoryService {
      * @return The newly created stockInventory object with a generated ID.
      */
     public StockInventory createStockInventory(StockInventory stockInventory){
-        return inventoryRep.save(stockInventory);
+        return stockInventoryRepository.save(stockInventory);
     }
 
     /**
@@ -65,7 +65,7 @@ public class StockInventoryService {
      * @return The updated StockInventory object.
      */
     public StockInventory updateStockInventory(StockInventory stockInventory){
-        return inventoryRep.save(stockInventory);
+        return stockInventoryRepository.save(stockInventory);
     }
 
 
@@ -76,7 +76,7 @@ public class StockInventoryService {
      * @return The deleted Id.
      */
     public AddResponse deleteStockInventoryById(int stockInventoryId){
-        inventoryRep.deleteById(stockInventoryId);
+        stockInventoryRepository.deleteById(stockInventoryId);
         AddResponse res = new AddResponse();
         res.setMsg("StockInventory deleted");
         res.setId(stockInventoryId);

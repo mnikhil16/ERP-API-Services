@@ -28,7 +28,7 @@ import java.util.List;
 public class SalesInvoiceController {
 
     @Autowired
-    SalesInvoiceService service;
+    SalesInvoiceService salesInvoiceService;
 
     /**
      * Returns all the salesInvoice objects.
@@ -37,7 +37,7 @@ public class SalesInvoiceController {
      */
     @GetMapping("/SalesInvoices")
     public List<SalesInvoice> getAllSalesInvoices(){
-        return service.getSalesInvoices();
+        return salesInvoiceService.getSalesInvoices();
     }
 
     /**
@@ -51,8 +51,8 @@ public class SalesInvoiceController {
     public ResponseEntity<SalesInvoice> getSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId) {
 
         try {
-            SalesInvoice salesInvoice = service.getSalesInvoiceById(salesInvoiceId);
-            return new ResponseEntity<SalesInvoice>(salesInvoice, HttpStatus.OK);
+            SalesInvoice salesInvoice = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
+            return new ResponseEntity<>(salesInvoice, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -68,7 +68,7 @@ public class SalesInvoiceController {
     @PostMapping("/createSalesInvoice")
     public SalesInvoice createSalesInvoice(@RequestBody SalesInvoice salesInvoice){
 
-        return service.createSalesInvoice(salesInvoice);
+        return salesInvoiceService.createSalesInvoice(salesInvoice);
     }
 
     /**
@@ -81,8 +81,8 @@ public class SalesInvoiceController {
     @PutMapping("/updateSalesInvoice")
     public ResponseEntity<SalesInvoice> updateSalesInvoice(@RequestBody SalesInvoice salesInvoice){
         try{
-            SalesInvoice updatedSalesInvoice = service.updateSalesInvoice(salesInvoice);
-            return new ResponseEntity<SalesInvoice>(updatedSalesInvoice,HttpStatus.OK);
+            SalesInvoice updatedSalesInvoice = salesInvoiceService.updateSalesInvoice(salesInvoice);
+            return new ResponseEntity<>(updatedSalesInvoice,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -98,6 +98,6 @@ public class SalesInvoiceController {
      */
     @DeleteMapping("/deleteSalesInvoiceById/{salesInvoiceId}")
     public AddResponse deleteSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId){
-        return service.deleteSalesInvoiceById(salesInvoiceId);
+        return salesInvoiceService.deleteSalesInvoiceById(salesInvoiceId);
     }
 }

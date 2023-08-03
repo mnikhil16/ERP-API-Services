@@ -38,10 +38,10 @@ import static org.mockito.Mockito.*;
 public class CompanyServiceMockitoTest {
 
     @Mock
-    CompanyRepository companyRep;
+    CompanyRepository companyRepository;
 
     @InjectMocks
-    CompanyService companySer;
+    CompanyService companyService;
 
     List<Company> companies = new ArrayList<>();
 
@@ -59,8 +59,8 @@ public class CompanyServiceMockitoTest {
         companies.add(com1);
         companies.add(com2);
 
-        when(companyRep.findAll()).thenReturn(companies);
-        assertEquals(2, companySer.getCompanies().size());
+        when(companyRepository.findAll()).thenReturn(companies);
+        assertEquals(2, companyService.getCompanies().size());
     }
 
     /**
@@ -78,9 +78,9 @@ public class CompanyServiceMockitoTest {
         companies.add(com2);
         int id = 1;
 
-        when(companyRep.findAll()).thenReturn(companies);
+        when(companyRepository.findAll()).thenReturn(companies);
 
-        assertEquals(id, companySer.getCompanyById(id).getCompanyId());
+        assertEquals(id, companyService.getCompanyById(id).getCompanyId());
     }
 
     /**
@@ -94,9 +94,9 @@ public class CompanyServiceMockitoTest {
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         companies.add(com1);
 
-        when(companyRep.save(com1)).thenReturn(com1);
+        when(companyRepository.save(com1)).thenReturn(com1);
 
-        assertEquals(com1, companySer.createCompany(com1));
+        assertEquals(com1, companyService.createCompany(com1));
     }
 
     /**
@@ -110,9 +110,9 @@ public class CompanyServiceMockitoTest {
         Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
         companies.add(com1);
 
-        when(companyRep.save(com1)).thenReturn(com1);
+        when(companyRepository.save(com1)).thenReturn(com1);
 
-        assertEquals(com1, companySer.updateCompany(com1));
+        assertEquals(com1, companyService.updateCompany(com1));
     }
 
     /**
@@ -126,7 +126,7 @@ public class CompanyServiceMockitoTest {
         Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
         companies.add(com2);
 
-        companySer.deleteCompanyById(com2.getCompanyId());
-        verify(companyRep, times(1));
+        companyService.deleteCompanyById(com2.getCompanyId());
+        verify(companyRepository, times(1));
     }
 }

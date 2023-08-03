@@ -27,7 +27,7 @@ import java.util.List;
 public class CustomerController {
 
         @Autowired
-        CustomerService service;
+        CustomerService customerService;
 
         /**
           * Returns all the customer objects.
@@ -36,7 +36,7 @@ public class CustomerController {
         */
         @GetMapping("/Customers")
         public List<Customer> getAllCustomers(){
-            return service.getCustomers();
+            return customerService.getCustomers();
         }
 
         /**
@@ -50,8 +50,8 @@ public class CustomerController {
         public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "customerId") int customerId) {
 
             try {
-                Customer customer = service.getCustomerById(customerId);
-                return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+                Customer customer = customerService.getCustomerById(customerId);
+                return new ResponseEntity<>(customer, HttpStatus.OK);
             }
             catch(Exception e){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class CustomerController {
         @PostMapping("/createCustomer")
         public Customer createCustomer(@RequestBody Customer customer){
 
-            return service.createCustomer(customer);
+            return customerService.createCustomer(customer);
         }
 
         /**
@@ -80,8 +80,8 @@ public class CustomerController {
         @PutMapping("/updateCustomer")
         public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
                 try{
-                    Customer updatedCustomer = service.updateCustomer(customer);
-                    return new ResponseEntity<Customer>(updatedCustomer,HttpStatus.OK);
+                    Customer updatedCustomer = customerService.updateCustomer(customer);
+                    return new ResponseEntity<>(updatedCustomer,HttpStatus.OK);
                 }
                 catch(Exception e){
                     return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -97,6 +97,6 @@ public class CustomerController {
         */
         @DeleteMapping("/deleteCustomerById/{customerId}")
         public AddResponse deleteCustomerById(@PathVariable(value = "customerId") int customerId){
-            return service.deleteCustomer(customerId);
+            return customerService.deleteCustomer(customerId);
         }
 }
