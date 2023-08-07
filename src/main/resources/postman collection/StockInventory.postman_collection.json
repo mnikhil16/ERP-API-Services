@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "6f263f1f-2f1d-4866-abcf-8088e92146f2",
+		"name": "StockInventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-6f263f1f-2f1d-4866-abcf-8088e92146f2?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getStockInventoryById/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getStockInventoryById",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/StockInventories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"StockInventories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createStockInventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-04\",\r\n    \"stockItem\": {\r\n        \"itemName\": \"Cement\",\r\n        \"itemType\": \"Construction Material\",\r\n        \"brandName\": \"BuildStrong\",\r\n        \"price\": 50.0,\r\n        \"manufacturedDate\": \"2022-11-05\",\r\n        \"expiryDate\": \"2025-11-05\",\r\n        \"description\": \"High-quality cement\",\r\n        \"company\": {\r\n            \"companyId\": 3,\r\n            \"companyName\": \"BuildWell Constructions\",\r\n            \"type\": \"Construction\",\r\n            \"website\": \"www.buildwellconstructions.com\",\r\n            \"gst\": \"DEF789GST\",\r\n            \"address\": {\r\n                \"addressId\": 3,\r\n                \"dno\": \"45\",\r\n                \"street\": \"Farm Road\",\r\n                \"city\": \"Rural Town\",\r\n                \"state\": \"Texas\",\r\n                \"pinCode\": 78901\r\n            }\r\n        }\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createStockInventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createStockInventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateStockInventory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stockInventoryId\": 3,\r\n    \"quantity\": 150,\r\n    \"lastStockDate\": \"2023-08-01\",\r\n    \"stockItem\": {\r\n        \"stockItemId\": 3,\r\n        \"itemName\": \"Toothpaste\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"DentalFresh\",\r\n        \"price\": 2.5,\r\n        \"manufacturedDate\": \"2023-05-10\",\r\n        \"expiryDate\": \"2024-12-10\",\r\n        \"description\": \"Mint-flavored toothpaste\",\r\n        \"company\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"address\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        }\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 2,\r\n        \"storeName\": \"Tech Solutions - CA\",\r\n        \"branch\": \"Tech Park Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"Tech Solutions Inc.\",\r\n            \"type\": \"Software Development\",\r\n            \"website\": \"www.techsolutions.com\",\r\n            \"gst\": \"ABC123GST\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 11,\r\n            \"dno\": \"300\",\r\n            \"street\": \"Mall Street\",\r\n            \"city\": \"Shopping City\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 90210\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 3,\r\n        \"firstName\": \"Michael\",\r\n        \"lastName\": \"Johnson\",\r\n        \"email\": \"michael.johnson@example.com\",\r\n        \"phoneNumber\": \"777-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 2,\r\n            \"storeName\": \"Tech Solutions - CA\",\r\n            \"branch\": \"Tech Park Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"Tech Solutions Inc.\",\r\n                \"type\": \"Software Development\",\r\n                \"website\": \"www.techsolutions.com\",\r\n                \"gst\": \"ABC123GST\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dno\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"New York\",\r\n                    \"state\": \"New York\",\r\n                    \"pinCode\": 10001\r\n                }\r\n            },\r\n            \"address\": {\r\n                \"addressId\": 11,\r\n                \"dno\": \"300\",\r\n                \"street\": \"Mall Street\",\r\n                \"city\": \"Shopping City\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 90210\r\n            }\r\n        },\r\n        \"company\": {\r\n            \"companyId\": 3,\r\n            \"companyName\": \"BuildWell Constructions\",\r\n            \"type\": \"Construction\",\r\n            \"website\": \"www.buildwellconstructions.com\",\r\n            \"gst\": \"DEF789GST\",\r\n            \"address\": {\r\n                \"addressId\": 3,\r\n                \"dno\": \"45\",\r\n                \"street\": \"Farm Road\",\r\n                \"city\": \"Rural Town\",\r\n                \"state\": \"Texas\",\r\n                \"pinCode\": 78901\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 23,\r\n            \"dno\": \"999\",\r\n            \"street\": \"Tech Park Street\",\r\n            \"city\": \"Innovation City\",\r\n            \"state\": \"Washington\",\r\n            \"pinCode\": 98052\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateStockInventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateStockInventory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createStockInventory Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-04\",\r\n    \"stockItem\": {\r\n        \"stockItemId\": 1,\r\n        \"itemName\": \"Product A\",\r\n        \"itemType\": \"Electronics\",\r\n        \"brandName\": \"Brand X\",\r\n        \"price\": 50.0,\r\n        \"mfd\": \"2023-01-01\",\r\n        \"exd\": \"2023-12-31\",\r\n        \"description\": \"This is a product description.\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/deleteStockInventoryById/46",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteStockInventoryById",
+						"46"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

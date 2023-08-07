@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "7abf9a57-7d8a-4250-aaf1-c1fd73f9f833",
+		"name": "Customer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-7abf9a57-7d8a-4250-aaf1-c1fd73f9f833?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "createCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Will\",\r\n    \"lastName\": \"Smith\",\r\n    \"displayName\": \"AliceSmith\",\r\n    \"dateOfBirth\": \"1985-03-20\",\r\n    \"age\": 36,\r\n    \"email\": \"alice.smith@example.com\",\r\n    \"phoneNumber\": \"+1 (987) 654-3210\",\r\n    \"address\": {\r\n        \"addressId\": 42,\r\n        \"dno\": \"201\",\r\n        \"street\": \"First Avenue\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"pinCode\": 90001\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 3,\r\n        \"storeName\": \"SuperMart - SF\",\r\n        \"branch\": \"Downtown Branch\",\r\n        \"company\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"address\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 2,\r\n            \"dno\": \"789\",\r\n            \"street\": \"Business Avenue\",\r\n            \"city\": \"San Francisco\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 94105\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getCustomerById/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getCustomerById",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 7,\r\n    \"firstName\": \"David\",\r\n    \"lastName\": \"Matthew\",\r\n    \"displayName\": \"DavidMiller\",\r\n    \"dateOfBirth\": \"1996-08-21\",\r\n    \"age\": 30,\r\n    \"email\": \"david.miller@example.com\",\r\n    \"phoneNumber\": \"+1 (777) 888-9999\",\r\n    \"address\": {\r\n        \"addressId\": 47,\r\n        \"dno\": \"2C\",\r\n        \"street\": \"Ocean Drive\",\r\n        \"city\": \"Miami\",\r\n        \"state\": \"FL\",\r\n        \"pinCode\": 33101\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 13,\r\n        \"storeName\": \"eShopNow - SC\",\r\n        \"branch\": \"Mall Outlet\",\r\n        \"company\": {\r\n            \"companyId\": 7,\r\n            \"companyName\": \"eShopNow\",\r\n            \"type\": \"E-commerce\",\r\n            \"website\": \"www.eshopnow.com\",\r\n            \"gst\": \"PQR333GST\",\r\n            \"address\": {\r\n                \"addressId\": 7,\r\n                \"dno\": \"456\",\r\n                \"street\": \"Corporate Park\",\r\n                \"city\": \"Business City\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 90210\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 7,\r\n            \"dno\": \"456\",\r\n            \"street\": \"Corporate Park\",\r\n            \"city\": \"Business City\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 90210\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCustomerById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteCustomerById/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteCustomerById",
+						"21"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

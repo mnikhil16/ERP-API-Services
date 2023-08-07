@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "e9ece1c4-837f-4dc5-9602-d0ee6ecab04d",
+		"name": "Supplier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-e9ece1c4-837f-4dc5-9602-d0ee6ecab04d?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getSupplierById/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getSupplierById",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createSupplier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"phoneNumber\": \"+1 (555) 123-4567\",\r\n    \"store\": {\r\n        \"storeId\": 1\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1\r\n    },\r\n    \"address\": {\r\n        \"dno\": \"456\",\r\n        \"street\": \"Maple Avenue\",\r\n        \"city\": \"Townsville\",\r\n        \"state\": \"Stateland\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createSupplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createSupplier"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteSupplierById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteSupplierById/21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteSupplierById",
+						"21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"supplierId\": 6,\r\n    \"firstName\": \"Emily\",\r\n    \"lastName\": \"Anderson\",\r\n    \"email\": \"emily.anderson@example.com\",\r\n    \"phoneNumber\": \"998-876-5432\",\r\n    \"store\": {\r\n        \"storeId\": 3,\r\n        \"storeName\": \"SuperMart - SF\",\r\n        \"branch\": \"Downtown Branch\",\r\n        \"company\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"address\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 2,\r\n            \"dno\": \"789\",\r\n            \"street\": \"Business Avenue\",\r\n            \"city\": \"San Francisco\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 94105\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 6,\r\n        \"companyName\": \"Precision Manufacturing\",\r\n        \"type\": \"Manufacturing\",\r\n        \"website\": \"www.precisionmanufacturing.com\",\r\n        \"gst\": \"MNO222GST\",\r\n        \"address\": {\r\n            \"addressId\": 6,\r\n            \"dno\": \"67\",\r\n            \"street\": \"Traveler Lane\",\r\n            \"city\": \"Nomad City\",\r\n            \"state\": \"Traveling\",\r\n            \"pinCode\": 0\r\n        }\r\n    },\r\n    \"address\": {\r\n        \"addressId\": 26,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Tourist Spot Road\",\r\n        \"city\": \"Tourist Central\",\r\n        \"state\": \"Hawaii\",\r\n        \"pinCode\": 96701\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateSupplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateSupplier"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

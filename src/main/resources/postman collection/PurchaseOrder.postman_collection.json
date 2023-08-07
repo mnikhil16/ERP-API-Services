@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "c712f034-efec-457e-b285-ea31924c2b89",
+		"name": "PurchaseOrder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-c712f034-efec-457e-b285-ea31924c2b89?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/PurchaseOrders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"PurchaseOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getPurchaseOrderById/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getPurchaseOrderById",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPurchaseOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalAmount\": 700.0,\r\n    \"store\": {\r\n        \"storeId\": 9,\r\n        \"storeName\": \"Innovative Tech  CC\",\r\n        \"branch\": \"Campus Branch\",\r\n        \"company\": {\r\n            \"companyId\": 5,\r\n            \"companyName\": \"Innovative Technologies\",\r\n            \"type\": \"Technology\",\r\n            \"website\": \"www.innovativetechnologies.com\",\r\n            \"gst\": \"JKL111GST\",\r\n            \"address\": {\r\n                \"addressId\": 5,\r\n                \"dno\": \"222\",\r\n                \"street\": \"Beach House Road\",\r\n                \"city\": \"Paradise Island\",\r\n                \"state\": \"Hawaii\",\r\n                \"pinCode\": 96701\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 5,\r\n            \"dno\": \"222\",\r\n            \"street\": \"Beach House Road\",\r\n            \"city\": \"Paradise Island\",\r\n            \"state\": \"Hawaii\",\r\n            \"pinCode\": 96701\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 9,\r\n        \"companyName\": \"MoneyWise Financials\",\r\n        \"type\": \"Financial Services\",\r\n        \"website\": \"www.moneywisefinancials.com\",\r\n        \"gst\": \"VWX555GST\",\r\n        \"address\": {\r\n            \"addressId\": 9,\r\n            \"dno\": \"1\",\r\n            \"street\": \"Famous Monument Road\",\r\n            \"city\": \"Landmark City\",\r\n            \"state\": \"Historic State\",\r\n            \"pinCode\": 11111\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 19,\r\n        \"firstName\": \"Benjamin\",\r\n        \"lastName\": \"Lewis\",\r\n        \"email\": \"benjamin.lewis@example.com\",\r\n        \"phoneNumber\": \"444-444-4444\",\r\n        \"store\": {\r\n            \"storeId\": 10,\r\n            \"storeName\": \"Innovative Tech - HI\",\r\n            \"branch\": \"Tourist Area Outlet\",\r\n            \"company\": {\r\n                \"companyId\": 5,\r\n                \"companyName\": \"Innovative Technologies\",\r\n                \"type\": \"Technology\",\r\n                \"website\": \"www.innovativetechnologies.com\",\r\n                \"gst\": \"JKL111GST\",\r\n                \"address\": {\r\n                    \"addressId\": 5,\r\n                    \"dno\": \"222\",\r\n                    \"street\": \"Beach House Road\",\r\n                    \"city\": \"Paradise Island\",\r\n                    \"state\": \"Hawaii\",\r\n                    \"pinCode\": 96701\r\n                }\r\n            },\r\n            \"address\": {\r\n                \"addressId\": 15,\r\n                \"dno\": \"567\",\r\n                \"street\": \"Downtown Plaza\",\r\n                \"city\": \"City Center\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        },\r\n        \"company\": {\r\n            \"companyId\": 9,\r\n            \"companyName\": \"MoneyWise Financials\",\r\n            \"type\": \"Financial Services\",\r\n            \"website\": \"www.moneywisefinancials.com\",\r\n            \"gst\": \"VWX555GST\",\r\n            \"address\": {\r\n                \"addressId\": 9,\r\n                \"dno\": \"1\",\r\n                \"street\": \"Famous Monument Road\",\r\n                \"city\": \"Landmark City\",\r\n                \"state\": \"Historic State\",\r\n                \"pinCode\": 11111\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 39,\r\n            \"dno\": \"963\",\r\n            \"street\": \"Supplier Street\",\r\n            \"city\": \"Medical City\",\r\n            \"state\": \"New York\",\r\n            \"pinCode\": 10001\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createPurchaseOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createPurchaseOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePurchaseOrder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchaseOrderId\": 2,\r\n    \"totalAmount\": 1500.0,\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"ABC Corporation\",\r\n        \"type\": \"Private Limited\",\r\n        \"website\": \"www.abc-corp.com\",\r\n        \"gst\": \"ABCDE12345FG\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dNo\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateland\",\r\n            \"pinCode\": 12345\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n{\r\n    \"purchaseOrderId\": 2,\r\n    \"totalAmount\": 1500.0,\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"Tech Solutions - NYC\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"Tech Solutions Inc.\",\r\n            \"type\": \"Software Development\",\r\n            \"website\": \"www.techsolutions.com\",\r\n            \"gst\": \"ABC123GST\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dno\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"New York\",\r\n            \"state\": \"New York\",\r\n            \"pinCode\": 10001\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"Tech Solutions Inc.\",\r\n        \"type\": \"Software Development\",\r\n        \"website\": \"www.techsolutions.com\",\r\n        \"gst\": \"ABC123GST\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dno\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"New York\",\r\n            \"state\": \"New York\",\r\n            \"pinCode\": 10001\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"Tech Solutions - NYC\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"Tech Solutions Inc.\",\r\n                \"type\": \"Software Development\",\r\n                \"website\": \"www.techsolutions.com\",\r\n                \"gst\": \"ABC123GST\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dno\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"New York\",\r\n                    \"state\": \"New York\",\r\n                    \"pinCode\": 10001\r\n                }\r\n            },\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"Tech Solutions Inc.\",\r\n            \"type\": \"Software Development\",\r\n            \"website\": \"www.techsolutions.com\",\r\n            \"gst\": \"ABC123GST\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dno\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"New York\",\r\n            \"state\": \"New York\",\r\n            \"pinCode\": 10001\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updatePurchaseOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updatePurchaseOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePurchaseOrder",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deletePurchaseOrderById/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deletePurchaseOrderById",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "f934fd57-1792-47ff-9ac6-02ceef313e9a",
+		"name": "PurchaseInvoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-f934fd57-1792-47ff-9ac6-02ceef313e9a?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/PurchaseInvoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"PurchaseInvoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getPurchaseInvoiceById/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getPurchaseInvoiceById",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePurchaseinvoice",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchaseInvoiceId\": 15,\r\n    \"amount\": 1900.0,\r\n    \"purchaseDate\": \"2023-08-15\",\r\n    \"purchaseInvoiceNo\": \"INV015\",\r\n    \"supplierInvoiceNo\": \"SUPINV015\",\r\n    \"company\": {\r\n        \"companyId\": 5,\r\n        \"companyName\": \"Innovative-Technologies\",\r\n        \"type\": \"Technology\",\r\n        \"website\": \"www.innovativetechnologies.com\",\r\n        \"gst\": \"JKL111GST\",\r\n        \"address\": {\r\n            \"addressId\": 5,\r\n            \"dno\": \"222\",\r\n            \"street\": \"Beach House Road\",\r\n            \"city\": \"Paradise Island\",\r\n            \"state\": \"Hawaii\",\r\n            \"pinCode\": 96701\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 15,\r\n        \"firstName\": \"Ethan\",\r\n        \"lastName\": \"Martinez\",\r\n        \"email\": \"ethan.martinez@example.com\",\r\n        \"phoneNumber\": \"999-999-9999\",\r\n        \"store\": {\r\n            \"storeId\": 8,\r\n            \"storeName\": \"Expert Consultants - WA\",\r\n            \"branch\": \"Tech Hub Branch\",\r\n            \"company\": {\r\n                \"companyId\": 4,\r\n                \"companyName\": \"Expert Consultants\",\r\n                \"type\": \"Consulting\",\r\n                \"website\": \"www.expertconsultants.com\",\r\n                \"gst\": \"GHI101GST\",\r\n                \"address\": {\r\n                    \"addressId\": 4,\r\n                    \"dno\": \"700\",\r\n                    \"street\": \"University Street\",\r\n                    \"city\": \"College City\",\r\n                    \"state\": \"Washington\",\r\n                    \"pinCode\": 98052\r\n                }\r\n            },\r\n            \"address\": {\r\n                \"addressId\": 14,\r\n                \"dno\": \"777\",\r\n                \"street\": \"Tourist Road\",\r\n                \"city\": \"Tourist Haven\",\r\n                \"state\": \"Hawaii\",\r\n                \"pinCode\": 96701\r\n            }\r\n        },\r\n        \"company\": {\r\n            \"companyId\": 5,\r\n            \"companyName\": \"Innovative Technologies\",\r\n            \"type\": \"Technology\",\r\n            \"website\": \"www.innovativetechnologies.com\",\r\n            \"gst\": \"JKL111GST\",\r\n            \"address\": {\r\n                \"addressId\": 5,\r\n                \"dno\": \"222\",\r\n                \"street\": \"Beach House Road\",\r\n                \"city\": \"Paradise Island\",\r\n                \"state\": \"Hawaii\",\r\n                \"pinCode\": 96701\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 35,\r\n            \"dno\": \"654\",\r\n            \"street\": \"Supplier Lane\",\r\n            \"city\": \"Agriculture Town\",\r\n            \"state\": \"Texas\",\r\n            \"pinCode\": 78901\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updatePurchaseInvoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updatePurchaseInvoice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePurchaseInvoice Copy",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalAmount\": 1500.0,\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"ABC Corporation\",\r\n        \"type\": \"Private Limited\",\r\n        \"website\": \"www.abc-corp.com\",\r\n        \"gst\": \"ABCDE12345FG\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dNo\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateland\",\r\n            \"pinCode\": 12345\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/deletePurchaseInvoiceById/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deletePurchaseInvoiceById",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPurchaseInvoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 1000.00,\r\n    \"purchaseDate\": \"2023-08-05\",\r\n    \"purchaseInvoiceNo\": \"INV-2023-001\",\r\n    \"supplierInvoiceNo\": \"SUPP-INV-001\",\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"Example Company\",\r\n        \"type\": \"Retail\",\r\n        \"website\": \"www.examplecompany.com\",\r\n        \"gst\": \"GST12345\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"street\": \"123 Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateville\",\r\n            \"zipcode\": \"12345\",\r\n            \"country\": \"Countryland\"\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 5,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 401,\r\n            \"storeName\": \"Example Store\",\r\n            \"storeLocation\": \"Cityville Mall\",\r\n            \"address\": {\r\n                \"addressId\": 22,\r\n                \"street\": \"456 Store Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateville\",\r\n                \"zipcode\": \"12345\",\r\n                \"country\": \"Countryland\"\r\n            }\r\n        },\r\n        \"company\": {\r\n            \"companyId\": 11,\r\n            \"companyName\": \"Example Company\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.examplecompany.com\",\r\n            \"gst\": \"GST12345\",\r\n            \"address\": {\r\n                \"addressId\": 71,\r\n                \"street\": \"123 Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateville\",\r\n                \"zipcode\": \"12345\",\r\n                \"country\": \"Countryland\"\r\n            }\r\n        },\r\n        \"address\": {\r\n            \"addressId\": 203,\r\n            \"street\": \"789 Supplier Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateville\",\r\n            \"zipcode\": \"12345\",\r\n            \"country\": \"Countryland\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createPurchaseInvoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createPurchaseInvoice"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

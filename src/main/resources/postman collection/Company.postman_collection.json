@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "37759458-25ed-4626-88fe-fac683568f31",
+		"name": "Company",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-37759458-25ed-4626-88fe-fac683568f31?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "createCompany 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"ABC Corporation\",\r\n  \"type\": \"Retail\",\r\n  \"website\": \"www.abc-corp.com\",\r\n  \"gst\": \"ABC123456789\",\r\n  \"address\": {\r\n    \"dno\": \"123a\",\r\n    \"street\": \"Main Street\",\r\n    \"city\": \"Cityville\",\r\n    \"state\": \"Stateville\",\r\n    \"pinCode\": \"12345\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"XYZ Tech Solutions\",\r\n  \"type\": \"Technology\",\r\n  \"website\": \"www.xyztech.com\",\r\n  \"gst\": \"XYZ987654321\",\r\n  \"address\": {\r\n    \"dno\": \"789\",\r\n    \"street\": \"Tech Road\",\r\n    \"city\": \"Techtown\",\r\n    \"state\": \"Technia\",\r\n    \"pinCode\": \"54321\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyName\": \"EFG Services\",\r\n    \"type\": \"Services\",\r\n    \"website\": \"www.efg-services.com\",\r\n    \"gst\": \"EFG654321987\",\r\n    \"address\": {\r\n        \"dno\": \"456\",\r\n        \"street\": \"Service Avenue\",\r\n        \"city\": \"Service City\",\r\n        \"state\": \"Service State\",\r\n        \"pinCode\": \"67890\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"PQR Consulting\",\r\n  \"type\": \"Consulting\",\r\n  \"website\": \"www.pqr-consulting.com\",\r\n  \"gst\": \"PQR789321456\",\r\n  \"address\": {\r\n    \"dno\": \"246\",\r\n    \"street\": \"Consultant Road\",\r\n    \"city\": \"Consultant City\",\r\n    \"state\": \"Consultant State\",\r\n    \"pinCode\": \"13579\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 5",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"123 Manufacturing\",\r\n  \"type\": \"Manufacturing\",\r\n  \"website\": \"www.123mfg.com\",\r\n  \"gst\": \"MFG456123789\",\r\n  \"address\": {\r\n    \"dno\": \"789\",\r\n    \"street\": \"Manufacture Street\",\r\n    \"city\": \"Mfgville\",\r\n    \"state\": \"Mfgstate\",\r\n    \"pinCode\": \"54321\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"LMN Food Industries\",\r\n  \"type\": \"Food\",\r\n  \"website\": \"www.lmnfoods.com\",\r\n  \"gst\": \"LMN321789654\",\r\n  \"address\": {\r\n    \"dno\": \"987\",\r\n    \"street\": \"Food Street\",\r\n    \"city\": \"Foodville\",\r\n    \"state\": \"Food State\",\r\n    \"pinCode\": \"24680\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 7",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"GHI Fashion\",\r\n  \"type\": \"Retail\",\r\n  \"website\": \"www.ghi-fashion.com\",\r\n  \"gst\": \"GHI987654321\",\r\n  \"address\": {\r\n    \"dno\": \"456\",\r\n    \"street\": \"Fashion Avenue\",\r\n    \"city\": \"Fashion City\",\r\n    \"state\": \"Fashion State\",\r\n    \"pinCode\": \"54321\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 8",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"MNO Software Solutions\",\r\n  \"type\": \"Technology\",\r\n  \"website\": \"www.mno-software.com\",\r\n  \"gst\": \"MNO654321987\",\r\n  \"address\": {\r\n    \"dno\": \"789\",\r\n    \"street\": \"Software Road\",\r\n    \"city\": \"Software City\",\r\n    \"state\": \"Software State\",\r\n    \"pinCode\": \"67890\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 9",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"RST Electronics\",\r\n  \"type\": \"Electronics\",\r\n  \"website\": \"www.rst-electronics.com\",\r\n  \"gst\": \"RST321789654\",\r\n  \"address\": {\r\n    \"dno\": \"123\",\r\n    \"street\": \"Electronics Street\",\r\n    \"city\": \"Electronicsville\",\r\n    \"state\": \"Electronia\",\r\n    \"pinCode\": \"13579\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCompany 10",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"UVW Logistics\",\r\n  \"type\": \"Logistics\",\r\n  \"website\": \"www.uvw-logistics.com\",\r\n  \"gst\": \"UVW789321456\",\r\n  \"address\": {\r\n    \"dno\": \"789\",\r\n    \"street\": \"Logistics Avenue\",\r\n    \"city\": \"Logistics City\",\r\n    \"state\": \"Logistics State\",\r\n    \"pinCode\": \"24680\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCompany",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyId\": 17,\r\n    \"companyName\": \"GH Fashion\",\r\n    \"type\": \"Retail\",\r\n    \"website\": \"www.ghi-fashion.com\",\r\n    \"gst\": \"GHI987654321\",\r\n    \"address\": {\r\n        \"addressId\": 57,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Fashion Avenue\",\r\n        \"city\": \"Fashion City\",\r\n        \"state\": \"Fashion State\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateCompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCompanyById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getCompanyById/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getCompanyById",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCompanies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Companies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCompanyById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteCompanyById/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteCompanyById",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

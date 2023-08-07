@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "a65e442e-c330-4c14-ab6f-6330402c0050",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-a65e442e-c330-4c14-ab6f-6330402c0050?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "createStore",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"storeName\": \"Store A\",\r\n    \"branch\": \"Branch 1\",\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"ABC Corporation\",\r\n        \"type\": \"Retail\",\r\n        \"website\": \"www.abc-corp.com\",\r\n        \"gst\": \"ABC123456789\",\r\n        \"address\": {\r\n            \"addressId\": 51,\r\n            \"dno\": \"123a\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateville\",\r\n            \"pinCode\": \"12345\"\r\n        }\r\n    },\r\n    \"address\": {\r\n        \"dno\": \"789\",\r\n        \"street\": \"Store Street\",\r\n        \"city\": \"Store City\",\r\n        \"state\": \"Store State\",\r\n        \"pinCode\": \"54321\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createStore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteStore",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteStoreById/22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteStoreById",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getStoreById/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getStoreById",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateStore",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"storeId\": 6,\r\n    \"storeName\": \"BuildWell-TX\",\r\n    \"branch\": \"Suburb Outlet\",\r\n    \"company\": {\r\n        \"companyId\": 3,\r\n        \"companyName\": \"BuildWell Constructions\",\r\n        \"type\": \"Construction\",\r\n        \"website\": \"www.buildwellconstructions.com\",\r\n        \"gst\": \"DEF789GST\",\r\n        \"address\": {\r\n            \"addressId\": 3,\r\n            \"dno\": \"45\",\r\n            \"street\": \"Farm Road\",\r\n            \"city\": \"Rural Town\",\r\n            \"state\": \"Texas\",\r\n            \"pinCode\": 78901\r\n        }\r\n    },\r\n    \"address\": {\r\n        \"addressId\": 13,\r\n        \"dno\": \"1001\",\r\n        \"street\": \"Suburb Street\",\r\n        \"city\": \"Suburban Town\",\r\n        \"state\": \"Texas\",\r\n        \"pinCode\": 78901\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateStore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateStore"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
