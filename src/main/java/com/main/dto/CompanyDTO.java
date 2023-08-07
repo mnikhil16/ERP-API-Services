@@ -1,6 +1,5 @@
 package com.main.dto;
 
-import com.main.beans.Address;
 import jakarta.persistence.*;
 
 public class CompanyDTO {
