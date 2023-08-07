@@ -1,0 +1,174 @@
+CREATE DATABASE erp_db; 
+USE `erp_db`;
+
+-- 1st table
+CREATE TABLE address (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    d_no VARCHAR(50),
+    street VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    pin_code INT
+);
+
+-- 2nd table
+CREATE TABLE company (
+    company_id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(100),
+    TYPE VARCHAR(50),
+    website VARCHAR(100),
+    gst VARCHAR(25),
+    address_id INT,
+    
+    FOREIGN KEY (address_id) REFERENCES address(address_id)
+);
+
+-- 3rd table
+CREATE TABLE store (
+    store_id INT AUTO_INCREMENT PRIMARY KEY,
+    store_name VARCHAR(100),    
+    branch VARCHAR(100),
+    company_id INT,
+    address_id INT,
+    FOREIGN KEY (company_id) REFERENCES company(company_id),
+    FOREIGN KEY (address_id) REFERENCES address(address_id)
+);
+
+-- 4th table
+CREATE TABLE stock_item (
+    stock_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100),
+    item_type VARCHAR(50),
+    brand_name VARCHAR(50),
+    price DOUBLE,
+    mfd VARCHAR(10),
+    exd VARCHAR(10),
+    DESCRIPTION VARCHAR(100),
+    company_id INT,
+    
+    FOREIGN KEY (company_id) REFERENCES company(company_id)
+);
+
+-- 5th table
+CREATE TABLE supplier (
+    supplier_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    email VARCHAR(50),
+    phone_number VARCHAR(20),
+    store_id INT,
+    company_id INT,
+    address_id INT,
+    FOREIGN KEY (store_id) REFERENCES store(store_id),  
+    FOREIGN KEY (company_id) REFERENCES company(company_id),
+    FOREIGN KEY (address_id) REFERENCES address(address_id)
+);
+
+-- 6th table
+CREATE TABLE stock_inventory (
+    stock_inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    quantity INT,
+    last_stock_date VARCHAR(10),
+    stock_item_id INT,
+    store_id INT,
+    supplier_id INT,
+    FOREIGN KEY (stock_item_id) REFERENCES stock_item(stock_item_id),
+    FOREIGN KEY (store_id) REFERENCES store(store_id),
+    FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
+);
+
+-- 7th table
+CREATE TABLE purchase_order(
+	purchase_order_id INT AUTO_INCREMENT PRIMARY KEY,
+	total_amount DOUBLE,
+	store_id INT,
+	company_id INT,
+	supplier_id INT,
+    
+	FOREIGN KEY (store_id) REFERENCES store(store_id),  
+	FOREIGN KEY (company_id) REFERENCES company(company_id),
+	FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
+);
+
+-- 8th table
+CREATE TABLE purchase_order_items(
+	purchase_order_items_id INT AUTO_INCREMENT PRIMARY KEY,
+	quantity INT,
+	store_id INT,
+	stock_item_id INT,
+	purchase_order_id INT,
+    
+	FOREIGN KEY (store_id) REFERENCES store(store_id),  
+	FOREIGN KEY (stock_item_id) REFERENCES stock_item(stock_item_id),
+	FOREIGN KEY (purchase_order_id) REFERENCES purchase_order(purchase_order_id)
+);	
+
+-- 9th table
+CREATE TABLE purchase_invoice(
+	purchase_invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+	amount DOUBLE,
+	purchase_date VARCHAR(10),
+	purchase_invoice_no VARCHAR(50),
+	supplier_invoice_no VARCHAR(50),
+	company_id INT,
+	supplier_id INT,
+    
+	FOREIGN KEY (company_id) REFERENCES company(company_id),  
+	FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
+);
+
+-- 10th table
+CREATE TABLE purchase_invoice_items(
+	purchase_invoice_items_id INT AUTO_INCREMENT PRIMARY KEY,
+	quantity INT,
+	amount DOUBLE,
+	store_id INT,
+	stock_item_id INT,
+	purchase_invoice_id INT,
+    
+	FOREIGN KEY (store_id) REFERENCES store(store_id),  
+	FOREIGN KEY (stock_item_id) REFERENCES stock_item(stock_item_id),
+	FOREIGN KEY (purchase_invoice_id) REFERENCES purchase_invoice(purchase_invoice_id)
+);
+
+-- 11th table
+CREATE TABLE customer (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    display_name VARCHAR(100),
+    dob VARCHAR(20),
+    age INT,
+    email VARCHAR(50),
+    phone_number VARCHAR(20),
+    address_id INT,
+    store_id INT,
+    
+    FOREIGN KEY (address_id) REFERENCES address(address_id),  
+    FOREIGN KEY (store_id) REFERENCES store(store_id)
+);
+
+-- 12th table
+CREATE TABLE sales_invoice(
+	sales_invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+	total_amount DOUBLE,
+	sales_date VARCHAR(10),
+	sales_invoice_no VARCHAR(50),
+	company_id INT,
+	customer_id INT,
+	store_id INT,
+    
+	FOREIGN KEY (company_id) REFERENCES company(company_id),  
+	FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+	FOREIGN KEY (store_id) REFERENCES store(store_id)
+);
+
+-- 13th table
+CREATE TABLE sales_items(
+	sales_items_id INT AUTO_INCREMENT PRIMARY KEY,
+	quantity INT,
+	amount DOUBLE,
+	sales_invoice_id INT,
+	
+	FOREIGN KEY (sales_invoice_id) REFERENCES sales_invoice(sales_invoice_id)
+);
