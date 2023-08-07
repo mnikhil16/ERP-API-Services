@@ -39,8 +39,8 @@ import static org.mockito.Mockito.when;
  * StockItemController implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockItemControllerMockitoTests.class})
-public class StockItemControllerMockitoTests {
+@SpringBootTest(classes = {StockItemControllerTests.class})
+public class StockItemControllerTests {
 
     @Mock
     StockItemService stockItemService;

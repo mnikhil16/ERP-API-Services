@@ -27,11 +27,11 @@ public class PurchaseOrder {
     @JoinColumn(name = "store_id")
     Store store;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "company_id")
     Company company;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "supplier_id")
     Supplier supplier;
 

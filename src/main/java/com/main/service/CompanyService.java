@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.Company;
 import com.main.controller.AddResponse;
+import com.main.dto.CompanyDTO;
+import com.main.mapper.CompanyMapper;
 import com.main.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,10 @@ public class CompanyService {
      *
      * @return All the Company objects.
      */
-    public List<Company> getCompanies(){
-        return companyRepository.findAll();
+    public List<CompanyDTO> getCompanies(){
+        List<Company> companyList = companyRepository.findAll();
+       List<CompanyDTO> companyDTOList =  CompanyMapper.instance.modelToDtoList(companyList);
+        return companyDTOList;
     }
 
 
@@ -38,35 +42,35 @@ public class CompanyService {
      * @param companyId The ID of the company to retrieve.
      * @return The Company object corresponding to the given ID.
      */
-    public Company getCompanyById(int companyId){
-        List<Company> companies = companyRepository.findAll();
-        Company company = null;
-        for(Company c: companies){
-            if(c.getCompanyId() == companyId){
-                company = c;
-            }
-        }
-        return company;
+    public CompanyDTO getCompanyById(int companyId){
+        Company companyEntity = companyRepository.findById(companyId).get();
+        CompanyDTO companyDTO = CompanyMapper.instance.modelToDto(companyEntity);
+        return companyDTO;
     }
 
     /**
      * Create a new customer with the provided customer object.
      *
-     * @param company The Company object representing the company to be created.
      * @return The newly created company object with a generated ID.
      */
-    public Company createCompany(Company company){
-        return companyRepository.save(company);
+    public CompanyDTO createCompany(CompanyDTO companyDTO){
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        companyRepository.save(companyEntity);
+        CompanyDTO companyDTO1 = CompanyMapper.instance.modelToDto(companyEntity);
+        return companyDTO1;
     }
 
     /**
      * Update a new company with the provided company object.
      *
-     * @param company The Company object representing the company to be updated.
+     * @param companyDTO The Company object representing the company to be updated.
      * @return The updated Company object.
      */
-    public Company updateCompany(Company company){
-        return companyRepository.save(company);
+    public CompanyDTO updateCompany(CompanyDTO companyDTO){
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        companyRepository.save(companyEntity);
+        CompanyDTO companyDTO1 = CompanyMapper.instance.modelToDto(companyEntity);
+        return companyDTO1;
     }
 
 

@@ -1,7 +1,9 @@
 package com.test.service;
 
-import com.main.beans.Address;
 import com.main.beans.Company;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.mapper.CompanyMapper;
 import com.main.repository.CompanyRepository;
 import com.main.service.CompanyService;
 import org.junit.jupiter.api.MethodOrderer;
@@ -34,8 +36,8 @@ import static org.mockito.Mockito.*;
  * CompanyService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {CustomerServiceMockitoTest.class})
-public class CompanyServiceMockitoTest {
+@SpringBootTest(classes = {CustomerServiceTests.class})
+public class CompanyServiceTests {
 
     @Mock
     CompanyRepository companyRepository;
@@ -43,7 +45,7 @@ public class CompanyServiceMockitoTest {
     @InjectMocks
     CompanyService companyService;
 
-    List<Company> companies = new ArrayList<>();
+    List<CompanyDTO> companiesDTO = new ArrayList<>();
 
     /**
      * Test the getCompanies method of CompanyService.
@@ -52,14 +54,14 @@ public class CompanyServiceMockitoTest {
     @Test
     @Order(1)
     public void test_getAllCompanies() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        companies.add(com1);
-        companies.add(com2);
-
-        when(companyRepository.findAll()).thenReturn(companies);
+        AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+        companiesDTO.add(companyDTO1);
+        companiesDTO.add(companyDTO2);
+        List<Company> companyList = CompanyMapper.instance.dtoToModelList(companiesDTO);
+        when(companyRepository.findAll()).thenReturn(companyList);
         assertEquals(2, companyService.getCompanies().size());
     }
 
@@ -70,16 +72,15 @@ public class CompanyServiceMockitoTest {
     @Test
     @Order(2)
     public void test_getCompanyById() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        companies.add(com1);
-        companies.add(com2);
+        AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+        companiesDTO.add(companyDTO1);
+        companiesDTO.add(companyDTO2);
         int id = 1;
-
-        when(companyRepository.findAll()).thenReturn(companies);
-
+        List<Company> companyList = CompanyMapper.instance.dtoToModelList(companiesDTO);
+        when(companyRepository.findAll()).thenReturn(companyList);
         assertEquals(id, companyService.getCompanyById(id).getCompanyId());
     }
 
@@ -90,13 +91,14 @@ public class CompanyServiceMockitoTest {
     @Test
     @Order(3)
     public void test_createCompany() {
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        companies.add(com1);
+        AddressDTO addressDTO = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
 
-        when(companyRepository.save(com1)).thenReturn(com1);
+        // mocking the response for save operation.
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
 
-        assertEquals(com1, companyService.createCompany(com1));
+        assertEquals(companyDTO, companyService.createCompany(companyDTO));
     }
 
     /**
@@ -106,13 +108,12 @@ public class CompanyServiceMockitoTest {
     @Test
     @Order(4)
     public void test_updateCompany() {
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        companies.add(com1);
+        AddressDTO addressDTO = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
 
-        when(companyRepository.save(com1)).thenReturn(com1);
-
-        assertEquals(com1, companyService.updateCompany(com1));
+        assertEquals(companyDTO, companyService.updateCompany(companyDTO));
     }
 
     /**
@@ -122,11 +123,10 @@ public class CompanyServiceMockitoTest {
     @Test
     @Order(5)
     public void test_deleteCompanyById() {
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        companies.add(com2);
-
-        companyService.deleteCompanyById(com2.getCompanyId());
+        AddressDTO addressDTO = new AddressDTO(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+        CompanyDTO companyDTO = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO);
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        companyService.deleteCompanyById(companyEntity.getCompanyId());
         verify(companyRepository, times(1));
     }
 }

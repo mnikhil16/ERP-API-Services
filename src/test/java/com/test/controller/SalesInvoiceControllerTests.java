@@ -37,8 +37,8 @@ import static org.mockito.Mockito.when;
  * SalesInvoiceController implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {SalesInvoiceControllerMockitoTests.class})
-public class SalesInvoiceControllerMockitoTests {
+@SpringBootTest(classes = {SalesInvoiceControllerTests.class})
+public class SalesInvoiceControllerTests {
 
     @Mock
     SalesInvoiceService salesInvoiceService;

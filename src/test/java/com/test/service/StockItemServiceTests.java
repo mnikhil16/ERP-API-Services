@@ -35,8 +35,8 @@ import static org.mockito.Mockito.*;
  * StockItemService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockItemServiceMockitoTest.class})
-public class StockItemServiceMockitoTest {
+@SpringBootTest(classes = {StockItemServiceTests.class})
+public class StockItemServiceTests {
 
     @Mock
     StockItemRepository stockItemRepository;

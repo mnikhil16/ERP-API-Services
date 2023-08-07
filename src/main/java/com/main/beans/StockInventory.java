@@ -23,7 +23,7 @@ public class StockInventory {
     @Column(name = "last_stock_date")
     String lastStockDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "stock_item_id")
     StockItem stockItem;
 

@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the StoreService using Mockito framework.
  * It tests the business logic and functionality of the StoreService methods in isolation.
- * The StoreServiceMockitoTest class uses Mockito to mock dependencies.
+ * The StoreServiceTests class uses Mockito to mock dependencies.
  * StoreRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all stores retrieval and verify the expected store objects are returned.
@@ -32,8 +32,8 @@ import static org.mockito.Mockito.*;
  * StoreService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StoreServiceMockitoTest.class})
-public class StoreServiceMockitoTest {
+@SpringBootTest(classes = {StoreServiceTests.class})
+public class StoreServiceTests {
 
     @Mock
     StoreRepository storeRep;

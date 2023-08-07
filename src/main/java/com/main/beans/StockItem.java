@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 /**
  * This class represents an StockItem object with details like itemId, itemName, itemType, brandName, price, manufactured date, expiry date, description about product and company of the item.
  * It is a Java bean class with getters, setters, and a parameterized constructor for easy data access.
- *
  * Usage:
  * The StockItem class can be used to store and retrieve information about an item.
  */

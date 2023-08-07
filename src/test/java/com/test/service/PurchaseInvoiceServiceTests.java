@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the PurchaseInvoiceService using Mockito framework.
  * It tests the business logic and functionality of the PurchaseInvoiceService methods in isolation.
- * The PurchaseInvoiceServiceMockitoTest class uses Mockito to mock dependencies.
+ * The PurchaseInvoiceServiceTests class uses Mockito to mock dependencies.
  * PurchaseInvoiceRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all purchaseInvoices retrieval and verify the expected purchaseInvoice objects are returned.
@@ -33,8 +33,8 @@ import static org.mockito.Mockito.*;
  * PurchaseInvoiceService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockInventoryServiceMockitoTest.class})
-class PurchaseInvoiceServiceMockitoTest {
+@SpringBootTest(classes = {StockInventoryServiceTests.class})
+class PurchaseInvoiceServiceTests {
 
     @Mock
     PurchaseInvoiceRepository purchaseInvoiceRep;

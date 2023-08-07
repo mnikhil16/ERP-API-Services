@@ -37,8 +37,8 @@ import static org.mockito.Mockito.when;
  * PurchaseOrderController implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {PurchaseOrderControllerMockitoTests.class})
-public class PurchaseOrderControllerMockitoTests {
+@SpringBootTest(classes = {PurchaseOrderControllerTests.class})
+public class PurchaseOrderControllerTests {
 
     @Mock
     PurchaseOrderService purchaseOrderService;

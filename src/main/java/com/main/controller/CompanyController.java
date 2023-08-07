@@ -1,5 +1,6 @@
 package com.main.controller;
 
+import com.main.dto.CompanyDTO;
 import com.main.service.CompanyService;
 import com.main.beans.Company;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class CompanyController {
      * @return  All companies as an arrayList of company JSON objects.
      */
     @GetMapping("/Companies")
-    public List<Company> getAllCompanies(){
+    public List<CompanyDTO> getAllCompanies(){
         return companyService.getCompanies();
     }
 
@@ -48,11 +49,11 @@ public class CompanyController {
      * @throws  if company object not found with given companyId.
      */
     @GetMapping("/getCompanyById/{companyId}")
-    public ResponseEntity<Company> getCompanyById(@PathVariable(value = "companyId") int companyId) {
+    public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable(value = "companyId") int companyId) {
 
         try {
-            Company company = companyService.getCompanyById(companyId);
-            return new ResponseEntity<>(company, HttpStatus.OK);
+            CompanyDTO companyDTO = companyService.getCompanyById(companyId);
+            return new ResponseEntity<>(companyDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -62,27 +63,27 @@ public class CompanyController {
     /**
      * Creates the company object.
      * URL : "http://localhost:8080/createCompany"
-     * @param  company object as an input.
+     * @param  companyDTO object as an input.
      * @return  company JSON object.
      */
     @PostMapping("/createCompany")
-    public Company createCompany(@RequestBody Company company){
+    public CompanyDTO createCompany(@RequestBody CompanyDTO companyDTO){
 
-        return companyService.createCompany(company);
+        return companyService.createCompany(companyDTO);
     }
 
     /**
      * Updates the company object.
      * URL : "http://localhost:8080/updateCompany"
-     * @param  company object as an input.
+     * @param  companyDTO object as an input.
      * @return ResponseEntity with company information if updated, or 404 if not found.
      * @throws  if company object not found.
      */
     @PutMapping("/updateCompany")
-    public ResponseEntity<Company> updateCompany(@RequestBody Company company){
+    public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO companyDTO){
         try{
-            Company updatedCompany = companyService.updateCompany(company);
-            return new ResponseEntity<>(updatedCompany,HttpStatus.OK);
+            CompanyDTO updatedCompanyDTO = companyService.updateCompany(companyDTO);
+            return new ResponseEntity<>(updatedCompanyDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

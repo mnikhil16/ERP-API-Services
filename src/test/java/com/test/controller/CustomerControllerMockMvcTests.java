@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
 @ComponentScan(basePackages = {"com.restservices.demo"})
 @AutoConfigureMockMvc
 @ContextConfiguration
-@SpringBootTest(classes = {CustomerControllerMockitoTests.class})
+@SpringBootTest(classes = {CustomerControllerTests.class})
 public class CustomerControllerMockMvcTests {
     @Autowired
     MockMvc mockMvc;

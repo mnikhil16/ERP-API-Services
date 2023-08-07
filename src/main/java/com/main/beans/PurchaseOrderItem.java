@@ -24,7 +24,7 @@ public class PurchaseOrderItem {
     @JoinColumn(name = "store_id")
     Store store;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "stock_item_id")
     StockItem stockItem;
 

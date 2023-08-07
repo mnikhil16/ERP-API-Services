@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the CustomerService using Mockito framework.
  * It tests the business logic and functionality of the CustomerService methods in isolation.
- * The CustomerServiceMockitoTest class uses Mockito to mock dependencies.
+ * The CustomerServiceTests class uses Mockito to mock dependencies.
  * CustomerRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all customers retrieval and verify the expected customer objects are returned.
@@ -33,8 +33,8 @@ import static org.mockito.Mockito.*;
  * CustomerService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {CustomerServiceMockitoTest.class})
-public class CustomerServiceMockitoTest {
+@SpringBootTest(classes = {CustomerServiceTests.class})
+public class CustomerServiceTests {
 
     @Mock
     CustomerRepository customerRep;

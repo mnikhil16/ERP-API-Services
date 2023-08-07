@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the PurchaseOrderService using Mockito framework.
  * It tests the business logic and functionality of the PurchaseOrderService methods in isolation.
- * The PurchaseOrderServiceMockitoTest class uses Mockito to mock dependencies.
+ * The PurchaseOrderServiceTests class uses Mockito to mock dependencies.
  * PurchaseOrderRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all purchaseOrders retrieval and verify the expected purchaseOrder objects are returned.
@@ -33,8 +33,8 @@ import static org.mockito.Mockito.*;
  * PurchaseOrderService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockInventoryServiceMockitoTest.class})
-class PurchaseOrderServiceMockitoTest {
+@SpringBootTest(classes = {StockInventoryServiceTests.class})
+class PurchaseOrderServiceTests {
 
     @Mock
     PurchaseOrderRepository purchaseOrderRepository;

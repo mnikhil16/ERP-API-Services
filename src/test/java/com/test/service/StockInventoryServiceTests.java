@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 /**
  * This class contains unit tests for the StockInventoryService using Mockito framework.
  * It tests the business logic and functionality of the StockInventoryService methods in isolation.
- * The StockInventoryServiceMockitoTest class uses Mockito to mock dependencies.
+ * The StockInventoryServiceTests class uses Mockito to mock dependencies.
  * StockInventoryRepository or other external services, to focus solely on testing the service layer.
  * Test Cases:
  * - Test all stockInventories retrieval and verify the expected stockInventory objects are returned.
@@ -33,8 +33,8 @@ import static org.mockito.Mockito.*;
  * StockInventoryService implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {StockInventoryServiceMockitoTest.class})
-class StockInventoryServiceMockitoTest {
+@SpringBootTest(classes = {StockInventoryServiceTests.class})
+class StockInventoryServiceTests {
 
     @Mock
     StockInventoryRepository stockInventoryRepository;

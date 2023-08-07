@@ -26,21 +26,29 @@ public class SalesItem {
     @JoinColumn(name = "sales_invoice_id")
     SalesInvoice salesInvoice;
 
+    @OneToOne
+    @JoinColumn(name = "stock_item_id")
+    StockItem stockItem;
+
     public SalesItem(){}
+
     /**
      * Parameterized constructor to create a Customer object with specified details.
      *
-     * @param salesItemId   The Id of the sales items.
-     * @param quantity       The quantity of the sales items.
-     * @param amount         The amount of the sales items.
-     * @param salesInvoice The sales invoice id of the sales items.
+     * @param salesItemId  The Id of the sales items.
+     * @param quantity     The quantity of the sales items.
+     * @param amount       The amount of the sales items.
+     * @param salesInvoice The sales invoice of the sales items.
+     * @param stockItem    The stock item of the sales items.
      */
-    public SalesItem(Integer salesItemId, Integer quantity, Double amount, SalesInvoice salesInvoice) {
+    public SalesItem(Integer salesItemId, Integer quantity, Double amount, SalesInvoice salesInvoice, StockItem stockItem) {
         this.salesItemId = salesItemId;
         this.quantity = quantity;
         this.amount = amount;
         this.salesInvoice = salesInvoice;
+        this.stockItem = stockItem;
     }
+
 
     public Integer getSalesItemId() {
         return salesItemId;
@@ -72,5 +80,13 @@ public class SalesItem {
 
     public void setSalesInvoice(SalesInvoice salesInvoice) {
         this.salesInvoice = salesInvoice;
+    }
+
+    public StockItem getStockItem() {
+        return stockItem;
+    }
+
+    public void setStockItem(StockItem stockItem) {
+        this.stockItem = stockItem;
     }
 }

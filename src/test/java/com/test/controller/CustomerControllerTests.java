@@ -40,8 +40,8 @@ import static org.mockito.Mockito.*;
  * CustomerController implementation using Mockito mocks for dependency isolation.
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {CustomerControllerMockitoTests.class})
-public class CustomerControllerMockitoTests {
+@SpringBootTest(classes = {CustomerControllerTests.class})
+public class CustomerControllerTests {
 
     @Mock
     CustomerService customerService;

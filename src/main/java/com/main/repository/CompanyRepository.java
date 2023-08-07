@@ -1,6 +1,7 @@
 package com.main.repository;
 
 import com.main.beans.Company;
+import com.main.dto.CompanyDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
