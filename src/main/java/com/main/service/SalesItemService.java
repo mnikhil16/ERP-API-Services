@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.SalesItem;
 import com.main.controller.AddResponse;
+import com.main.dto.SalesItemDTO;
+import com.main.mapper.SalesItemMapper;
 import com.main.repository.SalesItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,10 @@ public class SalesItemService {
      *
      * @return All the SalesItem objects.
      */
-    public List<SalesItem> getSalesItems(){
-        return salesItemRepository.findAll();
+    public List<SalesItemDTO> getSalesItems(){
+        List<SalesItem> salesItemList = salesItemRepository.findAll();
+        List<SalesItemDTO> salesItemDTOList =  SalesItemMapper.instance.modelToDtoList(salesItemList);
+        return salesItemDTOList;
     }
 
 
@@ -38,35 +42,36 @@ public class SalesItemService {
      * @param salesItemId The ID of the salesItem to retrieve.
      * @return The SalesItem object corresponding to the given ID.
      */
-    public SalesItem getSalesItemById(int salesItemId){
-        List<SalesItem> salesItems = salesItemRepository.findAll();
-        SalesItem salesItem = null;
-        for(SalesItem si: salesItems){
-            if(si.getSalesItemId() == salesItemId){
-                salesItem = si;
-            }
-        }
-        return salesItem;
+    public SalesItemDTO getSalesItemById(int salesItemId){
+        SalesItem salesItemEntity = salesItemRepository.findById(salesItemId).get();
+        SalesItemDTO salesItemDTO = SalesItemMapper.instance.modelToDto(salesItemEntity);
+        return salesItemDTO;
     }
 
     /**
      * Create a new salesItem with the provided SalesItem object.
      *
-     * @param salesItem The SalesItem object representing the salesItem to be created.
+     * @param salesItemDTO The SalesItem object representing the salesItem to be created.
      * @return The newly created SalesItem object with a generated ID.
      */
-    public SalesItem createSalesItem(SalesItem salesItem){
-        return salesItemRepository.save(salesItem);
+    public SalesItemDTO createSalesItem(SalesItemDTO salesItemDTO){
+        SalesItem salesItemEntity = SalesItemMapper.instance.dtoToModel(salesItemDTO);
+        salesItemRepository.save(salesItemEntity);
+        SalesItemDTO salesItemDTO1 = SalesItemMapper.instance.modelToDto(salesItemEntity);
+        return salesItemDTO1;
     }
 
     /**
      * Update a new salesItem with the provided SalesItem object.
      *
-     * @param salesItem The SalesItem object representing the salesItem to be updated.
+     * @param salesItemDTO The SalesItem object representing the salesItem to be updated.
      * @return The updated SalesItem object.
      */
-    public SalesItem updateSalesItem(SalesItem salesItem){
-        return salesItemRepository.save(salesItem);
+    public SalesItemDTO updateSalesItem(SalesItemDTO salesItemDTO){
+        SalesItem salesItemEntity = SalesItemMapper.instance.dtoToModel(salesItemDTO);
+        salesItemRepository.save(salesItemEntity);
+        SalesItemDTO salesItemDTO1 = SalesItemMapper.instance.modelToDto(salesItemEntity);
+        return salesItemDTO1;
     }
 
 

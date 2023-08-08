@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.SalesInvoice;
 import com.main.controller.AddResponse;
+import com.main.dto.SalesInvoiceDTO;
+import com.main.mapper.SalesInvoiceMapper;
 import com.main.repository.SalesInvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,10 @@ public class SalesInvoiceService {
      *
      * @return All the SalesInvoice objects.
      */
-    public List<SalesInvoice> getSalesInvoices(){
-        return salesInvoiceRepository.findAll();
+    public List<SalesInvoiceDTO> getSalesInvoices(){
+        List<SalesInvoice> salesInvoiceList = salesInvoiceRepository.findAll();
+        List<SalesInvoiceDTO> salesInvoiceDTOList =  SalesInvoiceMapper.instance.modelToDtoList(salesInvoiceList);
+        return salesInvoiceDTOList;
     }
 
 
@@ -38,35 +42,36 @@ public class SalesInvoiceService {
      * @param salesInvoiceId The ID of the salesInvoice to retrieve.
      * @return The SalesInvoice object corresponding to the given ID.
      */
-    public SalesInvoice getSalesInvoiceById(int salesInvoiceId){
-        List<SalesInvoice> salesInvoices = salesInvoiceRepository.findAll();
-        SalesInvoice salesInvoice = null;
-        for(SalesInvoice si: salesInvoices){
-            if(si.getSalesInvoiceId() == salesInvoiceId){
-                salesInvoice = si;
-            }
-        }
-        return salesInvoice;
+    public SalesInvoiceDTO getSalesInvoiceById(int salesInvoiceId){
+        SalesInvoice salesInvoiceEntity = salesInvoiceRepository.findById(salesInvoiceId).get();
+        SalesInvoiceDTO salesInvoiceDTO = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
+        return salesInvoiceDTO;
     }
 
     /**
      * Create a new salesInvoice with the provided SalesInvoice object.
      *
-     * @param salesInvoice The SalesInvoice object representing the salesInvoice to be created.
+     * @param salesInvoiceDTO The SalesInvoice object representing the salesInvoice to be created.
      * @return The newly created SalesInvoice object with a generated ID.
      */
-    public SalesInvoice createSalesInvoice(SalesInvoice salesInvoice){
-        return salesInvoiceRepository.save(salesInvoice);
+    public SalesInvoiceDTO createSalesInvoice(SalesInvoiceDTO salesInvoiceDTO){
+        SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO);
+        salesInvoiceRepository.save(salesInvoiceEntity);
+        SalesInvoiceDTO salesInvoiceDTO1 = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
+        return salesInvoiceDTO1;
     }
 
     /**
      * Update a new salesInvoice with the provided SalesInvoice object.
      *
-     * @param salesInvoice The SalesInvoice object representing the salesInvoice to be updated.
+     * @param salesInvoiceDTO The SalesInvoice object representing the salesInvoice to be updated.
      * @return The updated SalesInvoice object.
      */
-    public SalesInvoice updateSalesInvoice(SalesInvoice salesInvoice){
-        return salesInvoiceRepository.save(salesInvoice);
+    public SalesInvoiceDTO updateSalesInvoice(SalesInvoiceDTO salesInvoiceDTO){
+        SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO);
+        salesInvoiceRepository.save(salesInvoiceEntity);
+        SalesInvoiceDTO salesInvoiceDTO1 = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
+        return salesInvoiceDTO1;
     }
 
 

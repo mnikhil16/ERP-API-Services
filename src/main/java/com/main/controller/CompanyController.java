@@ -2,7 +2,6 @@ package com.main.controller;
 
 import com.main.dto.CompanyDTO;
 import com.main.service.CompanyService;
-import com.main.beans.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

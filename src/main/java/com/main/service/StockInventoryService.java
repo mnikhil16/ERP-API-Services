@@ -1,6 +1,8 @@
 package com.main.service;
 
 import com.main.beans.StockInventory;
+import com.main.dto.StockInventoryDTO;
+import com.main.mapper.StockInventoryMapper;
 import com.main.repository.StockInventoryRepository;
 import com.main.controller.AddResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,10 @@ public class StockInventoryService {
      *
      * @return All the StockInventory objects.
      */
-    public List<StockInventory> getStockInventories(){
-        return stockInventoryRepository.findAll();
+    public List<StockInventoryDTO> getStockInventories(){
+        List<StockInventory> stockInventoryList = stockInventoryRepository.findAll();
+        List<StockInventoryDTO> stockInventoryDTOList =  StockInventoryMapper.instance.modelToDtoList(stockInventoryList);
+        return stockInventoryDTOList;
     }
 
 
@@ -37,35 +41,36 @@ public class StockInventoryService {
      * @param stockInventoryId The ID of the stock inventory to retrieve.
      * @return The StockInventory object corresponding to the given ID.
      */
-    public StockInventory getStockInventoryById(int stockInventoryId){
-        List<StockInventory> stockInventories = stockInventoryRepository.findAll();
-        StockInventory stockInventory = null;
-        for(StockInventory i: stockInventories){
-            if(i.getStockInventoryId() == stockInventoryId){
-                stockInventory = i;
-            }
-        }
-        return stockInventory;
+    public StockInventoryDTO getStockInventoryById(int stockInventoryId){
+        StockInventory stockInventoryEntity = stockInventoryRepository.findById(stockInventoryId).get();
+        StockInventoryDTO stockInventoryDTO = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
+        return stockInventoryDTO;
     }
 
     /**
      * Create a new stockInventory with the provided stockInventory object.
      *
-     * @param stockInventory The StockInventory object representing the stockInventory to be created.
+     * @param stockInventoryDTO The StockInventory object representing the stockInventory to be created.
      * @return The newly created stockInventory object with a generated ID.
      */
-    public StockInventory createStockInventory(StockInventory stockInventory){
-        return stockInventoryRepository.save(stockInventory);
+    public StockInventoryDTO createStockInventory(StockInventoryDTO stockInventoryDTO){
+        StockInventory stockInventoryEntity = StockInventoryMapper.instance.dtoToModel(stockInventoryDTO);
+        stockInventoryRepository.save(stockInventoryEntity);
+        StockInventoryDTO stockInventoryDTO1 = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
+        return stockInventoryDTO1;
     }
 
     /**
      * Update a new stockInventory with the provided stockInventory object.
      *
-     * @param stockInventory The StockInventory object representing the stockInventory to be updated.
+     * @param stockInventoryDTO The StockInventory object representing the stockInventory to be updated.
      * @return The updated StockInventory object.
      */
-    public StockInventory updateStockInventory(StockInventory stockInventory){
-        return stockInventoryRepository.save(stockInventory);
+    public StockInventoryDTO updateStockInventory(StockInventoryDTO stockInventoryDTO){
+        StockInventory stockInventoryEntity = StockInventoryMapper.instance.dtoToModel(stockInventoryDTO);
+        stockInventoryRepository.save(stockInventoryEntity);
+        StockInventoryDTO stockInventoryDTO1 = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
+        return stockInventoryDTO1;
     }
 
 

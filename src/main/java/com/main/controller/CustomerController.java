@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.Customer;
+import com.main.dto.CustomerDTO;
 import com.main.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +35,7 @@ public class CustomerController {
           * @return  All customers as an arrayList of customer JSON objects.
         */
         @GetMapping("/Customers")
-        public List<Customer> getAllCustomers(){
+        public List<CustomerDTO> getAllCustomers(){
             return customerService.getCustomers();
         }
 
@@ -47,11 +47,11 @@ public class CustomerController {
         * @throws if Customer object not found with given customerId.
         */
         @GetMapping("/getCustomerById/{customerId}")
-        public ResponseEntity<Customer> getCustomerById(@PathVariable(value = "customerId") int customerId) {
+        public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable(value = "customerId") int customerId) {
 
             try {
-                Customer customer = customerService.getCustomerById(customerId);
-                return new ResponseEntity<>(customer, HttpStatus.OK);
+                CustomerDTO customerDTO = customerService.getCustomerById(customerId);
+                return new ResponseEntity<>(customerDTO, HttpStatus.OK);
             }
             catch(Exception e){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -61,27 +61,27 @@ public class CustomerController {
         /**
         * Creates the customer object.
         * URL : "http://localhost8080/createCustomer"
-        * @param  customer object as an input.
+        * @param  customerDTO object as an input.
         * @return  customer JSON object.
         */
         @PostMapping("/createCustomer")
-        public Customer createCustomer(@RequestBody Customer customer){
+        public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO){
 
-            return customerService.createCustomer(customer);
+            return customerService.createCustomer(customerDTO);
         }
 
         /**
         * Updates the customer object.
         * URL : "http://localhost8080/updateCustomer"
-        * @param  customer object as an input.
+        * @param  customerDTO object as an input.
         * @return ResponseEntity with customer information if updated, or 404 if not found.
         * @throws  if Customer object not found.
         */
         @PutMapping("/updateCustomer")
-        public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+        public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customerDTO){
                 try{
-                    Customer updatedCustomer = customerService.updateCustomer(customer);
-                    return new ResponseEntity<>(updatedCustomer,HttpStatus.OK);
+                    CustomerDTO updatedCustomerDTO = customerService.updateCustomer(customerDTO);
+                    return new ResponseEntity<>(updatedCustomerDTO,HttpStatus.OK);
                 }
                 catch(Exception e){
                     return new ResponseEntity<>(HttpStatus.CONFLICT);

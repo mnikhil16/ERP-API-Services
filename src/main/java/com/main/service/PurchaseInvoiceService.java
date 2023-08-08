@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.PurchaseInvoice;
 import com.main.controller.AddResponse;
+import com.main.dto.PurchaseInvoiceDTO;
+import com.main.mapper.PurchaseInvoiceMapper;
 import com.main.repository.PurchaseInvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,10 @@ public class PurchaseInvoiceService {
      *
      * @return All the Customer objects.
      */
-    public List<PurchaseInvoice> getPurchaseInvoices(){
-        return purchaseInvoiceRepository.findAll();
+    public List<PurchaseInvoiceDTO> getPurchaseInvoices(){
+        List<PurchaseInvoice> purchaseInvoiceList = purchaseInvoiceRepository.findAll();
+        List<PurchaseInvoiceDTO> purchaseInvoiceDTOList =  PurchaseInvoiceMapper.instance.modelToDtoList(purchaseInvoiceList);
+        return purchaseInvoiceDTOList;
     }
 
 
@@ -38,35 +42,36 @@ public class PurchaseInvoiceService {
      * @param purchaseInvoiceId The ID of the purchaseInvoice to retrieve.
      * @return The PurchaseInvoice object corresponding to the given ID.
      */
-    public PurchaseInvoice getPurchaseInvoiceById(int purchaseInvoiceId){
-        List<PurchaseInvoice> purchaseInvoices = purchaseInvoiceRepository.findAll();
-        PurchaseInvoice purchaseInvoice = null;
-        for(PurchaseInvoice pi: purchaseInvoices){
-            if(pi.getPurchaseInvoiceId() == purchaseInvoiceId){
-                purchaseInvoice = pi;
-            }
-        }
-        return purchaseInvoice;
+    public PurchaseInvoiceDTO getPurchaseInvoiceById(int purchaseInvoiceId){
+        PurchaseInvoice purchaseInvoiceEntity = purchaseInvoiceRepository.findById(purchaseInvoiceId).get();
+        PurchaseInvoiceDTO purchaseInvoiceDTO = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
+        return purchaseInvoiceDTO;
     }
 
     /**
      * Create a new purchaseInvoice with the provided PurchaseInvoice object.
      *
-     * @param purchaseInvoice The PurchaseInvoice object representing the purchaseInvoice to be created.
+     * @param purchaseInvoiceDTO The PurchaseInvoice object representing the purchaseInvoice to be created.
      * @return The newly created PurchaseInvoice object with a generated ID.
      */
-    public PurchaseInvoice createPurchaseInvoice(PurchaseInvoice purchaseInvoice){
-        return purchaseInvoiceRepository.save(purchaseInvoice);
+    public PurchaseInvoiceDTO createPurchaseInvoice(PurchaseInvoiceDTO purchaseInvoiceDTO){
+        PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO);
+        purchaseInvoiceRepository.save(purchaseInvoiceEntity);
+        PurchaseInvoiceDTO purchaseInvoiceDTO1 = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
+        return purchaseInvoiceDTO1;
     }
 
     /**
      * Update a new purchaseInvoice with the provided PurchaseInvoice object.
      *
-     * @param purchaseInvoice The PurchaseInvoice object representing the purchaseInvoice to be updated.
+     * @param purchaseInvoiceDTO The PurchaseInvoice object representing the purchaseInvoice to be updated.
      * @return The updated PurchaseInvoice object.
      */
-    public PurchaseInvoice updatePurchaseInvoice(PurchaseInvoice purchaseInvoice){
-        return purchaseInvoiceRepository.save(purchaseInvoice);
+    public PurchaseInvoiceDTO updatePurchaseInvoice(PurchaseInvoiceDTO purchaseInvoiceDTO){
+        PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO);
+        purchaseInvoiceRepository.save(purchaseInvoiceEntity);
+        PurchaseInvoiceDTO purchaseInvoiceDTO1 = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
+        return purchaseInvoiceDTO1;
     }
 
 

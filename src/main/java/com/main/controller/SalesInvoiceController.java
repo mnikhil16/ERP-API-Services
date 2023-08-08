@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.SalesInvoice;
+import com.main.dto.SalesInvoiceDTO;
 import com.main.service.SalesInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class SalesInvoiceController {
      * @return  All salesInvoices as an arrayList of salesInvoice JSON objects.
      */
     @GetMapping("/SalesInvoices")
-    public List<SalesInvoice> getAllSalesInvoices(){
+    public List<SalesInvoiceDTO> getAllSalesInvoices(){
         return salesInvoiceService.getSalesInvoices();
     }
 
@@ -48,11 +48,11 @@ public class SalesInvoiceController {
      * @throws if SalesInvoice object not found with given salesInvoiceId.
      */
     @GetMapping("/getSalesInvoiceById/{salesInvoiceId}")
-    public ResponseEntity<SalesInvoice> getSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId) {
+    public ResponseEntity<SalesInvoiceDTO> getSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId) {
 
         try {
-            SalesInvoice salesInvoice = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
-            return new ResponseEntity<>(salesInvoice, HttpStatus.OK);
+            SalesInvoiceDTO salesInvoiceDTO = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
+            return new ResponseEntity<>(salesInvoiceDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -62,27 +62,27 @@ public class SalesInvoiceController {
     /**
      * Creates the salesInvoice object.
      * URL : "http://localhost8080/createSalesInvoice"
-     * @param  salesInvoice object as an input.
+     * @param  salesInvoiceDTO object as an input.
      * @return  salesInvoice JSON object.
      */
     @PostMapping("/createSalesInvoice")
-    public SalesInvoice createSalesInvoice(@RequestBody SalesInvoice salesInvoice){
+    public SalesInvoiceDTO createSalesInvoice(@RequestBody SalesInvoiceDTO salesInvoiceDTO){
 
-        return salesInvoiceService.createSalesInvoice(salesInvoice);
+        return salesInvoiceService.createSalesInvoice(salesInvoiceDTO);
     }
 
     /**
      * Updates the salesInvoice object.
      * URL : "http://localhost8080/updateSalesInvoice"
-     * @param  salesInvoice object as an input.
+     * @param  salesInvoiceDTO object as an input.
      * @return ResponseEntity with salesInvoice information if updated, or 404 if not found.
      * @throws  if SalesInvoice object not found.
      */
     @PutMapping("/updateSalesInvoice")
-    public ResponseEntity<SalesInvoice> updateSalesInvoice(@RequestBody SalesInvoice salesInvoice){
+    public ResponseEntity<SalesInvoiceDTO> updateSalesInvoice(@RequestBody SalesInvoiceDTO salesInvoiceDTO){
         try{
-            SalesInvoice updatedSalesInvoice = salesInvoiceService.updateSalesInvoice(salesInvoice);
-            return new ResponseEntity<>(updatedSalesInvoice,HttpStatus.OK);
+            SalesInvoiceDTO updatedSalesInvoiceDTO = salesInvoiceService.updateSalesInvoice(salesInvoiceDTO);
+            return new ResponseEntity<>(updatedSalesInvoiceDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

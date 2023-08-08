@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.StockInventory;
+import com.main.dto.StockInventoryDTO;
 import com.main.service.StockInventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +35,7 @@ public class StockInventoryController {
      * @return  All stockInventories as an arrayList of stockInventory JSON objects.
      */
     @GetMapping("/StockInventories")
-    public List<StockInventory> getAllStockInventories(){
+    public List<StockInventoryDTO> getAllStockInventories(){
         return stockInventoryService.getStockInventories();
     }
 
@@ -47,11 +47,11 @@ public class StockInventoryController {
      * @throws if stockInventory object not found with given stockInventoryId.
      */
     @GetMapping("/getStockInventoryById/{stockInventoryId}")
-    public ResponseEntity<StockInventory> getStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId) {
+    public ResponseEntity<StockInventoryDTO> getStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId) {
 
         try {
-            StockInventory stockInventory = stockInventoryService.getStockInventoryById(stockInventoryId);
-            return new ResponseEntity<>(stockInventory, HttpStatus.OK);
+            StockInventoryDTO stockInventoryDTO = stockInventoryService.getStockInventoryById(stockInventoryId);
+            return new ResponseEntity<>(stockInventoryDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -61,27 +61,27 @@ public class StockInventoryController {
     /**
      * Creates the stockInventory object.
      * URL : "http://localhost8080/createStockInventory"
-     * @param  stockInventory object as an input.
+     * @param  stockInventoryDTO object as an input.
      * @return  stockInventory JSON object.
      */
     @PostMapping("/createStockInventory")
-    public StockInventory createStockInventory(@RequestBody StockInventory stockInventory){
+    public StockInventoryDTO createStockInventory(@RequestBody StockInventoryDTO stockInventoryDTO){
 
-        return stockInventoryService.createStockInventory(stockInventory);
+        return stockInventoryService.createStockInventory(stockInventoryDTO);
     }
 
     /**
      * Updates the stockInventory object.
      * URL : "http://localhost8080/updateStockInventory"
-     * @param  stockInventory object as an input.
+     * @param  stockInventoryDTO object as an input.
      * @return ResponseEntity with stockInventory information if updated, or 404 if not found.
      * @throws  if stockInventory object not found.
      */
     @PutMapping("/updateStockInventory")
-    public ResponseEntity<StockInventory> updateStockInventory(@RequestBody StockInventory stockInventory){
+    public ResponseEntity<StockInventoryDTO> updateStockInventory(@RequestBody StockInventoryDTO stockInventoryDTO){
         try{
-            StockInventory updatedStockInventory = stockInventoryService.updateStockInventory(stockInventory);
-            return new ResponseEntity<>(updatedStockInventory,HttpStatus.OK);
+            StockInventoryDTO updatedStockInventoryDTO = stockInventoryService.updateStockInventory(stockInventoryDTO);
+            return new ResponseEntity<>(updatedStockInventoryDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

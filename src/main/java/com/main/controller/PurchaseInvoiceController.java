@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.PurchaseInvoice;
+import com.main.dto.PurchaseInvoiceDTO;
 import com.main.service.PurchaseInvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class PurchaseInvoiceController {
      * @return  All purchaseInvoices as an arrayList of purchaseInvoice JSON objects.
      */
     @GetMapping("/PurchaseInvoices")
-    public List<PurchaseInvoice> getAllPurchaseInvoices(){
+    public List<PurchaseInvoiceDTO> getAllPurchaseInvoices(){
         return purchaseInvoiceService.getPurchaseInvoices();
     }
 
@@ -48,11 +48,11 @@ public class PurchaseInvoiceController {
      * @throws if PurchaseInvoice object not found with given purchaseInvoiceId.
      */
     @GetMapping("/getPurchaseInvoiceById/{purchaseInvoiceId}")
-    public ResponseEntity<PurchaseInvoice> getPurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId) {
+    public ResponseEntity<PurchaseInvoiceDTO> getPurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId) {
 
         try {
-            PurchaseInvoice purchaseInvoice = purchaseInvoiceService.getPurchaseInvoiceById(purchaseInvoiceId);
-            return new ResponseEntity<>(purchaseInvoice, HttpStatus.OK);
+            PurchaseInvoiceDTO purchaseInvoiceDTO = purchaseInvoiceService.getPurchaseInvoiceById(purchaseInvoiceId);
+            return new ResponseEntity<>(purchaseInvoiceDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -66,9 +66,9 @@ public class PurchaseInvoiceController {
      * @return  purchaseInvoice JSON object.
      */
     @PostMapping("/createPurchaseInvoice")
-    public PurchaseInvoice createPurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice){
+    public PurchaseInvoiceDTO createPurchaseInvoice(@RequestBody PurchaseInvoiceDTO purchaseInvoiceDTO){
 
-        return purchaseInvoiceService.createPurchaseInvoice(purchaseInvoice);
+        return purchaseInvoiceService.createPurchaseInvoice(purchaseInvoiceDTO);
     }
 
     /**
@@ -79,10 +79,10 @@ public class PurchaseInvoiceController {
      * @throws  if PurchaseInvoice object not found.
      */
     @PutMapping("/updatePurchaseInvoice")
-    public ResponseEntity<PurchaseInvoice> updatePurchaseInvoice(@RequestBody PurchaseInvoice purchaseInvoice){
+    public ResponseEntity<PurchaseInvoiceDTO> updatePurchaseInvoice(@RequestBody PurchaseInvoiceDTO purchaseInvoiceDTO){
         try{
-            PurchaseInvoice updatedPurchaseInvoice = purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoice);
-            return new ResponseEntity<>(updatedPurchaseInvoice,HttpStatus.OK);
+            PurchaseInvoiceDTO updatedPurchaseInvoiceDTO = purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoiceDTO);
+            return new ResponseEntity<>(updatedPurchaseInvoiceDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

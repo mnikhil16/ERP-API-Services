@@ -1,6 +1,8 @@
 package com.main.service;
 
 import com.main.controller.AddResponse;
+import com.main.dto.CustomerDTO;
+import com.main.mapper.CustomerMapper;
 import com.main.repository.CustomerRepository;
 import com.main.beans.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,10 @@ public class CustomerService {
      *
      * @return All the Customer objects.
      */
-    public List<Customer> getCustomers(){
-       return customerRepository.findAll();
+    public List<CustomerDTO> getCustomers(){
+        List<Customer> customerList = customerRepository.findAll();
+        List<CustomerDTO> customerDTOList =  CustomerMapper.instance.modelToDtoList(customerList);
+        return customerDTOList;
     }
 
 
@@ -37,35 +41,36 @@ public class CustomerService {
      * @param customerId The ID of the customer to retrieve.
      * @return The Customer object corresponding to the given ID.
      */
-    public Customer getCustomerById(int customerId){
-        List<Customer> customers = customerRepository.findAll();
-        Customer customer = null;
-        for(Customer c: customers){
-            if(c.getCustomerId() == customerId){
-                customer = c;
-            }
-        }
-        return customer;
+    public CustomerDTO getCustomerById(int customerId){
+        Customer customerEntity = customerRepository.findById(customerId).get();
+        CustomerDTO customerDTO = CustomerMapper.instance.modelToDto(customerEntity);
+        return customerDTO;
     }
 
     /**
      * Create a new customer with the provided Customer object.
      *
-     * @param customer The Customer object representing the customer to be created.
+     * @param customerDTO The Customer object representing the customer to be created.
      * @return The newly created Customer object with a generated ID.
      */
-    public Customer createCustomer(Customer customer){
-        return customerRepository.save(customer);
+    public CustomerDTO createCustomer(CustomerDTO customerDTO){
+        Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO);
+        customerRepository.save(customerEntity);
+        CustomerDTO customerDTO1 = CustomerMapper.instance.modelToDto(customerEntity);
+        return customerDTO1;
     }
 
     /**
      * Update a new customer with the provided Customer object.
      *
-     * @param customer The Customer object representing the customer to be updated.
+     * @param customerDTO The Customer object representing the customer to be updated.
      * @return The updated Customer object.
      */
-    public Customer updateCustomer(Customer customer){
-        return customerRepository.save(customer);
+    public CustomerDTO updateCustomer(CustomerDTO customerDTO){
+        Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO);
+        customerRepository.save(customerEntity);
+        CustomerDTO customerDTO1 = CustomerMapper.instance.modelToDto(customerEntity);
+        return customerDTO1;
     }
 
 
