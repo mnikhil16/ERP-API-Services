@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.Supplier;
+import com.main.dto.SupplierDTO;
 import com.main.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,7 +36,7 @@ public class SupplierController {
      * @return  All suppliers as an arrayList of supplier JSON objects.
      */
     @GetMapping("/Suppliers")
-    public List<Supplier> getAllSuppliers(){
+    public List<SupplierDTO> getAllSuppliers(){
         return supplierService.getSuppliers();
     }
 
@@ -48,11 +48,11 @@ public class SupplierController {
      * @throws if Supplier object not found with given supplierId.
      */
     @GetMapping("/getSupplierById/{supplierId}")
-    public ResponseEntity<Supplier> getSupplierById(@PathVariable(value = "supplierId") int supplierId) {
+    public ResponseEntity<SupplierDTO> getSupplierById(@PathVariable(value = "supplierId") int supplierId) {
 
         try {
-            Supplier supplier = supplierService.getSupplierById(supplierId);
-            return new ResponseEntity<>(supplier, HttpStatus.OK);
+            SupplierDTO supplierDTO = supplierService.getSupplierById(supplierId);
+            return new ResponseEntity<>(supplierDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -62,27 +62,27 @@ public class SupplierController {
     /**
      * Creates the supplier object.
      * URL : "http://localhost8080/createSupplier"
-     * @param  supplier object as an input.
+     * @param  supplierDTO object as an input.
      * @return  supplier JSON object.
      */
     @PostMapping("/createSupplier")
-    public Supplier createSupplier(@RequestBody Supplier supplier){
+    public SupplierDTO createSupplier(@RequestBody SupplierDTO supplierDTO){
 
-        return supplierService.createSupplier(supplier);
+        return supplierService.createSupplier(supplierDTO);
     }
 
     /**
      * Updates the supplier object.
      * URL : "http://localhost8080/updateSupplier"
-     * @param  supplier object as an input.
+     * @param  supplierDTO object as an input.
      * @return ResponseEntity with supplier information if updated, or 404 if not found.
      * @throws  if supplier object not found.
      */
     @PutMapping("/updateSupplier")
-    public ResponseEntity<Supplier> updateSupplier(@RequestBody Supplier supplier){
+    public ResponseEntity<SupplierDTO> updateSupplier(@RequestBody SupplierDTO supplierDTO){
         try{
-            Supplier updatedSupplier = supplierService.updateSupplier(supplier);
-            return new ResponseEntity<>(updatedSupplier,HttpStatus.OK);
+            SupplierDTO updatedSupplierDTO = supplierService.updateSupplier(supplierDTO);
+            return new ResponseEntity<>(updatedSupplierDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

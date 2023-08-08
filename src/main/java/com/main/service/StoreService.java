@@ -1,6 +1,8 @@
 package com.main.service;
 
 import com.main.controller.AddResponse;
+import com.main.dto.StoreDTO;
+import com.main.mapper.StoreMapper;
 import com.main.repository.StoreRepository;
 import com.main.beans.Store;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,46 +28,49 @@ public class StoreService {
      *
      * @return All the Store objects.
      */
-    public List<Store> getStores(){
-        return storeRepository.findAll();
+    public List<StoreDTO> getStores(){
+        List<Store> storeList = storeRepository.findAll();
+        List<StoreDTO> storeDTOList =  StoreMapper.instance.modelToDtoList(storeList);
+        return storeDTOList;
     }
 
 
     /**
      * Get store information by the specified store ID.
      *
-     * @param Id The ID of the store to retrieve.
+     * @param storeId The ID of the store to retrieve.
      * @return The Store object corresponding to the given ID.
      */
-    public Store getStoreById(int Id){
-        List<Store> stores = storeRepository.findAll();
-        Store store = null;
-        for(Store s: stores){
-            if(s.getStoreId() == Id){
-                store = s;
-            }
-        }
-        return store;
+    public StoreDTO getStoreById(int storeId){
+        Store storeEntity = storeRepository.findById(storeId).get();
+        StoreDTO storeDTO = StoreMapper.instance.modelToDto(storeEntity);
+        return storeDTO;
     }
 
     /**
      * Create a new store with the provided store object.
      *
-     * @param store The store object representing the store to be created.
+     * @param storeDTO The store object representing the store to be created.
      * @return The newly created store object with a generated ID.
      */
-    public Store createStore(Store store){
-        return storeRepository.save(store);
+    public StoreDTO createStore(StoreDTO storeDTO){
+        Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
+        storeRepository.save(storeEntity);
+        StoreDTO storeDTO1 = StoreMapper.instance.modelToDto(storeEntity);
+        return storeDTO1;
     }
 
     /**
      * Update a new store with the provided store object.
      *
-     * @param store The Store object representing the store to be updated.
+     * @param storeDTO The Store object representing the store to be updated.
      * @return The updated Store object.
      */
-    public Store updateStore(Store store){
-        return storeRepository.save(store);
+    public StoreDTO updateStore(StoreDTO storeDTO){
+        Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
+        storeRepository.save(storeEntity);
+        StoreDTO storeDTO1 = StoreMapper.instance.modelToDto(storeEntity);
+        return storeDTO1;
     }
 
 

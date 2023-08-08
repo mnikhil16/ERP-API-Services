@@ -1,7 +1,7 @@
 package com.main.controller;
 
+import com.main.dto.StoreDTO;
 import com.main.service.StoreService;
-import com.main.beans.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class StoreController {
      * @return  All stores as an arrayList of store JSON objects.
      */
     @GetMapping("/stores")
-    public List<Store> getStores(){
+    public List<StoreDTO> getStores(){
         return storeService.getStores();
     }
 
@@ -47,11 +47,11 @@ public class StoreController {
      * @throws if store object not found with given storeId.
      */
     @GetMapping("/getStoreById/{storeId}")
-    public ResponseEntity<Store> getStoreById(@PathVariable(value = "storeId") int storeId) {
+    public ResponseEntity<StoreDTO> getStoreById(@PathVariable(value = "storeId") int storeId) {
 
         try {
-            Store store = storeService.getStoreById(storeId);
-            return new ResponseEntity<>(store, HttpStatus.OK);
+            StoreDTO storeDTO = storeService.getStoreById(storeId);
+            return new ResponseEntity<>(storeDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -61,27 +61,27 @@ public class StoreController {
     /**
      * Creates the store object.
      * URL : "http://localhost:8080/createStore"
-     * @param  store object as an input.
+     * @param  storeDTO object as an input.
      * @return  store JSON object.
      */
     @PostMapping("/createStore")
-    public Store createStore(@RequestBody Store store){
+    public StoreDTO createStore(@RequestBody StoreDTO storeDTO){
 
-        return storeService.createStore(store);
+        return storeService.createStore(storeDTO);
     }
 
     /**
      * Updates the store object.
      * URL : "http://localhost:8080/updateStore"
-     * @param  store object as an input.
+     * @param  storeDTO object as an input.
      * @return ResponseEntity with store information if updated, or 404 if not found.
      * @throws  if store object not found.
      */
     @PutMapping("/updateStore")
-    public ResponseEntity<Store> updateStore(@RequestBody Store store){
+    public ResponseEntity<StoreDTO> updateStore(@RequestBody StoreDTO storeDTO){
         try{
-            Store updatedStore = storeService.updateStore(store);
-            return new ResponseEntity<>(updatedStore,HttpStatus.OK);
+            StoreDTO updatedStoreDTO = storeService.updateStore(storeDTO);
+            return new ResponseEntity<>(updatedStoreDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

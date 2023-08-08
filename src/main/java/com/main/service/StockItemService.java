@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.StockItem;
 import com.main.controller.AddResponse;
+import com.main.dto.StockItemDTO;
+import com.main.mapper.StockItemMapper;
 import com.main.repository.StockItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,10 @@ public class StockItemService {
      *
      * @return All the StockItem objects.
      */
-    public List<StockItem> getStockItems(){
-        return stockItemRepository.findAll();
+    public List<StockItemDTO> getStockItems(){
+        List<StockItem> stockItemList = stockItemRepository.findAll();
+        List<StockItemDTO> stockItemDTOList = StockItemMapper.instance.modelToDtoList(stockItemList);
+        return stockItemDTOList;
     }
 
     /**
@@ -36,35 +40,36 @@ public class StockItemService {
      * @param stockItemId The ID of the item to retrieve.
      * @return The StockItem object corresponding to the given ID.
      */
-    public StockItem getStockItemById(int stockItemId){
-        List<StockItem> stockItems = stockItemRepository.findAll();
-        StockItem stockItem = null;
-        for(StockItem i: stockItems){
-            if(i.getStockItemId() == stockItemId){
-                stockItem = i;
-            }
-        }
-        return stockItem;
+    public StockItemDTO getStockItemById(int stockItemId){
+        StockItem stockItemEntity = stockItemRepository.findById(stockItemId).get();
+        StockItemDTO stockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
+        return stockItemDTO;
     }
 
     /**
      * Create a new stockItem with the provided stockItem object.
      *
-     * @param stockItem The StockItem object representing the stockItem to be created.
+     * @param stockItemDTO The StockItem object representing the stockItem to be created.
      * @return The newly created stockItem object with a generated ID.
      */
-    public StockItem createStockItem(StockItem stockItem){
-        return stockItemRepository.save(stockItem);
+    public StockItemDTO createStockItem(StockItemDTO stockItemDTO){
+        StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
+        stockItemRepository.save(stockItemEntity);
+        StockItemDTO stockItemDTO1 = StockItemMapper.instance.modelToDto(stockItemEntity);
+        return stockItemDTO1;
     }
 
     /**
      * Update a new stockItem with the provided stockItem object.
      *
-     * @param stockItem The StockItem object representing the stockItem to be updated.
+     * @param stockItemDTO The StockItem object representing the stockItem to be updated.
      * @return The updated StockItem object.
      */
-    public StockItem updateStockItem(StockItem stockItem){
-        return stockItemRepository.save(stockItem);
+    public StockItemDTO updateStockItem(StockItemDTO stockItemDTO){
+        StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
+        stockItemRepository.save(stockItemEntity);
+        StockItemDTO stockItemDTO1 = StockItemMapper.instance.modelToDto(stockItemEntity);
+        return stockItemDTO1;
     }
 
 

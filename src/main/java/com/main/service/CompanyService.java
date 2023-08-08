@@ -31,7 +31,7 @@ public class CompanyService {
      */
     public List<CompanyDTO> getCompanies(){
         List<Company> companyList = companyRepository.findAll();
-       List<CompanyDTO> companyDTOList =  CompanyMapper.instance.modelToDtoList(companyList);
+        List<CompanyDTO> companyDTOList =  CompanyMapper.instance.modelToDtoList(companyList);
         return companyDTOList;
     }
 

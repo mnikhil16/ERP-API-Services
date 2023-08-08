@@ -2,6 +2,8 @@ package com.main.service;
 
 import com.main.beans.Supplier;
 import com.main.controller.AddResponse;
+import com.main.dto.SupplierDTO;
+import com.main.mapper.SupplierMapper;
 import com.main.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +29,10 @@ public class SupplierService {
      *
      * @return All the Supplier objects.
      */
-    public List<Supplier> getSuppliers(){
-        return supplierRepository.findAll();
+    public List<SupplierDTO> getSuppliers(){
+        List<Supplier> supplierList = supplierRepository.findAll();
+        List<SupplierDTO> supplierDTOList =  SupplierMapper.instance.modelToDtoList(supplierList);
+        return supplierDTOList;
     }
 
 
@@ -38,35 +42,36 @@ public class SupplierService {
      * @param supplierId The ID of the supplier to retrieve.
      * @return The Supplier object corresponding to the given ID.
      */
-    public Supplier getSupplierById(int supplierId){
-        List<Supplier> suppliers = supplierRepository.findAll();
-        Supplier supplier = null;
-        for(Supplier s: suppliers){
-            if(s.getSupplierId() == supplierId){
-                supplier = s;
-            }
-        }
-        return supplier;
+    public SupplierDTO getSupplierById(int supplierId){
+        Supplier supplierEntity = supplierRepository.findById(supplierId).get();
+        SupplierDTO supplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
+        return supplierDTO;
     }
 
     /**
      * Create a new supplier with the provided supplier object.
      *
-     * @param supplier The Supplier object representing the supplier to be created.
+     * @param supplierDTO The Supplier object representing the supplier to be created.
      * @return The newly created supplier object with a generated ID.
      */
-    public Supplier createSupplier(Supplier supplier){
-        return supplierRepository.save(supplier);
+    public SupplierDTO createSupplier(SupplierDTO supplierDTO){
+        Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
+        supplierRepository.save(supplierEntity);
+        SupplierDTO supplierDTO1 = SupplierMapper.instance.modelToDto(supplierEntity);
+        return supplierDTO1;
     }
 
     /**
      * Update a new supplier with the provided supplier object.
      *
-     * @param supplier The Supplier object representing the supplier to be updated.
+     * @param supplierDTO The Supplier object representing the supplier to be updated.
      * @return The updated Supplier object.
      */
-    public Supplier updateSupplier(Supplier supplier){
-        return supplierRepository.save(supplier);
+    public SupplierDTO updateSupplier(SupplierDTO supplierDTO){
+        Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
+        supplierRepository.save(supplierEntity);
+        SupplierDTO supplierDTO1 = SupplierMapper.instance.modelToDto(supplierEntity);
+        return supplierDTO1;
     }
 
 

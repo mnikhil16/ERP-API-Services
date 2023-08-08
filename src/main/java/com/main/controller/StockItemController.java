@@ -1,6 +1,6 @@
 package com.main.controller;
 
-import com.main.beans.StockItem;
+import com.main.dto.StockItemDTO;
 import com.main.service.StockItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,7 +35,7 @@ public class StockItemController {
      * @return  All stock items as an arrayList of item JSON objects.
      */
     @GetMapping("/stockItems")
-    public List<StockItem> getAllStockItems(){
+    public List<StockItemDTO> getAllStockItems(){
         return stockItemService.getStockItems();
     }
 
@@ -47,11 +47,11 @@ public class StockItemController {
      * @throws if stock item object not found with given stockItemId.
      */
     @GetMapping("/getStockItemById/{stockItemId}")
-    public ResponseEntity<StockItem> getStockItemById(@PathVariable(value = "stockItemId") int stockItemId) {
+    public ResponseEntity<StockItemDTO> getStockItemById(@PathVariable(value = "stockItemId") int stockItemId) {
 
         try {
-            StockItem stockItem = stockItemService.getStockItemById(stockItemId);
-            return new ResponseEntity<>(stockItem, HttpStatus.OK);
+            StockItemDTO stockItemDTO = stockItemService.getStockItemById(stockItemId);
+            return new ResponseEntity<>(stockItemDTO, HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -65,9 +65,9 @@ public class StockItemController {
      * @return  stockItem JSON object.
      */
     @PostMapping("/createStockItem")
-    public StockItem createStockItem(@RequestBody StockItem stockItem){
+    public StockItemDTO createStockItem(@RequestBody StockItemDTO stockItemDTO){
 
-        return stockItemService.createStockItem(stockItem);
+        return stockItemService.createStockItem(stockItemDTO);
     }
 
     /**
@@ -78,10 +78,10 @@ public class StockItemController {
      * @throws  if stockItem object not found.
      */
     @PutMapping("/updateStockItem")
-    public ResponseEntity<StockItem> updateStockItem(@RequestBody StockItem stockItem){
+    public ResponseEntity<StockItemDTO> updateStockItem(@RequestBody StockItemDTO stockItemDTO){
         try{
-            StockItem updatedStockItem = stockItemService.updateStockItem(stockItem);
-            return new ResponseEntity<>(updatedStockItem,HttpStatus.OK);
+            StockItemDTO updatedStockItemDTO = stockItemService.updateStockItem(stockItemDTO);
+            return new ResponseEntity<>(updatedStockItemDTO,HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
