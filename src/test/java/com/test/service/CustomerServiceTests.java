@@ -1,9 +1,11 @@
 package com.test.service;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
 import com.main.beans.Customer;
-import com.main.beans.Store;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.CustomerDTO;
+import com.main.dto.StoreDTO;
+import com.main.mapper.CustomerMapper;
 import com.main.repository.CustomerRepository;
 import com.main.service.CustomerService;
 import org.junit.jupiter.api.*;
@@ -42,7 +44,15 @@ public class CustomerServiceTests {
     @InjectMocks
     CustomerService customerSer;
 
-    List<Customer> customer = new ArrayList<>();
+    List<CustomerDTO> customersDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    CustomerDTO customerDTO1 = new CustomerDTO(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", addressDTO1, storeDTO1);
+    CustomerDTO customerDTO2 = new CustomerDTO(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", addressDTO2, storeDTO2);
 
     /**
      * Test the getCustomers method of CustomerService.
@@ -51,18 +61,11 @@ public class CustomerServiceTests {
     @Test
     @Order(1)
     public void test_getAllCustomers(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customer.add(customer1);
-        customer.add(customer2);
 
-        when(customerRep.findAll()).thenReturn(customer);
+        customersDTO.add(customerDTO1);
+        customersDTO.add(customerDTO2);
+        List<Customer> customerList = CustomerMapper.instance.dtoToModelList(customersDTO);
+        when(customerRep.findAll()).thenReturn(customerList);
         assertEquals(2, customerSer.getCustomers().size());
     }
 
@@ -73,19 +76,12 @@ public class CustomerServiceTests {
     @Test
     @Order(2)
     public void test_getCustomerById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customer.add(customer1);
-        customer.add(customer2);
-        int id=1;
 
-        when(customerRep.findAll()).thenReturn(customer);
+        customersDTO.add(customerDTO1);
+        customersDTO.add(customerDTO2);
+        int id=1;
+        List<Customer> customerList = CustomerMapper.instance.dtoToModelList(customersDTO);
+        when(customerRep.findAll()).thenReturn(customerList);
 
         assertEquals(id, customerSer.getCustomerById(id).getCustomerId());
     }
@@ -97,19 +93,11 @@ public class CustomerServiceTests {
     @Test
     @Order(3)
     public void test_createCustomer(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO1);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        when(customerRep.save(customerEntity)).thenReturn(customerEntity);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        customer.add(customer1);
-
-        when(customerRep.save(customer1)).thenReturn(customer1);
-
-        assertEquals(customer1, customerSer.createCustomer(customer1));
+        assertEquals(customerDTO1, customerSer.createCustomer(customerDTO1));
     }
 
     /**
@@ -119,19 +107,11 @@ public class CustomerServiceTests {
     @Test
     @Order(4)
     public void test_updateCustomer(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO1);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        when(customerRep.save(customerEntity)).thenReturn(customerEntity);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        customer.add(customer1);
-
-        when(customerRep.save(customer1)).thenReturn(customer1);
-
-        assertEquals(customer1, customerSer.updateCustomer(customer1));
+        assertEquals(customerDTO1, customerSer.updateCustomer(customerDTO1));
     }
 
     /**
@@ -141,16 +121,9 @@ public class CustomerServiceTests {
     @Test
     @Order(5)
     public void test_deleteCustomerById(){
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO2);
 
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customer.add(customer2);
-
-        customerSer.deleteCustomer(customer2.getCustomerId());
+        customerSer.deleteCustomer(customerEntity.getCustomerId());
         verify(customerRep,times(1));
     }
 }

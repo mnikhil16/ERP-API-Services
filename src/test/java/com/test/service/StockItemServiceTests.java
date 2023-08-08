@@ -1,8 +1,10 @@
 package com.test.service;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
 import com.main.beans.StockItem;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.StockItemDTO;
+import com.main.mapper.StockItemMapper;
 import com.main.repository.StockItemRepository;
 import com.main.service.StockItemService;
 import org.junit.jupiter.api.MethodOrderer;
@@ -44,7 +46,13 @@ public class StockItemServiceTests {
     @InjectMocks
     StockItemService stockItemService;
 
-    List<StockItem> stockItems = new ArrayList<>();
+    List<StockItemDTO> stockItemsDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StockItemDTO stockItemDTO1 = new StockItemDTO(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", companyDTO1);
+    StockItemDTO stockItemDTO2 = new StockItemDTO(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", companyDTO2);
 
     /**
      * Test the getStockItems method of StockItemService.
@@ -53,16 +61,11 @@ public class StockItemServiceTests {
     @Test
     @Order(1)
     public void test_getAllStockItems(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        stockItems.add(si1);
-        stockItems.add(si2);
 
-        when(stockItemRepository.findAll()).thenReturn(stockItems);
+        stockItemsDTO.add(stockItemDTO1);
+        stockItemsDTO.add(stockItemDTO2);
+        List<StockItem> stockItemList = StockItemMapper.instance.dtoToModelList(stockItemsDTO);
+        when(stockItemRepository.findAll()).thenReturn(stockItemList);
         assertEquals(2, stockItemService.getStockItems().size());
     }
 
@@ -73,17 +76,12 @@ public class StockItemServiceTests {
     @Test
     @Order(2)
     public void test_getStockItemsById(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        stockItems.add(si1);
-        stockItems.add(si2);
-        int id=1;
 
-        when(stockItemRepository.findAll()).thenReturn(stockItems);
+        stockItemsDTO.add(stockItemDTO1);
+        stockItemsDTO.add(stockItemDTO2);
+        int id=1;
+        List<StockItem> stockItemList = StockItemMapper.instance.dtoToModelList(stockItemsDTO);
+        when(stockItemRepository.findAll()).thenReturn(stockItemList);
 
         assertEquals(id, stockItemService.getStockItemById(id).getStockItemId());
     }
@@ -95,17 +93,12 @@ public class StockItemServiceTests {
     @Test
     @Order(3)
     public void test_createCustomer(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO1);
 
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
+        when(stockItemRepository.save(stockItemEntity)).thenReturn(stockItemEntity);
 
-        stockItems.add(si1);
-
-        when(stockItemRepository.save(si1)).thenReturn(si1);
-
-        assertEquals(si1, stockItemService.createStockItem(si1));
+        assertEquals(stockItemDTO1, stockItemService.createStockItem(stockItemDTO1));
     }
 
     /**
@@ -115,17 +108,12 @@ public class StockItemServiceTests {
     @Test
     @Order(4)
     public void test_updateStockItems(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO1);
 
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
+        when(stockItemRepository.save(stockItemEntity)).thenReturn(stockItemEntity);
 
-        stockItems.add(si1);
-
-        when(stockItemRepository.save(si1)).thenReturn(si1);
-
-        assertEquals(si1, stockItemService.updateStockItem(si1));
+        assertEquals(stockItemDTO1, stockItemService.updateStockItem(stockItemDTO1));
     }
 
     /**
@@ -136,14 +124,9 @@ public class StockItemServiceTests {
     @Order(5)
     public void test_deleteStockItemsById() {
 
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+        StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO2);
 
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        stockItems.add(si2);
-
-        stockItemService.deleteStockItemById(si2.getStockItemId());
+        stockItemService.deleteStockItemById(stockItemEntity.getStockItemId());
         verify(stockItemRepository, times(1));
     }
 }

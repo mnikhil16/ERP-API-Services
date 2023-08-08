@@ -1,8 +1,10 @@
 package com.test.service;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
 import com.main.beans.Store;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.StoreDTO;
+import com.main.mapper.StoreMapper;
 import com.main.repository.StoreRepository;
 import com.main.service.StoreService;
 import org.junit.jupiter.api.*;
@@ -36,13 +38,18 @@ import static org.mockito.Mockito.*;
 public class StoreServiceTests {
 
     @Mock
-    StoreRepository storeRep;
+    StoreRepository storeRepository;
 
     @InjectMocks
-    StoreService storeSer;
+    StoreService storeService;
 
-    List<Store> stores = new ArrayList<>();
-
+    List<StoreDTO> storesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
 
     /**
      * Test the getStores method of StoreService.
@@ -51,17 +58,11 @@ public class StoreServiceTests {
     @Test
     @Order(1)
     public void test_getAllStores() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        stores.add(s1);
-        stores.add(s2);
-
-        when(storeRep.findAll()).thenReturn(stores);
-        assertEquals(2, storeSer.getStores().size());
+        storesDTO.add(storeDTO1);
+        storesDTO.add(storeDTO2);
+        List<Store> storeList = StoreMapper.instance.dtoToModelList(storesDTO);
+        when(storeRepository.findAll()).thenReturn(storeList);
+        assertEquals(2, storeService.getStores().size());
     }
 
     /**
@@ -71,19 +72,12 @@ public class StoreServiceTests {
     @Test
     @Order(2)
     public void test_getCustomerById() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        stores.add(s1);
-        stores.add(s2);
+        storesDTO.add(storeDTO1);
+        storesDTO.add(storeDTO2);
         int id = 1;
-
-        when(storeRep.findAll()).thenReturn(stores);
-
-        assertEquals(id, storeSer.getStoreById(id).getStoreId());
+        List<Store> storeList = StoreMapper.instance.dtoToModelList(storesDTO);
+        when(storeRepository.findAll()).thenReturn(storeList);
+        assertEquals(id, storeService.getStoreById(id).getStoreId());
     }
 
     /**
@@ -93,17 +87,10 @@ public class StoreServiceTests {
     @Test
     @Order(3)
     public void test_createCustomer() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO1);
+        when(storeRepository.save(storeEntity)).thenReturn(storeEntity);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        stores.add(s1);
-
-        when(storeRep.save(s1)).thenReturn(s1);
-
-        assertEquals(s1, storeSer.createStore(s1));
+        assertEquals(storeDTO1, storeService.createStore(storeDTO1));
     }
 
     /**
@@ -113,17 +100,12 @@ public class StoreServiceTests {
     @Test
     @Order(4)
     public void test_updateStore() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO1);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        when(storeRepository.save(storeEntity)).thenReturn(storeEntity);
 
-        stores.add(s1);
-
-        when(storeRep.save(s1)).thenReturn(s1);
-
-        assertEquals(s1, storeSer.updateStore(s1));
+        assertEquals(storeDTO1, storeService.updateStore(storeDTO1));
     }
 
     /**
@@ -134,14 +116,9 @@ public class StoreServiceTests {
     @Order(5)
     public void test_deleteStoreById() {
 
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+        Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO2);
 
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        stores.add(s2);
-
-        storeSer.deleteStoreById(s2.getStoreId());
-        verify(storeRep, times(1));
+        storeService.deleteStoreById(storeEntity.getStoreId());
+        verify(storeRepository, times(1));
     }
 }

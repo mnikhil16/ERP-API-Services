@@ -6,22 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 public class AddressDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "addressId")
+
     Integer addressId;
-    @Column(name = "d_no")
+
     String dno;
-    @Column(name = "street")
+
     String street;
-    @Column(name = "city")
+
     String city;
-    @Column(name = "state")
+
     String state;
-    @Column(name = "pin_code")
+
     Integer pinCode;
-
-
 
     public AddressDTO() {
     }

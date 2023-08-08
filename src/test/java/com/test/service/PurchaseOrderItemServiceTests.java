@@ -37,10 +37,10 @@ import static org.mockito.Mockito.*;
 class PurchaseOrderItemServiceTests {
 
     @Mock
-    PurchaseOrderItemRepository purchaseOrderItemsRep;
+    PurchaseOrderItemRepository purchaseOrderItemRepository;
 
     @InjectMocks
-    PurchaseOrderItemService purchaseOrderItemsSer;
+    PurchaseOrderItemService purchaseOrderItemService;
 
     List<PurchaseOrderItem> purchaseOrderItems = new ArrayList<>();
 
@@ -67,8 +67,8 @@ class PurchaseOrderItemServiceTests {
         PurchaseOrderItem purchaseOrderItem2 = new PurchaseOrderItem(2, 80, s2, si2, purchaseOrder2);
         purchaseOrderItems.add(purchaseOrderItem1);
         purchaseOrderItems.add(purchaseOrderItem2);
-        when(purchaseOrderItemsRep.findAll()).thenReturn(purchaseOrderItems);
-        assertEquals(2, purchaseOrderItemsSer.getPurchaseOrderItems().size());
+        when(purchaseOrderItemRepository.findAll()).thenReturn(purchaseOrderItems);
+        assertEquals(2, purchaseOrderItemService.getPurchaseOrderItems().size());
     }
 
     /**
@@ -96,9 +96,9 @@ class PurchaseOrderItemServiceTests {
         purchaseOrderItems.add(purchaseOrderItem2);
         int id = 1;
 
-        when(purchaseOrderItemsRep.findAll()).thenReturn(purchaseOrderItems);
+        when(purchaseOrderItemRepository.findAll()).thenReturn(purchaseOrderItems);
 
-        assertEquals(id, purchaseOrderItemsSer.getPurchaseOrderItemById(id).getPurchaseOrderItemId());
+        assertEquals(id, purchaseOrderItemService.getPurchaseOrderItemById(id).getPurchaseOrderItemId());
     }
 
     /**
@@ -124,9 +124,9 @@ class PurchaseOrderItemServiceTests {
 
         purchaseOrderItems.add(purchaseOrderItem1);
 
-        when(purchaseOrderItemsRep.save(purchaseOrderItem1)).thenReturn(purchaseOrderItem1);
+        when(purchaseOrderItemRepository.save(purchaseOrderItem1)).thenReturn(purchaseOrderItem1);
 
-        assertEquals(purchaseOrderItem1, purchaseOrderItemsSer.createPurchaseOrderItem(purchaseOrderItem1));
+        assertEquals(purchaseOrderItem1, purchaseOrderItemService.createPurchaseOrderItem(purchaseOrderItem1));
     }
 
     /**
@@ -152,9 +152,9 @@ class PurchaseOrderItemServiceTests {
 
         purchaseOrderItems.add(purchaseOrderItem1);
 
-        when(purchaseOrderItemsRep.save(purchaseOrderItem1)).thenReturn(purchaseOrderItem1);
+        when(purchaseOrderItemRepository.save(purchaseOrderItem1)).thenReturn(purchaseOrderItem1);
 
-        assertEquals(purchaseOrderItem1, purchaseOrderItemsSer.updatePurchaseOrderItem(purchaseOrderItem1));
+        assertEquals(purchaseOrderItem1, purchaseOrderItemService.updatePurchaseOrderItem(purchaseOrderItem1));
     }
 
     /**
@@ -179,7 +179,7 @@ class PurchaseOrderItemServiceTests {
         PurchaseOrderItem purchaseOrderItem2 = new PurchaseOrderItem(2, 80, s2, si2, purchaseOrder2);
         purchaseOrderItems.add(purchaseOrderItem2);
 
-        purchaseOrderItemsSer.deletePurchaseOrderItemById(purchaseOrderItem2.getPurchaseOrderItemId());
-        verify(purchaseOrderItemsRep, times(1));
+        purchaseOrderItemService.deletePurchaseOrderItemById(purchaseOrderItem2.getPurchaseOrderItemId());
+        verify(purchaseOrderItemRepository, times(1));
     }
 }

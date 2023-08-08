@@ -1,8 +1,8 @@
 package com.test.controller;
 
-import com.main.beans.*;
 import com.main.controller.AddResponse;
 import com.main.controller.SalesInvoiceController;
+import com.main.dto.*;
 import com.main.service.SalesInvoiceService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -46,7 +46,17 @@ public class SalesInvoiceControllerTests {
     @InjectMocks
     SalesInvoiceController salesInvoiceController;
 
-    List<SalesInvoice> salesInvoices = new ArrayList<>();
+    List<SalesInvoiceDTO> salesInvoicesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    CustomerDTO customerDTO1 = new CustomerDTO(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", addressDTO1, storeDTO1);
+    CustomerDTO customerDTO2 = new CustomerDTO(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", addressDTO2, storeDTO2);
+    SalesInvoiceDTO salesInvoiceDTO1 = new SalesInvoiceDTO(1, 300.0, "16-04-2023", "348hwhsn38wu2j", companyDTO1, storeDTO1, customerDTO1);
+    SalesInvoiceDTO salesInvoiceDTO2 = new SalesInvoiceDTO(2, 400.0, "18-04-2023","567whsusjns7h", companyDTO2, storeDTO2, customerDTO2);
 
     /**
      * Test the getAllSalesInvoices method of SalesInvoiceController.
@@ -55,22 +65,10 @@ public class SalesInvoiceControllerTests {
     @Test
     @Order(1)
     public void test_getAllSalesInvoices(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
+        salesInvoicesDTO.add(salesInvoiceDTO1);
+        salesInvoicesDTO.add(salesInvoiceDTO2);
 
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h", com2, s2, customer2);
-        salesInvoices.add(salesInvoice2);
-
-        when(salesInvoiceService.getSalesInvoices()).thenReturn(salesInvoices);
+        when(salesInvoiceService.getSalesInvoices()).thenReturn(salesInvoicesDTO);
         assertEquals(2,salesInvoiceController.getAllSalesInvoices().size());
     }
 
@@ -81,24 +79,12 @@ public class SalesInvoiceControllerTests {
     @Test
     @Order(2)
     public void test_getSalesInvoiceById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
 
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
+        salesInvoicesDTO.add(salesInvoiceDTO1);
+        salesInvoicesDTO.add(salesInvoiceDTO2);
 
-
-        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h", com2, s2, customer2);
-        salesInvoices.add(salesInvoice2);
-
-        when(salesInvoiceService.getSalesInvoiceById(1)).thenReturn(salesInvoice1);
-        ResponseEntity<SalesInvoice> res  = salesInvoiceController.getSalesInvoiceById(1);
+        when(salesInvoiceService.getSalesInvoiceById(1)).thenReturn(salesInvoiceDTO1);
+        ResponseEntity<SalesInvoiceDTO> res  = salesInvoiceController.getSalesInvoiceById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getSalesInvoiceId());
     }
@@ -110,19 +96,9 @@ public class SalesInvoiceControllerTests {
     @Test
     @Order(3)
     public void test_createSalesInvoice(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        when(salesInvoiceService.createSalesInvoice(salesInvoice1)).thenReturn(salesInvoice1);
-        assertEquals(salesInvoice1,salesInvoiceController.createSalesInvoice(salesInvoice1));
+        when(salesInvoiceService.createSalesInvoice(salesInvoiceDTO1)).thenReturn(salesInvoiceDTO1);
+        assertEquals(salesInvoiceDTO1,salesInvoiceController.createSalesInvoice(salesInvoiceDTO1));
     }
 
     /**
@@ -132,21 +108,11 @@ public class SalesInvoiceControllerTests {
     @Test
     @Order(4)
     public void test_updateSalesInvoice(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        when(salesInvoiceService.updateSalesInvoice(salesInvoice1)).thenReturn(salesInvoice1);
-        ResponseEntity<SalesInvoice> res = salesInvoiceController.updateSalesInvoice(salesInvoice1);
+        when(salesInvoiceService.updateSalesInvoice(salesInvoiceDTO1)).thenReturn(salesInvoiceDTO1);
+        ResponseEntity<SalesInvoiceDTO> res = salesInvoiceController.updateSalesInvoice(salesInvoiceDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(salesInvoice1,res.getBody());
+        assertEquals(salesInvoiceDTO1,res.getBody());
     }
 
     /**
@@ -156,21 +122,11 @@ public class SalesInvoiceControllerTests {
     @Test
     @Order(5)
     public void test_deleteSalesInvoiceById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
+        int id = salesInvoiceDTO2.getSalesInvoiceId();
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
+        addResponse.setId(id);
         addResponse.setMsg("PurchaseInvoice deleted");
-        when(salesInvoiceService.deleteSalesInvoiceById(1)).thenReturn(addResponse);
-        assertEquals(addResponse,salesInvoiceController.deleteSalesInvoiceById(1));
+        when(salesInvoiceService.deleteSalesInvoiceById(id)).thenReturn(addResponse);
+        assertEquals(addResponse,salesInvoiceController.deleteSalesInvoiceById(id));
     }
 }

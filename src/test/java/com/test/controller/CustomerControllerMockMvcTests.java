@@ -58,6 +58,6 @@ public class CustomerControllerMockMvcTests {
         customers.add(customer1);
         customers.add(customer2);
 
-        when(customerService.getCustomers()).thenReturn(customers);
+//        when(customerService.getCustomers()).thenReturn(customers);
     }
 }

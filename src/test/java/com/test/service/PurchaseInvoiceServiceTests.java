@@ -1,6 +1,8 @@
 package com.test.service;
 
 import com.main.beans.*;
+import com.main.dto.*;
+import com.main.mapper.PurchaseInvoiceMapper;
 import com.main.repository.PurchaseInvoiceRepository;
 import com.main.service.PurchaseInvoiceService;
 import org.junit.jupiter.api.MethodOrderer;
@@ -42,7 +44,17 @@ class PurchaseInvoiceServiceTests {
     @InjectMocks
     PurchaseInvoiceService purchaseInvoiceSer;
 
-    List<PurchaseInvoice> purchaseInvoices = new ArrayList<>();
+    List<PurchaseInvoiceDTO> purchaseInvoicesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    SupplierDTO supplierDTO1 = new SupplierDTO(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", storeDTO1, companyDTO1, addressDTO1);
+    SupplierDTO supplierDTO2 = new SupplierDTO(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", storeDTO2, companyDTO2, addressDTO2);
+    PurchaseInvoiceDTO purchaseInvoiceDTO1 = new PurchaseInvoiceDTO(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", companyDTO1, supplierDTO1);
+    PurchaseInvoiceDTO purchaseInvoiceDTO2 = new PurchaseInvoiceDTO(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", companyDTO2, supplierDTO2);
 
     /**
      * Test the getPurchaseInvoices method of PurchaseInvoiceService.
@@ -51,19 +63,11 @@ class PurchaseInvoiceServiceTests {
     @Test
     @Order(1)
     public void test_getAllPurchaseInvoices() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
-        purchaseInvoices.add(purchaseInvoice1);
-        purchaseInvoices.add(purchaseInvoice2);
-        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoices);
+
+        purchaseInvoicesDTO.add(purchaseInvoiceDTO1);
+        purchaseInvoicesDTO.add(purchaseInvoiceDTO2);
+        List<PurchaseInvoice> purchaseInvoiceList = PurchaseInvoiceMapper.instance.dtoToModelList(purchaseInvoicesDTO);
+        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoiceList);
         assertEquals(2, purchaseInvoiceSer.getPurchaseInvoices().size());
     }
 
@@ -74,21 +78,12 @@ class PurchaseInvoiceServiceTests {
     @Test
     @Order(2)
     public void test_getPurchaseInvoiceById() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
-        purchaseInvoices.add(purchaseInvoice1);
-        purchaseInvoices.add(purchaseInvoice2);
-        int id = 1;
 
-        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoices);
+        purchaseInvoicesDTO.add(purchaseInvoiceDTO1);
+        purchaseInvoicesDTO.add(purchaseInvoiceDTO2);
+        int id = 1;
+        List<PurchaseInvoice> purchaseInvoiceList = PurchaseInvoiceMapper.instance.dtoToModelList(purchaseInvoicesDTO);
+        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoiceList);
 
         assertEquals(id, purchaseInvoiceSer.getPurchaseInvoiceById(id).getPurchaseInvoiceId());
     }
@@ -100,21 +95,12 @@ class PurchaseInvoiceServiceTests {
     @Test
     @Order(3)
     public void test_createPurchaseInvoice() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO1);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        when(purchaseInvoiceRep.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-
-        purchaseInvoices.add(purchaseInvoice1);
-
-        when(purchaseInvoiceRep.save(purchaseInvoice1)).thenReturn(purchaseInvoice1);
-
-        assertEquals(purchaseInvoice1, purchaseInvoiceSer.createPurchaseInvoice(purchaseInvoice1));
+        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceSer.createPurchaseInvoice(purchaseInvoiceDTO1));
     }
 
     /**
@@ -124,21 +110,12 @@ class PurchaseInvoiceServiceTests {
     @Test
     @Order(4)
     public void test_updatePurchaseInvoice() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO1);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        when(purchaseInvoiceRep.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-
-        PurchaseInvoice purchaseInvoice1 = new PurchaseInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", "77846jjnbgs832f", com1, supplier1);
-
-        purchaseInvoices.add(purchaseInvoice1);
-
-        when(purchaseInvoiceRep.save(purchaseInvoice1)).thenReturn(purchaseInvoice1);
-
-        assertEquals(purchaseInvoice1, purchaseInvoiceSer.updatePurchaseInvoice(purchaseInvoice1));
+        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceSer.updatePurchaseInvoice(purchaseInvoiceDTO1));
     }
 
     /**
@@ -148,18 +125,8 @@ class PurchaseInvoiceServiceTests {
     @Test
     @Order(5)
     public void test_deletePurchaseInvoiceById() {
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-
-        PurchaseInvoice purchaseInvoice2 = new PurchaseInvoice(2, 400.0, "18-04-2023","567whsusjns7h", "564hsjjnsuj8d", com2, supplier2);
-        purchaseInvoices.add(purchaseInvoice2);
-
-        purchaseInvoiceSer.deletePurchaseInvoiceById(purchaseInvoice2.getPurchaseInvoiceId());
+        PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO2);
+        purchaseInvoiceSer.deletePurchaseInvoiceById(purchaseInvoiceEntity.getPurchaseInvoiceId());
         verify(purchaseInvoiceRep, times(1));
     }
 }

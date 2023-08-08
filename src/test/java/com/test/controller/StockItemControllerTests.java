@@ -1,10 +1,10 @@
 package com.test.controller;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
-import com.main.beans.StockItem;
 import com.main.controller.AddResponse;
 import com.main.controller.StockItemController;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.StockItemDTO;
 import com.main.service.StockItemService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -48,7 +48,13 @@ public class StockItemControllerTests {
     @InjectMocks
     StockItemController stockItemController;
 
-    List<StockItem> stockItems = new ArrayList<>();
+    List<StockItemDTO> stockItemsDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StockItemDTO stockItemDTO1 = new StockItemDTO(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", companyDTO1);
+    StockItemDTO stockItemDTO2 = new StockItemDTO(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", companyDTO2);
 
     /**
      * Test the getAllStockItems method of StockItemController.
@@ -57,16 +63,11 @@ public class StockItemControllerTests {
     @Test
     @Order(1)
     public void test_getAllStockItems(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        stockItems.add(si1);
-        stockItems.add(si2);
 
-        when(stockItemService.getStockItems()).thenReturn(stockItems);
+        stockItemsDTO.add(stockItemDTO1);
+        stockItemsDTO.add(stockItemDTO2);
+
+        when(stockItemService.getStockItems()).thenReturn(stockItemsDTO);
         assertEquals(2,stockItemController.getAllStockItems().size());
     }
 
@@ -77,17 +78,12 @@ public class StockItemControllerTests {
     @Test
     @Order(2)
     public void test_getStockItemById(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        stockItems.add(si1);
-        stockItems.add(si2);
 
-        when(stockItemService.getStockItemById(1)).thenReturn(si1);
-        ResponseEntity<StockItem> res  = stockItemController.getStockItemById(1);
+        stockItemsDTO.add(stockItemDTO1);
+        stockItemsDTO.add(stockItemDTO2);
+
+        when(stockItemService.getStockItemById(1)).thenReturn(stockItemDTO1);
+        ResponseEntity<StockItemDTO> res  = stockItemController.getStockItemById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getStockItemId());
     }
@@ -99,13 +95,9 @@ public class StockItemControllerTests {
     @Test
     @Order(3)
     public void test_createStockItem(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        stockItems.add(si1);
 
-        when(stockItemService.createStockItem(si1)).thenReturn(si1);
-        assertEquals(si1,stockItemController.createStockItem(si1));
+        when(stockItemService.createStockItem(stockItemDTO1)).thenReturn(stockItemDTO1);
+        assertEquals(stockItemDTO1,stockItemController.createStockItem(stockItemDTO1));
     }
 
     /**
@@ -115,16 +107,11 @@ public class StockItemControllerTests {
     @Test
     @Order(4)
     public void test_updateStockItem(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        stockItems.add(si1);
 
-
-        when(stockItemService.updateStockItem(si1)).thenReturn(si1);
-        ResponseEntity<StockItem> res = stockItemController.updateStockItem(si1);
+        when(stockItemService.updateStockItem(stockItemDTO1)).thenReturn(stockItemDTO1);
+        ResponseEntity<StockItemDTO> res = stockItemController.updateStockItem(stockItemDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(si1,res.getBody());
+        assertEquals(stockItemDTO1,res.getBody());
     }
 
     /**
@@ -134,15 +121,11 @@ public class StockItemControllerTests {
     @Test
     @Order(5)
     public void test_deleteStockItemById(){
-        Address add1 = new Address(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        stockItems.add(si1);
-
+        int id = stockItemDTO2.getStockItemId();
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
+        addResponse.setId(id);
         addResponse.setMsg("StockItem deleted");
-        when(stockItemService.deleteStockItemById(1)).thenReturn(addResponse);
-        assertEquals(addResponse,stockItemController.deleteStockItemById(1));
+        when(stockItemService.deleteStockItemById(id)).thenReturn(addResponse);
+        assertEquals(addResponse,stockItemController.deleteStockItemById(id));
     }
 }

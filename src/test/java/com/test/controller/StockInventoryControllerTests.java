@@ -1,8 +1,8 @@
 package com.test.controller;
 
-import com.main.beans.*;
 import com.main.controller.AddResponse;
 import com.main.controller.StockInventoryController;
+import com.main.dto.*;
 import com.main.service.StockInventoryService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -46,7 +46,19 @@ public class StockInventoryControllerTests {
     @InjectMocks
     StockInventoryController stockInventoryController;
 
-    List<StockInventory> stockInventories = new ArrayList<>();
+    List<StockInventoryDTO> stockInventoriesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StockItemDTO stockItemDTO1 = new StockItemDTO(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", companyDTO1);
+    StockItemDTO stockItemDTO2 = new StockItemDTO(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", companyDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    SupplierDTO supplierDTO1 = new SupplierDTO(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", storeDTO1, companyDTO1, addressDTO1);
+    SupplierDTO supplierDTO2 = new SupplierDTO(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", storeDTO2, companyDTO2, addressDTO2);
+    StockInventoryDTO stockInventoryDTO1 = new StockInventoryDTO(1, 20, "01-04-2023", stockItemDTO1, storeDTO1, supplierDTO1);
+    StockInventoryDTO stockInventoryDTO2 = new StockInventoryDTO(2, 30, "23-03-2023", stockItemDTO2, storeDTO2, supplierDTO2);
 
     /**
      * Test the getAllStockInventories method of StockInventoryController.
@@ -55,22 +67,11 @@ public class StockInventoryControllerTests {
     @Test
     @Order(1)
     public void test_getAllStockInventories(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        StockInventory stockInventory1 = new StockInventory(1, 20, "01-04-2023", si1, s1, supplier1);
-        StockInventory stockInventory2 = new StockInventory(2, 30, "23-03-2023", si2, s2, supplier2);
-        stockInventories.add(stockInventory1);
-        stockInventories.add(stockInventory2);
 
-        when(stockInventoryService.getStockInventories()).thenReturn(stockInventories);
+        stockInventoriesDTO.add(stockInventoryDTO1);
+        stockInventoriesDTO.add(stockInventoryDTO2);
+
+        when(stockInventoryService.getStockInventories()).thenReturn(stockInventoriesDTO);
         assertEquals(2,stockInventoryController.getAllStockInventories().size());
     }
 
@@ -82,23 +83,12 @@ public class StockInventoryControllerTests {
     @Order(2)
     public void test_getStockInventoryById(){
 
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        StockItem si2 = new StockItem(2,"Shirt","Clothing","XYZ", 799.0,"25-02-2023", "", "A shirt", com2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        StockInventory stockInventory1 = new StockInventory(1, 20, "01-04-2023", si1, s1, supplier1);
-        StockInventory stockInventory2 = new StockInventory(2, 30, "23-03-2023", si2, s2, supplier2);
-        stockInventories.add(stockInventory1);
-        stockInventories.add(stockInventory2);
 
-        when(stockInventoryService.getStockInventoryById(1)).thenReturn(stockInventory1);
-        ResponseEntity<StockInventory> res  = stockInventoryController.getStockInventoryById(1);
+        stockInventoriesDTO.add(stockInventoryDTO1);
+        stockInventoriesDTO.add(stockInventoryDTO2);
+
+        when(stockInventoryService.getStockInventoryById(1)).thenReturn(stockInventoryDTO1);
+        ResponseEntity<StockInventoryDTO> res  = stockInventoryController.getStockInventoryById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getStockInventoryId());
     }
@@ -110,16 +100,10 @@ public class StockInventoryControllerTests {
     @Test
     @Order(3)
     public void test_createStockInventory(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        StockInventory stockInventory1 = new StockInventory(1, 20, "01-04-2023", si1, s1, supplier1);
-        stockInventories.add(stockInventory1);
 
-        when(stockInventoryService.createStockInventory(stockInventory1)).thenReturn(stockInventory1);
-        assertEquals(stockInventory1,stockInventoryController.createStockInventory(stockInventory1));
+
+        when(stockInventoryService.createStockInventory(stockInventoryDTO1)).thenReturn(stockInventoryDTO1);
+        assertEquals(stockInventoryDTO1,stockInventoryController.createStockInventory(stockInventoryDTO1));
     }
 
     /**
@@ -129,18 +113,11 @@ public class StockInventoryControllerTests {
     @Test
     @Order(4)
     public void test_updateStockInventory(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        StockInventory stockInventory1 = new StockInventory(1, 20, "01-04-2023", si1, s1, supplier1);
-        stockInventories.add(stockInventory1);
 
-        when(stockInventoryService.updateStockInventory(stockInventory1)).thenReturn(stockInventory1);
-        ResponseEntity<StockInventory> res = stockInventoryController.updateStockInventory(stockInventory1);
+        when(stockInventoryService.updateStockInventory(stockInventoryDTO1)).thenReturn(stockInventoryDTO1);
+        ResponseEntity<StockInventoryDTO> res = stockInventoryController.updateStockInventory(stockInventoryDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(stockInventory1,res.getBody());
+        assertEquals(stockInventoryDTO1,res.getBody());
     }
 
     /**
@@ -150,18 +127,12 @@ public class StockInventoryControllerTests {
     @Test
     @Order(5)
     public void test_deleteStockInventoryById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        StockItem si1 = new StockItem(1,"Cap","Clothing","XYZ", 159.0,"18-05-2023", "", "A cap", com1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        StockInventory stockInventory1 = new StockInventory(1, 20, "01-04-2023", si1, s1, supplier1);
-        stockInventories.add(stockInventory1);
+        int id = stockInventoryDTO2.getStockInventoryId();
 
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
+        addResponse.setId(id);
         addResponse.setMsg("StockInventory deleted");
-        when(stockInventoryService.deleteStockInventoryById(1)).thenReturn(addResponse);
-        assertEquals(addResponse,stockInventoryController.deleteStockInventoryById(1));
+        when(stockInventoryService.deleteStockInventoryById(id)).thenReturn(addResponse);
+        assertEquals(addResponse,stockInventoryController.deleteStockInventoryById(id));
     }
 }

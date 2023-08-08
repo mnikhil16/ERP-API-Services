@@ -1,11 +1,11 @@
 package com.test.controller;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
-import com.main.beans.Store;
-import com.main.beans.Supplier;
 import com.main.controller.AddResponse;
 import com.main.controller.SupplierController;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.StoreDTO;
+import com.main.dto.SupplierDTO;
 import com.main.service.SupplierService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -49,7 +49,15 @@ public class SupplierControllerTests {
     @InjectMocks
     SupplierController supplierController;
 
-    List<Supplier> suppliers = new ArrayList<>();
+    List<SupplierDTO> suppliersDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    SupplierDTO supplierDTO1 = new SupplierDTO(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", storeDTO1, companyDTO1, addressDTO1);
+    SupplierDTO supplierDTO2 = new SupplierDTO(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", storeDTO2, companyDTO2, addressDTO2);
 
     /**
      * Test the getAllSuppliers method of SupplierController.
@@ -58,18 +66,11 @@ public class SupplierControllerTests {
     @Test
     @Order(1)
     public void test_getAllSuppliers(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        suppliers.add(supplier1);
-        suppliers.add(supplier2);
 
-        when(supplierService.getSuppliers()).thenReturn(suppliers);
+        suppliersDTO.add(supplierDTO1);
+        suppliersDTO.add(supplierDTO2);
+
+        when(supplierService.getSuppliers()).thenReturn(suppliersDTO);
         assertEquals(2,supplierController.getAllSuppliers().size());
     }
 
@@ -80,19 +81,12 @@ public class SupplierControllerTests {
     @Test
     @Order(2)
     public void test_getSupplierById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        suppliers.add(supplier1);
-        suppliers.add(supplier2);
 
-        when(supplierService.getSupplierById(1)).thenReturn(supplier1);
-        ResponseEntity<Supplier> res  = supplierController.getSupplierById(1);
+        suppliersDTO.add(supplierDTO1);
+        suppliersDTO.add(supplierDTO2);
+
+        when(supplierService.getSupplierById(1)).thenReturn(supplierDTO1);
+        ResponseEntity<SupplierDTO> res  = supplierController.getSupplierById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getSupplierId());
     }
@@ -104,16 +98,9 @@ public class SupplierControllerTests {
     @Test
     @Order(3)
     public void test_createSupplier(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        suppliers.add(supplier1);
 
-
-        when(supplierService.createSupplier(supplier1)).thenReturn(supplier1);
-        assertEquals(supplier1,supplierController.createSupplier(supplier1));
+        when(supplierService.createSupplier(supplierDTO1)).thenReturn(supplierDTO1);
+        assertEquals(supplierDTO1,supplierController.createSupplier(supplierDTO1));
     }
 
     /**
@@ -123,16 +110,11 @@ public class SupplierControllerTests {
     @Test
     @Order(4)
     public void test_updateSupplier(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Supplier supplier1 = new Supplier(1,"James", "Smith", "jsmith@gmail.com","(+1) 555 1234567", s1, com1, add1);
-        suppliers.add(supplier1);
 
-        when(supplierService.updateSupplier(supplier1)).thenReturn(supplier1);
-        ResponseEntity<Supplier> res = supplierController.updateSupplier(supplier1);
+        when(supplierService.updateSupplier(supplierDTO1)).thenReturn(supplierDTO1);
+        ResponseEntity<SupplierDTO> res = supplierController.updateSupplier(supplierDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(supplier1,res.getBody());
+        assertEquals(supplierDTO1,res.getBody());
     }
 
     /**
@@ -142,16 +124,11 @@ public class SupplierControllerTests {
     @Test
     @Order(5)
     public void test_deleteSupplierById(){
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Supplier supplier2 = new Supplier(2,"John", "Doe", "jdoe@gmail.com","(+1) 555 1234567", s2, com2, add2);
-        suppliers.add(supplier2);
-
+        int id = supplierDTO2.getSupplierId();
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(2);
+        addResponse.setId(id);
         addResponse.setMsg("Supplier deleted");
-        when(supplierService.deleteSupplierById(2)).thenReturn(addResponse);
-        assertEquals(addResponse,supplierController.deleteSupplierById(2));
+        when(supplierService.deleteSupplierById(id)).thenReturn(addResponse);
+        assertEquals(addResponse,supplierController.deleteSupplierById(id));
     }
 }

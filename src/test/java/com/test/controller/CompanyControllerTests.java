@@ -48,7 +48,10 @@ public class CompanyControllerTests {
     CompanyController companyController;
 
     List<CompanyDTO> companyDTOList = new ArrayList<>();
-
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
     /**
      * Test the getAllCompanies method of CompanyController.
      * Verify that all the company objects are returned.
@@ -56,10 +59,7 @@ public class CompanyControllerTests {
     @Test
     @Order(1)
     public void test_getAllCompanies(){
-        AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
-        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+
         companyDTOList.add(companyDTO1);
         companyDTOList.add(companyDTO2);
 
@@ -74,10 +74,6 @@ public class CompanyControllerTests {
     @Test
     @Order(2)
     public void test_getCompanyById() {
-        AddressDTO addressDTO1 = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        AddressDTO addressDTO2 = new AddressDTO(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
-        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
         companyDTOList.add(companyDTO1);
         companyDTOList.add(companyDTO2);
 
@@ -94,12 +90,10 @@ public class CompanyControllerTests {
     @Test
     @Order(3)
     public void test_createCompany(){
-        AddressDTO addressDTO = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
-        companyDTOList.add(companyDTO);
+        companyDTOList.add(companyDTO1);
 
-        when(companyService.createCompany(companyDTO)).thenReturn(companyDTO);
-        assertEquals(companyDTO,companyController.createCompany(companyDTO));
+        when(companyService.createCompany(companyDTO1)).thenReturn(companyDTO1);
+        assertEquals(companyDTO1,companyController.createCompany(companyDTO1));
     }
 
     /**
@@ -109,14 +103,13 @@ public class CompanyControllerTests {
     @Test
     @Order(4)
     public void test_updateCompany(){
-        AddressDTO addressDTO = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
-        companyDTOList.add(companyDTO);
 
-        when(companyService.updateCompany(companyDTO)).thenReturn(companyDTO);
-        ResponseEntity<CompanyDTO> res = companyController.updateCompany(companyDTO);
+        companyDTOList.add(companyDTO1);
+
+        when(companyService.updateCompany(companyDTO1)).thenReturn(companyDTO1);
+        ResponseEntity<CompanyDTO> res = companyController.updateCompany(companyDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(companyDTO,res.getBody());
+        assertEquals(companyDTO1,res.getBody());
     }
 
     /**
@@ -126,9 +119,8 @@ public class CompanyControllerTests {
     @Test
     @Order(5)
     public void test_deleteCompanyById(){
-        AddressDTO addressDTO = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
-        int id = companyDTO.getCompanyId();
+
+        int id = companyDTO2.getCompanyId();
 
         AddResponse addResponse = new AddResponse();
         addResponse.setId(id);

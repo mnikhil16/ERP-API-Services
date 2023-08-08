@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -46,6 +47,10 @@ public class CompanyServiceTests {
     CompanyService companyService;
 
     List<CompanyDTO> companiesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
 
     /**
      * Test the getCompanies method of CompanyService.
@@ -54,10 +59,6 @@ public class CompanyServiceTests {
     @Test
     @Order(1)
     public void test_getAllCompanies() {
-        AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
-        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
         companiesDTO.add(companyDTO1);
         companiesDTO.add(companyDTO2);
         List<Company> companyList = CompanyMapper.instance.dtoToModelList(companiesDTO);
@@ -72,17 +73,17 @@ public class CompanyServiceTests {
     @Test
     @Order(2)
     public void test_getCompanyById() {
-        AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
-        CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
         companiesDTO.add(companyDTO1);
         companiesDTO.add(companyDTO2);
         int id = 1;
-        List<Company> companyList = CompanyMapper.instance.dtoToModelList(companiesDTO);
-        when(companyRepository.findAll()).thenReturn(companyList);
+        Company company = CompanyMapper.instance.dtoToModel(companyDTO1);
+
+        // Mocking the behavior of the companyRepository
+        when(companyRepository.findById(id)).thenReturn(Optional.of(company));
+
         assertEquals(id, companyService.getCompanyById(id).getCompanyId());
     }
+
 
     /**
      * Test the createCompany method of CompanyService.
@@ -91,14 +92,14 @@ public class CompanyServiceTests {
     @Test
     @Order(3)
     public void test_createCompany() {
-        AddressDTO addressDTO = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
 
         // mocking the response for save operation.
-        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO1);
         when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
+        System.out.println(companyDTO1);
+        System.out.println(companyService.createCompany(companyDTO1));
 
-        assertEquals(companyDTO, companyService.createCompany(companyDTO));
+        assertEquals(companyDTO1, companyService.createCompany(companyDTO1));
     }
 
     /**
@@ -108,12 +109,10 @@ public class CompanyServiceTests {
     @Test
     @Order(4)
     public void test_updateCompany() {
-        AddressDTO addressDTO = new AddressDTO(1, "1-69/3", "Washington St.", "Washington", "USA", 534043);
-        CompanyDTO companyDTO = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO);
-        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO1);
         when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
 
-        assertEquals(companyDTO, companyService.updateCompany(companyDTO));
+        assertEquals(companyDTO1, companyService.updateCompany(companyDTO1));
     }
 
     /**
@@ -123,9 +122,7 @@ public class CompanyServiceTests {
     @Test
     @Order(5)
     public void test_deleteCompanyById() {
-        AddressDTO addressDTO = new AddressDTO(2, "4-82/1", "Mario St.", "Canada", "USA", 657382);
-        CompanyDTO companyDTO = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO);
-        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
+        Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO2);
         companyService.deleteCompanyById(companyEntity.getCompanyId());
         verify(companyRepository, times(1));
     }

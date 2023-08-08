@@ -1,11 +1,11 @@
 package com.test.controller;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
-import com.main.beans.Customer;
-import com.main.beans.Store;
 import com.main.controller.AddResponse;
 import com.main.controller.CustomerController;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.CustomerDTO;
+import com.main.dto.StoreDTO;
 import com.main.service.CustomerService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -49,7 +49,15 @@ public class CustomerControllerTests {
     @InjectMocks
     CustomerController customerController;
 
-    List<Customer> customers = new ArrayList<>();
+    List<CustomerDTO> customersDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    CustomerDTO customerDTO1 = new CustomerDTO(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", addressDTO1, storeDTO1);
+    CustomerDTO customerDTO2 = new CustomerDTO(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", addressDTO2, storeDTO2);
 
     /**
      * Test the getAllCustomers method of CustomerController.
@@ -58,18 +66,11 @@ public class CustomerControllerTests {
     @Test
     @Order(1)
     public void test_getAllCustomers(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customers.add(customer1);
-        customers.add(customer2);
 
-        when(customerService.getCustomers()).thenReturn(customers);
+        customersDTO.add(customerDTO1);
+        customersDTO.add(customerDTO2);
+
+        when(customerService.getCustomers()).thenReturn(customersDTO);
         assertEquals(2,customerController.getAllCustomers().size());
     }
 
@@ -80,19 +81,12 @@ public class CustomerControllerTests {
     @Test
     @Order(2)
     public void test_getCustomerById() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customers.add(customer1);
-        customers.add(customer2);
 
-        when(customerService.getCustomerById(1)).thenReturn(customer1);
-        ResponseEntity<Customer> res = customerController.getCustomerById(1);
+        customersDTO.add(customerDTO1);
+        customersDTO.add(customerDTO2);
+
+        when(customerService.getCustomerById(1)).thenReturn(customerDTO1);
+        ResponseEntity<CustomerDTO> res = customerController.getCustomerById(1);
         assertEquals(HttpStatus.OK, res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getCustomerId());
 
@@ -105,18 +99,9 @@ public class CustomerControllerTests {
     @Test
     @Order(3)
     public void test_createCustomer(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        customers.add(customer1);
-
-        when(customerService.createCustomer(customer1)).thenReturn(customer1);
-        assertEquals(customer1,customerController.createCustomer(customer1));
+        when(customerService.createCustomer(customerDTO1)).thenReturn(customerDTO1);
+        assertEquals(customerDTO1,customerController.createCustomer(customerDTO1));
     }
 
     /**
@@ -126,21 +111,11 @@ public class CustomerControllerTests {
     @Test
     @Order(4)
     public void test_updateCustomer(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-
-        customers.add(customer1);
-
-        when(customerService.updateCustomer(customer1)).thenReturn(customer1);
-        ResponseEntity<Customer> res = customerController.updateCustomer(customer1);
+        when(customerService.updateCustomer(customerDTO1)).thenReturn(customerDTO1);
+        ResponseEntity<CustomerDTO> res = customerController.updateCustomer(customerDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(customer1,res.getBody());
+        assertEquals(customerDTO1,res.getBody());
     }
 
     /**
@@ -150,20 +125,11 @@ public class CustomerControllerTests {
     @Test
     @Order(5)
     public void test_deleteCustomerById(){
-
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-        customers.add(customer2);
-
+        int id = customerDTO2.getCustomerId();
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
+        addResponse.setId(id);
         addResponse.setMsg("Customer deleted");
-        when(customerService.deleteCustomer(2)).thenReturn(addResponse);
-        assertEquals(addResponse,customerController.deleteCustomerById(2));
+        when(customerService.deleteCustomer(id)).thenReturn(addResponse);
+        assertEquals(addResponse,customerController.deleteCustomerById(id));
     }
 }

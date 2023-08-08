@@ -1,10 +1,10 @@
 package com.test.controller;
 
-import com.main.beans.Address;
-import com.main.beans.Company;
-import com.main.beans.Store;
 import com.main.controller.AddResponse;
 import com.main.controller.StoreController;
+import com.main.dto.AddressDTO;
+import com.main.dto.CompanyDTO;
+import com.main.dto.StoreDTO;
 import com.main.service.StoreService;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -48,7 +48,13 @@ public class StoreControllerTests {
     @InjectMocks
     StoreController storeController;
 
-    List<Store> stores = new ArrayList<>();
+    List<StoreDTO> storesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
 
     /**
      * Test the getAllStores method of StoreController.
@@ -57,16 +63,11 @@ public class StoreControllerTests {
     @Test
     @Order(1)
     public void test_getAllStores(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        stores.add(s1);
-        stores.add(s2);
 
-        when(storeService.getStores()).thenReturn(stores);
+        storesDTO.add(storeDTO1);
+        storesDTO.add(storeDTO2);
+
+        when(storeService.getStores()).thenReturn(storesDTO);
         assertEquals(2,storeController.getStores().size());
     }
 
@@ -77,17 +78,12 @@ public class StoreControllerTests {
     @Test
     @Order(2)
     public void test_getStoreById(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        stores.add(s1);
-        stores.add(s2);
 
-        when(storeService.getStoreById(1)).thenReturn(s1);
-        ResponseEntity<Store> res  = storeController.getStoreById(1);
+        storesDTO.add(storeDTO1);
+        storesDTO.add(storeDTO2);
+
+        when(storeService.getStoreById(1)).thenReturn(storeDTO1);
+        ResponseEntity<StoreDTO> res  = storeController.getStoreById(1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
         assertEquals(1, Objects.requireNonNull(res.getBody()).getStoreId());
     }
@@ -99,14 +95,9 @@ public class StoreControllerTests {
     @Test
     @Order(3)
     public void test_createStore(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        stores.add(s1);
 
-
-        when(storeService.createStore(s1)).thenReturn(s1);
-        assertEquals(s1,storeController.createStore(s1));
+        when(storeService.createStore(storeDTO1)).thenReturn(storeDTO1);
+        assertEquals(storeDTO1,storeController.createStore(storeDTO1));
     }
 
     /**
@@ -116,15 +107,11 @@ public class StoreControllerTests {
     @Test
     @Order(4)
     public void test_updateStore(){
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        stores.add(s1);
 
-        when(storeService.updateStore(s1)).thenReturn(s1);
-        ResponseEntity<Store> res = storeController.updateStore(s1);
+        when(storeService.updateStore(storeDTO1)).thenReturn(storeDTO1);
+        ResponseEntity<StoreDTO> res = storeController.updateStore(storeDTO1);
         assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(s1,res.getBody());
+        assertEquals(storeDTO1,res.getBody());
     }
 
     /**
@@ -134,15 +121,11 @@ public class StoreControllerTests {
     @Test
     @Order(5)
     public void test_deleteStoreById(){
-        Address add = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Company com = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add);
-        Store s = new Store(1, "Food Store", "Washington St.", com, add);
-        stores.add(s);
-
+        int id = storeDTO2.getStoreId();
         AddResponse addResponse = new AddResponse();
-        addResponse.setId(1);
+        addResponse.setId(id);
         addResponse.setMsg("Store deleted");
-        when(storeService.deleteStoreById(1)).thenReturn(addResponse);
-        assertEquals(addResponse,storeController.deleteStoreById(1));
+        when(storeService.deleteStoreById(id)).thenReturn(addResponse);
+        assertEquals(addResponse,storeController.deleteStoreById(id));
     }
 }

@@ -1,6 +1,8 @@
 package com.test.service;
 
 import com.main.beans.*;
+import com.main.dto.*;
+import com.main.mapper.SalesInvoiceMapper;
 import com.main.repository.SalesInvoiceRepository;
 import com.main.service.SalesInvoiceService;
 import org.junit.jupiter.api.MethodOrderer;
@@ -37,12 +39,22 @@ import static org.mockito.Mockito.*;
 class SalesInvoiceServiceTests {
 
     @Mock
-    SalesInvoiceRepository salesInvoiceRep;
+    SalesInvoiceRepository salesInvoiceRepository;
 
     @InjectMocks
-    SalesInvoiceService salesInvoiceSer;
+    SalesInvoiceService salesInvoiceService;
 
-    List<SalesInvoice> salesInvoices = new ArrayList<>();
+    List<SalesInvoiceDTO> salesInvoicesDTO = new ArrayList<>();
+    AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+    AddressDTO addressDTO2 = new AddressDTO(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
+    CompanyDTO companyDTO1 = new CompanyDTO(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", addressDTO1);
+    CompanyDTO companyDTO2 = new CompanyDTO(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", addressDTO2);
+    StoreDTO storeDTO1 = new StoreDTO(1, "Laundry", "Washington St.", companyDTO1, addressDTO1);
+    StoreDTO storeDTO2 = new StoreDTO(2, "Food Store", "Washington St.", companyDTO2, addressDTO2);
+    CustomerDTO customerDTO1 = new CustomerDTO(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", addressDTO1, storeDTO1);
+    CustomerDTO customerDTO2 = new CustomerDTO(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", addressDTO2, storeDTO2);
+    SalesInvoiceDTO salesInvoiceDTO1 = new SalesInvoiceDTO(1, 300.0, "16-04-2023", "348hwhsn38wu2j", companyDTO1, storeDTO1, customerDTO1);
+    SalesInvoiceDTO salesInvoiceDTO2 = new SalesInvoiceDTO(2, 400.0, "18-04-2023","567whsusjns7h", companyDTO2, storeDTO2, customerDTO2);
 
     /**
      * Test the getSalesInvoices method of SalesInvoiceService.
@@ -51,23 +63,12 @@ class SalesInvoiceServiceTests {
     @Test
     @Order(1)
     public void test_getAllSalesInvoices() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
 
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h", com2, s2, customer2);
-        salesInvoices.add(salesInvoice2);
-
-        when(salesInvoiceRep.findAll()).thenReturn(salesInvoices);
-        assertEquals(2, salesInvoiceSer.getSalesInvoices().size());
+        salesInvoicesDTO.add(salesInvoiceDTO1);
+        salesInvoicesDTO.add(salesInvoiceDTO2);
+        List<SalesInvoice> salesInvoiceList = SalesInvoiceMapper.instance.dtoToModelList(salesInvoicesDTO);
+        when(salesInvoiceRepository.findAll()).thenReturn(salesInvoiceList);
+        assertEquals(2, salesInvoiceService.getSalesInvoices().size());
     }
 
     /**
@@ -77,25 +78,14 @@ class SalesInvoiceServiceTests {
     @Test
     @Order(2)
     public void test_getSalesInvoiceById() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
 
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h", com2, s2, customer2);
-        salesInvoices.add(salesInvoice2);
+        salesInvoicesDTO.add(salesInvoiceDTO1);
+        salesInvoicesDTO.add(salesInvoiceDTO2);
         int id = 1;
+        List<SalesInvoice> salesInvoiceList = SalesInvoiceMapper.instance.dtoToModelList(salesInvoicesDTO);
+        when(salesInvoiceRepository.findAll()).thenReturn(salesInvoiceList);
 
-        when(salesInvoiceRep.findAll()).thenReturn(salesInvoices);
-
-        assertEquals(id, salesInvoiceSer.getSalesInvoiceById(id).getSalesInvoiceId());
+        assertEquals(id, salesInvoiceService.getSalesInvoiceById(id).getSalesInvoiceId());
     }
 
     /**
@@ -105,21 +95,12 @@ class SalesInvoiceServiceTests {
     @Test
     @Order(3)
     public void test_createSalesInvoice() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO1);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
+        when(salesInvoiceRepository.save(salesInvoiceEntity)).thenReturn(salesInvoiceEntity);
 
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-
-        salesInvoices.add(salesInvoice1);
-
-        when(salesInvoiceRep.save(salesInvoice1)).thenReturn(salesInvoice1);
-
-        assertEquals(salesInvoice1, salesInvoiceSer.createSalesInvoice(salesInvoice1));
+        assertEquals(salesInvoiceDTO1, salesInvoiceService.createSalesInvoice(salesInvoiceDTO1));
     }
 
     /**
@@ -129,20 +110,11 @@ class SalesInvoiceServiceTests {
     @Test
     @Order(4)
     public void test_updateSalesInvoice() {
-        Address add1 = new Address(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
+        SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO1);
 
-        Company com1 = new Company(1, "AaBbCc", "Retail", "www.AaBbCc.com", "12unn93i4ifmr8974", add1);
+        when(salesInvoiceRepository.save(salesInvoiceEntity)).thenReturn(salesInvoiceEntity);
 
-        Store s1 = new Store(1, "Laundry", "Washington St.", com1, add1);
-
-        Customer customer1 = new Customer(1,"James", "Smith", "JSmith", "2002-01-19",21, "jsmith@gmail.com","(+1) 555 1234567", s1, add1);
-
-        SalesInvoice salesInvoice1 = new SalesInvoice(1, 300.0, "16-04-2023", "348hwhsn38wu2j", com1, s1, customer1);
-        salesInvoices.add(salesInvoice1);
-
-        when(salesInvoiceRep.save(salesInvoice1)).thenReturn(salesInvoice1);
-
-        assertEquals(salesInvoice1, salesInvoiceSer.updateSalesInvoice(salesInvoice1));
+        assertEquals(salesInvoiceDTO1, salesInvoiceService.updateSalesInvoice(salesInvoiceDTO1));
     }
 
     /**
@@ -152,18 +124,8 @@ class SalesInvoiceServiceTests {
     @Test
     @Order(5)
     public void test_deleteSalesInvoiceById() {
-        Address add2 = new Address(2,"4-82/1", "Mario St.", "Canada", "USA", 657382);
-
-        Company com2 = new Company(2, "BbCcDd", "Retail", "www.BbCcDd.com", "12uuen3ii4544m", add2);
-
-        Store s2 = new Store(2, "Food Store", "Washington St.", com2, add2);
-
-        Customer customer2 = new Customer(2,"John", "Doe", "JDoe", "2003-02-20", 20,"jdoe@gmail.com","(+1) 555 1234567", s2, add2);
-
-        SalesInvoice salesInvoice2 = new SalesInvoice(2, 400.0, "18-04-2023","567whsusjns7h", com2, s2, customer2);
-        salesInvoices.add(salesInvoice2);
-
-        salesInvoiceSer.deleteSalesInvoiceById(salesInvoice2.getSalesInvoiceId());
-        verify(salesInvoiceRep, times(1));
+        SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO2);
+        salesInvoiceService.deleteSalesInvoiceById(salesInvoiceEntity.getSalesInvoiceId());
+        verify(salesInvoiceRepository, times(1));
     }
 }
