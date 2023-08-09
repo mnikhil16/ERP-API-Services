@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -84,8 +85,10 @@ class StockInventoryServiceTests {
         stockInventoriesDTO.add(stockInventoryDTO1);
         stockInventoriesDTO.add(stockInventoryDTO2);
         int id = 1;
-        List<StockInventory> stockInventoryList = StockInventoryMapper.instance.dtoToModelList(stockInventoriesDTO);
-        when(stockInventoryRepository.findAll()).thenReturn(stockInventoryList);
+        StockInventory stockInventory = StockInventoryMapper.instance.dtoToModel(stockInventoryDTO1);
+
+        // Mocking the behavior of the stockInventoryRepository
+        when(stockInventoryRepository.findById(id)).thenReturn(Optional.of(stockInventory));
 
         assertEquals(id, stockInventoryService.getStockInventoryById(id).getStockInventoryId());
     }

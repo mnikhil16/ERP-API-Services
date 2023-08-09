@@ -81,13 +81,10 @@ public class PurchaseInvoiceControllerTests {
     @Order(2)
     public void test_getPurchaseInvoiceById(){
 
-        purchaseInvoicesDTO.add(purchaseInvoiceDTO1);
-        purchaseInvoicesDTO.add(purchaseInvoiceDTO2);
-
         when(purchaseInvoiceService.getPurchaseInvoiceById(1)).thenReturn(purchaseInvoiceDTO1);
-        ResponseEntity<PurchaseInvoiceDTO> res = purchaseInvoiceController.getPurchaseInvoiceById(1);
-        assertEquals(HttpStatus.OK, res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getPurchaseInvoiceId());
+        ResponseEntity<PurchaseInvoiceDTO> responseEntity = purchaseInvoiceController.getPurchaseInvoiceById(1);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getPurchaseInvoiceId());
     }
 
     /**

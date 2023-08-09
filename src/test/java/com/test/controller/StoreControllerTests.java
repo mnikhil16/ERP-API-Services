@@ -78,14 +78,11 @@ public class StoreControllerTests {
     @Test
     @Order(2)
     public void test_getStoreById(){
-
-        storesDTO.add(storeDTO1);
-        storesDTO.add(storeDTO2);
-
+        
         when(storeService.getStoreById(1)).thenReturn(storeDTO1);
-        ResponseEntity<StoreDTO> res  = storeController.getStoreById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getStoreId());
+        ResponseEntity<StoreDTO> responseEntity  = storeController.getStoreById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getStoreId());
     }
 
     /**

@@ -74,13 +74,11 @@ public class CompanyControllerTests {
     @Test
     @Order(2)
     public void test_getCompanyById() {
-        companyDTOList.add(companyDTO1);
-        companyDTOList.add(companyDTO2);
 
         when(companyService.getCompanyById(1)).thenReturn(companyDTO1);
-        ResponseEntity<CompanyDTO> res = companyController.getCompanyById(1);
-        assertEquals(HttpStatus.OK, res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getCompanyId());
+        ResponseEntity<CompanyDTO> responseEntity = companyController.getCompanyById(1);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getCompanyId());
     }
 
     /**

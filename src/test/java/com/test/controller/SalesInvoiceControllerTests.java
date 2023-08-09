@@ -80,13 +80,10 @@ public class SalesInvoiceControllerTests {
     @Order(2)
     public void test_getSalesInvoiceById(){
 
-        salesInvoicesDTO.add(salesInvoiceDTO1);
-        salesInvoicesDTO.add(salesInvoiceDTO2);
-
         when(salesInvoiceService.getSalesInvoiceById(1)).thenReturn(salesInvoiceDTO1);
-        ResponseEntity<SalesInvoiceDTO> res  = salesInvoiceController.getSalesInvoiceById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getSalesInvoiceId());
+        ResponseEntity<SalesInvoiceDTO> responseEntity  = salesInvoiceController.getSalesInvoiceById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getSalesInvoiceId());
     }
 
     /**

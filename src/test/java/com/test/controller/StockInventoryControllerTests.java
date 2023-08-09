@@ -82,15 +82,11 @@ public class StockInventoryControllerTests {
     @Test
     @Order(2)
     public void test_getStockInventoryById(){
-
-
-        stockInventoriesDTO.add(stockInventoryDTO1);
-        stockInventoriesDTO.add(stockInventoryDTO2);
-
+        
         when(stockInventoryService.getStockInventoryById(1)).thenReturn(stockInventoryDTO1);
-        ResponseEntity<StockInventoryDTO> res  = stockInventoryController.getStockInventoryById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getStockInventoryId());
+        ResponseEntity<StockInventoryDTO> responseEntity  = stockInventoryController.getStockInventoryById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getStockInventoryId());
     }
 
     /**

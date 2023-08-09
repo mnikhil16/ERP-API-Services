@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -39,10 +40,10 @@ import static org.mockito.Mockito.*;
 public class CustomerServiceTests {
 
     @Mock
-    CustomerRepository customerRep;
+    CustomerRepository customerRepository;
 
     @InjectMocks
-    CustomerService customerSer;
+    CustomerService customerService;
 
     List<CustomerDTO> customersDTO = new ArrayList<>();
     AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
@@ -65,8 +66,8 @@ public class CustomerServiceTests {
         customersDTO.add(customerDTO1);
         customersDTO.add(customerDTO2);
         List<Customer> customerList = CustomerMapper.instance.dtoToModelList(customersDTO);
-        when(customerRep.findAll()).thenReturn(customerList);
-        assertEquals(2, customerSer.getCustomers().size());
+        when(customerRepository.findAll()).thenReturn(customerList);
+        assertEquals(2, customerService.getCustomers().size());
     }
 
     /**
@@ -78,12 +79,12 @@ public class CustomerServiceTests {
     public void test_getCustomerById(){
 
         customersDTO.add(customerDTO1);
-        customersDTO.add(customerDTO2);
         int id=1;
-        List<Customer> customerList = CustomerMapper.instance.dtoToModelList(customersDTO);
-        when(customerRep.findAll()).thenReturn(customerList);
+        Customer customer = CustomerMapper.instance.dtoToModel(customerDTO1);
+        // Mocking the behavior of the customerRepository
+        when(customerRepository.findById(id)).thenReturn(Optional.of(customer));
 
-        assertEquals(id, customerSer.getCustomerById(id).getCustomerId());
+        assertEquals(id, customerService.getCustomerById(id).getCustomerId());
     }
 
     /**
@@ -95,9 +96,9 @@ public class CustomerServiceTests {
     public void test_createCustomer(){
         Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO1);
 
-        when(customerRep.save(customerEntity)).thenReturn(customerEntity);
+        when(customerRepository.save(customerEntity)).thenReturn(customerEntity);
 
-        assertEquals(customerDTO1, customerSer.createCustomer(customerDTO1));
+        assertEquals(customerDTO1, customerService.createCustomer(customerDTO1));
     }
 
     /**
@@ -109,9 +110,9 @@ public class CustomerServiceTests {
     public void test_updateCustomer(){
         Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO1);
 
-        when(customerRep.save(customerEntity)).thenReturn(customerEntity);
+        when(customerRepository.save(customerEntity)).thenReturn(customerEntity);
 
-        assertEquals(customerDTO1, customerSer.updateCustomer(customerDTO1));
+        assertEquals(customerDTO1, customerService.updateCustomer(customerDTO1));
     }
 
     /**
@@ -123,7 +124,7 @@ public class CustomerServiceTests {
     public void test_deleteCustomerById(){
         Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO2);
 
-        customerSer.deleteCustomer(customerEntity.getCustomerId());
-        verify(customerRep,times(1));
+        customerService.deleteCustomer(customerEntity.getCustomerId());
+        verify(customerRepository,times(1));
     }
 }

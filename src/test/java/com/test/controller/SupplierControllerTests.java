@@ -82,13 +82,10 @@ public class SupplierControllerTests {
     @Order(2)
     public void test_getSupplierById(){
 
-        suppliersDTO.add(supplierDTO1);
-        suppliersDTO.add(supplierDTO2);
-
         when(supplierService.getSupplierById(1)).thenReturn(supplierDTO1);
-        ResponseEntity<SupplierDTO> res  = supplierController.getSupplierById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getSupplierId());
+        ResponseEntity<SupplierDTO> responseEntity  = supplierController.getSupplierById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getSupplierId());
     }
 
     /**

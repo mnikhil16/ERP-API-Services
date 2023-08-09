@@ -74,7 +74,6 @@ public class CompanyServiceTests {
     @Order(2)
     public void test_getCompanyById() {
         companiesDTO.add(companyDTO1);
-        companiesDTO.add(companyDTO2);
         int id = 1;
         Company company = CompanyMapper.instance.dtoToModel(companyDTO1);
 

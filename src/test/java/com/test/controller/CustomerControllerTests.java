@@ -81,14 +81,11 @@ public class CustomerControllerTests {
     @Test
     @Order(2)
     public void test_getCustomerById() {
-
-        customersDTO.add(customerDTO1);
-        customersDTO.add(customerDTO2);
-
+        
         when(customerService.getCustomerById(1)).thenReturn(customerDTO1);
-        ResponseEntity<CustomerDTO> res = customerController.getCustomerById(1);
-        assertEquals(HttpStatus.OK, res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getCustomerId());
+        ResponseEntity<CustomerDTO> responseEntity = customerController.getCustomerById(1);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getCustomerId());
 
     }
 

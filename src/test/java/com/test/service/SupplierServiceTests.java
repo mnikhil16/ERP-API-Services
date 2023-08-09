@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -80,11 +81,11 @@ public class SupplierServiceTests {
     @Order(2)
     public void test_getSupplierById(){
         suppliersDTO.add(supplierDTO1);
-        suppliersDTO.add(supplierDTO2);
         int id=1;
-        List<Supplier> supplierList = SupplierMapper.instance.dtoToModelList(suppliersDTO);
+        Supplier supplier = SupplierMapper.instance.dtoToModel(supplierDTO1);
 
-        when(supplierRepository.findAll()).thenReturn(supplierList);
+        // Mocking the behavior of the supplierRepository
+        when(supplierRepository.findById(id)).thenReturn(Optional.of(supplier));
 
         assertEquals(id, supplierService.getSupplierById(id).getSupplierId());
     }

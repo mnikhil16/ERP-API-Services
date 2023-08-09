@@ -2,6 +2,7 @@ package com.test.service;
 
 import com.main.beans.*;
 import com.main.dto.*;
+import com.main.mapper.CompanyMapper;
 import com.main.mapper.SalesItemMapper;
 import com.main.repository.SalesItemRepository;
 import com.main.service.SalesItemService;
@@ -15,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -85,11 +87,12 @@ class SalesItemServiceTests {
 
         salesItemsDTO.add(salesItemDTO1);
         salesItemsDTO.add(salesItemDTO2);
-        List<SalesItem> salesItemList = SalesItemMapper.instance.dtoToModelList(salesItemsDTO);
-
         int id = 1;
 
-        when(salesItemRepository.findAll()).thenReturn(salesItemList);
+        SalesItem salesItem = SalesItemMapper.instance.dtoToModel(salesItemDTO1);
+
+        // Mocking the behavior of the salesItemRepository
+        when(salesItemRepository.findById(id)).thenReturn(Optional.of(salesItem));
 
         assertEquals(id, salesItemService.getSalesItemById(id).getSalesItemId());
     }

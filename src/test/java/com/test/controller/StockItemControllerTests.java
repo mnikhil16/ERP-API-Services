@@ -78,14 +78,11 @@ public class StockItemControllerTests {
     @Test
     @Order(2)
     public void test_getStockItemById(){
-
-        stockItemsDTO.add(stockItemDTO1);
-        stockItemsDTO.add(stockItemDTO2);
-
+        
         when(stockItemService.getStockItemById(1)).thenReturn(stockItemDTO1);
-        ResponseEntity<StockItemDTO> res  = stockItemController.getStockItemById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getStockItemId());
+        ResponseEntity<StockItemDTO> responseEntity  = stockItemController.getStockItemById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getStockItemId());
     }
 
     /**

@@ -93,9 +93,9 @@ public class PurchaseOrderControllerTests {
         purchaseOrders.add(purchaseOrder2);
 
         when(purchaseOrderService.getPurchaseOrderById(1)).thenReturn(purchaseOrder1);
-        ResponseEntity<PurchaseOrder> res  = purchaseOrderController.getPurchaseOrderById(1);
-        assertEquals(HttpStatus.OK,res.getStatusCode());
-        assertEquals(1, Objects.requireNonNull(res.getBody()).getPurchaseOrderId());
+        ResponseEntity<PurchaseOrder> responseEntity  = purchaseOrderController.getPurchaseOrderById(1);
+        assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+        assertEquals(1, Objects.requireNonNull(responseEntity.getBody()).getPurchaseOrderId());
     }
 
     /**

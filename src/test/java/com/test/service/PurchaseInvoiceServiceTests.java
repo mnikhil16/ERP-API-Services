@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -39,10 +40,10 @@ import static org.mockito.Mockito.*;
 class PurchaseInvoiceServiceTests {
 
     @Mock
-    PurchaseInvoiceRepository purchaseInvoiceRep;
+    PurchaseInvoiceRepository purchaseInvoiceRepository;
 
     @InjectMocks
-    PurchaseInvoiceService purchaseInvoiceSer;
+    PurchaseInvoiceService purchaseInvoiceService;
 
     List<PurchaseInvoiceDTO> purchaseInvoicesDTO = new ArrayList<>();
     AddressDTO addressDTO1 = new AddressDTO(1,"1-69/3", "Washington St.", "Washington", "USA", 534043);
@@ -67,8 +68,8 @@ class PurchaseInvoiceServiceTests {
         purchaseInvoicesDTO.add(purchaseInvoiceDTO1);
         purchaseInvoicesDTO.add(purchaseInvoiceDTO2);
         List<PurchaseInvoice> purchaseInvoiceList = PurchaseInvoiceMapper.instance.dtoToModelList(purchaseInvoicesDTO);
-        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoiceList);
-        assertEquals(2, purchaseInvoiceSer.getPurchaseInvoices().size());
+        when(purchaseInvoiceRepository.findAll()).thenReturn(purchaseInvoiceList);
+        assertEquals(2, purchaseInvoiceService.getPurchaseInvoices().size());
     }
 
     /**
@@ -82,10 +83,12 @@ class PurchaseInvoiceServiceTests {
         purchaseInvoicesDTO.add(purchaseInvoiceDTO1);
         purchaseInvoicesDTO.add(purchaseInvoiceDTO2);
         int id = 1;
-        List<PurchaseInvoice> purchaseInvoiceList = PurchaseInvoiceMapper.instance.dtoToModelList(purchaseInvoicesDTO);
-        when(purchaseInvoiceRep.findAll()).thenReturn(purchaseInvoiceList);
+        PurchaseInvoice purchaseInvoice = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO1);
 
-        assertEquals(id, purchaseInvoiceSer.getPurchaseInvoiceById(id).getPurchaseInvoiceId());
+        // Mocking the behavior of the PurchaseInvoiceRepository
+        when(purchaseInvoiceRepository.findById(id)).thenReturn(Optional.of(purchaseInvoice));
+
+        assertEquals(id, purchaseInvoiceService.getPurchaseInvoiceById(id).getPurchaseInvoiceId());
     }
 
     /**
@@ -98,9 +101,9 @@ class PurchaseInvoiceServiceTests {
 
         PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO1);
 
-        when(purchaseInvoiceRep.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
+        when(purchaseInvoiceRepository.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceSer.createPurchaseInvoice(purchaseInvoiceDTO1));
+        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceService.createPurchaseInvoice(purchaseInvoiceDTO1));
     }
 
     /**
@@ -113,9 +116,9 @@ class PurchaseInvoiceServiceTests {
 
         PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO1);
 
-        when(purchaseInvoiceRep.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
+        when(purchaseInvoiceRepository.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceSer.updatePurchaseInvoice(purchaseInvoiceDTO1));
+        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoiceDTO1));
     }
 
     /**
@@ -126,7 +129,7 @@ class PurchaseInvoiceServiceTests {
     @Order(5)
     public void test_deletePurchaseInvoiceById() {
         PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO2);
-        purchaseInvoiceSer.deletePurchaseInvoiceById(purchaseInvoiceEntity.getPurchaseInvoiceId());
-        verify(purchaseInvoiceRep, times(1));
+        purchaseInvoiceService.deletePurchaseInvoiceById(purchaseInvoiceEntity.getPurchaseInvoiceId());
+        verify(purchaseInvoiceRepository, times(1));
     }
 }
