@@ -4,15 +4,10 @@ import jakarta.persistence.*;
 
 public class CompanyDTO {
     Integer companyId;
-
     String companyName;
-
     String type;
-
     String website;
-
     String  gst;
-
     AddressDTO addressDTO;
 
     public CompanyDTO(){}

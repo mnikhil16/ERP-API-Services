@@ -3,29 +3,12 @@ package com.main.dto;
 import jakarta.persistence.*;
 
 public class PurchaseInvoiceDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "purchase_invoice_id")
     Integer purchaseInvoiceId;
-
-    @Column(name = "amount")
     Double amount;
-
-    @Column(name = "purchase_date")
     String purchaseDate;
-
-    @Column(name = "purchase_invoice_no")
     String purchaseInvoiceNo;
-
-    @Column(name = "supplier_invoice_no")
     String supplierInvoiceNo;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
     CompanyDTO companyDTO;
-
-    @ManyToOne
-    @JoinColumn(name = "supplier_id")
     SupplierDTO supplierDTO;
 
     public PurchaseInvoiceDTO(){}

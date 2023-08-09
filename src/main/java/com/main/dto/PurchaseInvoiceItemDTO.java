@@ -3,27 +3,11 @@ package com.main.dto;
 import jakarta.persistence.*;
 
 public class PurchaseInvoiceItemDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "purchase_invoice_items_id")
     Integer purchaseInvoiceItemId;
-
-    @Column(name = "quantity")
     Integer quantity;
-
-    @Column(name = "amount")
     Double amount;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id")
     StoreDTO storeDTO;
-
-    @ManyToOne
-    @JoinColumn(name = "stock_item_id")
     StockItemDTO stockItemDTO;
-
-    @ManyToOne
-    @JoinColumn(name = "purchase_invoice_id")
     PurchaseInvoiceDTO purchaseInvoiceDTO;
 
     public PurchaseInvoiceItemDTO(){}

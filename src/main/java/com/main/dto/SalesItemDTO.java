@@ -1,25 +1,10 @@
 package com.main.dto;
 
-import jakarta.persistence.*;
-
 public class SalesItemDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "sales_items_id")
     Integer salesItemId;
-
-    @Column(name = "quantity")
     Integer quantity;
-
-    @Column(name = "amount")
     Double amount;
-
-    @ManyToOne
-    @JoinColumn(name = "sales_invoice_id")
     SalesInvoiceDTO salesInvoiceDTO;
-
-    @OneToOne
-    @JoinColumn(name = "stock_item_id")
     StockItemDTO stockItemDTO;
 
     public SalesItemDTO(){}

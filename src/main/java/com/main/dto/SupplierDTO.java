@@ -1,35 +1,13 @@
 package com.main.dto;
 
-import jakarta.persistence.*;
-
 public class SupplierDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "supplier_id")
     Integer supplierId;
-
-    @Column(name = "first_name")
     String firstName;
-
-    @Column(name = "last_name")
     String lastName;
-
-    @Column(name = "email")
     String email;
-
-    @Column(name = "phone_number")
     String phoneNumber;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id")
     StoreDTO storeDTO;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
     CompanyDTO companyDTO;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
     AddressDTO addressDTO;
 
     public SupplierDTO(){}

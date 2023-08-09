@@ -4,23 +4,10 @@ package com.main.dto;
 import jakarta.persistence.*;
 
 public class StoreDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "store_id")
     Integer storeId;
-
-    @Column(name = "storeName")
     String storeName;
-
-    @Column(name = "branch")
     String branch;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
     CompanyDTO companyDTO;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "addressId")
     AddressDTO addressDTO;
 
     public StoreDTO(Integer storeId, String storeName, String branch, CompanyDTO companyDTO, AddressDTO addressDTO) {

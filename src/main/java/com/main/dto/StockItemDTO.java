@@ -1,37 +1,14 @@
 package com.main.dto;
 
-import com.main.beans.Company;
-import jakarta.persistence.*;
-
 public class StockItemDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "stock_item_id")
     Integer stockItemId;
-
-    @Column(name = "item_name")
     String itemName;
-
-    @Column(name = "item_type")
     String itemType;
-
-    @Column(name = "brand_name")
     String brandName;
-
-    @Column(name = "price")
     Double price;
-
-    @Column(name = "mfd")
     String manufacturedDate;
-
-    @Column(name = "exd")
     String expiryDate;
-
-    @Column(name = "description")
     String description;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id")
     CompanyDTO companyDTO;
 
     public StockItemDTO(){}
