@@ -95,10 +95,10 @@ public class CompanyServiceTests {
         // mocking the response for save operation.
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO1);
         when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
-        System.out.println(companyDTO1);
-        System.out.println(companyService.createCompany(companyDTO1));
 
         assertEquals(companyDTO1, companyService.createCompany(companyDTO1));
+
+
     }
 
     /**
