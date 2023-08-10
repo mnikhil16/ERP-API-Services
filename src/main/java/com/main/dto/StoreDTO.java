@@ -1,8 +1,5 @@
 package com.main.dto;
 
-
-import jakarta.persistence.*;
-
 public class StoreDTO {
     Integer storeId;
     String storeName;

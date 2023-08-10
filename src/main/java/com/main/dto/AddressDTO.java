@@ -1,23 +1,11 @@
 package com.main.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 public class AddressDTO {
-
-
     Integer addressId;
-
     String dno;
-
     String street;
-
     String city;
-
     String state;
-
     Integer pinCode;
 
     public AddressDTO() {

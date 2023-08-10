@@ -1,7 +1,5 @@
 package com.main.dto;
 
-import jakarta.persistence.*;
-
 public class CompanyDTO {
     Integer companyId;
     String companyName;

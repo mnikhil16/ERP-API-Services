@@ -1,6 +1,5 @@
 package com.main.dto;
 
-
 public class CustomerDTO {
     Integer customerId;
     String firstName;

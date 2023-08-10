@@ -1,7 +1,5 @@
 package com.main.dto;
 
-import jakarta.persistence.*;
-
 public class PurchaseInvoiceDTO {
     Integer purchaseInvoiceId;
     Double amount;
