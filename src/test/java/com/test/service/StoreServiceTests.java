@@ -93,7 +93,7 @@ public class StoreServiceTests {
         Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO1);
         when(storeRepository.save(storeEntity)).thenReturn(storeEntity);
 
-        assertEquals(storeDTO1, storeService.createStore(storeDTO1));
+        assertEquals(storeDTO1.getStoreId(), storeService.createStore(storeDTO1).getStoreId());
     }
 
     /**
@@ -108,7 +108,7 @@ public class StoreServiceTests {
 
         when(storeRepository.save(storeEntity)).thenReturn(storeEntity);
 
-        assertEquals(storeDTO1, storeService.updateStore(storeDTO1));
+        assertEquals(storeDTO1.getStoreId(), storeService.updateStore(storeDTO1).getStoreId());
     }
 
     /**

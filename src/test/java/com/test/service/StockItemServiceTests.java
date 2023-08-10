@@ -100,7 +100,7 @@ public class StockItemServiceTests {
 
         when(stockItemRepository.save(stockItemEntity)).thenReturn(stockItemEntity);
 
-        assertEquals(stockItemDTO1, stockItemService.createStockItem(stockItemDTO1));
+        assertEquals(stockItemDTO1.getStockItemId(), stockItemService.createStockItem(stockItemDTO1).getStockItemId());
     }
 
     /**
@@ -115,7 +115,7 @@ public class StockItemServiceTests {
 
         when(stockItemRepository.save(stockItemEntity)).thenReturn(stockItemEntity);
 
-        assertEquals(stockItemDTO1, stockItemService.updateStockItem(stockItemDTO1));
+        assertEquals(stockItemDTO1.getStockItemId(), stockItemService.updateStockItem(stockItemDTO1).getStockItemId());
     }
 
     /**

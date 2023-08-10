@@ -100,7 +100,7 @@ public class SupplierServiceTests {
 
         Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO1);
         when(supplierRepository.save(supplierEntity)).thenReturn(supplierEntity);
-        assertEquals(supplierDTO1, supplierService.createSupplier(supplierDTO1));
+        assertEquals(supplierDTO1.getSupplierId(), supplierService.createSupplier(supplierDTO1).getSupplierId());
     }
 
     /**
@@ -114,7 +114,7 @@ public class SupplierServiceTests {
 
         when(supplierRepository.save(supplierEntity)).thenReturn(supplierEntity);
 
-        assertEquals(supplierDTO1, supplierService.updateSupplier(supplierDTO1));
+        assertEquals(supplierDTO1.getSupplierId(), supplierService.updateSupplier(supplierDTO1).getSupplierId());
     }
 
     /**

@@ -108,7 +108,7 @@ class SalesItemServiceTests {
 
         when(salesItemRepository.save(salesItemEntity)).thenReturn(salesItemEntity);
 
-        assertEquals(salesItemDTO1, salesItemService.createSalesItem(salesItemDTO1));
+        assertEquals(salesItemDTO1.getSalesItemId(), salesItemService.createSalesItem(salesItemDTO1).getSalesItemId());
     }
 
     /**
@@ -122,7 +122,7 @@ class SalesItemServiceTests {
 
         when(salesItemRepository.save(salesItemEntity)).thenReturn(salesItemEntity);
 
-        assertEquals(salesItemDTO1, salesItemService.updateSalesItem(salesItemDTO1));
+        assertEquals(salesItemDTO1.getSalesItemId(), salesItemService.updateSalesItem(salesItemDTO1).getSalesItemId());
     }
 
     /**

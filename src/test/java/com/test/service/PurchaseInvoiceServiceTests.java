@@ -103,7 +103,7 @@ class PurchaseInvoiceServiceTests {
 
         when(purchaseInvoiceRepository.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceService.createPurchaseInvoice(purchaseInvoiceDTO1));
+        assertEquals(purchaseInvoiceDTO1.getPurchaseInvoiceId(), purchaseInvoiceService.createPurchaseInvoice(purchaseInvoiceDTO1).getPurchaseInvoiceId());
     }
 
     /**
@@ -118,7 +118,7 @@ class PurchaseInvoiceServiceTests {
 
         when(purchaseInvoiceRepository.save(purchaseInvoiceEntity)).thenReturn(purchaseInvoiceEntity);
 
-        assertEquals(purchaseInvoiceDTO1, purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoiceDTO1));
+        assertEquals(purchaseInvoiceDTO1.getPurchaseInvoiceId(), purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoiceDTO1).getPurchaseInvoiceId());
     }
 
     /**

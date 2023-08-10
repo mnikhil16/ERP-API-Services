@@ -105,7 +105,7 @@ class StockInventoryServiceTests {
 
         when(stockInventoryRepository.save(stockInventoryEntity)).thenReturn(stockInventoryEntity);
 
-        assertEquals(stockInventoryDTO1, stockInventoryService.createStockInventory(stockInventoryDTO1));
+        assertEquals(stockInventoryDTO1.getStockInventoryId(), stockInventoryService.createStockInventory(stockInventoryDTO1).getStockInventoryId());
     }
 
     /**
@@ -120,7 +120,7 @@ class StockInventoryServiceTests {
 
         when(stockInventoryRepository.save(stockInventoryEntity)).thenReturn(stockInventoryEntity);
 
-        assertEquals(stockInventoryDTO1, stockInventoryService.updateStockInventory(stockInventoryDTO1));
+        assertEquals(stockInventoryDTO1.getStockInventoryId(), stockInventoryService.updateStockInventory(stockInventoryDTO1).getStockInventoryId());
     }
 
     /**

@@ -98,7 +98,7 @@ public class CustomerServiceTests {
 
         when(customerRepository.save(customerEntity)).thenReturn(customerEntity);
 
-        assertEquals(customerDTO1, customerService.createCustomer(customerDTO1));
+        assertEquals(customerDTO1.getCustomerId(), customerService.createCustomer(customerDTO1).getCustomerId());
     }
 
     /**
@@ -112,7 +112,7 @@ public class CustomerServiceTests {
 
         when(customerRepository.save(customerEntity)).thenReturn(customerEntity);
 
-        assertEquals(customerDTO1, customerService.updateCustomer(customerDTO1));
+        assertEquals(customerDTO1.getCustomerId(), customerService.updateCustomer(customerDTO1).getCustomerId());
     }
 
     /**

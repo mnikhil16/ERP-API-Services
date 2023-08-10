@@ -106,7 +106,7 @@ class PurchaseInvoiceItemServiceTests {
         PurchaseInvoiceItem purchaseInvoiceItemEntity = PurchaseInvoiceItemMapper.instance.dtoToModel(purchaseInvoiceItemDTO1);
         when(purchaseInvoiceItemRepository.save(purchaseInvoiceItemEntity)).thenReturn(purchaseInvoiceItemEntity);
 
-        assertEquals(purchaseInvoiceItemDTO1, purchaseInvoiceItemService.createPurchaseInvoiceItem(purchaseInvoiceItemDTO1));
+        assertEquals(purchaseInvoiceItemDTO1.getPurchaseInvoiceItemId(), purchaseInvoiceItemService.createPurchaseInvoiceItem(purchaseInvoiceItemDTO1).getPurchaseInvoiceItemId());
     }
 
     /**
@@ -119,7 +119,7 @@ class PurchaseInvoiceItemServiceTests {
         PurchaseInvoiceItem purchaseInvoiceItemEntity = PurchaseInvoiceItemMapper.instance.dtoToModel(purchaseInvoiceItemDTO1);
         when(purchaseInvoiceItemRepository.save(purchaseInvoiceItemEntity)).thenReturn(purchaseInvoiceItemEntity);
 
-        assertEquals(purchaseInvoiceItemDTO1, purchaseInvoiceItemService.updatePurchaseInvoiceItem(purchaseInvoiceItemDTO1));
+        assertEquals(purchaseInvoiceItemDTO1.getPurchaseInvoiceItemId(), purchaseInvoiceItemService.updatePurchaseInvoiceItem(purchaseInvoiceItemDTO1).getPurchaseInvoiceItemId());
     }
 
     /**

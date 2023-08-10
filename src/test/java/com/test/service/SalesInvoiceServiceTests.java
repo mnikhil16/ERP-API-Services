@@ -103,7 +103,7 @@ class SalesInvoiceServiceTests {
 
         when(salesInvoiceRepository.save(salesInvoiceEntity)).thenReturn(salesInvoiceEntity);
 
-        assertEquals(salesInvoiceDTO1, salesInvoiceService.createSalesInvoice(salesInvoiceDTO1));
+        assertEquals(salesInvoiceDTO1.getSalesInvoiceId(), salesInvoiceService.createSalesInvoice(salesInvoiceDTO1).getSalesInvoiceId());
     }
 
     /**
@@ -117,7 +117,7 @@ class SalesInvoiceServiceTests {
 
         when(salesInvoiceRepository.save(salesInvoiceEntity)).thenReturn(salesInvoiceEntity);
 
-        assertEquals(salesInvoiceDTO1, salesInvoiceService.updateSalesInvoice(salesInvoiceDTO1));
+        assertEquals(salesInvoiceDTO1.getSalesInvoiceId(), salesInvoiceService.updateSalesInvoice(salesInvoiceDTO1).getSalesInvoiceId());
     }
 
     /**

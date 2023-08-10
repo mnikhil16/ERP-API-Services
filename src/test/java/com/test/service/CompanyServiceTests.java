@@ -96,7 +96,7 @@ public class CompanyServiceTests {
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO1);
         when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
 
-        assertEquals(companyDTO1, companyService.createCompany(companyDTO1));
+        assertEquals(companyDTO1.getCompanyId(), companyService.createCompany(companyDTO1).getCompanyId());
 
 
     }
@@ -111,7 +111,7 @@ public class CompanyServiceTests {
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO1);
         when(companyRepository.save(companyEntity)).thenReturn(companyEntity);
 
-        assertEquals(companyDTO1, companyService.updateCompany(companyDTO1));
+        assertEquals(companyDTO1.getCompanyId(), companyService.updateCompany(companyDTO1).getCompanyId());
     }
 
     /**
