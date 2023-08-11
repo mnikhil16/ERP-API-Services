@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.main.beans.*;
+import com.main.entity.*;
 import com.main.dto.*;
 import com.main.mapper.SalesInvoiceMapper;
 import com.main.repository.SalesInvoiceRepository;

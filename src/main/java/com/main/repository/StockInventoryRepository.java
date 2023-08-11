@@ -1,6 +1,6 @@
 package com.main.repository;
 
-import com.main.beans.StockInventory;
+import com.main.entity.StockInventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

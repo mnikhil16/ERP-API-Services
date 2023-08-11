@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.SalesInvoice;
+import com.main.entity.SalesInvoice;
 import com.main.controller.AddResponse;
 import com.main.dto.SalesInvoiceDTO;
 import com.main.mapper.SalesInvoiceMapper;
@@ -35,7 +35,6 @@ public class SalesInvoiceService {
         return salesInvoiceDTOList;
     }
 
-
     /**
      * Get salesInvoice information by the specified salesInvoice ID.
      *
@@ -51,41 +50,40 @@ public class SalesInvoiceService {
     /**
      * Create a new salesInvoice with the provided SalesInvoice object.
      *
-     * @param salesInvoiceDTO The SalesInvoice object representing the salesInvoice to be created.
+     * @param salesInvoiceDTO The SalesInvoiceDTO object representing the salesInvoice to be created.
      * @return The newly created SalesInvoice object with a generated ID.
      */
     public SalesInvoiceDTO createSalesInvoice(SalesInvoiceDTO salesInvoiceDTO){
         SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO);
         salesInvoiceRepository.save(salesInvoiceEntity);
-        SalesInvoiceDTO salesInvoiceDTO1 = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
-        return salesInvoiceDTO1;
+        SalesInvoiceDTO createdSalesInvoiceDTO = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
+        return createdSalesInvoiceDTO;
     }
 
     /**
-     * Update a new salesInvoice with the provided SalesInvoice object.
+     * Update salesInvoice information with the provided SalesInvoice object.
      *
-     * @param salesInvoiceDTO The SalesInvoice object representing the salesInvoice to be updated.
+     * @param salesInvoiceDTO The SalesInvoiceDTO object representing the salesInvoice to be updated.
      * @return The updated SalesInvoice object.
      */
     public SalesInvoiceDTO updateSalesInvoice(SalesInvoiceDTO salesInvoiceDTO){
         SalesInvoice salesInvoiceEntity = SalesInvoiceMapper.instance.dtoToModel(salesInvoiceDTO);
         salesInvoiceRepository.save(salesInvoiceEntity);
-        SalesInvoiceDTO salesInvoiceDTO1 = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
-        return salesInvoiceDTO1;
+        SalesInvoiceDTO updatedSalesInvoiceDTO = SalesInvoiceMapper.instance.modelToDto(salesInvoiceEntity);
+        return updatedSalesInvoiceDTO;
     }
-
 
     /**
      * Delete a salesInvoice with the provided salesInvoiceId.
      *
      * @param salesInvoiceId The ID of the salesInvoice to delete.
-     * @return The deleted salesInvoiceId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteSalesInvoiceById(int salesInvoiceId){
         salesInvoiceRepository.deleteById(salesInvoiceId);
-        AddResponse res = new AddResponse();
-        res.setMsg("SalesInvoice deleted");
-        res.setId(salesInvoiceId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("SalesInvoice deleted");
+        response.setId(salesInvoiceId);
+        return response;
     }
 }

@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.StockItem;
+import com.main.entity.StockItem;
 import com.main.controller.AddResponse;
 import com.main.dto.StockItemDTO;
 import com.main.mapper.StockItemMapper;
@@ -24,7 +24,7 @@ public class StockItemService {
     StockItemRepository stockItemRepository;
 
     /**
-     * Get stock item information by the specified stock item ID.
+     * Get stock item information.
      *
      * @return All the StockItem objects.
      */
@@ -47,43 +47,42 @@ public class StockItemService {
     }
 
     /**
-     * Create a new stockItem with the provided stockItem object.
+     * Create a new stockItem with the provided StockItem object.
      *
-     * @param stockItemDTO The StockItem object representing the stockItem to be created.
-     * @return The newly created stockItem object with a generated ID.
+     * @param stockItemDTO The StockItemDTO object representing the stockItem to be created.
+     * @return The newly created StockItemDTO object with a generated ID.
      */
     public StockItemDTO createStockItem(StockItemDTO stockItemDTO){
         StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
         stockItemRepository.save(stockItemEntity);
-        StockItemDTO stockItemDTO1 = StockItemMapper.instance.modelToDto(stockItemEntity);
-        return stockItemDTO1;
+        StockItemDTO createdStockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
+        return createdStockItemDTO;
     }
 
     /**
-     * Update a new stockItem with the provided stockItem object.
+     * Update stock item information with the provided StockItem object.
      *
-     * @param stockItemDTO The StockItem object representing the stockItem to be updated.
-     * @return The updated StockItem object.
+     * @param stockItemDTO The StockItemDTO object representing the stockItem to be updated.
+     * @return The updated StockItemDTO object.
      */
     public StockItemDTO updateStockItem(StockItemDTO stockItemDTO){
         StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
         stockItemRepository.save(stockItemEntity);
-        StockItemDTO stockItemDTO1 = StockItemMapper.instance.modelToDto(stockItemEntity);
-        return stockItemDTO1;
+        StockItemDTO updatedStockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
+        return updatedStockItemDTO;
     }
 
-
     /**
-     * Delete an item with the provided Id.
+     * Delete a stock item with the provided stockItemId.
      *
      * @param stockItemId The ID of the item to delete.
-     * @return The deleted Id.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteStockItemById(int stockItemId){
         stockItemRepository.deleteById(stockItemId);
-        AddResponse res = new AddResponse();
-        res.setMsg("StockItem deleted");
-        res.setId(stockItemId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("StockItem deleted");
+        response.setId(stockItemId);
+        return response;
     }
 }

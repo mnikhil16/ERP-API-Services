@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.main.beans.*;
+import com.main.entity.*;
 import com.main.repository.PurchaseOrderRepository;
 import com.main.service.PurchaseOrderService;
 import org.junit.jupiter.api.MethodOrderer;

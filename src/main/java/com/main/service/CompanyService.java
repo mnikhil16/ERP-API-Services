@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.Company;
+import com.main.entity.Company;
 import com.main.controller.AddResponse;
 import com.main.dto.CompanyDTO;
 import com.main.mapper.CompanyMapper;
@@ -35,7 +35,6 @@ public class CompanyService {
         return companyDTOList;
     }
 
-
     /**
      * Get company information by the specified company ID.
      *
@@ -51,41 +50,40 @@ public class CompanyService {
     /**
      * Create a new customer with the provided customer object.
      *
+     * @param companyDTO The CompanyDTO object representing the company to be created.
      * @return The newly created company object with a generated ID.
      */
     public CompanyDTO createCompany(CompanyDTO companyDTO){
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
         companyRepository.save(companyEntity);
-        CompanyDTO companyDTO1 = CompanyMapper.instance.modelToDto(companyEntity);
-
-        return companyDTO1;
+        CompanyDTO createdCompanyDTO = CompanyMapper.instance.modelToDto(companyEntity);
+        return createdCompanyDTO;
     }
 
     /**
-     * Update a new company with the provided company object.
+     * Update company information with the provided company object.
      *
-     * @param companyDTO The Company object representing the company to be updated.
+     * @param companyDTO The CompanyDTO object representing the company to be updated.
      * @return The updated Company object.
      */
     public CompanyDTO updateCompany(CompanyDTO companyDTO){
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
         companyRepository.save(companyEntity);
-        CompanyDTO companyDTO1 = CompanyMapper.instance.modelToDto(companyEntity);
-        return companyDTO1;
+        CompanyDTO updatedCompanyDTO = CompanyMapper.instance.modelToDto(companyEntity);
+        return updatedCompanyDTO;
     }
-
 
     /**
      * Delete a company with the provided companyId.
      *
      * @param companyId The ID of the company to delete.
-     * @return The deleted companyId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteCompanyById(int companyId){
         companyRepository.deleteById(companyId);
-        AddResponse res = new AddResponse();
-        res.setMsg("Company deleted");
-        res.setId(companyId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("Company deleted");
+        response.setId(companyId);
+        return response;
     }
 }

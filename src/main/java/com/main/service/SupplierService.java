@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.Supplier;
+import com.main.entity.Supplier;
 import com.main.controller.AddResponse;
 import com.main.dto.SupplierDTO;
 import com.main.mapper.SupplierMapper;
@@ -27,7 +27,7 @@ public class SupplierService {
     /**
      * Get all the supplier information.
      *
-     * @return All the Supplier objects.
+     * @return All the SupplierDTO objects.
      */
     public List<SupplierDTO> getSuppliers(){
         List<Supplier> supplierList = supplierRepository.findAll();
@@ -35,12 +35,11 @@ public class SupplierService {
         return supplierDTOList;
     }
 
-
     /**
      * Get supplier information by the specified supplier ID.
      *
      * @param supplierId The ID of the supplier to retrieve.
-     * @return The Supplier object corresponding to the given ID.
+     * @return The SupplierDTO object corresponding to the given ID.
      */
     public SupplierDTO getSupplierById(int supplierId){
         Supplier supplierEntity = supplierRepository.findById(supplierId).get();
@@ -49,43 +48,42 @@ public class SupplierService {
     }
 
     /**
-     * Create a new supplier with the provided supplier object.
+     * Create a new supplier with the provided SupplierDTO object.
      *
-     * @param supplierDTO The Supplier object representing the supplier to be created.
-     * @return The newly created supplier object with a generated ID.
+     * @param supplierDTO The SupplierDTO object representing the supplier to be created.
+     * @return The newly created SupplierDTO object with a generated ID.
      */
     public SupplierDTO createSupplier(SupplierDTO supplierDTO){
         Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
         supplierRepository.save(supplierEntity);
-        SupplierDTO supplierDTO1 = SupplierMapper.instance.modelToDto(supplierEntity);
-        return supplierDTO1;
+        SupplierDTO createdSupplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
+        return createdSupplierDTO;
     }
 
     /**
-     * Update a new supplier with the provided supplier object.
+     * Update supplier information with the provided SupplierDTO object.
      *
-     * @param supplierDTO The Supplier object representing the supplier to be updated.
-     * @return The updated Supplier object.
+     * @param supplierDTO The SupplierDTO object representing the supplier to be updated.
+     * @return The updated SupplierDTO object.
      */
     public SupplierDTO updateSupplier(SupplierDTO supplierDTO){
         Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
         supplierRepository.save(supplierEntity);
-        SupplierDTO supplierDTO1 = SupplierMapper.instance.modelToDto(supplierEntity);
-        return supplierDTO1;
+        SupplierDTO updatedSupplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
+        return updatedSupplierDTO;
     }
-
 
     /**
      * Delete a supplier with the provided supplierId.
      *
      * @param supplierId The ID of the supplier to delete.
-     * @return The deleted supplierId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteSupplierById(int supplierId){
         supplierRepository.deleteById(supplierId);
-        AddResponse res = new AddResponse();
-        res.setMsg("Supplier deleted");
-        res.setId(supplierId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("Supplier deleted");
+        response.setId(supplierId);
+        return response;
     }
 }

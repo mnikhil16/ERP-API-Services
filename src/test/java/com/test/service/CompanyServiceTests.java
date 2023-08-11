@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.main.beans.Company;
+import com.main.entity.Company;
 import com.main.dto.AddressDTO;
 import com.main.dto.CompanyDTO;
 import com.main.mapper.CompanyMapper;

@@ -1,7 +1,7 @@
 package com.main.controller;
 
 import com.main.service.PurchaseOrderService;
-import com.main.beans.PurchaseOrder;
+import com.main.entity.PurchaseOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

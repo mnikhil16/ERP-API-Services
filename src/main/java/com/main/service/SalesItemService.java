@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.SalesItem;
+import com.main.entity.SalesItem;
 import com.main.controller.AddResponse;
 import com.main.dto.SalesItemDTO;
 import com.main.mapper.SalesItemMapper;
@@ -35,7 +35,6 @@ public class SalesItemService {
         return salesItemDTOList;
     }
 
-
     /**
      * Get salesItem information by the specified salesItem ID.
      *
@@ -51,41 +50,40 @@ public class SalesItemService {
     /**
      * Create a new salesItem with the provided SalesItem object.
      *
-     * @param salesItemDTO The SalesItem object representing the salesItem to be created.
+     * @param salesItemDTO The SalesItemDTO object representing the salesItem to be created.
      * @return The newly created SalesItem object with a generated ID.
      */
     public SalesItemDTO createSalesItem(SalesItemDTO salesItemDTO){
         SalesItem salesItemEntity = SalesItemMapper.instance.dtoToModel(salesItemDTO);
         salesItemRepository.save(salesItemEntity);
-        SalesItemDTO salesItemDTO1 = SalesItemMapper.instance.modelToDto(salesItemEntity);
-        return salesItemDTO1;
+        SalesItemDTO createdSalesItemDTO = SalesItemMapper.instance.modelToDto(salesItemEntity);
+        return createdSalesItemDTO;
     }
 
     /**
-     * Update a new salesItem with the provided SalesItem object.
+     * Update salesItem information with the provided SalesItem object.
      *
-     * @param salesItemDTO The SalesItem object representing the salesItem to be updated.
+     * @param salesItemDTO The SalesItemDTO object representing the salesItem to be updated.
      * @return The updated SalesItem object.
      */
     public SalesItemDTO updateSalesItem(SalesItemDTO salesItemDTO){
         SalesItem salesItemEntity = SalesItemMapper.instance.dtoToModel(salesItemDTO);
         salesItemRepository.save(salesItemEntity);
-        SalesItemDTO salesItemDTO1 = SalesItemMapper.instance.modelToDto(salesItemEntity);
-        return salesItemDTO1;
+        SalesItemDTO updatedSalesItemDTO = SalesItemMapper.instance.modelToDto(salesItemEntity);
+        return updatedSalesItemDTO;
     }
-
 
     /**
      * Delete a salesItem with the provided salesItemId.
      *
      * @param salesItemId The ID of the salesItem to delete.
-     * @return The deleted salesItemId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteSalesItemById(int salesItemId){
         salesItemRepository.deleteById(salesItemId);
-        AddResponse res = new AddResponse();
-        res.setMsg("SalesItem deleted");
-        res.setId(salesItemId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("SalesItem deleted");
+        response.setId(salesItemId);
+        return response;
     }
 }

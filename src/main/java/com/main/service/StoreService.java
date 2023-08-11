@@ -4,7 +4,7 @@ import com.main.controller.AddResponse;
 import com.main.dto.StoreDTO;
 import com.main.mapper.StoreMapper;
 import com.main.repository.StoreRepository;
-import com.main.beans.Store;
+import com.main.entity.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -34,12 +34,11 @@ public class StoreService {
         return storeDTOList;
     }
 
-
     /**
      * Get store information by the specified store ID.
      *
      * @param storeId The ID of the store to retrieve.
-     * @return The Store object corresponding to the given ID.
+     * @return The StoreDTO object corresponding to the given ID.
      */
     public StoreDTO getStoreById(int storeId){
         Store storeEntity = storeRepository.findById(storeId).get();
@@ -48,43 +47,42 @@ public class StoreService {
     }
 
     /**
-     * Create a new store with the provided store object.
+     * Create a new store with the provided StoreDTO object.
      *
-     * @param storeDTO The store object representing the store to be created.
-     * @return The newly created store object with a generated ID.
+     * @param storeDTO The StoreDTO object representing the store to be created.
+     * @return The newly created StoreDTO object with a generated ID.
      */
     public StoreDTO createStore(StoreDTO storeDTO){
         Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
         storeRepository.save(storeEntity);
-        StoreDTO storeDTO1 = StoreMapper.instance.modelToDto(storeEntity);
-        return storeDTO1;
+        StoreDTO createdStoreDTO = StoreMapper.instance.modelToDto(storeEntity);
+        return createdStoreDTO;
     }
 
     /**
-     * Update a new store with the provided store object.
+     * Update store information with the provided StoreDTO object.
      *
-     * @param storeDTO The Store object representing the store to be updated.
-     * @return The updated Store object.
+     * @param storeDTO The StoreDTO object representing the store to be updated.
+     * @return The updated StoreDTO object.
      */
     public StoreDTO updateStore(StoreDTO storeDTO){
         Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
         storeRepository.save(storeEntity);
-        StoreDTO storeDTO1 = StoreMapper.instance.modelToDto(storeEntity);
-        return storeDTO1;
+        StoreDTO updatedStoreDTO = StoreMapper.instance.modelToDto(storeEntity);
+        return updatedStoreDTO;
     }
 
-
     /**
-     * Delete a store with the provided Id.
+     * Delete a store with the provided storeId.
      *
      * @param storeId The ID of the store to delete.
-     * @return The deleted Id.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteStoreById(int storeId){
         storeRepository.deleteById(storeId);
-        AddResponse res = new AddResponse();
-        res.setMsg("Store deleted");
-        res.setId(storeId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("Store deleted");
+        response.setId(storeId);
+        return response;
     }
 }

@@ -1,6 +1,6 @@
 package com.main.repository;
 
-import com.main.beans.SalesInvoice;
+import com.main.entity.SalesInvoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

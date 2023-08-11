@@ -1,6 +1,6 @@
 package com.main.repository;
 
-import com.main.beans.Customer;
+import com.main.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

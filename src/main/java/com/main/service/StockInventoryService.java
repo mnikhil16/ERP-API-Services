@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.StockInventory;
+import com.main.entity.StockInventory;
 import com.main.dto.StockInventoryDTO;
 import com.main.mapper.StockInventoryMapper;
 import com.main.repository.StockInventoryRepository;
@@ -34,7 +34,6 @@ public class StockInventoryService {
         return stockInventoryDTOList;
     }
 
-
     /**
      * Get stock inventory information by the specified stock inventory ID.
      *
@@ -48,43 +47,42 @@ public class StockInventoryService {
     }
 
     /**
-     * Create a new stockInventory with the provided stockInventory object.
+     * Create a new stockInventory with the provided StockInventory object.
      *
-     * @param stockInventoryDTO The StockInventory object representing the stockInventory to be created.
-     * @return The newly created stockInventory object with a generated ID.
+     * @param stockInventoryDTO The StockInventoryDTO object representing the stockInventory to be created.
+     * @return The newly created StockInventoryDTO object with a generated ID.
      */
     public StockInventoryDTO createStockInventory(StockInventoryDTO stockInventoryDTO){
         StockInventory stockInventoryEntity = StockInventoryMapper.instance.dtoToModel(stockInventoryDTO);
         stockInventoryRepository.save(stockInventoryEntity);
-        StockInventoryDTO stockInventoryDTO1 = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
-        return stockInventoryDTO1;
+        StockInventoryDTO createdStockInventoryDTO = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
+        return createdStockInventoryDTO;
     }
 
     /**
-     * Update a new stockInventory with the provided stockInventory object.
+     * Update stock inventory information with the provided StockInventory object.
      *
-     * @param stockInventoryDTO The StockInventory object representing the stockInventory to be updated.
-     * @return The updated StockInventory object.
+     * @param stockInventoryDTO The StockInventoryDTO object representing the stockInventory to be updated.
+     * @return The updated StockInventoryDTO object.
      */
     public StockInventoryDTO updateStockInventory(StockInventoryDTO stockInventoryDTO){
         StockInventory stockInventoryEntity = StockInventoryMapper.instance.dtoToModel(stockInventoryDTO);
         stockInventoryRepository.save(stockInventoryEntity);
-        StockInventoryDTO stockInventoryDTO1 = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
-        return stockInventoryDTO1;
+        StockInventoryDTO updatedStockInventoryDTO = StockInventoryMapper.instance.modelToDto(stockInventoryEntity);
+        return updatedStockInventoryDTO;
     }
 
-
     /**
-     * Delete a stockInventory with the provided Id.
+     * Delete a stock inventory with the provided stockInventoryId.
      *
      * @param stockInventoryId The ID of the stock inventory to delete.
-     * @return The deleted Id.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteStockInventoryById(int stockInventoryId){
         stockInventoryRepository.deleteById(stockInventoryId);
-        AddResponse res = new AddResponse();
-        res.setMsg("StockInventory deleted");
-        res.setId(stockInventoryId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("StockInventory deleted");
+        response.setId(stockInventoryId);
+        return response;
     }
 }

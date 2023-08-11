@@ -1,6 +1,6 @@
 package com.test.controller;
 
-import com.main.beans.*;
+import com.main.entity.*;
 import com.main.controller.AddResponse;
 import com.main.controller.PurchaseOrderController;
 import com.main.service.PurchaseOrderService;

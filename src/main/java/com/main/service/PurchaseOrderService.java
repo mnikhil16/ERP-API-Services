@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.PurchaseOrder;
+import com.main.entity.PurchaseOrder;
 import com.main.controller.AddResponse;
 import com.main.repository.PurchaseOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Service
 public class PurchaseOrderService {
+
     @Autowired
     PurchaseOrderRepository purchaseOrderRepository;
 
@@ -28,7 +29,6 @@ public class PurchaseOrderService {
     public List<PurchaseOrder> getPurchaseOrders(){
         return purchaseOrderRepository.findAll();
     }
-
 
     /**
      * Get purchase order information by the specified purchase order ID.
@@ -51,14 +51,14 @@ public class PurchaseOrderService {
      * Create a new purchase order with the provided purchase order object.
      *
      * @param purchaseOrder The PurchaseOrder object representing the purchaseOrder to be created.
-     * @return The newly created purchaseOrder object with a generated ID.
+     * @return The newly created PurchaseOrder object with a generated ID.
      */
     public PurchaseOrder createPurchaseOrder(PurchaseOrder purchaseOrder){
         return purchaseOrderRepository.save(purchaseOrder);
     }
 
     /**
-     * Update a new purchaseOrder with the provided PurchaseOrder object.
+     * Update purchase order information with the provided PurchaseOrder object.
      *
      * @param purchaseOrder The PurchaseOrder object representing the purchaseOrder to be updated.
      * @return The updated PurchaseOrder object.
@@ -67,18 +67,17 @@ public class PurchaseOrderService {
         return purchaseOrderRepository.save(purchaseOrder);
     }
 
-
     /**
-     * Delete a purchaseOrder with the provided purchaseOrderId.
+     * Delete a purchase order with the provided purchaseOrderId.
      *
-     * @param purchaseOrderId The ID of the purchaseOrder to delete.
-     * @return The deleted purchaseOrderId.
+     * @param purchaseOrderId The ID of the purchase order to delete.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deletePurchaseOrderById(int purchaseOrderId){
         purchaseOrderRepository.deleteById(purchaseOrderId);
-        AddResponse res = new AddResponse();
-        res.setMsg("PurchaseOrder deleted");
-        res.setId(purchaseOrderId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("PurchaseOrder deleted");
+        response.setId(purchaseOrderId);
+        return response;
     }
 }

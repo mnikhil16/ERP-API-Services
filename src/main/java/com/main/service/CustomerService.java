@@ -4,7 +4,7 @@ import com.main.controller.AddResponse;
 import com.main.dto.CustomerDTO;
 import com.main.mapper.CustomerMapper;
 import com.main.repository.CustomerRepository;
-import com.main.beans.Customer;
+import com.main.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -34,7 +34,6 @@ public class CustomerService {
         return customerDTOList;
     }
 
-
     /**
      * Get customer information by the specified customer ID.
      *
@@ -50,41 +49,40 @@ public class CustomerService {
     /**
      * Create a new customer with the provided Customer object.
      *
-     * @param customerDTO The Customer object representing the customer to be created.
+     * @param customerDTO The CustomerDTO object representing the customer to be created.
      * @return The newly created Customer object with a generated ID.
      */
     public CustomerDTO createCustomer(CustomerDTO customerDTO){
         Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO);
         customerRepository.save(customerEntity);
-        CustomerDTO customerDTO1 = CustomerMapper.instance.modelToDto(customerEntity);
-        return customerDTO1;
+        CustomerDTO createdCustomerDTO = CustomerMapper.instance.modelToDto(customerEntity);
+        return createdCustomerDTO;
     }
 
     /**
-     * Update a new customer with the provided Customer object.
+     * Update customer information with the provided Customer object.
      *
-     * @param customerDTO The Customer object representing the customer to be updated.
+     * @param customerDTO The CustomerDTO object representing the customer to be updated.
      * @return The updated Customer object.
      */
     public CustomerDTO updateCustomer(CustomerDTO customerDTO){
         Customer customerEntity = CustomerMapper.instance.dtoToModel(customerDTO);
         customerRepository.save(customerEntity);
-        CustomerDTO customerDTO1 = CustomerMapper.instance.modelToDto(customerEntity);
-        return customerDTO1;
+        CustomerDTO updatedCustomerDTO = CustomerMapper.instance.modelToDto(customerEntity);
+        return updatedCustomerDTO;
     }
-
 
     /**
      * Delete a customer with the provided customerId.
      *
      * @param customerId The ID of the customer to delete.
-     * @return The deleted customerId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteCustomer(int customerId){
-            customerRepository.deleteById(customerId);
-            AddResponse res = new AddResponse();
-            res.setMsg("Customer deleted");
-            res.setId(customerId);
-            return res;
+        customerRepository.deleteById(customerId);
+        AddResponse response = new AddResponse();
+        response.setMsg("Customer deleted");
+        response.setId(customerId);
+        return response;
     }
 }

@@ -1,6 +1,6 @@
 package com.main.service;
 
-import com.main.beans.PurchaseInvoiceItem;
+import com.main.entity.PurchaseInvoiceItem;
 import com.main.controller.AddResponse;
 import com.main.dto.PurchaseInvoiceItemDTO;
 import com.main.mapper.PurchaseInvoiceItemMapper;
@@ -35,7 +35,6 @@ public class PurchaseInvoiceItemService {
         return purchaseInvoiceItemDTOList;
     }
 
-
     /**
      * Get purchaseInvoiceItem information by the specified purchaseInvoiceItem ID.
      *
@@ -51,41 +50,40 @@ public class PurchaseInvoiceItemService {
     /**
      * Create a new purchaseInvoiceItem with the provided PurchaseInvoiceItem object.
      *
-     * @param purchaseInvoiceItemDTO The PurchaseInvoiceItem object representing the purchaseInvoiceItem to be created.
+     * @param purchaseInvoiceItemDTO The PurchaseInvoiceItemDTO object representing the purchaseInvoiceItem to be created.
      * @return The newly created PurchaseInvoiceItem object with a generated ID.
      */
     public PurchaseInvoiceItemDTO createPurchaseInvoiceItem(PurchaseInvoiceItemDTO purchaseInvoiceItemDTO){
         PurchaseInvoiceItem purchaseInvoiceItemEntity = PurchaseInvoiceItemMapper.instance.dtoToModel(purchaseInvoiceItemDTO);
         purchaseInvoiceItemRepository.save(purchaseInvoiceItemEntity);
-        PurchaseInvoiceItemDTO purchaseInvoiceItemDTO1 = PurchaseInvoiceItemMapper.instance.modelToDto(purchaseInvoiceItemEntity);
-        return purchaseInvoiceItemDTO1;
+        PurchaseInvoiceItemDTO createdPurchaseInvoiceItemDTO = PurchaseInvoiceItemMapper.instance.modelToDto(purchaseInvoiceItemEntity);
+        return createdPurchaseInvoiceItemDTO;
     }
 
     /**
-     * Update a new purchaseInvoiceItem with the provided PurchaseInvoiceItem object.
+     * Update purchaseInvoiceItem information with the provided PurchaseInvoiceItem object.
      *
-     * @param purchaseInvoiceItemDTO The PurchaseInvoiceItem object representing the purchaseInvoiceItem to be updated.
+     * @param purchaseInvoiceItemDTO The PurchaseInvoiceItemDTO object representing the purchaseInvoiceItem to be updated.
      * @return The updated PurchaseInvoiceItem object.
      */
     public PurchaseInvoiceItemDTO updatePurchaseInvoiceItem(PurchaseInvoiceItemDTO purchaseInvoiceItemDTO){
         PurchaseInvoiceItem purchaseInvoiceItemEntity = PurchaseInvoiceItemMapper.instance.dtoToModel(purchaseInvoiceItemDTO);
         purchaseInvoiceItemRepository.save(purchaseInvoiceItemEntity);
-        PurchaseInvoiceItemDTO purchaseInvoiceItemDTO1 = PurchaseInvoiceItemMapper.instance.modelToDto(purchaseInvoiceItemEntity);
-        return purchaseInvoiceItemDTO1;
+        PurchaseInvoiceItemDTO updatedPurchaseInvoiceItemDTO = PurchaseInvoiceItemMapper.instance.modelToDto(purchaseInvoiceItemEntity);
+        return updatedPurchaseInvoiceItemDTO;
     }
-
 
     /**
      * Delete a purchaseInvoiceItem with the provided purchaseInvoiceItemId.
      *
      * @param purchaseInvoiceItemId The ID of the purchaseInvoiceItem to delete.
-     * @return The deleted purchaseInvoiceItemId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deletePurchaseInvoiceItemById(int purchaseInvoiceItemId){
         purchaseInvoiceItemRepository.deleteById(purchaseInvoiceItemId);
-        AddResponse res = new AddResponse();
-        res.setMsg("PurchaseInvoiceItem deleted");
-        res.setId(purchaseInvoiceItemId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("PurchaseInvoiceItem deleted");
+        response.setId(purchaseInvoiceItemId);
+        return response;
     }
 }

@@ -1,6 +1,6 @@
 package com.main.repository;
 
-import com.main.beans.PurchaseOrder;
+import com.main.entity.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

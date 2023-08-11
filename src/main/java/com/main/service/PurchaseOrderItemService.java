@@ -1,7 +1,7 @@
 package com.main.service;
 
 
-import com.main.beans.PurchaseOrderItem;
+import com.main.entity.PurchaseOrderItem;
 import com.main.controller.AddResponse;
 import com.main.repository.PurchaseOrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,6 @@ public class PurchaseOrderItemService {
         return purchaseOrderItemRepository.findAll();
     }
 
-
     /**
      * Get purchaseOrderItems information by the specified purchaseOrderItems ID.
      *
@@ -61,7 +60,7 @@ public class PurchaseOrderItemService {
     }
 
     /**
-     * Update a new purchaseOrderItem with the provided PurchaseOrderItem object.
+     * Update purchaseOrderItem information with the provided PurchaseOrderItem object.
      *
      * @param purchaseOrderItem The PurchaseOrderItem object representing the purchaseOrderItem to be updated.
      * @return The updated PurchaseOrderItem object.
@@ -70,18 +69,17 @@ public class PurchaseOrderItemService {
         return purchaseOrderItemRepository.save(purchaseOrderItem);
     }
 
-
     /**
      * Delete a purchaseOrderItem with the provided purchaseOrderItemId.
      *
      * @param purchaseOrderItemId The ID of the purchaseOrderItem to delete.
-     * @return The deleted purchaseOrderItemId.
+     * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deletePurchaseOrderItemById(int purchaseOrderItemId){
         purchaseOrderItemRepository.deleteById(purchaseOrderItemId);
-        AddResponse res = new AddResponse();
-        res.setMsg("purchaseOrderItem deleted");
-        res.setId(purchaseOrderItemId);
-        return res;
+        AddResponse response = new AddResponse();
+        response.setMsg("PurchaseOrderItem deleted");
+        response.setId(purchaseOrderItemId);
+        return response;
     }
 }

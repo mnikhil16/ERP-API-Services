@@ -1,6 +1,6 @@
 package com.test.service;
 
-import com.main.beans.StockItem;
+import com.main.entity.StockItem;
 import com.main.dto.AddressDTO;
 import com.main.dto.CompanyDTO;
 import com.main.dto.StockItemDTO;
