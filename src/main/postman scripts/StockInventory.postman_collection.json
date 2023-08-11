@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "6f263f1f-2f1d-4866-abcf-8088e92146f2",
+		"name": "StockInventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-6f263f1f-2f1d-4866-abcf-8088e92146f2?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/StockInventories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"StockInventories"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/StockInventories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"StockInventories"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:10:32 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"stockInventoryId\": 1,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 1,\n            \"firstName\": \"John\",\n            \"lastName\": \"Doe\",\n            \"email\": \"john.doe@example.com\",\n            \"phoneNumber\": \"123-456-7890\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 2,\n        \"quantity\": 80,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 2,\n            \"firstName\": \"Jane\",\n            \"lastName\": \"Doe\",\n            \"email\": \"jane.doe@example.com\",\n            \"phoneNumber\": \"555-987-6543\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 3,\n        \"quantity\": 200,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 3,\n            \"itemName\": \"Toothpaste\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"DentalFresh\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-05-10\",\n            \"expiryDate\": \"2024-12-10\",\n            \"description\": \"Mint-flavored toothpaste\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 3,\n            \"firstName\": \"Michael\",\n            \"lastName\": \"Johnson\",\n            \"email\": \"michael.johnson@example.com\",\n            \"phoneNumber\": \"777-456-7890\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 4,\n        \"quantity\": 120,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 4,\n            \"firstName\": \"Sara\",\n            \"lastName\": \"Williams\",\n            \"email\": \"sara.williams@example.com\",\n            \"phoneNumber\": \"777-123-4567\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 5,\n        \"quantity\": 200,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 5,\n            \"firstName\": \"Robert\",\n            \"lastName\": \"Brown\",\n            \"email\": \"robert.brown@example.com\",\n            \"phoneNumber\": \"999-234-5678\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 6,\n        \"quantity\": 180,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 6,\n            \"firstName\": \"Emily\",\n            \"lastName\": \"Anderson\",\n            \"email\": \"emily.anderson@example.com\",\n            \"phoneNumber\": \"998-876-5432\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 7,\n        \"quantity\": 90,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 7,\n            \"firstName\": \"David\",\n            \"lastName\": \"Lee\",\n            \"email\": \"david.lee@example.com\",\n            \"phoneNumber\": \"123-987-6543\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 8,\n        \"quantity\": 70,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 8,\n            \"firstName\": \"Olivia\",\n            \"lastName\": \"Miller\",\n            \"email\": \"olivia.miller@example.com\",\n            \"phoneNumber\": \"123-234-5678\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 9,\n        \"quantity\": 120,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 9,\n            \"firstName\": \"William\",\n            \"lastName\": \"Wilson\",\n            \"email\": \"william.wilson@example.com\",\n            \"phoneNumber\": \"321-876-5432\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 10,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 10,\n            \"firstName\": \"Sophia\",\n            \"lastName\": \"Harris\",\n            \"email\": \"sophia.harris@example.com\",\n            \"phoneNumber\": \"321-234-5678\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 11,\n        \"quantity\": 70,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 11,\n            \"itemName\": \"Metal Plates\",\n            \"itemType\": \"Raw Material\",\n            \"brandName\": \"MetalTech\",\n            \"price\": 35,\n            \"manufacturedDate\": \"2023-06-10\",\n            \"expiryDate\": \"2025-06-10\",\n            \"description\": \"High-quality metal plates\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 11,\n            \"firstName\": \"Michael\",\n            \"lastName\": \"Brown\",\n            \"email\": \"michael.brown@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 12,\n        \"quantity\": 60,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 12,\n            \"itemName\": \"Screws\",\n            \"itemType\": \"Hardware\",\n            \"brandName\": \"FastFix\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-07-15\",\n            \"expiryDate\": \"2025-07-15\",\n            \"description\": \"Assorted screws for construction\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 12,\n            \"firstName\": \"Emma\",\n            \"lastName\": \"Davis\",\n            \"email\": \"emma.davis@example.com\",\n            \"phoneNumber\": \"666-666-6666\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 13,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 13,\n            \"itemName\": \"Wireless Mouse\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMouse\",\n            \"price\": 20,\n            \"manufacturedDate\": \"2023-08-20\",\n            \"expiryDate\": \"2025-08-20\",\n            \"description\": \"Ergonomic wireless mouse\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 13,\n            \"firstName\": \"Daniel\",\n            \"lastName\": \"Martin\",\n            \"email\": \"daniel.martin@example.com\",\n            \"phoneNumber\": \"777-777-7777\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 14,\n        \"quantity\": 90,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 14,\n            \"itemName\": \"External Hard Drive\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"DataVault\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2023-09-25\",\n            \"expiryDate\": \"2025-09-25\",\n            \"description\": \"Portable external storage\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 14,\n            \"firstName\": \"Isabella\",\n            \"lastName\": \"Garcia\",\n            \"email\": \"isabella.garcia@example.com\",\n            \"phoneNumber\": \"888-888-8888\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 15,\n        \"quantity\": 50,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 15,\n            \"itemName\": \"Pain Relief Gel\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"PainEase\",\n            \"price\": 15,\n            \"manufacturedDate\": \"2023-10-01\",\n            \"expiryDate\": \"2025-10-01\",\n            \"description\": \"Fast-acting pain relief gel\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 15,\n            \"firstName\": \"Ethan\",\n            \"lastName\": \"Martinez\",\n            \"email\": \"ethan.martinez@example.com\",\n            \"phoneNumber\": \"999-999-9999\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 16,\n        \"quantity\": 40,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 16,\n            \"itemName\": \"Cold & Flu Tablets\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"ColdCure\",\n            \"price\": 8.5,\n            \"manufacturedDate\": \"2023-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"Effective cold and flu relief\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 16,\n            \"firstName\": \"Ava\",\n            \"lastName\": \"Robinson\",\n            \"email\": \"ava.robinson@example.com\",\n            \"phoneNumber\": \"111-111-1111\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 17,\n        \"quantity\": 80,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 17,\n            \"itemName\": \"Investment Guide\",\n            \"itemType\": \"Book\",\n            \"brandName\": \"FinanceBook\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-12-10\",\n            \"expiryDate\": \"2025-12-10\",\n            \"description\": \"Comprehensive investment guide\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 17,\n            \"firstName\": \"Alexander\",\n            \"lastName\": \"Clark\",\n            \"email\": \"alexander.clark@example.com\",\n            \"phoneNumber\": \"222-222-2222\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 18,\n        \"quantity\": 70,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 18,\n            \"itemName\": \"Retirement Planning Service\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"RetireWise\",\n            \"price\": 300,\n            \"manufacturedDate\": \"2023-12-20\",\n            \"expiryDate\": \"2024-12-20\",\n            \"description\": \"Personalized retirement planning\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 18,\n            \"firstName\": \"Mia\",\n            \"lastName\": \"Rodriguez\",\n            \"email\": \"mia.rodriguez@example.com\",\n            \"phoneNumber\": \"333-333-3333\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 19,\n        \"quantity\": 110,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 19,\n            \"itemName\": \"Luxury Suite\",\n            \"itemType\": \"Accommodation\",\n            \"brandName\": \"GrandSuite\",\n            \"price\": 1000,\n            \"manufacturedDate\": \"2024-01-05\",\n            \"expiryDate\": \"2025-01-05\",\n            \"description\": \"Spacious and elegant suite\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 19,\n            \"firstName\": \"Benjamin\",\n            \"lastName\": \"Lewis\",\n            \"email\": \"benjamin.lewis@example.com\",\n            \"phoneNumber\": \"444-444-4444\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 20,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 20,\n            \"itemName\": \"Fine Dining Experience\",\n            \"itemType\": \"Hospitality\",\n            \"brandName\": \"GourmetDine\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2024-02-10\",\n            \"expiryDate\": \"2025-02-10\",\n            \"description\": \"Gourmet dining at its best\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 20,\n            \"firstName\": \"Abigail\",\n            \"lastName\": \"Perez\",\n            \"email\": \"abigail.perez@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 21,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 11,\n            \"firstName\": \"Michael\",\n            \"lastName\": \"Brown\",\n            \"email\": \"michael.brown@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 22,\n        \"quantity\": 50,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 11,\n            \"firstName\": \"Michael\",\n            \"lastName\": \"Brown\",\n            \"email\": \"michael.brown@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 23,\n        \"quantity\": 75,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 3,\n            \"itemName\": \"Toothpaste\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"DentalFresh\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-05-10\",\n            \"expiryDate\": \"2024-12-10\",\n            \"description\": \"Mint-flavored toothpaste\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 12,\n            \"firstName\": \"Emma\",\n            \"lastName\": \"Davis\",\n            \"email\": \"emma.davis@example.com\",\n            \"phoneNumber\": \"666-666-6666\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 24,\n        \"quantity\": 60,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 12,\n            \"firstName\": \"Emma\",\n            \"lastName\": \"Davis\",\n            \"email\": \"emma.davis@example.com\",\n            \"phoneNumber\": \"666-666-6666\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 25,\n        \"quantity\": 200,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 13,\n            \"firstName\": \"Daniel\",\n            \"lastName\": \"Martin\",\n            \"email\": \"daniel.martin@example.com\",\n            \"phoneNumber\": \"777-777-7777\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 27,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 13,\n            \"firstName\": \"Daniel\",\n            \"lastName\": \"Martin\",\n            \"email\": \"daniel.martin@example.com\",\n            \"phoneNumber\": \"777-777-7777\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 28,\n        \"quantity\": 150,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 14,\n            \"firstName\": \"Isabella\",\n            \"lastName\": \"Garcia\",\n            \"email\": \"isabella.garcia@example.com\",\n            \"phoneNumber\": \"888-888-8888\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 29,\n        \"quantity\": 80,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 14,\n            \"firstName\": \"Isabella\",\n            \"lastName\": \"Garcia\",\n            \"email\": \"isabella.garcia@example.com\",\n            \"phoneNumber\": \"888-888-8888\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 30,\n        \"quantity\": 50,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 15,\n            \"firstName\": \"Ethan\",\n            \"lastName\": \"Martinez\",\n            \"email\": \"ethan.martinez@example.com\",\n            \"phoneNumber\": \"999-999-9999\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 31,\n        \"quantity\": 30,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 15,\n            \"firstName\": \"Ethan\",\n            \"lastName\": \"Martinez\",\n            \"email\": \"ethan.martinez@example.com\",\n            \"phoneNumber\": \"999-999-9999\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 32,\n        \"quantity\": 80,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 11,\n            \"itemName\": \"Metal Plates\",\n            \"itemType\": \"Raw Material\",\n            \"brandName\": \"MetalTech\",\n            \"price\": 35,\n            \"manufacturedDate\": \"2023-06-10\",\n            \"expiryDate\": \"2025-06-10\",\n            \"description\": \"High-quality metal plates\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 16,\n            \"firstName\": \"Ava\",\n            \"lastName\": \"Robinson\",\n            \"email\": \"ava.robinson@example.com\",\n            \"phoneNumber\": \"111-111-1111\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 33,\n        \"quantity\": 40,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 12,\n            \"itemName\": \"Screws\",\n            \"itemType\": \"Hardware\",\n            \"brandName\": \"FastFix\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-07-15\",\n            \"expiryDate\": \"2025-07-15\",\n            \"description\": \"Assorted screws for construction\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 16,\n            \"firstName\": \"Ava\",\n            \"lastName\": \"Robinson\",\n            \"email\": \"ava.robinson@example.com\",\n            \"phoneNumber\": \"111-111-1111\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 34,\n        \"quantity\": 120,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 13,\n            \"itemName\": \"Wireless Mouse\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMouse\",\n            \"price\": 20,\n            \"manufacturedDate\": \"2023-08-20\",\n            \"expiryDate\": \"2025-08-20\",\n            \"description\": \"Ergonomic wireless mouse\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 17,\n            \"firstName\": \"Alexander\",\n            \"lastName\": \"Clark\",\n            \"email\": \"alexander.clark@example.com\",\n            \"phoneNumber\": \"222-222-2222\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 35,\n        \"quantity\": 60,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 14,\n            \"itemName\": \"External Hard Drive\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"DataVault\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2023-09-25\",\n            \"expiryDate\": \"2025-09-25\",\n            \"description\": \"Portable external storage\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 17,\n            \"firstName\": \"Alexander\",\n            \"lastName\": \"Clark\",\n            \"email\": \"alexander.clark@example.com\",\n            \"phoneNumber\": \"222-222-2222\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 36,\n        \"quantity\": 90,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 15,\n            \"itemName\": \"Pain Relief Gel\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"PainEase\",\n            \"price\": 15,\n            \"manufacturedDate\": \"2023-10-01\",\n            \"expiryDate\": \"2025-10-01\",\n            \"description\": \"Fast-acting pain relief gel\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 18,\n            \"firstName\": \"Mia\",\n            \"lastName\": \"Rodriguez\",\n            \"email\": \"mia.rodriguez@example.com\",\n            \"phoneNumber\": \"333-333-3333\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 37,\n        \"quantity\": 45,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 16,\n            \"itemName\": \"Cold & Flu Tablets\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"ColdCure\",\n            \"price\": 8.5,\n            \"manufacturedDate\": \"2023-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"Effective cold and flu relief\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 18,\n            \"firstName\": \"Mia\",\n            \"lastName\": \"Rodriguez\",\n            \"email\": \"mia.rodriguez@example.com\",\n            \"phoneNumber\": \"333-333-3333\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 38,\n        \"quantity\": 60,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 17,\n            \"itemName\": \"Investment Guide\",\n            \"itemType\": \"Book\",\n            \"brandName\": \"FinanceBook\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-12-10\",\n            \"expiryDate\": \"2025-12-10\",\n            \"description\": \"Comprehensive investment guide\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 19,\n            \"firstName\": \"Benjamin\",\n            \"lastName\": \"Lewis\",\n            \"email\": \"benjamin.lewis@example.com\",\n            \"phoneNumber\": \"444-444-4444\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 39,\n        \"quantity\": 30,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 18,\n            \"itemName\": \"Retirement Planning Service\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"RetireWise\",\n            \"price\": 300,\n            \"manufacturedDate\": \"2023-12-20\",\n            \"expiryDate\": \"2024-12-20\",\n            \"description\": \"Personalized retirement planning\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 19,\n            \"firstName\": \"Benjamin\",\n            \"lastName\": \"Lewis\",\n            \"email\": \"benjamin.lewis@example.com\",\n            \"phoneNumber\": \"444-444-4444\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 40,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 19,\n            \"itemName\": \"Luxury Suite\",\n            \"itemType\": \"Accommodation\",\n            \"brandName\": \"GrandSuite\",\n            \"price\": 1000,\n            \"manufacturedDate\": \"2024-01-05\",\n            \"expiryDate\": \"2025-01-05\",\n            \"description\": \"Spacious and elegant suite\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 20,\n            \"firstName\": \"Abigail\",\n            \"lastName\": \"Perez\",\n            \"email\": \"abigail.perez@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 41,\n        \"quantity\": 50,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 20,\n            \"itemName\": \"Fine Dining Experience\",\n            \"itemType\": \"Hospitality\",\n            \"brandName\": \"GourmetDine\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2024-02-10\",\n            \"expiryDate\": \"2025-02-10\",\n            \"description\": \"Gourmet dining at its best\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 20,\n            \"firstName\": \"Abigail\",\n            \"lastName\": \"Perez\",\n            \"email\": \"abigail.perez@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 47,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-01\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 13,\n            \"itemName\": \"Wireless Mouse\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMouse\",\n            \"price\": 20,\n            \"manufacturedDate\": \"2023-08-20\",\n            \"expiryDate\": \"2025-08-20\",\n            \"description\": \"Ergonomic wireless mouse\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 13,\n            \"firstName\": \"Daniel\",\n            \"lastName\": \"Martin\",\n            \"email\": \"daniel.martin@example.com\",\n            \"phoneNumber\": \"777-777-7777\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    },\n    {\n        \"stockInventoryId\": 48,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-04\",\n        \"stockItemDTO\": null,\n        \"storeDTO\": null,\n        \"supplierDTO\": null\n    },\n    {\n        \"stockInventoryId\": 51,\n        \"quantity\": 100,\n        \"lastStockDate\": \"2023-08-02\",\n        \"stockItemDTO\": {\n            \"stockItemId\": 19,\n            \"itemName\": \"Luxury Suite\",\n            \"itemType\": \"Accommodation\",\n            \"brandName\": \"GrandSuite\",\n            \"price\": 1000,\n            \"manufacturedDate\": \"2024-01-05\",\n            \"expiryDate\": \"2025-01-05\",\n            \"description\": \"Spacious and elegant suite\",\n            \"companyDTO\": null\n        },\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"supplierDTO\": {\n            \"supplierId\": 20,\n            \"firstName\": \"Abigail\",\n            \"lastName\": \"Perez\",\n            \"email\": \"abigail.perez@example.com\",\n            \"phoneNumber\": \"555-555-5555\",\n            \"storeDTO\": null,\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getStockInventoryById/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getStockInventoryById",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getStockInventoryById/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getStockInventoryById",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:10:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stockInventoryId\": 3,\n    \"quantity\": 200,\n    \"lastStockDate\": \"2023-08-01\",\n    \"stockItemDTO\": {\n        \"stockItemId\": 3,\n        \"itemName\": \"Toothpaste\",\n        \"itemType\": \"Personal Care\",\n        \"brandName\": \"DentalFresh\",\n        \"price\": 2.5,\n        \"manufacturedDate\": \"2023-05-10\",\n        \"expiryDate\": \"2024-12-10\",\n        \"description\": \"Mint-flavored toothpaste\",\n        \"companyDTO\": null\n    },\n    \"storeDTO\": {\n        \"storeId\": 2,\n        \"storeName\": \"Tech Solutions - CA\",\n        \"branch\": \"Tech Park Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"supplierDTO\": {\n        \"supplierId\": 3,\n        \"firstName\": \"Michael\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"michael.johnson@example.com\",\n        \"phoneNumber\": \"777-456-7890\",\n        \"storeDTO\": null,\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "createStockInventory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-02\",\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 19,\r\n        \"itemName\": \"Luxury Suite\",\r\n        \"itemType\": \"Accommodation\",\r\n        \"brandName\": \"GrandSuite\",\r\n        \"price\": 1000.0,\r\n        \"manufacturedDate\": \"2024-01-05\",\r\n        \"expiryDate\": \"2025-01-05\",\r\n        \"description\": \"Spacious and elegant suite\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"storeDTO\": {\r\n        \"storeId\": 10,\r\n        \"storeName\": \"Innovative Tech - HI\",\r\n        \"branch\": \"Tourist Area Outlet\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"supplierDTO\": {\r\n        \"supplierId\": 20,\r\n        \"firstName\": \"Abigail\",\r\n        \"lastName\": \"Perez\",\r\n        \"email\": \"abigail.perez@example.com\",\r\n        \"phoneNumber\": \"555-555-5555\",\r\n        \"storeDTO\": null,\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createStockInventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createStockInventory"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "createStockInventory",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-02\",\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 19,\r\n        \"itemName\": \"Luxury Suite\",\r\n        \"itemType\": \"Accommodation\",\r\n        \"brandName\": \"GrandSuite\",\r\n        \"price\": 1000.0,\r\n        \"manufacturedDate\": \"2024-01-05\",\r\n        \"expiryDate\": \"2025-01-05\",\r\n        \"description\": \"Spacious and elegant suite\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"storeDTO\": {\r\n        \"storeId\": 10,\r\n        \"storeName\": \"Innovative Tech - HI\",\r\n        \"branch\": \"Tourist Area Outlet\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"supplierDTO\": {\r\n        \"supplierId\": 20,\r\n        \"firstName\": \"Abigail\",\r\n        \"lastName\": \"Perez\",\r\n        \"email\": \"abigail.perez@example.com\",\r\n        \"phoneNumber\": \"555-555-5555\",\r\n        \"storeDTO\": null,\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/createStockInventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createStockInventory"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:11:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stockInventoryId\": 53,\n    \"quantity\": 100,\n    \"lastStockDate\": \"2023-08-02\",\n    \"stockItemDTO\": {\n        \"stockItemId\": 19,\n        \"itemName\": \"Luxury Suite\",\n        \"itemType\": \"Accommodation\",\n        \"brandName\": \"GrandSuite\",\n        \"price\": 1000,\n        \"manufacturedDate\": \"2024-01-05\",\n        \"expiryDate\": \"2025-01-05\",\n        \"description\": \"Spacious and elegant suite\",\n        \"companyDTO\": null\n    },\n    \"storeDTO\": {\n        \"storeId\": 10,\n        \"storeName\": \"Innovative Tech - HI\",\n        \"branch\": \"Tourist Area Outlet\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"supplierDTO\": {\n        \"supplierId\": 20,\n        \"firstName\": \"Abigail\",\n        \"lastName\": \"Perez\",\n        \"email\": \"abigail.perez@example.com\",\n        \"phoneNumber\": \"555-555-5555\",\n        \"storeDTO\": null,\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "updateStockInventory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stockInventoryId\": 3,\r\n    \"quantity\": 300,\r\n    \"lastStockDate\": \"2023-08-01\",\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 3,\r\n        \"itemName\": \"Toothpaste\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"DentalFresh\",\r\n        \"price\": 2.5,\r\n        \"manufacturedDate\": \"2023-05-10\",\r\n        \"expiryDate\": \"2024-12-10\",\r\n        \"description\": \"Mint-flavored toothpaste\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        }\r\n    },\r\n    \"storeDTO\": {\r\n        \"storeId\": 2,\r\n        \"storeName\": \"Tech Solutions - CA\",\r\n        \"branch\": \"Tech Park Branch\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"Tech Solutions Inc.\",\r\n            \"type\": \"Software Development\",\r\n            \"website\": \"www.techsolutions.com\",\r\n            \"gst\": \"ABC123GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 11,\r\n            \"dno\": \"300\",\r\n            \"street\": \"Mall Street\",\r\n            \"city\": \"Shopping City\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 90210\r\n        }\r\n    },\r\n    \"supplierDTO\": {\r\n        \"supplierId\": 3,\r\n        \"firstName\": \"Michael\",\r\n        \"lastName\": \"Johnson\",\r\n        \"email\": \"michael.johnson@example.com\",\r\n        \"phoneNumber\": \"777-456-7890\",\r\n        \"storeDTO\": {\r\n            \"storeId\": 2,\r\n            \"storeName\": \"Tech Solutions - CA\",\r\n            \"branch\": \"Tech Park Branch\",\r\n            \"companyDTO\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"Tech Solutions Inc.\",\r\n                \"type\": \"Software Development\",\r\n                \"website\": \"www.techsolutions.com\",\r\n                \"gst\": \"ABC123GST\",\r\n                \"addressDTO\": {\r\n                    \"addressId\": 1,\r\n                    \"dno\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"New York\",\r\n                    \"state\": \"New York\",\r\n                    \"pinCode\": 10001\r\n                }\r\n            },\r\n            \"addressDTO\": {\r\n                \"addressId\": 11,\r\n                \"dno\": \"300\",\r\n                \"street\": \"Mall Street\",\r\n                \"city\": \"Shopping City\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 90210\r\n            }\r\n        },\r\n        \"companyDTO\": {\r\n            \"companyId\": 3,\r\n            \"companyName\": \"BuildWell Constructions\",\r\n            \"type\": \"Construction\",\r\n            \"website\": \"www.buildwellconstructions.com\",\r\n            \"gst\": \"DEF789GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 3,\r\n                \"dno\": \"45\",\r\n                \"street\": \"Farm Road\",\r\n                \"city\": \"Rural Town\",\r\n                \"state\": \"Texas\",\r\n                \"pinCode\": 78901\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 23,\r\n            \"dno\": \"999\",\r\n            \"street\": \"Tech Park Street\",\r\n            \"city\": \"Innovation City\",\r\n            \"state\": \"Washington\",\r\n            \"pinCode\": 98052\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateStockInventory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateStockInventory"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateStockInventory",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"stockInventoryId\": 3,\r\n    \"quantity\": 300,\r\n    \"lastStockDate\": \"2023-08-01\",\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 3,\r\n        \"itemName\": \"Toothpaste\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"DentalFresh\",\r\n        \"price\": 2.5,\r\n        \"manufacturedDate\": \"2023-05-10\",\r\n        \"expiryDate\": \"2024-12-10\",\r\n        \"description\": \"Mint-flavored toothpaste\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        }\r\n    },\r\n    \"storeDTO\": {\r\n        \"storeId\": 2,\r\n        \"storeName\": \"Tech Solutions - CA\",\r\n        \"branch\": \"Tech Park Branch\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"Tech Solutions Inc.\",\r\n            \"type\": \"Software Development\",\r\n            \"website\": \"www.techsolutions.com\",\r\n            \"gst\": \"ABC123GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 1,\r\n                \"dno\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"New York\",\r\n                \"state\": \"New York\",\r\n                \"pinCode\": 10001\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 11,\r\n            \"dno\": \"300\",\r\n            \"street\": \"Mall Street\",\r\n            \"city\": \"Shopping City\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 90210\r\n        }\r\n    },\r\n    \"supplierDTO\": {\r\n        \"supplierId\": 3,\r\n        \"firstName\": \"Michael\",\r\n        \"lastName\": \"Johnson\",\r\n        \"email\": \"michael.johnson@example.com\",\r\n        \"phoneNumber\": \"777-456-7890\",\r\n        \"storeDTO\": {\r\n            \"storeId\": 2,\r\n            \"storeName\": \"Tech Solutions - CA\",\r\n            \"branch\": \"Tech Park Branch\",\r\n            \"companyDTO\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"Tech Solutions Inc.\",\r\n                \"type\": \"Software Development\",\r\n                \"website\": \"www.techsolutions.com\",\r\n                \"gst\": \"ABC123GST\",\r\n                \"addressDTO\": {\r\n                    \"addressId\": 1,\r\n                    \"dno\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"New York\",\r\n                    \"state\": \"New York\",\r\n                    \"pinCode\": 10001\r\n                }\r\n            },\r\n            \"addressDTO\": {\r\n                \"addressId\": 11,\r\n                \"dno\": \"300\",\r\n                \"street\": \"Mall Street\",\r\n                \"city\": \"Shopping City\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 90210\r\n            }\r\n        },\r\n        \"companyDTO\": {\r\n            \"companyId\": 3,\r\n            \"companyName\": \"BuildWell Constructions\",\r\n            \"type\": \"Construction\",\r\n            \"website\": \"www.buildwellconstructions.com\",\r\n            \"gst\": \"DEF789GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 3,\r\n                \"dno\": \"45\",\r\n                \"street\": \"Farm Road\",\r\n                \"city\": \"Rural Town\",\r\n                \"state\": \"Texas\",\r\n                \"pinCode\": 78901\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 23,\r\n            \"dno\": \"999\",\r\n            \"street\": \"Tech Park Street\",\r\n            \"city\": \"Innovation City\",\r\n            \"state\": \"Washington\",\r\n            \"pinCode\": 98052\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/updateStockInventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateStockInventory"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:11:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stockInventoryId\": 3,\n    \"quantity\": 300,\n    \"lastStockDate\": \"2023-08-01\",\n    \"stockItemDTO\": {\n        \"stockItemId\": 3,\n        \"itemName\": \"Toothpaste\",\n        \"itemType\": \"Personal Care\",\n        \"brandName\": \"DentalFresh\",\n        \"price\": 2.5,\n        \"manufacturedDate\": \"2023-05-10\",\n        \"expiryDate\": \"2024-12-10\",\n        \"description\": \"Mint-flavored toothpaste\",\n        \"companyDTO\": null\n    },\n    \"storeDTO\": {\n        \"storeId\": 2,\n        \"storeName\": \"Tech Solutions - CA\",\n        \"branch\": \"Tech Park Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"supplierDTO\": {\n        \"supplierId\": 3,\n        \"firstName\": \"Michael\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"michael.johnson@example.com\",\n        \"phoneNumber\": \"777-456-7890\",\n        \"storeDTO\": null,\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteStockInventory",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-04\",\r\n    \"stockItem\": {\r\n        \"stockItemId\": 1,\r\n        \"itemName\": \"Product A\",\r\n        \"itemType\": \"Electronics\",\r\n        \"brandName\": \"Brand X\",\r\n        \"price\": 50.0,\r\n        \"mfd\": \"2023-01-01\",\r\n        \"exd\": \"2023-12-31\",\r\n        \"description\": \"This is a product description.\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/deleteStockInventoryById/52",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteStockInventoryById",
+						"52"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteStockInventory",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 100,\r\n    \"lastStockDate\": \"2023-08-04\",\r\n    \"stockItem\": {\r\n        \"stockItemId\": 1,\r\n        \"itemName\": \"Product A\",\r\n        \"itemType\": \"Electronics\",\r\n        \"brandName\": \"Brand X\",\r\n        \"price\": 50.0,\r\n        \"mfd\": \"2023-01-01\",\r\n        \"exd\": \"2023-12-31\",\r\n        \"description\": \"This is a product description.\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/deleteStockInventoryById/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleteStockInventoryById",
+								"52"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:12:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"StockInventory deleted\",\n    \"id\": 52\n}"
+				}
+			]
+		}
+	]
+}

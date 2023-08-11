@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "37759458-25ed-4626-88fe-fac683568f31",
+		"name": "Company",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-37759458-25ed-4626-88fe-fac683568f31?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getCompanies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Companies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Companies"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCompanies",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Companies"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:04:18 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"companyId\": 1,\n        \"companyName\": \"Tech Solutions Inc.\",\n        \"type\": \"Software Development\",\n        \"website\": \"www.techsolutions.com\",\n        \"gst\": \"ABC123GST\",\n        \"addressDTO\": {\n            \"addressId\": 1,\n            \"dno\": \"123\",\n            \"street\": \"Main Street\",\n            \"city\": \"New York\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    },\n    {\n        \"companyId\": 2,\n        \"companyName\": \"SuperMart\",\n        \"type\": \"Retail\",\n        \"website\": \"www.supermart.com\",\n        \"gst\": \"XYZ456GST\",\n        \"addressDTO\": {\n            \"addressId\": 2,\n            \"dno\": \"789\",\n            \"street\": \"Business Avenue\",\n            \"city\": \"San Francisco\",\n            \"state\": \"California\",\n            \"pinCode\": 94105\n        }\n    },\n    {\n        \"companyId\": 3,\n        \"companyName\": \"BuildWell Constructions\",\n        \"type\": \"Construction\",\n        \"website\": \"www.buildwellconstructions.com\",\n        \"gst\": \"DEF789GST\",\n        \"addressDTO\": {\n            \"addressId\": 3,\n            \"dno\": \"45\",\n            \"street\": \"Farm Road\",\n            \"city\": \"Rural Town\",\n            \"state\": \"Texas\",\n            \"pinCode\": 78901\n        }\n    },\n    {\n        \"companyId\": 4,\n        \"companyName\": \"Expert Consultants\",\n        \"type\": \"Consulting\",\n        \"website\": \"www.expertconsultants.com\",\n        \"gst\": \"GHI101GST\",\n        \"addressDTO\": {\n            \"addressId\": 4,\n            \"dno\": \"700\",\n            \"street\": \"University Street\",\n            \"city\": \"College City\",\n            \"state\": \"Washington\",\n            \"pinCode\": 98052\n        }\n    },\n    {\n        \"companyId\": 5,\n        \"companyName\": \"Innovative Technologies\",\n        \"type\": \"Technology\",\n        \"website\": \"www.innovativetechnologies.com\",\n        \"gst\": \"JKL111GST\",\n        \"addressDTO\": {\n            \"addressId\": 5,\n            \"dno\": \"222\",\n            \"street\": \"Beach House Road\",\n            \"city\": \"Paradise Island\",\n            \"state\": \"Hawaii\",\n            \"pinCode\": 96701\n        }\n    },\n    {\n        \"companyId\": 6,\n        \"companyName\": \"Precision Manufacturing\",\n        \"type\": \"Manufacturing\",\n        \"website\": \"www.precisionmanufacturing.com\",\n        \"gst\": \"MNO222GST\",\n        \"addressDTO\": {\n            \"addressId\": 6,\n            \"dno\": \"67\",\n            \"street\": \"Traveler Lane\",\n            \"city\": \"Nomad City\",\n            \"state\": \"Traveling\",\n            \"pinCode\": 0\n        }\n    },\n    {\n        \"companyId\": 7,\n        \"companyName\": \"eShopNow\",\n        \"type\": \"E-commerce\",\n        \"website\": \"www.eshopnow.com\",\n        \"gst\": \"PQR333GST\",\n        \"addressDTO\": {\n            \"addressId\": 7,\n            \"dno\": \"456\",\n            \"street\": \"Corporate Park\",\n            \"city\": \"Business City\",\n            \"state\": \"California\",\n            \"pinCode\": 90210\n        }\n    },\n    {\n        \"companyId\": 8,\n        \"companyName\": \"PharmaCure\",\n        \"type\": \"Pharmaceutical\",\n        \"website\": \"http://www.pharmacure.com\",\n        \"gst\": \"STU444GST\",\n        \"addressDTO\": {\n            \"addressId\": 8,\n            \"dno\": \"14\",\n            \"street\": \"Apartment Complex\",\n            \"city\": \"Metropolis\",\n            \"state\": \"Cityville\",\n            \"pinCode\": 54321\n        }\n    },\n    {\n        \"companyId\": 9,\n        \"companyName\": \"MoneyWise Financials\",\n        \"type\": \"Financial Services\",\n        \"website\": \"www.moneywisefinancials.com\",\n        \"gst\": \"VWX555GST\",\n        \"addressDTO\": {\n            \"addressId\": 9,\n            \"dno\": \"1\",\n            \"street\": \"Famous Monument Road\",\n            \"city\": \"Landmark City\",\n            \"state\": \"Historic State\",\n            \"pinCode\": 11111\n        }\n    },\n    {\n        \"companyId\": 10,\n        \"companyName\": \"Grand Hotel Group\",\n        \"type\": \"Hospitality\",\n        \"website\": \"www.grandhotelgroup.com\",\n        \"gst\": \"YZA666GST\",\n        \"addressDTO\": {\n            \"addressId\": 10,\n            \"dno\": \"999\",\n            \"street\": \"Remote Valley\",\n            \"city\": \"Isolated Town\",\n            \"state\": \"Unknown State\",\n            \"pinCode\": 99999\n        }\n    },\n    {\n        \"companyId\": 11,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": {\n            \"addressId\": 51,\n            \"dno\": \"123a\",\n            \"street\": \"Main Street\",\n            \"city\": \"Cityville\",\n            \"state\": \"Stateville\",\n            \"pinCode\": 12345\n        }\n    },\n    {\n        \"companyId\": 12,\n        \"companyName\": \"XYZ Tech Solutions\",\n        \"type\": \"Technology\",\n        \"website\": \"www.xyztech.com\",\n        \"gst\": \"XYZ987654321\",\n        \"addressDTO\": {\n            \"addressId\": 52,\n            \"dno\": \"789\",\n            \"street\": \"Tech Road\",\n            \"city\": \"Techtown\",\n            \"state\": \"Technia\",\n            \"pinCode\": 54321\n        }\n    },\n    {\n        \"companyId\": 13,\n        \"companyName\": \"EFG Services\",\n        \"type\": \"Services\",\n        \"website\": \"www.efg-services.com\",\n        \"gst\": \"EFG654321987\",\n        \"addressDTO\": {\n            \"addressId\": 53,\n            \"dno\": \"456\",\n            \"street\": \"Service Avenue\",\n            \"city\": \"Service City\",\n            \"state\": \"Service State\",\n            \"pinCode\": 67890\n        }\n    },\n    {\n        \"companyId\": 14,\n        \"companyName\": \"PQR Consulting\",\n        \"type\": \"Consulting\",\n        \"website\": \"www.pqr-consulting.com\",\n        \"gst\": \"PQR789321456\",\n        \"addressDTO\": {\n            \"addressId\": 54,\n            \"dno\": \"246\",\n            \"street\": \"Consultant Road\",\n            \"city\": \"Consultant City\",\n            \"state\": \"Consultant State\",\n            \"pinCode\": 13579\n        }\n    },\n    {\n        \"companyId\": 15,\n        \"companyName\": \"123 Manufacturing\",\n        \"type\": \"Manufacturing\",\n        \"website\": \"www.123mfg.com\",\n        \"gst\": \"MFG456123789\",\n        \"addressDTO\": {\n            \"addressId\": 55,\n            \"dno\": \"789\",\n            \"street\": \"Manufacture Street\",\n            \"city\": \"Mfgville\",\n            \"state\": \"Mfgstate\",\n            \"pinCode\": 54321\n        }\n    },\n    {\n        \"companyId\": 16,\n        \"companyName\": \"LMN Food Industries\",\n        \"type\": \"Food\",\n        \"website\": \"www.lmnfoods.com\",\n        \"gst\": \"LMN321789654\",\n        \"addressDTO\": {\n            \"addressId\": 56,\n            \"dno\": \"987\",\n            \"street\": \"Food Street\",\n            \"city\": \"Foodville\",\n            \"state\": \"Food State\",\n            \"pinCode\": 24680\n        }\n    },\n    {\n        \"companyId\": 17,\n        \"companyName\": \"GHI-Fashion\",\n        \"type\": \"Retail\",\n        \"website\": \"www.ghi-fashion.com\",\n        \"gst\": \"GHI987654321\",\n        \"addressDTO\": {\n            \"addressId\": 57,\n            \"dno\": \"456\",\n            \"street\": \"Fashion Avenue\",\n            \"city\": \"Fashion City\",\n            \"state\": \"Fashion State\",\n            \"pinCode\": 54321\n        }\n    },\n    {\n        \"companyId\": 18,\n        \"companyName\": \"MNO Software Solutions\",\n        \"type\": \"Technology\",\n        \"website\": \"www.mno-software.com\",\n        \"gst\": \"MNO654321987\",\n        \"addressDTO\": {\n            \"addressId\": 58,\n            \"dno\": \"789\",\n            \"street\": \"Software Road\",\n            \"city\": \"Software City\",\n            \"state\": \"Software State\",\n            \"pinCode\": 67890\n        }\n    },\n    {\n        \"companyId\": 19,\n        \"companyName\": \"RST Electronics\",\n        \"type\": \"Electronics\",\n        \"website\": \"www.rst-electronics.com\",\n        \"gst\": \"RST321789654\",\n        \"addressDTO\": {\n            \"addressId\": 59,\n            \"dno\": \"123\",\n            \"street\": \"Electronics Street\",\n            \"city\": \"Electronicsville\",\n            \"state\": \"Electronia\",\n            \"pinCode\": 13579\n        }\n    },\n    {\n        \"companyId\": 20,\n        \"companyName\": \"UVW Logistics\",\n        \"type\": \"Logistics\",\n        \"website\": \"www.uvw-logistics.com\",\n        \"gst\": \"UVW789321456\",\n        \"addressDTO\": {\n            \"addressId\": 60,\n            \"dno\": \"789\",\n            \"street\": \"Logistics Avenue\",\n            \"city\": \"Logistics City\",\n            \"state\": \"Logistics State\",\n            \"pinCode\": 24680\n        }\n    },\n    {\n        \"companyId\": 21,\n        \"companyName\": \"EFG Services\",\n        \"type\": \"Services\",\n        \"website\": \"www.efg-services.com\",\n        \"gst\": \"EFG654321987\",\n        \"addressDTO\": {\n            \"addressId\": 67,\n            \"dno\": \"456\",\n            \"street\": \"Service Avenue\",\n            \"city\": \"Service City\",\n            \"state\": \"Service State\",\n            \"pinCode\": 67890\n        }\n    },\n    {\n        \"companyId\": 22,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": null\n    },\n    {\n        \"companyId\": 23,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": null\n    },\n    {\n        \"companyId\": 24,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": null\n    },\n    {\n        \"companyId\": 25,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": {\n            \"addressId\": 71,\n            \"dno\": \"123a\",\n            \"street\": \"Main Street\",\n            \"city\": \"Cityville\",\n            \"state\": \"Stateville\",\n            \"pinCode\": 12345\n        }\n    },\n    {\n        \"companyId\": 26,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": {\n            \"addressId\": 72,\n            \"dno\": \"123a\",\n            \"street\": \"Main Street\",\n            \"city\": \"Cityville\",\n            \"state\": \"Stateville\",\n            \"pinCode\": 12345\n        }\n    },\n    {\n        \"companyId\": 28,\n        \"companyName\": \"LMN Food Industries\",\n        \"type\": \"Food\",\n        \"website\": \"www.lmnfoods.com\",\n        \"gst\": \"LMN321789654\",\n        \"addressDTO\": {\n            \"addressId\": 73,\n            \"dno\": \"987\",\n            \"street\": \"Food Street\",\n            \"city\": \"Foodville\",\n            \"state\": \"Food State\",\n            \"pinCode\": 24680\n        }\n    },\n    {\n        \"companyId\": 29,\n        \"companyName\": \"Grand Hotel Group\",\n        \"type\": \"Hospitality\",\n        \"website\": \"www.grandhotelgroup.com\",\n        \"gst\": \"YZA666GST\",\n        \"addressDTO\": {\n            \"addressId\": 10,\n            \"dno\": \"999\",\n            \"street\": \"Remote Valley\",\n            \"city\": \"Isolated Town\",\n            \"state\": \"Unknown State\",\n            \"pinCode\": 99999\n        }\n    },\n    {\n        \"companyId\": 30,\n        \"companyName\": \"UVW Logistics\",\n        \"type\": \"Logistics\",\n        \"website\": \"www.uvw-logistics.com\",\n        \"gst\": \"UVW789321456\",\n        \"addressDTO\": {\n            \"addressId\": 78,\n            \"dno\": \"789\",\n            \"street\": \"Logistics Avenue\",\n            \"city\": \"Logistics City\",\n            \"state\": \"Logistics State\",\n            \"pinCode\": 24680\n        }\n    },\n    {\n        \"companyId\": 31,\n        \"companyName\": \"ABC Corporation\",\n        \"type\": \"Retail\",\n        \"website\": \"www.abc-corp.com\",\n        \"gst\": \"ABC123456789\",\n        \"addressDTO\": {\n            \"addressId\": 79,\n            \"dno\": \"123a\",\n            \"street\": \"Main Street\",\n            \"city\": \"Cityville\",\n            \"state\": \"Stateville\",\n            \"pinCode\": 12345\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getCompanyById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getCompanyById/17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getCompanyById",
+						"17"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCompanyById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getCompanyById/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getCompanyById",
+								"17"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:04:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"companyId\": 17,\n    \"companyName\": \"GHI-Fashion\",\n    \"type\": \"Retail\",\n    \"website\": \"www.ghi-fashion.com\",\n    \"gst\": \"GHI987654321\",\n    \"addressDTO\": {\n        \"addressId\": 57,\n        \"dno\": \"456\",\n        \"street\": \"Fashion Avenue\",\n        \"city\": \"Fashion City\",\n        \"state\": \"Fashion State\",\n        \"pinCode\": 54321\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "createCompany",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"companyName\": \"ABC Corporation\",\r\n  \"type\": \"Retail\",\r\n  \"website\": \"www.abc-corp.com\",\r\n  \"gst\": \"ABC123456789\",\r\n  \"addressDTO\": {\r\n    \"dno\": \"123a\",\r\n    \"street\": \"Main Street\",\r\n    \"city\": \"Cityville\",\r\n    \"state\": \"Stateville\",\r\n    \"pinCode\": \"12345\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createCompany"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "createCompany",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"companyName\": \"ABC Corporation\",\r\n  \"type\": \"Retail\",\r\n  \"website\": \"www.abc-corp.com\",\r\n  \"gst\": \"ABC123456789\",\r\n  \"addressDTO\": {\r\n    \"dno\": \"123a\",\r\n    \"street\": \"Main Street\",\r\n    \"city\": \"Cityville\",\r\n    \"state\": \"Stateville\",\r\n    \"pinCode\": \"12345\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/createCompany",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createCompany"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:03:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"companyId\": 31,\n    \"companyName\": \"ABC Corporation\",\n    \"type\": \"Retail\",\n    \"website\": \"www.abc-corp.com\",\n    \"gst\": \"ABC123456789\",\n    \"addressDTO\": {\n        \"addressId\": 79,\n        \"dno\": \"123a\",\n        \"street\": \"Main Street\",\n        \"city\": \"Cityville\",\n        \"state\": \"Stateville\",\n        \"pinCode\": 12345\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "updateCompany",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyId\": 17,\r\n    \"companyName\": \"GHI-Fashion\",\r\n    \"type\": \"Retail\",\r\n    \"website\": \"www.ghi-fashion.com\",\r\n    \"gst\": \"GHI987654321\",\r\n    \"addressDTO\": {\r\n        \"addressId\": 57,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Fashion Avenue\",\r\n        \"city\": \"Fashion City\",\r\n        \"state\": \"Fashion State\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateCompany",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateCompany"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateCompany",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyId\": 17,\r\n    \"companyName\": \"GHI-Fashion\",\r\n    \"type\": \"Retail\",\r\n    \"website\": \"www.ghi-fashion.com\",\r\n    \"gst\": \"GHI987654321\",\r\n    \"addressDTO\": {\r\n        \"addressId\": 57,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Fashion Avenue\",\r\n        \"city\": \"Fashion City\",\r\n        \"state\": \"Fashion State\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/updateCompany",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateCompany"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:04:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"companyId\": 17,\n    \"companyName\": \"GHI-Fashion\",\n    \"type\": \"Retail\",\n    \"website\": \"www.ghi-fashion.com\",\n    \"gst\": \"GHI987654321\",\n    \"addressDTO\": {\n        \"addressId\": 57,\n        \"dno\": \"456\",\n        \"street\": \"Fashion Avenue\",\n        \"city\": \"Fashion City\",\n        \"state\": \"Fashion State\",\n        \"pinCode\": 54321\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteCompanyById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteCompanyById/32",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteCompanyById",
+						"32"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteCompanyById",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deleteCompanyById/32",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleteCompanyById",
+								"32"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:04:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Company deleted\",\n    \"id\": 32\n}"
+				}
+			]
+		}
+	]
+}

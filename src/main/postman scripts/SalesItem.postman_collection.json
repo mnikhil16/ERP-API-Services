@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "ec1aa25a-cfbf-4549-adda-312f7b8d96d6",
+		"name": "SalesItem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-ec1aa25a-cfbf-4549-adda-312f7b8d96d6?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SalesItems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SalesItems"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/SalesItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"SalesItems"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:46:35 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"salesItemId\": 1,\n        \"quantity\": 2,\n        \"amount\": 50.25,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 1,\n            \"totalAmount\": 150.25,\n            \"salesDate\": \"20230801\",\n            \"salesInvoiceNumber\": \"INV20230801\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 2,\n        \"quantity\": 3,\n        \"amount\": 75.5,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 1,\n            \"totalAmount\": 150.25,\n            \"salesDate\": \"20230801\",\n            \"salesInvoiceNumber\": \"INV20230801\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 3,\n        \"quantity\": 1,\n        \"amount\": 30.5,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 2,\n            \"totalAmount\": 250.5,\n            \"salesDate\": \"20230802\",\n            \"salesInvoiceNumber\": \"INV20230802\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 4,\n        \"quantity\": 4,\n        \"amount\": 100,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 2,\n            \"totalAmount\": 250.5,\n            \"salesDate\": \"20230802\",\n            \"salesInvoiceNumber\": \"INV20230802\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 5,\n        \"quantity\": 2,\n        \"amount\": 90.75,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 3,\n            \"totalAmount\": 180.75,\n            \"salesDate\": \"20230803\",\n            \"salesInvoiceNumber\": \"INV20230803\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 3,\n            \"itemName\": \"Toothpaste\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"DentalFresh\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-05-10\",\n            \"expiryDate\": \"2024-12-10\",\n            \"description\": \"Mint-flavored toothpaste\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 6,\n        \"quantity\": 5,\n        \"amount\": 150,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 3,\n            \"totalAmount\": 180.75,\n            \"salesDate\": \"20230803\",\n            \"salesInvoiceNumber\": \"INV20230803\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 3,\n            \"itemName\": \"Toothpaste\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"DentalFresh\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-05-10\",\n            \"expiryDate\": \"2024-12-10\",\n            \"description\": \"Mint-flavored toothpaste\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 7,\n        \"quantity\": 1,\n        \"amount\": 60.8,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 4,\n            \"totalAmount\": 300,\n            \"salesDate\": \"20230804\",\n            \"salesInvoiceNumber\": \"INV20230804\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 8,\n        \"quantity\": 2,\n        \"amount\": 40,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 4,\n            \"totalAmount\": 300,\n            \"salesDate\": \"20230804\",\n            \"salesInvoiceNumber\": \"INV20230804\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 9,\n        \"quantity\": 3,\n        \"amount\": 40.6,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 5,\n            \"totalAmount\": 120.8,\n            \"salesDate\": \"20230805\",\n            \"salesInvoiceNumber\": \"INV20230805\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 10,\n        \"quantity\": 1,\n        \"amount\": 40,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 5,\n            \"totalAmount\": 120.8,\n            \"salesDate\": \"20230805\",\n            \"salesInvoiceNumber\": \"INV20230805\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 11,\n        \"quantity\": 2,\n        \"amount\": 70.4,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 6,\n            \"totalAmount\": 80.6,\n            \"salesDate\": \"20230806\",\n            \"salesInvoiceNumber\": \"INV20230806\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 12,\n        \"quantity\": 2,\n        \"amount\": 10.2,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 6,\n            \"totalAmount\": 80.6,\n            \"salesDate\": \"20230806\",\n            \"salesInvoiceNumber\": \"INV20230806\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 13,\n        \"quantity\": 3,\n        \"amount\": 80.2,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 7,\n            \"totalAmount\": 350.4,\n            \"salesDate\": \"20230807\",\n            \"salesInvoiceNumber\": \"INV20230807\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 14,\n        \"quantity\": 2,\n        \"amount\": 90,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 7,\n            \"totalAmount\": 350.4,\n            \"salesDate\": \"20230807\",\n            \"salesInvoiceNumber\": \"INV20230807\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 15,\n        \"quantity\": 1,\n        \"amount\": 60.3,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 8,\n            \"totalAmount\": 420.2,\n            \"salesDate\": \"20230808\",\n            \"salesInvoiceNumber\": \"INV20230808\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 16,\n        \"quantity\": 3,\n        \"amount\": 80,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 8,\n            \"totalAmount\": 420.2,\n            \"salesDate\": \"20230808\",\n            \"salesInvoiceNumber\": \"INV20230808\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 17,\n        \"quantity\": 2,\n        \"amount\": 40.9,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 9,\n            \"totalAmount\": 200.3,\n            \"salesDate\": \"20230809\",\n            \"salesInvoiceNumber\": \"INV20230809\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 18,\n        \"quantity\": 1,\n        \"amount\": 20,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 9,\n            \"totalAmount\": 200.3,\n            \"salesDate\": \"20230809\",\n            \"salesInvoiceNumber\": \"INV20230809\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 19,\n        \"quantity\": 3,\n        \"amount\": 10.8,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 10,\n            \"totalAmount\": 180.9,\n            \"salesDate\": \"20230811\",\n            \"salesInvoiceNumber\": \"INV20230810\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        }\n    },\n    {\n        \"salesItemId\": 20,\n        \"quantity\": 4,\n        \"amount\": 30,\n        \"salesInvoiceDTO\": {\n            \"salesInvoiceId\": 10,\n            \"totalAmount\": 180.9,\n            \"salesDate\": \"20230811\",\n            \"salesInvoiceNumber\": \"INV20230810\",\n            \"companyDTO\": null,\n            \"storeDTO\": null,\n            \"customerDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getSalesItemById/8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getSalesItemById",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getSalesItemById/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getSalesItemById",
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:47:41 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"salesItemId\": 8,\n    \"quantity\": 2,\n    \"amount\": 40,\n    \"salesInvoiceDTO\": {\n        \"salesInvoiceId\": 4,\n        \"totalAmount\": 300,\n        \"salesDate\": \"20230804\",\n        \"salesInvoiceNumber\": \"INV20230804\",\n        \"companyDTO\": null,\n        \"storeDTO\": null,\n        \"customerDTO\": null\n    },\n    \"stockItemDTO\": {\n        \"stockItemId\": 4,\n        \"itemName\": \"Shampoo\",\n        \"itemType\": \"Personal Care\",\n        \"brandName\": \"SilkyLocks\",\n        \"price\": 5,\n        \"manufacturedDate\": \"2023-04-22\",\n        \"expiryDate\": \"2025-04-22\",\n        \"description\": \"Moisturizing shampoo\",\n        \"companyDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "createSalesInvoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 2,\r\n    \"amount\": 40.0,\r\n    \"salesInvoiceDTO\": {\r\n        \"salesInvoiceId\": 4,\r\n        \"totalAmount\": 300.0,\r\n        \"salesDate\": \"20230804\",\r\n        \"salesInvoiceNumber\": \"INV20230804\",\r\n        \"companyDTO\": null,\r\n        \"storeDTO\": null,\r\n        \"customerDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 4,\r\n        \"itemName\": \"Shampoo\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"SilkyLocks\",\r\n        \"price\": 5.0,\r\n        \"manufacturedDate\": \"2023-04-22\",\r\n        \"expiryDate\": \"2025-04-22\",\r\n        \"description\": \"Moisturizing shampoo\",\r\n        \"companyDTO\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createSalesItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createSalesItem"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "createSalesInvoice",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 2,\r\n    \"amount\": 40.0,\r\n    \"salesInvoiceDTO\": {\r\n        \"salesInvoiceId\": 4,\r\n        \"totalAmount\": 300.0,\r\n        \"salesDate\": \"20230804\",\r\n        \"salesInvoiceNumber\": \"INV20230804\",\r\n        \"companyDTO\": null,\r\n        \"storeDTO\": null,\r\n        \"customerDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 4,\r\n        \"itemName\": \"Shampoo\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"SilkyLocks\",\r\n        \"price\": 5.0,\r\n        \"manufacturedDate\": \"2023-04-22\",\r\n        \"expiryDate\": \"2025-04-22\",\r\n        \"description\": \"Moisturizing shampoo\",\r\n        \"companyDTO\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/createSalesItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createSalesItem"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:48:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"salesItemId\": 21,\n    \"quantity\": 2,\n    \"amount\": 40,\n    \"salesInvoiceDTO\": {\n        \"salesInvoiceId\": 4,\n        \"totalAmount\": 300,\n        \"salesDate\": \"20230804\",\n        \"salesInvoiceNumber\": \"INV20230804\",\n        \"companyDTO\": null,\n        \"storeDTO\": null,\n        \"customerDTO\": null\n    },\n    \"stockItemDTO\": {\n        \"stockItemId\": 4,\n        \"itemName\": \"Shampoo\",\n        \"itemType\": \"Personal Care\",\n        \"brandName\": \"SilkyLocks\",\n        \"price\": 5,\n        \"manufacturedDate\": \"2023-04-22\",\n        \"expiryDate\": \"2025-04-22\",\n        \"description\": \"Moisturizing shampoo\",\n        \"companyDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "updateSalesInvoice",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"salesItemId\": 8,\r\n    \"quantity\": 4,\r\n    \"amount\": 80.0,\r\n    \"salesInvoiceDTO\": {\r\n        \"salesInvoiceId\": 4,\r\n        \"totalAmount\": 300.0,\r\n        \"salesDate\": \"20230804\",\r\n        \"salesInvoiceNumber\": \"INV20230804\",\r\n        \"companyDTO\": null,\r\n        \"storeDTO\": null,\r\n        \"customerDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 4,\r\n        \"itemName\": \"Shampoo\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"SilkyLocks\",\r\n        \"price\": 5.0,\r\n        \"manufacturedDate\": \"2023-04-22\",\r\n        \"expiryDate\": \"2025-04-22\",\r\n        \"description\": \"Moisturizing shampoo\",\r\n        \"companyDTO\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateSalesItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateSalesItem"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateSalesInvoice",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"salesItemId\": 8,\r\n    \"quantity\": 4,\r\n    \"amount\": 80.0,\r\n    \"salesInvoiceDTO\": {\r\n        \"salesInvoiceId\": 4,\r\n        \"totalAmount\": 300.0,\r\n        \"salesDate\": \"20230804\",\r\n        \"salesInvoiceNumber\": \"INV20230804\",\r\n        \"companyDTO\": null,\r\n        \"storeDTO\": null,\r\n        \"customerDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 4,\r\n        \"itemName\": \"Shampoo\",\r\n        \"itemType\": \"Personal Care\",\r\n        \"brandName\": \"SilkyLocks\",\r\n        \"price\": 5.0,\r\n        \"manufacturedDate\": \"2023-04-22\",\r\n        \"expiryDate\": \"2025-04-22\",\r\n        \"description\": \"Moisturizing shampoo\",\r\n        \"companyDTO\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/updateSalesItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateSalesItem"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:49:11 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"salesItemId\": 8,\n    \"quantity\": 4,\n    \"amount\": 80,\n    \"salesInvoiceDTO\": {\n        \"salesInvoiceId\": 4,\n        \"totalAmount\": 300,\n        \"salesDate\": \"20230804\",\n        \"salesInvoiceNumber\": \"INV20230804\",\n        \"companyDTO\": null,\n        \"storeDTO\": null,\n        \"customerDTO\": null\n    },\n    \"stockItemDTO\": {\n        \"stockItemId\": 4,\n        \"itemName\": \"Shampoo\",\n        \"itemType\": \"Personal Care\",\n        \"brandName\": \"SilkyLocks\",\n        \"price\": 5,\n        \"manufacturedDate\": \"2023-04-22\",\n        \"expiryDate\": \"2025-04-22\",\n        \"description\": \"Moisturizing shampoo\",\n        \"companyDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteSalesInvoiceById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteSalesItemById/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteSalesItemById",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteSalesInvoiceById",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deleteSalesItemById/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleteSalesItemById",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:50:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"SalesItem deleted\",\n    \"id\": 7\n}"
+				}
+			]
+		}
+	]
+}

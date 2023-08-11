@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "23a793d6-974f-4fd3-801c-251127d52bc6",
+		"name": "PurchaseInvoiceItems",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-23a793d6-974f-4fd3-801c-251127d52bc6?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/PurchaseInvoiceItems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"PurchaseInvoiceItems"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/PurchaseInvoiceItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"PurchaseInvoiceItems"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:27:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"purchaseInvoiceItemId\": 1,\n        \"quantity\": 10,\n        \"amount\": 100,\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 1,\n            \"amount\": 1700,\n            \"purchaseDate\": \"2023-08-01\",\n            \"purchaseInvoiceNo\": \"INV001\",\n            \"supplierInvoiceNo\": \"SUPINV001\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 2,\n        \"quantity\": 5,\n        \"amount\": 50,\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 1,\n            \"amount\": 1700,\n            \"purchaseDate\": \"2023-08-01\",\n            \"purchaseInvoiceNo\": \"INV001\",\n            \"supplierInvoiceNo\": \"SUPINV001\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 3,\n        \"quantity\": 12,\n        \"amount\": 180,\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 2,\n            \"amount\": 2000,\n            \"purchaseDate\": \"2023-08-02\",\n            \"purchaseInvoiceNo\": \"INV002\",\n            \"supplierInvoiceNo\": \"SUPINV002\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 4,\n        \"quantity\": 15,\n        \"amount\": 300,\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 3,\n            \"amount\": 2200,\n            \"purchaseDate\": \"2023-08-03\",\n            \"purchaseInvoiceNo\": \"INV003\",\n            \"supplierInvoiceNo\": \"SUPINV003\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 5,\n        \"quantity\": 20,\n        \"amount\": 400,\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 3,\n            \"amount\": 2200,\n            \"purchaseDate\": \"2023-08-03\",\n            \"purchaseInvoiceNo\": \"INV003\",\n            \"supplierInvoiceNo\": \"SUPINV003\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 6,\n        \"quantity\": 5,\n        \"amount\": 100,\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 4,\n            \"amount\": 1500,\n            \"purchaseDate\": \"2023-08-04\",\n            \"purchaseInvoiceNo\": \"INV004\",\n            \"supplierInvoiceNo\": \"SUPINV004\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 7,\n        \"quantity\": 10,\n        \"amount\": 200,\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 4,\n            \"amount\": 1500,\n            \"purchaseDate\": \"2023-08-04\",\n            \"purchaseInvoiceNo\": \"INV004\",\n            \"supplierInvoiceNo\": \"SUPINV004\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 8,\n        \"quantity\": 10,\n        \"amount\": 250,\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 5,\n            \"amount\": 1800,\n            \"purchaseDate\": \"2023-08-05\",\n            \"purchaseInvoiceNo\": \"INV005\",\n            \"supplierInvoiceNo\": \"SUPINV005\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 9,\n        \"quantity\": 15,\n        \"amount\": 350,\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 5,\n            \"amount\": 1800,\n            \"purchaseDate\": \"2023-08-05\",\n            \"purchaseInvoiceNo\": \"INV005\",\n            \"supplierInvoiceNo\": \"SUPINV005\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 10,\n        \"quantity\": 8,\n        \"amount\": 120,\n        \"storeDTO\": {\n            \"storeId\": 11,\n            \"storeName\": \"Precision Manufacturing - IA\",\n            \"branch\": \"Factory Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 11,\n            \"itemName\": \"Metal Plates\",\n            \"itemType\": \"Raw Material\",\n            \"brandName\": \"MetalTech\",\n            \"price\": 35,\n            \"manufacturedDate\": \"2023-06-10\",\n            \"expiryDate\": \"2025-06-10\",\n            \"description\": \"High-quality metal plates\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 6,\n            \"amount\": 1900,\n            \"purchaseDate\": \"2023-08-06\",\n            \"purchaseInvoiceNo\": \"INV006\",\n            \"supplierInvoiceNo\": \"SUPINV006\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 11,\n        \"quantity\": 12,\n        \"amount\": 180,\n        \"storeDTO\": {\n            \"storeId\": 12,\n            \"storeName\": \"Precision Manufacturing - CA\",\n            \"branch\": \"Commercial Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 12,\n            \"itemName\": \"Screws\",\n            \"itemType\": \"Hardware\",\n            \"brandName\": \"FastFix\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-07-15\",\n            \"expiryDate\": \"2025-07-15\",\n            \"description\": \"Assorted screws for construction\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 6,\n            \"amount\": 1900,\n            \"purchaseDate\": \"2023-08-06\",\n            \"purchaseInvoiceNo\": \"INV006\",\n            \"supplierInvoiceNo\": \"SUPINV006\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 12,\n        \"quantity\": 10,\n        \"amount\": 300,\n        \"storeDTO\": {\n            \"storeId\": 13,\n            \"storeName\": \"eShopNow - SC\",\n            \"branch\": \"Mall Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 13,\n            \"itemName\": \"Wireless Mouse\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMouse\",\n            \"price\": 20,\n            \"manufacturedDate\": \"2023-08-20\",\n            \"expiryDate\": \"2025-08-20\",\n            \"description\": \"Ergonomic wireless mouse\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 7,\n            \"amount\": 2100,\n            \"purchaseDate\": \"2023-08-07\",\n            \"purchaseInvoiceNo\": \"INV007\",\n            \"supplierInvoiceNo\": \"SUPINV007\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 13,\n        \"quantity\": 20,\n        \"amount\": 400,\n        \"storeDTO\": {\n            \"storeId\": 14,\n            \"storeName\": \"eShopNow - TX\",\n            \"branch\": \"Residential Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 14,\n            \"itemName\": \"External Hard Drive\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"DataVault\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2023-09-25\",\n            \"expiryDate\": \"2025-09-25\",\n            \"description\": \"Portable external storage\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 7,\n            \"amount\": 2100,\n            \"purchaseDate\": \"2023-08-07\",\n            \"purchaseInvoiceNo\": \"INV007\",\n            \"supplierInvoiceNo\": \"SUPINV007\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 14,\n        \"quantity\": 5,\n        \"amount\": 120,\n        \"storeDTO\": {\n            \"storeId\": 15,\n            \"storeName\": \"PharmaCure - Landmark\",\n            \"branch\": \"Research Center\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 15,\n            \"itemName\": \"Pain Relief Gel\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"PainEase\",\n            \"price\": 15,\n            \"manufacturedDate\": \"2023-10-01\",\n            \"expiryDate\": \"2025-10-01\",\n            \"description\": \"Fast-acting pain relief gel\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 8,\n            \"amount\": 1600,\n            \"purchaseDate\": \"2023-08-08\",\n            \"purchaseInvoiceNo\": \"INV008\",\n            \"supplierInvoiceNo\": \"SUPINV008\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 15,\n        \"quantity\": 15,\n        \"amount\": 250,\n        \"storeDTO\": {\n            \"storeId\": 16,\n            \"storeName\": \"PharmaCure - WA\",\n            \"branch\": \"City Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 16,\n            \"itemName\": \"Cold & Flu Tablets\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"ColdCure\",\n            \"price\": 8.5,\n            \"manufacturedDate\": \"2023-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"Effective cold and flu relief\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 8,\n            \"amount\": 1600,\n            \"purchaseDate\": \"2023-08-08\",\n            \"purchaseInvoiceNo\": \"INV008\",\n            \"supplierInvoiceNo\": \"SUPINV008\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 16,\n        \"quantity\": 10,\n        \"amount\": 350,\n        \"storeDTO\": {\n            \"storeId\": 17,\n            \"storeName\": \"MoneyWise - Metropolis\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 17,\n            \"itemName\": \"Investment Guide\",\n            \"itemType\": \"Book\",\n            \"brandName\": \"FinanceBook\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-12-10\",\n            \"expiryDate\": \"2025-12-10\",\n            \"description\": \"Comprehensive investment guide\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 9,\n            \"amount\": 1300,\n            \"purchaseDate\": \"2023-08-09\",\n            \"purchaseInvoiceNo\": \"INV009\",\n            \"supplierInvoiceNo\": \"SUPINV009\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 17,\n        \"quantity\": 25,\n        \"amount\": 450,\n        \"storeDTO\": {\n            \"storeId\": 18,\n            \"storeName\": \"MoneyWise - HI\",\n            \"branch\": \"Tourist Central Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 18,\n            \"itemName\": \"Retirement Planning Service\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"RetireWise\",\n            \"price\": 300,\n            \"manufacturedDate\": \"2023-12-20\",\n            \"expiryDate\": \"2024-12-20\",\n            \"description\": \"Personalized retirement planning\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 9,\n            \"amount\": 1300,\n            \"purchaseDate\": \"2023-08-09\",\n            \"purchaseInvoiceNo\": \"INV009\",\n            \"supplierInvoiceNo\": \"SUPINV009\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 18,\n        \"quantity\": 12,\n        \"amount\": 300,\n        \"storeDTO\": {\n            \"storeId\": 19,\n            \"storeName\": \"Grand Hotel - Paradise\",\n            \"branch\": \"Beachfront Resort\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 19,\n            \"itemName\": \"Luxury Suite\",\n            \"itemType\": \"Accommodation\",\n            \"brandName\": \"GrandSuite\",\n            \"price\": 1000,\n            \"manufacturedDate\": \"2024-01-05\",\n            \"expiryDate\": \"2025-01-05\",\n            \"description\": \"Spacious and elegant suite\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 10,\n            \"amount\": 2400,\n            \"purchaseDate\": \"2023-08-10\",\n            \"purchaseInvoiceNo\": \"INV010\",\n            \"supplierInvoiceNo\": \"SUPINV010\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 19,\n        \"quantity\": 18,\n        \"amount\": 400,\n        \"storeDTO\": {\n            \"storeId\": 20,\n            \"storeName\": \"Grand Hotel - CA\",\n            \"branch\": \"Business Park Resort\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 20,\n            \"itemName\": \"Fine Dining Experience\",\n            \"itemType\": \"Hospitality\",\n            \"brandName\": \"GourmetDine\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2024-02-10\",\n            \"expiryDate\": \"2025-02-10\",\n            \"description\": \"Gourmet dining at its best\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 10,\n            \"amount\": 2400,\n            \"purchaseDate\": \"2023-08-10\",\n            \"purchaseInvoiceNo\": \"INV010\",\n            \"supplierInvoiceNo\": \"SUPINV010\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 20,\n        \"quantity\": 5,\n        \"amount\": 50,\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 1,\n            \"itemName\": \"Laptop\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMax\",\n            \"price\": 1200,\n            \"manufacturedDate\": \"2023-01-15\",\n            \"expiryDate\": \"2026-01-15\",\n            \"description\": \"High-performance laptop\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 11,\n            \"amount\": 1500,\n            \"purchaseDate\": \"2023-08-11\",\n            \"purchaseInvoiceNo\": \"INV011\",\n            \"supplierInvoiceNo\": \"SUPINV011\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 21,\n        \"quantity\": 10,\n        \"amount\": 100,\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 2,\n            \"itemName\": \"Smartphone\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"GadgetTech\",\n            \"price\": 700,\n            \"manufacturedDate\": \"2023-03-20\",\n            \"expiryDate\": \"2026-03-20\",\n            \"description\": \"Flagship smartphone model\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 11,\n            \"amount\": 1500,\n            \"purchaseDate\": \"2023-08-11\",\n            \"purchaseInvoiceNo\": \"INV011\",\n            \"supplierInvoiceNo\": \"SUPINV011\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 22,\n        \"quantity\": 8,\n        \"amount\": 120,\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 3,\n            \"itemName\": \"Toothpaste\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"DentalFresh\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-05-10\",\n            \"expiryDate\": \"2024-12-10\",\n            \"description\": \"Mint-flavored toothpaste\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 12,\n            \"amount\": 2200,\n            \"purchaseDate\": \"2023-08-12\",\n            \"purchaseInvoiceNo\": \"INV012\",\n            \"supplierInvoiceNo\": \"SUPINV012\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 23,\n        \"quantity\": 12,\n        \"amount\": 180,\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 4,\n            \"itemName\": \"Shampoo\",\n            \"itemType\": \"Personal Care\",\n            \"brandName\": \"SilkyLocks\",\n            \"price\": 5,\n            \"manufacturedDate\": \"2023-04-22\",\n            \"expiryDate\": \"2025-04-22\",\n            \"description\": \"Moisturizing shampoo\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 12,\n            \"amount\": 2200,\n            \"purchaseDate\": \"2023-08-12\",\n            \"purchaseInvoiceNo\": \"INV012\",\n            \"supplierInvoiceNo\": \"SUPINV012\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 24,\n        \"quantity\": 15,\n        \"amount\": 300,\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 5,\n            \"itemName\": \"cement\",\n            \"itemType\": \"Construction-Material\",\n            \"brandName\": \"BuildStrong\",\n            \"price\": 50,\n            \"manufacturedDate\": \"2022-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"High-quality cement\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 13,\n            \"amount\": 1800,\n            \"purchaseDate\": \"2023-08-13\",\n            \"purchaseInvoiceNo\": \"INV013\",\n            \"supplierInvoiceNo\": \"SUPINV013\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 25,\n        \"quantity\": 20,\n        \"amount\": 400,\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 6,\n            \"itemName\": \"Paint\",\n            \"itemType\": \"Construction Material\",\n            \"brandName\": \"ColorSplash\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-02-12\",\n            \"expiryDate\": \"2024-02-12\",\n            \"description\": \"Interior paint\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 13,\n            \"amount\": 1800,\n            \"purchaseDate\": \"2023-08-13\",\n            \"purchaseInvoiceNo\": \"INV013\",\n            \"supplierInvoiceNo\": \"SUPINV013\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 26,\n        \"quantity\": 5,\n        \"amount\": 100,\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 7,\n            \"itemName\": \"Business Consultation\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"ExpertAdvice\",\n            \"price\": 250,\n            \"manufacturedDate\": \"2023-07-01\",\n            \"expiryDate\": \"2023-12-31\",\n            \"description\": \"Professional business consultation\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 14,\n            \"amount\": 1300,\n            \"purchaseDate\": \"2023-08-14\",\n            \"purchaseInvoiceNo\": \"INV014\",\n            \"supplierInvoiceNo\": \"SUPINV014\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 27,\n        \"quantity\": 10,\n        \"amount\": 200,\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 8,\n            \"itemName\": \"Legal Advisory\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"LegalEagle\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-08-05\",\n            \"expiryDate\": \"2024-08-05\",\n            \"description\": \"Legal advice and support\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 14,\n            \"amount\": 1300,\n            \"purchaseDate\": \"2023-08-14\",\n            \"purchaseInvoiceNo\": \"INV014\",\n            \"supplierInvoiceNo\": \"SUPINV014\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 28,\n        \"quantity\": 12,\n        \"amount\": 150,\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 9,\n            \"itemName\": \"Wireless Earbuds\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"SoundBeats\",\n            \"price\": 80,\n            \"manufacturedDate\": \"2023-06-15\",\n            \"expiryDate\": \"2025-06-15\",\n            \"description\": \"Noise-canceling earbuds\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 15,\n            \"amount\": 2000,\n            \"purchaseDate\": \"2023-08-15\",\n            \"purchaseInvoiceNo\": \"INV015\",\n            \"supplierInvoiceNo\": \"SUPINV015\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 29,\n        \"quantity\": 18,\n        \"amount\": 225,\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 10,\n            \"itemName\": \"Smart Watch\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechWear\",\n            \"price\": 150,\n            \"manufacturedDate\": \"2023-07-20\",\n            \"expiryDate\": \"2025-07-20\",\n            \"description\": \"Fitness tracking smartwatch\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 15,\n            \"amount\": 2000,\n            \"purchaseDate\": \"2023-08-15\",\n            \"purchaseInvoiceNo\": \"INV015\",\n            \"supplierInvoiceNo\": \"SUPINV015\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 30,\n        \"quantity\": 10,\n        \"amount\": 500,\n        \"storeDTO\": {\n            \"storeId\": 11,\n            \"storeName\": \"Precision Manufacturing - IA\",\n            \"branch\": \"Factory Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 11,\n            \"itemName\": \"Metal Plates\",\n            \"itemType\": \"Raw Material\",\n            \"brandName\": \"MetalTech\",\n            \"price\": 35,\n            \"manufacturedDate\": \"2023-06-10\",\n            \"expiryDate\": \"2025-06-10\",\n            \"description\": \"High-quality metal plates\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 16,\n            \"amount\": 2500,\n            \"purchaseDate\": \"2023-08-16\",\n            \"purchaseInvoiceNo\": \"INV016\",\n            \"supplierInvoiceNo\": \"SUPINV016\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 31,\n        \"quantity\": 15,\n        \"amount\": 330,\n        \"storeDTO\": {\n            \"storeId\": 12,\n            \"storeName\": \"Precision Manufacturing - CA\",\n            \"branch\": \"Commercial Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 12,\n            \"itemName\": \"Screws\",\n            \"itemType\": \"Hardware\",\n            \"brandName\": \"FastFix\",\n            \"price\": 2.5,\n            \"manufacturedDate\": \"2023-07-15\",\n            \"expiryDate\": \"2025-07-15\",\n            \"description\": \"Assorted screws for construction\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 16,\n            \"amount\": 2500,\n            \"purchaseDate\": \"2023-08-16\",\n            \"purchaseInvoiceNo\": \"INV016\",\n            \"supplierInvoiceNo\": \"SUPINV016\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 32,\n        \"quantity\": 8,\n        \"amount\": 160,\n        \"storeDTO\": {\n            \"storeId\": 13,\n            \"storeName\": \"eShopNow - SC\",\n            \"branch\": \"Mall Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 13,\n            \"itemName\": \"Wireless Mouse\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"TechMouse\",\n            \"price\": 20,\n            \"manufacturedDate\": \"2023-08-20\",\n            \"expiryDate\": \"2025-08-20\",\n            \"description\": \"Ergonomic wireless mouse\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 17,\n            \"amount\": 2100,\n            \"purchaseDate\": \"2023-08-17\",\n            \"purchaseInvoiceNo\": \"INV017\",\n            \"supplierInvoiceNo\": \"SUPINV017\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 33,\n        \"quantity\": 12,\n        \"amount\": 240,\n        \"storeDTO\": {\n            \"storeId\": 14,\n            \"storeName\": \"eShopNow - TX\",\n            \"branch\": \"Residential Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 14,\n            \"itemName\": \"External Hard Drive\",\n            \"itemType\": \"Electronics\",\n            \"brandName\": \"DataVault\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2023-09-25\",\n            \"expiryDate\": \"2025-09-25\",\n            \"description\": \"Portable external storage\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 17,\n            \"amount\": 2100,\n            \"purchaseDate\": \"2023-08-17\",\n            \"purchaseInvoiceNo\": \"INV017\",\n            \"supplierInvoiceNo\": \"SUPINV017\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 34,\n        \"quantity\": 10,\n        \"amount\": 250,\n        \"storeDTO\": {\n            \"storeId\": 15,\n            \"storeName\": \"PharmaCure - Landmark\",\n            \"branch\": \"Research Center\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 15,\n            \"itemName\": \"Pain Relief Gel\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"PainEase\",\n            \"price\": 15,\n            \"manufacturedDate\": \"2023-10-01\",\n            \"expiryDate\": \"2025-10-01\",\n            \"description\": \"Fast-acting pain relief gel\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 18,\n            \"amount\": 1700,\n            \"purchaseDate\": \"2023-08-18\",\n            \"purchaseInvoiceNo\": \"INV018\",\n            \"supplierInvoiceNo\": \"SUPINV018\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 35,\n        \"quantity\": 15,\n        \"amount\": 375,\n        \"storeDTO\": {\n            \"storeId\": 16,\n            \"storeName\": \"PharmaCure - WA\",\n            \"branch\": \"City Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 16,\n            \"itemName\": \"Cold & Flu Tablets\",\n            \"itemType\": \"Medicine\",\n            \"brandName\": \"ColdCure\",\n            \"price\": 8.5,\n            \"manufacturedDate\": \"2023-11-05\",\n            \"expiryDate\": \"2025-11-05\",\n            \"description\": \"Effective cold and flu relief\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 18,\n            \"amount\": 1700,\n            \"purchaseDate\": \"2023-08-18\",\n            \"purchaseInvoiceNo\": \"INV018\",\n            \"supplierInvoiceNo\": \"SUPINV018\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 36,\n        \"quantity\": 8,\n        \"amount\": 180,\n        \"storeDTO\": {\n            \"storeId\": 17,\n            \"storeName\": \"MoneyWise - Metropolis\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 17,\n            \"itemName\": \"Investment Guide\",\n            \"itemType\": \"Book\",\n            \"brandName\": \"FinanceBook\",\n            \"price\": 25,\n            \"manufacturedDate\": \"2023-12-10\",\n            \"expiryDate\": \"2025-12-10\",\n            \"description\": \"Comprehensive investment guide\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 19,\n            \"amount\": 1400,\n            \"purchaseDate\": \"2023-08-19\",\n            \"purchaseInvoiceNo\": \"INV019\",\n            \"supplierInvoiceNo\": \"SUPINV019\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 37,\n        \"quantity\": 12,\n        \"amount\": 270,\n        \"storeDTO\": {\n            \"storeId\": 18,\n            \"storeName\": \"MoneyWise - HI\",\n            \"branch\": \"Tourist Central Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 18,\n            \"itemName\": \"Retirement Planning Service\",\n            \"itemType\": \"Service\",\n            \"brandName\": \"RetireWise\",\n            \"price\": 300,\n            \"manufacturedDate\": \"2023-12-20\",\n            \"expiryDate\": \"2024-12-20\",\n            \"description\": \"Personalized retirement planning\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 19,\n            \"amount\": 1400,\n            \"purchaseDate\": \"2023-08-19\",\n            \"purchaseInvoiceNo\": \"INV019\",\n            \"supplierInvoiceNo\": \"SUPINV019\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 38,\n        \"quantity\": 10,\n        \"amount\": 300,\n        \"storeDTO\": {\n            \"storeId\": 19,\n            \"storeName\": \"Grand Hotel - Paradise\",\n            \"branch\": \"Beachfront Resort\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 19,\n            \"itemName\": \"Luxury Suite\",\n            \"itemType\": \"Accommodation\",\n            \"brandName\": \"GrandSuite\",\n            \"price\": 1000,\n            \"manufacturedDate\": \"2024-01-05\",\n            \"expiryDate\": \"2025-01-05\",\n            \"description\": \"Spacious and elegant suite\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 20,\n            \"amount\": 2300,\n            \"purchaseDate\": \"2023-08-21\",\n            \"purchaseInvoiceNo\": \"INV020\",\n            \"supplierInvoiceNo\": \"SUPINV020\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    },\n    {\n        \"purchaseInvoiceItemId\": 39,\n        \"quantity\": 18,\n        \"amount\": 540,\n        \"storeDTO\": {\n            \"storeId\": 20,\n            \"storeName\": \"Grand Hotel - CA\",\n            \"branch\": \"Business Park Resort\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"stockItemDTO\": {\n            \"stockItemId\": 20,\n            \"itemName\": \"Fine Dining Experience\",\n            \"itemType\": \"Hospitality\",\n            \"brandName\": \"GourmetDine\",\n            \"price\": 100,\n            \"manufacturedDate\": \"2024-02-10\",\n            \"expiryDate\": \"2025-02-10\",\n            \"description\": \"Gourmet dining at its best\",\n            \"companyDTO\": null\n        },\n        \"purchaseInvoiceDTO\": {\n            \"purchaseInvoiceId\": 20,\n            \"amount\": 2300,\n            \"purchaseDate\": \"2023-08-21\",\n            \"purchaseInvoiceNo\": \"INV020\",\n            \"supplierInvoiceNo\": \"SUPINV020\",\n            \"companyDTO\": null,\n            \"supplierDTO\": null\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getPurchaseInvoiceItemById/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getPurchaseInvoiceItemById",
+						"6"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getPurchaseInvoiceItemById/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getPurchaseInvoiceItemById",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:27:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"purchaseInvoiceItemId\": 6,\n    \"quantity\": 5,\n    \"amount\": 100,\n    \"storeDTO\": {\n        \"storeId\": 7,\n        \"storeName\": \"Expert Consultants - BC\",\n        \"branch\": \"Corporate Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"stockItemDTO\": {\n        \"stockItemId\": 7,\n        \"itemName\": \"Business Consultation\",\n        \"itemType\": \"Service\",\n        \"brandName\": \"ExpertAdvice\",\n        \"price\": 250,\n        \"manufacturedDate\": \"2023-07-01\",\n        \"expiryDate\": \"2023-12-31\",\n        \"description\": \"Professional business consultation\",\n        \"companyDTO\": null\n    },\n    \"purchaseInvoiceDTO\": {\n        \"purchaseInvoiceId\": 4,\n        \"amount\": 1500,\n        \"purchaseDate\": \"2023-08-04\",\n        \"purchaseInvoiceNo\": \"INV004\",\n        \"supplierInvoiceNo\": \"SUPINV004\",\n        \"companyDTO\": null,\n        \"supplierDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 5,\r\n    \"amount\": 100,\r\n    \"storeDTO\": {\r\n        \"storeId\": 7,\r\n        \"storeName\": \"Expert Consultants - BC\",\r\n        \"branch\": \"Corporate Branch\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 7,\r\n        \"itemName\": \"Business Consultation\",\r\n        \"itemType\": \"Service\",\r\n        \"brandName\": \"ExpertAdvice\",\r\n        \"price\": 250,\r\n        \"manufacturedDate\": \"2023-07-01\",\r\n        \"expiryDate\": \"2023-12-31\",\r\n        \"description\": \"Professional business consultation\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"purchaseInvoiceDTO\": {\r\n        \"purchaseInvoiceId\": 4,\r\n        \"amount\": 1500,\r\n        \"purchaseDate\": \"2023-08-04\",\r\n        \"purchaseInvoiceNo\": \"INV004\",\r\n        \"supplierInvoiceNo\": \"SUPINV004\",\r\n        \"companyDTO\": null,\r\n        \"supplierDTO\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createPurchaseInvoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createPurchaseInvoice"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 5,\r\n    \"amount\": 100,\r\n    \"storeDTO\": {\r\n        \"storeId\": 7,\r\n        \"storeName\": \"Expert Consultants - BC\",\r\n        \"branch\": \"Corporate Branch\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 7,\r\n        \"itemName\": \"Business Consultation\",\r\n        \"itemType\": \"Service\",\r\n        \"brandName\": \"ExpertAdvice\",\r\n        \"price\": 250,\r\n        \"manufacturedDate\": \"2023-07-01\",\r\n        \"expiryDate\": \"2023-12-31\",\r\n        \"description\": \"Professional business consultation\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"purchaseInvoiceDTO\": {\r\n        \"purchaseInvoiceId\": 4,\r\n        \"amount\": 1500,\r\n        \"purchaseDate\": \"2023-08-04\",\r\n        \"purchaseInvoiceNo\": \"INV004\",\r\n        \"supplierInvoiceNo\": \"SUPINV004\",\r\n        \"companyDTO\": null,\r\n        \"supplierDTO\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/createPurchaseInvoice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createPurchaseInvoice"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:31:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"purchaseInvoiceId\": 29,\n    \"amount\": 100,\n    \"purchaseDate\": null,\n    \"purchaseInvoiceNo\": null,\n    \"supplierInvoiceNo\": null,\n    \"companyDTO\": null,\n    \"supplierDTO\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"purchaseInvoiceItemId\": 6,\r\n    \"quantity\": 50,\r\n    \"amount\": 1000,\r\n    \"storeDTO\": {\r\n        \"storeId\": 7,\r\n        \"storeName\": \"Expert Consultants - BC\",\r\n        \"branch\": \"Corporate Branch\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 7,\r\n        \"itemName\": \"Business Consultation\",\r\n        \"itemType\": \"Service\",\r\n        \"brandName\": \"ExpertAdvice\",\r\n        \"price\": 250,\r\n        \"manufacturedDate\": \"2023-07-01\",\r\n        \"expiryDate\": \"2023-12-31\",\r\n        \"description\": \"Professional business consultation\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"purchaseInvoiceDTO\": {\r\n        \"purchaseInvoiceId\": 4,\r\n        \"amount\": 1500,\r\n        \"purchaseDate\": \"2023-08-04\",\r\n        \"purchaseInvoiceNo\": \"INV004\",\r\n        \"supplierInvoiceNo\": \"SUPINV004\",\r\n        \"companyDTO\": null,\r\n        \"supplierDTO\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updatePurchaseInvoiceItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updatePurchaseInvoiceItem"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updatePurchaseinvoice",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"purchaseInvoiceItemId\": 6,\r\n    \"quantity\": 50,\r\n    \"amount\": 1000,\r\n    \"storeDTO\": {\r\n        \"storeId\": 7,\r\n        \"storeName\": \"Expert Consultants - BC\",\r\n        \"branch\": \"Corporate Branch\",\r\n        \"companyDTO\": null,\r\n        \"addressDTO\": null\r\n    },\r\n    \"stockItemDTO\": {\r\n        \"stockItemId\": 7,\r\n        \"itemName\": \"Business Consultation\",\r\n        \"itemType\": \"Service\",\r\n        \"brandName\": \"ExpertAdvice\",\r\n        \"price\": 250,\r\n        \"manufacturedDate\": \"2023-07-01\",\r\n        \"expiryDate\": \"2023-12-31\",\r\n        \"description\": \"Professional business consultation\",\r\n        \"companyDTO\": null\r\n    },\r\n    \"purchaseInvoiceDTO\": {\r\n        \"purchaseInvoiceId\": 4,\r\n        \"amount\": 1500,\r\n        \"purchaseDate\": \"2023-08-04\",\r\n        \"purchaseInvoiceNo\": \"INV004\",\r\n        \"supplierInvoiceNo\": \"SUPINV004\",\r\n        \"companyDTO\": null,\r\n        \"supplierDTO\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/updatePurchaseInvoiceItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updatePurchaseInvoiceItem"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:32:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"purchaseInvoiceItemId\": 6,\n    \"quantity\": 50,\n    \"amount\": 1000,\n    \"storeDTO\": {\n        \"storeId\": 7,\n        \"storeName\": \"Expert Consultants - BC\",\n        \"branch\": \"Corporate Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"stockItemDTO\": {\n        \"stockItemId\": 7,\n        \"itemName\": \"Business Consultation\",\n        \"itemType\": \"Service\",\n        \"brandName\": \"ExpertAdvice\",\n        \"price\": 250,\n        \"manufacturedDate\": \"2023-07-01\",\n        \"expiryDate\": \"2023-12-31\",\n        \"description\": \"Professional business consultation\",\n        \"companyDTO\": null\n    },\n    \"purchaseInvoiceDTO\": {\n        \"purchaseInvoiceId\": 4,\n        \"amount\": 1500,\n        \"purchaseDate\": \"2023-08-04\",\n        \"purchaseInvoiceNo\": \"INV004\",\n        \"supplierInvoiceNo\": \"SUPINV004\",\n        \"companyDTO\": null,\n        \"supplierDTO\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"totalAmount\": 1500.0,\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"ABC Corporation\",\r\n        \"type\": \"Private Limited\",\r\n        \"website\": \"www.abc-corp.com\",\r\n        \"gst\": \"ABCDE12345FG\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dNo\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateland\",\r\n            \"pinCode\": 12345\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/deletePurchaseInvoiceItemById/27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deletePurchaseInvoiceItemById",
+						"27"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"totalAmount\": 1500.0,\r\n    \"store\": {\r\n        \"storeId\": 1,\r\n        \"storeName\": \"ABC Store\",\r\n        \"branch\": \"Main Branch\",\r\n        \"company\": {\r\n            \"companyId\": 1,\r\n            \"companyName\": \"ABC Corporation\",\r\n            \"type\": \"Private Limited\",\r\n            \"website\": \"www.abc-corp.com\",\r\n            \"gst\": \"ABCDE12345FG\",\r\n            \"address\": {\r\n                \"addressId\": 1,\r\n                \"dNo\": \"123\",\r\n                \"street\": \"Main Street\",\r\n                \"city\": \"Cityville\",\r\n                \"state\": \"Stateland\",\r\n                \"pinCode\": 12345\r\n            }\r\n        }\r\n    },\r\n    \"company\": {\r\n        \"companyId\": 1,\r\n        \"companyName\": \"ABC Corporation\",\r\n        \"type\": \"Private Limited\",\r\n        \"website\": \"www.abc-corp.com\",\r\n        \"gst\": \"ABCDE12345FG\",\r\n        \"address\": {\r\n            \"addressId\": 1,\r\n            \"dNo\": \"123\",\r\n            \"street\": \"Main Street\",\r\n            \"city\": \"Cityville\",\r\n            \"state\": \"Stateland\",\r\n            \"pinCode\": 12345\r\n        }\r\n    },\r\n    \"supplier\": {\r\n        \"supplierId\": 1,\r\n        \"firstName\": \"John\",\r\n        \"lastName\": \"Doe\",\r\n        \"email\": \"john.doe@example.com\",\r\n        \"phoneNumber\": \"123-456-7890\",\r\n        \"store\": {\r\n            \"storeId\": 1,\r\n            \"storeName\": \"ABC Store\",\r\n            \"branch\": \"Main Branch\",\r\n            \"company\": {\r\n                \"companyId\": 1,\r\n                \"companyName\": \"ABC Corporation\",\r\n                \"type\": \"Private Limited\",\r\n                \"website\": \"www.abc-corp.com\",\r\n                \"gst\": \"ABCDE12345FG\",\r\n                \"address\": {\r\n                    \"addressId\": 1,\r\n                    \"dNo\": \"123\",\r\n                    \"street\": \"Main Street\",\r\n                    \"city\": \"Cityville\",\r\n                    \"state\": \"Stateland\",\r\n                    \"pinCode\": 12345\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/deletePurchaseInvoiceItemById/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deletePurchaseInvoiceItemById",
+								"27"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 07:33:43 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"PurchaseInvoiceItem deleted\",\n    \"id\": 27\n}"
+				}
+			]
+		}
+	]
+}

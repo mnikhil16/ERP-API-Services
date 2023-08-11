@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "e9ece1c4-837f-4dc5-9602-d0ee6ecab04d",
+		"name": "Supplier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28677426",
+		"_collection_link": "https://cloudy-shadow-676801.postman.co/workspace/Personal-Workspace~849736b8-d779-4c69-bdd9-b6a40c373e3d/collection/28677426-e9ece1c4-837f-4dc5-9602-d0ee6ecab04d?action=share&creator=28677426&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Suppliers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Suppliers"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Suppliers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Suppliers"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:08:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"supplierId\": 1,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"john.doe@example.com\",\n        \"phoneNumber\": \"123-456-7890\",\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    {\n        \"supplierId\": 2,\n        \"firstName\": \"Jane\",\n        \"lastName\": \"Doe\",\n        \"email\": \"jane.doe@example.com\",\n        \"phoneNumber\": \"555-987-6543\",\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 2,\n            \"companyName\": \"SuperMart\",\n            \"type\": \"Retail\",\n            \"website\": \"www.supermart.com\",\n            \"gst\": \"XYZ456GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 22,\n            \"dno\": \"777\",\n            \"street\": \"Industrial Road\",\n            \"city\": \"Manufacturing Town\",\n            \"state\": \"Texas\",\n            \"pinCode\": 78901\n        }\n    },\n    {\n        \"supplierId\": 3,\n        \"firstName\": \"Michael\",\n        \"lastName\": \"Johnson\",\n        \"email\": \"michael.johnson@example.com\",\n        \"phoneNumber\": \"777-456-7890\",\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 3,\n            \"companyName\": \"BuildWell Constructions\",\n            \"type\": \"Construction\",\n            \"website\": \"www.buildwellconstructions.com\",\n            \"gst\": \"DEF789GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 23,\n            \"dno\": \"999\",\n            \"street\": \"Tech Park Street\",\n            \"city\": \"Innovation City\",\n            \"state\": \"Washington\",\n            \"pinCode\": 98052\n        }\n    },\n    {\n        \"supplierId\": 4,\n        \"firstName\": \"Sara\",\n        \"lastName\": \"Williams\",\n        \"email\": \"sara.williams@example.com\",\n        \"phoneNumber\": \"777-123-4567\",\n        \"storeDTO\": {\n            \"storeId\": 2,\n            \"storeName\": \"Tech Solutions - CA\",\n            \"branch\": \"Tech Park Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 4,\n            \"companyName\": \"Expert Consultants\",\n            \"type\": \"Consulting\",\n            \"website\": \"www.expertconsultants.com\",\n            \"gst\": \"GHI101GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 24,\n            \"dno\": \"1234\",\n            \"street\": \"Trade Center Avenue\",\n            \"city\": \"Commerce City\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    },\n    {\n        \"supplierId\": 5,\n        \"firstName\": \"Robert\",\n        \"lastName\": \"Brown\",\n        \"email\": \"robert.brown@example.com\",\n        \"phoneNumber\": \"999-234-5678\",\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 5,\n            \"companyName\": \"Innovative Technologies\",\n            \"type\": \"Technology\",\n            \"website\": \"www.innovativetechnologies.com\",\n            \"gst\": \"JKL111GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 25,\n            \"dno\": \"77\",\n            \"street\": \"Farmland Lane\",\n            \"city\": \"Agriculture Town\",\n            \"state\": \"Texas\",\n            \"pinCode\": 78901\n        }\n    },\n    {\n        \"supplierId\": 6,\n        \"firstName\": \"Jimmy\",\n        \"lastName\": \"Anderson\",\n        \"email\": \"emily.anderson@example.com\",\n        \"phoneNumber\": \"998-876-5432\",\n        \"storeDTO\": {\n            \"storeId\": 3,\n            \"storeName\": \"SuperMart - SF\",\n            \"branch\": \"Downtown Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 6,\n            \"companyName\": \"Precision Manufacturing\",\n            \"type\": \"Manufacturing\",\n            \"website\": \"www.precisionmanufacturing.com\",\n            \"gst\": \"MNO222GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 26,\n            \"dno\": \"456\",\n            \"street\": \"Tourist Spot Road\",\n            \"city\": \"Tourist Central\",\n            \"state\": \"Hawaii\",\n            \"pinCode\": 96701\n        }\n    },\n    {\n        \"supplierId\": 7,\n        \"firstName\": \"David\",\n        \"lastName\": \"Lee\",\n        \"email\": \"david.lee@example.com\",\n        \"phoneNumber\": \"123-987-6543\",\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 7,\n            \"companyName\": \"eShopNow\",\n            \"type\": \"E-commerce\",\n            \"website\": \"www.eshopnow.com\",\n            \"gst\": \"PQR333GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 27,\n            \"dno\": \"321\",\n            \"street\": \"Commercial Complex\",\n            \"city\": \"Business City\",\n            \"state\": \"California\",\n            \"pinCode\": 90210\n        }\n    },\n    {\n        \"supplierId\": 8,\n        \"firstName\": \"Olivia\",\n        \"lastName\": \"Miller\",\n        \"email\": \"olivia.miller@example.com\",\n        \"phoneNumber\": \"123-234-5678\",\n        \"storeDTO\": {\n            \"storeId\": 4,\n            \"storeName\": \"SuperMart - NY\",\n            \"branch\": \"City Center Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 8,\n            \"companyName\": \"PharmaCure\",\n            \"type\": \"Pharmaceutical\",\n            \"website\": \"http://www.pharmacure.com\",\n            \"gst\": \"STU444GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 28,\n            \"dno\": \"111\",\n            \"street\": \"Education Street\",\n            \"city\": \"College City\",\n            \"state\": \"Washington\",\n            \"pinCode\": 98052\n        }\n    },\n    {\n        \"supplierId\": 9,\n        \"firstName\": \"William\",\n        \"lastName\": \"Wilson\",\n        \"email\": \"william.wilson@example.com\",\n        \"phoneNumber\": \"321-876-5432\",\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 9,\n            \"companyName\": \"MoneyWise Financials\",\n            \"type\": \"Financial Services\",\n            \"website\": \"www.moneywisefinancials.com\",\n            \"gst\": \"VWX555GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 29,\n            \"dno\": \"888\",\n            \"street\": \"Healthcare Avenue\",\n            \"city\": \"Medical City\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    },\n    {\n        \"supplierId\": 10,\n        \"firstName\": \"Sophia\",\n        \"lastName\": \"Harris\",\n        \"email\": \"sophia.harris@example.com\",\n        \"phoneNumber\": \"321-234-5678\",\n        \"storeDTO\": {\n            \"storeId\": 5,\n            \"storeName\": \"BuildWell - Rural Town\",\n            \"branch\": \"Main Office\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 10,\n            \"companyName\": \"Grand Hotel Group\",\n            \"type\": \"Hospitality\",\n            \"website\": \"www.grandhotelgroup.com\",\n            \"gst\": \"YZA666GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 30,\n            \"dno\": \"444\",\n            \"street\": \"Logistics Lane\",\n            \"city\": \"Transport City\",\n            \"state\": \"California\",\n            \"pinCode\": 94105\n        }\n    },\n    {\n        \"supplierId\": 11,\n        \"firstName\": \"Michael\",\n        \"lastName\": \"Brown\",\n        \"email\": \"michael.brown@example.com\",\n        \"phoneNumber\": \"555-555-5555\",\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 1,\n            \"companyName\": \"Tech Solutions Inc.\",\n            \"type\": \"Software Development\",\n            \"website\": \"www.techsolutions.com\",\n            \"gst\": \"ABC123GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 31,\n            \"dno\": \"123\",\n            \"street\": \"Supplier Street\",\n            \"city\": \"Commercial City\",\n            \"state\": \"California\",\n            \"pinCode\": 90210\n        }\n    },\n    {\n        \"supplierId\": 12,\n        \"firstName\": \"Emma\",\n        \"lastName\": \"Davis\",\n        \"email\": \"emma.davis@example.com\",\n        \"phoneNumber\": \"666-666-6666\",\n        \"storeDTO\": {\n            \"storeId\": 6,\n            \"storeName\": \"BuildWell-TX\",\n            \"branch\": \"Suburb Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 2,\n            \"companyName\": \"SuperMart\",\n            \"type\": \"Retail\",\n            \"website\": \"www.supermart.com\",\n            \"gst\": \"XYZ456GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 32,\n            \"dno\": \"456\",\n            \"street\": \"Supplier Lane\",\n            \"city\": \"Business City\",\n            \"state\": \"Washington\",\n            \"pinCode\": 98052\n        }\n    },\n    {\n        \"supplierId\": 13,\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Martin\",\n        \"email\": \"daniel.martin@example.com\",\n        \"phoneNumber\": \"777-777-7777\",\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 3,\n            \"companyName\": \"BuildWell Constructions\",\n            \"type\": \"Construction\",\n            \"website\": \"www.buildwellconstructions.com\",\n            \"gst\": \"DEF789GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 33,\n            \"dno\": \"789\",\n            \"street\": \"Supplier Road\",\n            \"city\": \"Manufacturing Town\",\n            \"state\": \"Texas\",\n            \"pinCode\": 78901\n        }\n    },\n    {\n        \"supplierId\": 14,\n        \"firstName\": \"Isabella\",\n        \"lastName\": \"Garcia\",\n        \"email\": \"isabella.garcia@example.com\",\n        \"phoneNumber\": \"888-888-8888\",\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 4,\n            \"companyName\": \"Expert Consultants\",\n            \"type\": \"Consulting\",\n            \"website\": \"www.expertconsultants.com\",\n            \"gst\": \"GHI101GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 34,\n            \"dno\": \"321\",\n            \"street\": \"Supplier Avenue\",\n            \"city\": \"Commerce City\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    },\n    {\n        \"supplierId\": 15,\n        \"firstName\": \"Ethan\",\n        \"lastName\": \"Martinez\",\n        \"email\": \"ethan.martinez@example.com\",\n        \"phoneNumber\": \"999-999-9999\",\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 5,\n            \"companyName\": \"Innovative Technologies\",\n            \"type\": \"Technology\",\n            \"website\": \"www.innovativetechnologies.com\",\n            \"gst\": \"JKL111GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 35,\n            \"dno\": \"654\",\n            \"street\": \"Supplier Lane\",\n            \"city\": \"Agriculture Town\",\n            \"state\": \"Texas\",\n            \"pinCode\": 78901\n        }\n    },\n    {\n        \"supplierId\": 16,\n        \"firstName\": \"Ava\",\n        \"lastName\": \"Robinson\",\n        \"email\": \"ava.robinson@example.com\",\n        \"phoneNumber\": \"111-111-1111\",\n        \"storeDTO\": {\n            \"storeId\": 8,\n            \"storeName\": \"Expert Consultants - WA\",\n            \"branch\": \"Tech Hub Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 6,\n            \"companyName\": \"Precision Manufacturing\",\n            \"type\": \"Manufacturing\",\n            \"website\": \"www.precisionmanufacturing.com\",\n            \"gst\": \"MNO222GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 36,\n            \"dno\": \"987\",\n            \"street\": \"Supplier Spot Road\",\n            \"city\": \"Tourist Central\",\n            \"state\": \"Hawaii\",\n            \"pinCode\": 96701\n        }\n    },\n    {\n        \"supplierId\": 17,\n        \"firstName\": \"Alexander\",\n        \"lastName\": \"Clark\",\n        \"email\": \"alexander.clark@example.com\",\n        \"phoneNumber\": \"222-222-2222\",\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 7,\n            \"companyName\": \"eShopNow\",\n            \"type\": \"E-commerce\",\n            \"website\": \"www.eshopnow.com\",\n            \"gst\": \"PQR333GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 37,\n            \"dno\": \"741\",\n            \"street\": \"Supplier Complex\",\n            \"city\": \"Business City\",\n            \"state\": \"California\",\n            \"pinCode\": 90210\n        }\n    },\n    {\n        \"supplierId\": 18,\n        \"firstName\": \"Mia\",\n        \"lastName\": \"Rodriguez\",\n        \"email\": \"mia.rodriguez@example.com\",\n        \"phoneNumber\": \"333-333-3333\",\n        \"storeDTO\": {\n            \"storeId\": 9,\n            \"storeName\": \"Innovative Tech - CC\",\n            \"branch\": \"Campus Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 8,\n            \"companyName\": \"PharmaCure\",\n            \"type\": \"Pharmaceutical\",\n            \"website\": \"http://www.pharmacure.com\",\n            \"gst\": \"STU444GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 38,\n            \"dno\": \"852\",\n            \"street\": \"Supplier Avenue\",\n            \"city\": \"College City\",\n            \"state\": \"Washington\",\n            \"pinCode\": 98052\n        }\n    },\n    {\n        \"supplierId\": 19,\n        \"firstName\": \"Benjamin\",\n        \"lastName\": \"Lewis\",\n        \"email\": \"benjamin.lewis@example.com\",\n        \"phoneNumber\": \"444-444-4444\",\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 9,\n            \"companyName\": \"MoneyWise Financials\",\n            \"type\": \"Financial Services\",\n            \"website\": \"www.moneywisefinancials.com\",\n            \"gst\": \"VWX555GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 39,\n            \"dno\": \"963\",\n            \"street\": \"Supplier Street\",\n            \"city\": \"Medical City\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    },\n    {\n        \"supplierId\": 20,\n        \"firstName\": \"Abigail\",\n        \"lastName\": \"Perez\",\n        \"email\": \"abigail.perez@example.com\",\n        \"phoneNumber\": \"555-555-5555\",\n        \"storeDTO\": {\n            \"storeId\": 10,\n            \"storeName\": \"Innovative Tech - HI\",\n            \"branch\": \"Tourist Area Outlet\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 10,\n            \"companyName\": \"Grand Hotel Group\",\n            \"type\": \"Hospitality\",\n            \"website\": \"www.grandhotelgroup.com\",\n            \"gst\": \"YZA666GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 40,\n            \"dno\": \"753\",\n            \"street\": \"Supplier Lane\",\n            \"city\": \"Transport City\",\n            \"state\": \"California\",\n            \"pinCode\": 94105\n        }\n    },\n    {\n        \"supplierId\": 31,\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"phoneNumber\": \"+1 (555) 123-4567\",\n        \"storeDTO\": {\n            \"storeId\": 1,\n            \"storeName\": \"Tech Solutions - NYC\",\n            \"branch\": \"Main Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 1,\n            \"companyName\": \"Tech Solutions Inc.\",\n            \"type\": \"Software Development\",\n            \"website\": \"www.techsolutions.com\",\n            \"gst\": \"ABC123GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 66,\n            \"dno\": \"456\",\n            \"street\": \"Maple Avenue\",\n            \"city\": \"Townsville\",\n            \"state\": \"Stateland\",\n            \"pinCode\": 54321\n        }\n    },\n    {\n        \"supplierId\": 35,\n        \"firstName\": \"Isabella\",\n        \"lastName\": \"Garcia\",\n        \"email\": \"isabella.garcia@example.com\",\n        \"phoneNumber\": \"888-888-8888\",\n        \"storeDTO\": {\n            \"storeId\": 7,\n            \"storeName\": \"Expert Consultants - BC\",\n            \"branch\": \"Corporate Branch\",\n            \"companyDTO\": null,\n            \"addressDTO\": null\n        },\n        \"companyDTO\": {\n            \"companyId\": 4,\n            \"companyName\": \"Expert Consultants\",\n            \"type\": \"Consulting\",\n            \"website\": \"www.expertconsultants.com\",\n            \"gst\": \"GHI101GST\",\n            \"addressDTO\": null\n        },\n        \"addressDTO\": {\n            \"addressId\": 69,\n            \"dno\": \"321\",\n            \"street\": \"Supplier Avenue\",\n            \"city\": \"Commerce City\",\n            \"state\": \"New York\",\n            \"pinCode\": 10001\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getSupplierById/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getSupplierById",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getById",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/getSupplierById/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"getSupplierById",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:08:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"supplierId\": 4,\n    \"firstName\": \"Sara\",\n    \"lastName\": \"Williams\",\n    \"email\": \"sara.williams@example.com\",\n    \"phoneNumber\": \"777-123-4567\",\n    \"storeDTO\": {\n        \"storeId\": 2,\n        \"storeName\": \"Tech Solutions - CA\",\n        \"branch\": \"Tech Park Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"companyDTO\": {\n        \"companyId\": 4,\n        \"companyName\": \"Expert Consultants\",\n        \"type\": \"Consulting\",\n        \"website\": \"www.expertconsultants.com\",\n        \"gst\": \"GHI101GST\",\n        \"addressDTO\": null\n    },\n    \"addressDTO\": {\n        \"addressId\": 24,\n        \"dno\": \"1234\",\n        \"street\": \"Trade Center Avenue\",\n        \"city\": \"Commerce City\",\n        \"state\": \"New York\",\n        \"pinCode\": 10001\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "createSupplier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"phoneNumber\": \"+1 (555) 123-4567\",\r\n    \"store\": {\r\n        \"storeId\": 1\r\n    },\r\n    \"companyDTO\": {\r\n        \"companyId\": 1\r\n    },\r\n    \"addressDTO\": {\r\n        \"dno\": \"456\",\r\n        \"street\": \"Maple Avenue\",\r\n        \"city\": \"Townsville\",\r\n        \"state\": \"Stateland\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/createSupplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"createSupplier"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "createSupplier",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"johndoe@example.com\",\r\n    \"phoneNumber\": \"+1 (555) 123-4567\",\r\n    \"store\": {\r\n        \"storeId\": 1\r\n    },\r\n    \"companyDTO\": {\r\n        \"companyId\": 1\r\n    },\r\n    \"addressDTO\": {\r\n        \"dno\": \"456\",\r\n        \"street\": \"Maple Avenue\",\r\n        \"city\": \"Townsville\",\r\n        \"state\": \"Stateland\",\r\n        \"pinCode\": 54321\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/createSupplier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createSupplier"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:09:20 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"supplierId\": 37,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"phoneNumber\": \"+1 (555) 123-4567\",\n    \"storeDTO\": null,\n    \"companyDTO\": {\n        \"companyId\": 1,\n        \"companyName\": null,\n        \"type\": null,\n        \"website\": null,\n        \"gst\": null,\n        \"addressDTO\": null\n    },\n    \"addressDTO\": {\n        \"addressId\": 81,\n        \"dno\": \"456\",\n        \"street\": \"Maple Avenue\",\n        \"city\": \"Townsville\",\n        \"state\": \"Stateland\",\n        \"pinCode\": 54321\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "updateSupplier",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"supplierId\": 6,\r\n    \"firstName\": \"Emily\",\r\n    \"lastName\": \"Anderson\",\r\n    \"email\": \"emily.anderson@example.com\",\r\n    \"phoneNumber\": \"998-876-5432\",\r\n    \"storeDTO\": {\r\n        \"storeId\": 3,\r\n        \"storeName\": \"SuperMart - SF\",\r\n        \"branch\": \"Downtown Branch\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 2,\r\n            \"dno\": \"789\",\r\n            \"street\": \"Business Avenue\",\r\n            \"city\": \"San Francisco\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 94105\r\n        }\r\n    },\r\n    \"companyDTO\": {\r\n        \"companyId\": 6,\r\n        \"companyName\": \"Precision Manufacturing\",\r\n        \"type\": \"Manufacturing\",\r\n        \"website\": \"www.precisionmanufacturing.com\",\r\n        \"gst\": \"MNO222GST\",\r\n        \"addressDTO\": {\r\n            \"addressId\": 6,\r\n            \"dno\": \"67\",\r\n            \"street\": \"Traveler Lane\",\r\n            \"city\": \"Nomad City\",\r\n            \"state\": \"Traveling\",\r\n            \"pinCode\": 0\r\n        }\r\n    },\r\n    \"addressDTO\": {\r\n        \"addressId\": 26,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Tourist Spot Road\",\r\n        \"city\": \"Tourist Central\",\r\n        \"state\": \"Hawaii\",\r\n        \"pinCode\": 96701\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/updateSupplier",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updateSupplier"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "updateSupplier",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierId\": 6,\r\n    \"firstName\": \"Emily\",\r\n    \"lastName\": \"Anderson\",\r\n    \"email\": \"emily.anderson@example.com\",\r\n    \"phoneNumber\": \"998-876-5432\",\r\n    \"storeDTO\": {\r\n        \"storeId\": 3,\r\n        \"storeName\": \"SuperMart - SF\",\r\n        \"branch\": \"Downtown Branch\",\r\n        \"companyDTO\": {\r\n            \"companyId\": 2,\r\n            \"companyName\": \"SuperMart\",\r\n            \"type\": \"Retail\",\r\n            \"website\": \"www.supermart.com\",\r\n            \"gst\": \"XYZ456GST\",\r\n            \"addressDTO\": {\r\n                \"addressId\": 2,\r\n                \"dno\": \"789\",\r\n                \"street\": \"Business Avenue\",\r\n                \"city\": \"San Francisco\",\r\n                \"state\": \"California\",\r\n                \"pinCode\": 94105\r\n            }\r\n        },\r\n        \"addressDTO\": {\r\n            \"addressId\": 2,\r\n            \"dno\": \"789\",\r\n            \"street\": \"Business Avenue\",\r\n            \"city\": \"San Francisco\",\r\n            \"state\": \"California\",\r\n            \"pinCode\": 94105\r\n        }\r\n    },\r\n    \"companyDTO\": {\r\n        \"companyId\": 6,\r\n        \"companyName\": \"Precision Manufacturing\",\r\n        \"type\": \"Manufacturing\",\r\n        \"website\": \"www.precisionmanufacturing.com\",\r\n        \"gst\": \"MNO222GST\",\r\n        \"addressDTO\": {\r\n            \"addressId\": 6,\r\n            \"dno\": \"67\",\r\n            \"street\": \"Traveler Lane\",\r\n            \"city\": \"Nomad City\",\r\n            \"state\": \"Traveling\",\r\n            \"pinCode\": 0\r\n        }\r\n    },\r\n    \"addressDTO\": {\r\n        \"addressId\": 26,\r\n        \"dno\": \"456\",\r\n        \"street\": \"Tourist Spot Road\",\r\n        \"city\": \"Tourist Central\",\r\n        \"state\": \"Hawaii\",\r\n        \"pinCode\": 96701\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/updateSupplier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"updateSupplier"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:09:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"supplierId\": 6,\n    \"firstName\": \"Emily\",\n    \"lastName\": \"Anderson\",\n    \"email\": \"emily.anderson@example.com\",\n    \"phoneNumber\": \"998-876-5432\",\n    \"storeDTO\": {\n        \"storeId\": 3,\n        \"storeName\": \"SuperMart - SF\",\n        \"branch\": \"Downtown Branch\",\n        \"companyDTO\": null,\n        \"addressDTO\": null\n    },\n    \"companyDTO\": {\n        \"companyId\": 6,\n        \"companyName\": \"Precision Manufacturing\",\n        \"type\": \"Manufacturing\",\n        \"website\": \"www.precisionmanufacturing.com\",\n        \"gst\": \"MNO222GST\",\n        \"addressDTO\": null\n    },\n    \"addressDTO\": {\n        \"addressId\": 26,\n        \"dno\": \"456\",\n        \"street\": \"Tourist Spot Road\",\n        \"city\": \"Tourist Central\",\n        \"state\": \"Hawaii\",\n        \"pinCode\": 96701\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "deleteSupplierById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/deleteSupplierById/37",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"deleteSupplierById",
+						"37"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "deleteSupplierById",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deleteSupplierById/37",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleteSupplierById",
+								"37"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Aug 2023 06:10:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"msg\": \"Supplier deleted\",\n    \"id\": 37\n}"
+				}
+			]
+		}
+	]
+}
