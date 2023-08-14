@@ -5,6 +5,8 @@ import com.main.dto.StoreDTO;
 import com.main.mapper.StoreMapper;
 import com.main.repository.StoreRepository;
 import com.main.entity.Store;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,6 +24,7 @@ public class StoreService {
 
     @Autowired
     StoreRepository storeRepository;
+    Logger logger = LoggerFactory.getLogger(StoreService.class);
 
     /**
      * Get all the store information.
@@ -29,6 +32,7 @@ public class StoreService {
      * @return All the Store objects.
      */
     public List<StoreDTO> getStores(){
+        logger.trace("Get all Stores service is invoked.");
         List<Store> storeList = storeRepository.findAll();
         List<StoreDTO> storeDTOList =  StoreMapper.instance.modelToDtoList(storeList);
         return storeDTOList;
@@ -41,6 +45,7 @@ public class StoreService {
      * @return The StoreDTO object corresponding to the given ID.
      */
     public StoreDTO getStoreById(int storeId){
+        logger.trace("Get Store by Id service is invoked.");
         Store storeEntity = storeRepository.findById(storeId).get();
         StoreDTO storeDTO = StoreMapper.instance.modelToDto(storeEntity);
         return storeDTO;
@@ -53,6 +58,7 @@ public class StoreService {
      * @return The newly created StoreDTO object with a generated ID.
      */
     public StoreDTO createStore(StoreDTO storeDTO){
+        logger.trace("Create Store service is invoked.");
         Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
         storeRepository.save(storeEntity);
         StoreDTO createdStoreDTO = StoreMapper.instance.modelToDto(storeEntity);
@@ -66,6 +72,7 @@ public class StoreService {
      * @return The updated StoreDTO object.
      */
     public StoreDTO updateStore(StoreDTO storeDTO){
+        logger.trace("Update Store service is invoked.");
         Store storeEntity = StoreMapper.instance.dtoToModel(storeDTO);
         storeRepository.save(storeEntity);
         StoreDTO updatedStoreDTO = StoreMapper.instance.modelToDto(storeEntity);
@@ -79,6 +86,7 @@ public class StoreService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteStoreById(int storeId){
+        logger.trace("Delete Store service is invoked.");
         storeRepository.deleteById(storeId);
         AddResponse response = new AddResponse();
         response.setMsg("Store deleted");

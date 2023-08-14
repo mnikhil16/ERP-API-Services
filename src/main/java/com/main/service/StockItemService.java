@@ -5,6 +5,8 @@ import com.main.controller.AddResponse;
 import com.main.dto.StockItemDTO;
 import com.main.mapper.StockItemMapper;
 import com.main.repository.StockItemRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -22,6 +24,7 @@ public class StockItemService {
 
     @Autowired
     StockItemRepository stockItemRepository;
+    Logger logger = LoggerFactory.getLogger(StockItemService.class);
 
     /**
      * Get stock item information.
@@ -29,6 +32,7 @@ public class StockItemService {
      * @return All the StockItem objects.
      */
     public List<StockItemDTO> getStockItems(){
+        logger.trace("Get all Stock Items service is invoked.");
         List<StockItem> stockItemList = stockItemRepository.findAll();
         List<StockItemDTO> stockItemDTOList = StockItemMapper.instance.modelToDtoList(stockItemList);
         return stockItemDTOList;
@@ -41,6 +45,7 @@ public class StockItemService {
      * @return The StockItem object corresponding to the given ID.
      */
     public StockItemDTO getStockItemById(int stockItemId){
+        logger.trace("Get Stock Item by Id service is invoked.");
         StockItem stockItemEntity = stockItemRepository.findById(stockItemId).get();
         StockItemDTO stockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
         return stockItemDTO;
@@ -53,6 +58,7 @@ public class StockItemService {
      * @return The newly created StockItemDTO object with a generated ID.
      */
     public StockItemDTO createStockItem(StockItemDTO stockItemDTO){
+        logger.trace("Create Stock Item service is invoked.");
         StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
         stockItemRepository.save(stockItemEntity);
         StockItemDTO createdStockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
@@ -66,6 +72,7 @@ public class StockItemService {
      * @return The updated StockItemDTO object.
      */
     public StockItemDTO updateStockItem(StockItemDTO stockItemDTO){
+        logger.trace("Update Stock Item service is invoked.");
         StockItem stockItemEntity = StockItemMapper.instance.dtoToModel(stockItemDTO);
         stockItemRepository.save(stockItemEntity);
         StockItemDTO updatedStockItemDTO = StockItemMapper.instance.modelToDto(stockItemEntity);
@@ -79,6 +86,7 @@ public class StockItemService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteStockItemById(int stockItemId){
+        logger.trace("Delete Stock Item service is invoked.");
         stockItemRepository.deleteById(stockItemId);
         AddResponse response = new AddResponse();
         response.setMsg("StockItem deleted");

@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.StoreDTO;
 import com.main.service.StoreService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,7 @@ public class StoreController {
 
     @Autowired
     StoreService storeService;
-
+    Logger logger = LoggerFactory.getLogger(StoreController.class);
     /**
      * Returns all the store objects.
      * URL : "http://localhost:8080/Stores"
@@ -36,6 +38,7 @@ public class StoreController {
      */
     @GetMapping("/stores")
     public List<StoreDTO> getStores(){
+        logger.trace("Get all Stores controller is invoked.");
         return storeService.getStores();
     }
 
@@ -48,7 +51,7 @@ public class StoreController {
      */
     @GetMapping("/getStoreById/{storeId}")
     public ResponseEntity<StoreDTO> getStoreById(@PathVariable(value = "storeId") int storeId) {
-
+        logger.trace("Get Store by Id controller is invoked.");
         try {
             StoreDTO storeDTO = storeService.getStoreById(storeId);
             return new ResponseEntity<>(storeDTO, HttpStatus.OK);
@@ -66,7 +69,7 @@ public class StoreController {
      */
     @PostMapping("/createStore")
     public StoreDTO createStore(@RequestBody StoreDTO storeDTO){
-
+        logger.trace("Create Store controller is invoked.");
         return storeService.createStore(storeDTO);
     }
 
@@ -79,6 +82,7 @@ public class StoreController {
      */
     @PutMapping("/updateStore")
     public ResponseEntity<StoreDTO> updateStore(@RequestBody StoreDTO storeDTO){
+        logger.trace("Update Store controller is invoked.");
         try{
             StoreDTO updatedStoreDTO = storeService.updateStore(storeDTO);
             return new ResponseEntity<>(updatedStoreDTO,HttpStatus.OK);
@@ -96,6 +100,7 @@ public class StoreController {
      */
     @DeleteMapping("/deleteStoreById/{storeId}")
     public AddResponse deleteStoreById(@PathVariable(value = "storeId") int storeId){
+        logger.trace("Delete Store controller is invoked.");
         return storeService.deleteStoreById(storeId);
     }
 }

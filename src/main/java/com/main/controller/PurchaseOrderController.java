@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.service.PurchaseOrderService;
 import com.main.entity.PurchaseOrder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ public class PurchaseOrderController {
 
     @Autowired
     PurchaseOrderService purchaseOrderService;
-
+    Logger logger = LoggerFactory.getLogger(PurchaseOrderController.class);
     /**
      * Returns all the purchaseOrder objects.
      * URL : "http://localhost8080/PurchaseOrders"
@@ -37,6 +39,7 @@ public class PurchaseOrderController {
      */
     @GetMapping("/PurchaseOrders")
     public List<PurchaseOrder> getAllPurchaseOrders(){
+        logger.trace("Get all Purchase Orders controller is invoked.");
         return purchaseOrderService.getPurchaseOrders();
     }
 
@@ -49,7 +52,7 @@ public class PurchaseOrderController {
      */
     @GetMapping("/getPurchaseOrderById/{purchaseOrderId}")
     public ResponseEntity<PurchaseOrder> getPurchaseOrderById(@PathVariable(value = "purchaseOrderId") int purchaseOrderId) {
-
+        logger.trace("Get Purchase Order by Id controller is invoked.");
         try {
             PurchaseOrder purchaseOrder = purchaseOrderService.getPurchaseOrderById(purchaseOrderId);
             return new ResponseEntity<>(purchaseOrder, HttpStatus.OK);
@@ -67,7 +70,7 @@ public class PurchaseOrderController {
      */
     @PostMapping("/createPurchaseOrder")
     public PurchaseOrder createPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder){
-
+        logger.trace("Create Purchase Order controller is invoked.");
         return purchaseOrderService.createPurchaseOrder(purchaseOrder);
     }
 
@@ -80,6 +83,7 @@ public class PurchaseOrderController {
      */
     @PutMapping("/updatePurchaseOrder")
     public ResponseEntity<PurchaseOrder> updatePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder){
+        logger.trace("Update Purchase Order controller is invoked.");
         try{
             PurchaseOrder updatedPurchaseOrder = purchaseOrderService.updatePurchaseOrder(purchaseOrder);
             return new ResponseEntity<>(updatedPurchaseOrder,HttpStatus.OK);
@@ -98,6 +102,7 @@ public class PurchaseOrderController {
      */
     @DeleteMapping("/deletePurchaseOrderById/{purchaseOrderId}")
     public AddResponse deletePurchaseOrderById(@PathVariable(value = "purchaseOrderId") int purchaseOrderId){
+        logger.trace("Delete Purchase Order controller is invoked.");
         return purchaseOrderService.deletePurchaseOrderById(purchaseOrderId);
     }
 }

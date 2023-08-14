@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.PurchaseInvoiceItemDTO;
 import com.main.service.PurchaseInvoiceItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ public class PurchaseInvoiceItemController {
 
     @Autowired
     PurchaseInvoiceItemService purchaseInvoiceItemService;
-
+    Logger logger = LoggerFactory.getLogger(PurchaseInvoiceItemController.class);
     /**
      * Retrieve a list of all purchase invoice items.
      *
@@ -25,6 +27,7 @@ public class PurchaseInvoiceItemController {
      */
     @GetMapping("/PurchaseInvoiceItems")
     public List<PurchaseInvoiceItemDTO> getAllPurchaseInvoiceItems() {
+        logger.trace("Get all Purchase Invoice Items controller is invoked.");
         return purchaseInvoiceItemService.getPurchaseInvoiceItems();
     }
 
@@ -36,6 +39,7 @@ public class PurchaseInvoiceItemController {
      */
     @GetMapping("/getPurchaseInvoiceItemById/{itemId}")
     public ResponseEntity<PurchaseInvoiceItemDTO> getPurchaseInvoiceItemById(@PathVariable(value = "itemId") int itemId) {
+        logger.trace("Get Purchase Invoice Item by Id controller is invoked.");
         try {
             PurchaseInvoiceItemDTO purchaseInvoiceItemDTO = purchaseInvoiceItemService.getPurchaseInvoiceItemById(itemId);
             return new ResponseEntity<>(purchaseInvoiceItemDTO, HttpStatus.OK);
@@ -52,6 +56,7 @@ public class PurchaseInvoiceItemController {
      */
     @PostMapping("/createPurchaseInvoiceItem")
     public PurchaseInvoiceItemDTO createPurchaseInvoiceItem(@RequestBody PurchaseInvoiceItemDTO purchaseInvoiceItemDTO) {
+        logger.trace("Create Purchase Invoice Item controller is invoked.");
         return purchaseInvoiceItemService.createPurchaseInvoiceItem(purchaseInvoiceItemDTO);
     }
 
@@ -63,6 +68,7 @@ public class PurchaseInvoiceItemController {
      */
     @PutMapping("/updatePurchaseInvoiceItem")
     public ResponseEntity<PurchaseInvoiceItemDTO> updatePurchaseInvoiceItem(@RequestBody PurchaseInvoiceItemDTO purchaseInvoiceItemDTO) {
+        logger.trace("Update Purchase Invoice Item controller is invoked.");
         try {
             PurchaseInvoiceItemDTO updatedPurchaseInvoiceItemDTO = purchaseInvoiceItemService.updatePurchaseInvoiceItem(purchaseInvoiceItemDTO);
             return new ResponseEntity<>(updatedPurchaseInvoiceItemDTO, HttpStatus.OK);
@@ -79,6 +85,7 @@ public class PurchaseInvoiceItemController {
      */
     @DeleteMapping("/deletePurchaseInvoiceItemById/{itemId}")
     public AddResponse deletePurchaseInvoiceItemById(@PathVariable(value = "itemId") int itemId) {
+        logger.trace("Delete Purchase Invoice Item controller is invoked.");
         return purchaseInvoiceItemService.deletePurchaseInvoiceItemById(itemId);
     }
 }

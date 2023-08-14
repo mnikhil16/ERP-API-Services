@@ -2,12 +2,15 @@ package com.main.controller;
 
 import com.main.dto.CustomerDTO;
 import com.main.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 /**
  * This class represents the RESTful controller for managing Customer-related endpoints.
  * It handles HTTP requests for creating, reading, updating, and deleting Customer information.
@@ -28,7 +31,7 @@ public class CustomerController {
 
         @Autowired
         CustomerService customerService;
-
+        Logger logger = LoggerFactory.getLogger(CustomerController.class);
         /**
           * Returns all the customer objects.
           * URL : "http://localhost8080/Customers"
@@ -36,6 +39,7 @@ public class CustomerController {
         */
         @GetMapping("/Customers")
         public List<CustomerDTO> getAllCustomers(){
+            logger.trace("Get all Customers controller is invoked.");
             return customerService.getCustomers();
         }
 
@@ -48,7 +52,7 @@ public class CustomerController {
         */
         @GetMapping("/getCustomerById/{customerId}")
         public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable(value = "customerId") int customerId) {
-
+            logger.trace("Get Customer by Id controller is invoked.");
             try {
                 CustomerDTO customerDTO = customerService.getCustomerById(customerId);
                 return new ResponseEntity<>(customerDTO, HttpStatus.OK);
@@ -66,7 +70,7 @@ public class CustomerController {
         */
         @PostMapping("/createCustomer")
         public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO){
-
+            logger.trace("Create Customer controller is invoked.");
             return customerService.createCustomer(customerDTO);
         }
 
@@ -79,7 +83,8 @@ public class CustomerController {
         */
         @PutMapping("/updateCustomer")
         public ResponseEntity<CustomerDTO> updateCustomer(@RequestBody CustomerDTO customerDTO){
-                try{
+            logger.trace("Update Customer controller is invoked.");
+            try{
                     CustomerDTO updatedCustomerDTO = customerService.updateCustomer(customerDTO);
                     return new ResponseEntity<>(updatedCustomerDTO,HttpStatus.OK);
                 }
@@ -97,6 +102,7 @@ public class CustomerController {
         */
         @DeleteMapping("/deleteCustomerById/{customerId}")
         public AddResponse deleteCustomerById(@PathVariable(value = "customerId") int customerId){
+            logger.trace("Delete Customer controller is invoked.");
             return customerService.deleteCustomer(customerId);
         }
 }

@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.StockItemDTO;
 import com.main.service.StockItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,7 @@ public class StockItemController {
 
     @Autowired
     StockItemService stockItemService;
+    Logger logger = LoggerFactory.getLogger(StockItemController.class);
 
     /**
      * Returns all the stock item objects.
@@ -36,6 +39,7 @@ public class StockItemController {
      */
     @GetMapping("/stockItems")
     public List<StockItemDTO> getAllStockItems(){
+        logger.trace("Get all Stock Items controller is invoked.");
         return stockItemService.getStockItems();
     }
 
@@ -48,7 +52,7 @@ public class StockItemController {
      */
     @GetMapping("/getStockItemById/{stockItemId}")
     public ResponseEntity<StockItemDTO> getStockItemById(@PathVariable(value = "stockItemId") int stockItemId) {
-
+        logger.trace("Get Stock Item by Id controller is invoked.");
         try {
             StockItemDTO stockItemDTO = stockItemService.getStockItemById(stockItemId);
             return new ResponseEntity<>(stockItemDTO, HttpStatus.OK);
@@ -61,24 +65,25 @@ public class StockItemController {
     /**
      * Creates the stockItem object.
      * URL : "http://localhost:8080/createStockItem"
-     * @param  stockItem object as an input.
+     * @param  stockItemDTO object as an input.
      * @return  stockItem JSON object.
      */
     @PostMapping("/createStockItem")
     public StockItemDTO createStockItem(@RequestBody StockItemDTO stockItemDTO){
-
+        logger.trace("Create Stock Item controller is invoked.");
         return stockItemService.createStockItem(stockItemDTO);
     }
 
     /**
      * Updates the stockItem object.
      * URL : "http://localhost:8080/updateStockItem"
-     * @param  stockItem object as an input.
+     * @param  stockItemDTO object as an input.
      * @return ResponseEntity with stockItem information if updated, or 404 if not found.
      * @throws  if stockItem object not found.
      */
     @PutMapping("/updateStockItem")
     public ResponseEntity<StockItemDTO> updateStockItem(@RequestBody StockItemDTO stockItemDTO){
+        logger.trace("Update Stock Item controller is invoked.");
         try{
             StockItemDTO updatedStockItemDTO = stockItemService.updateStockItem(stockItemDTO);
             return new ResponseEntity<>(updatedStockItemDTO,HttpStatus.OK);
@@ -97,6 +102,7 @@ public class StockItemController {
      */
     @DeleteMapping("/deleteStockItemById/{stockItemId}")
     public AddResponse deleteStockItemById(@PathVariable(value = "stockItemId") int stockItemId){
+        logger.trace("Delete Stock Item controller is invoked.");
         return stockItemService.deleteStockItemById(stockItemId);
     }
 }

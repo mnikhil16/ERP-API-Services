@@ -5,6 +5,8 @@ import com.main.controller.AddResponse;
 import com.main.dto.CompanyDTO;
 import com.main.mapper.CompanyMapper;
 import com.main.repository.CompanyRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ public class CompanyService {
 
     @Autowired
     CompanyRepository companyRepository;
+    Logger logger = LoggerFactory.getLogger(CompanyService.class);
 
     /**
      * Get all the company information.
@@ -30,6 +33,7 @@ public class CompanyService {
      * @return All the Company objects.
      */
     public List<CompanyDTO> getCompanies(){
+        logger.trace("Get all Companies service is invoked.");
         List<Company> companyList = companyRepository.findAll();
         List<CompanyDTO> companyDTOList =  CompanyMapper.instance.modelToDtoList(companyList);
         return companyDTOList;
@@ -42,6 +46,7 @@ public class CompanyService {
      * @return The Company object corresponding to the given ID.
      */
     public CompanyDTO getCompanyById(int companyId){
+        logger.trace("Get Company by Id service is invoked.");
         Company companyEntity = companyRepository.findById(companyId).get();
         CompanyDTO companyDTO = CompanyMapper.instance.modelToDto(companyEntity);
         return companyDTO;
@@ -54,6 +59,7 @@ public class CompanyService {
      * @return The newly created company object with a generated ID.
      */
     public CompanyDTO createCompany(CompanyDTO companyDTO){
+        logger.trace("Create Company service is invoked.");
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
         companyRepository.save(companyEntity);
         CompanyDTO createdCompanyDTO = CompanyMapper.instance.modelToDto(companyEntity);
@@ -67,6 +73,7 @@ public class CompanyService {
      * @return The updated Company object.
      */
     public CompanyDTO updateCompany(CompanyDTO companyDTO){
+        logger.trace("Update Company service is invoked.");
         Company companyEntity = CompanyMapper.instance.dtoToModel(companyDTO);
         companyRepository.save(companyEntity);
         CompanyDTO updatedCompanyDTO = CompanyMapper.instance.modelToDto(companyEntity);
@@ -80,6 +87,7 @@ public class CompanyService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteCompanyById(int companyId){
+        logger.trace("Delete Company service is invoked.");
         companyRepository.deleteById(companyId);
         AddResponse response = new AddResponse();
         response.setMsg("Company deleted");

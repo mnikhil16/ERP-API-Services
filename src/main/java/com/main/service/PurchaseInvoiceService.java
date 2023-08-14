@@ -5,6 +5,8 @@ import com.main.controller.AddResponse;
 import com.main.dto.PurchaseInvoiceDTO;
 import com.main.mapper.PurchaseInvoiceMapper;
 import com.main.repository.PurchaseInvoiceRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ public class PurchaseInvoiceService {
 
     @Autowired
     PurchaseInvoiceRepository purchaseInvoiceRepository;
+    Logger logger = LoggerFactory.getLogger(PurchaseInvoiceService.class);
 
     /**
      * Get all the purchaseInvoice information.
@@ -30,6 +33,7 @@ public class PurchaseInvoiceService {
      * @return All the PurchaseInvoice objects.
      */
     public List<PurchaseInvoiceDTO> getPurchaseInvoices(){
+        logger.trace("Get all Purchase Invoice service is invoked.");
         List<PurchaseInvoice> purchaseInvoiceList = purchaseInvoiceRepository.findAll();
         List<PurchaseInvoiceDTO> purchaseInvoiceDTOList =  PurchaseInvoiceMapper.instance.modelToDtoList(purchaseInvoiceList);
         return purchaseInvoiceDTOList;
@@ -42,6 +46,7 @@ public class PurchaseInvoiceService {
      * @return The PurchaseInvoice object corresponding to the given ID.
      */
     public PurchaseInvoiceDTO getPurchaseInvoiceById(int purchaseInvoiceId){
+        logger.trace("Get Purchase Invoice by Id service is invoked.");
         PurchaseInvoice purchaseInvoiceEntity = purchaseInvoiceRepository.findById(purchaseInvoiceId).get();
         PurchaseInvoiceDTO purchaseInvoiceDTO = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
         return purchaseInvoiceDTO;
@@ -54,6 +59,7 @@ public class PurchaseInvoiceService {
      * @return The newly created PurchaseInvoice object with a generated ID.
      */
     public PurchaseInvoiceDTO createPurchaseInvoice(PurchaseInvoiceDTO purchaseInvoiceDTO){
+        logger.trace("Create Purchase Invoice service is invoked.");
         PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO);
         purchaseInvoiceRepository.save(purchaseInvoiceEntity);
         PurchaseInvoiceDTO createdPurchaseInvoiceDTO = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
@@ -67,6 +73,7 @@ public class PurchaseInvoiceService {
      * @return The updated PurchaseInvoice object.
      */
     public PurchaseInvoiceDTO updatePurchaseInvoice(PurchaseInvoiceDTO purchaseInvoiceDTO){
+        logger.trace("Update Purchase Invoice service is invoked.");
         PurchaseInvoice purchaseInvoiceEntity = PurchaseInvoiceMapper.instance.dtoToModel(purchaseInvoiceDTO);
         purchaseInvoiceRepository.save(purchaseInvoiceEntity);
         PurchaseInvoiceDTO updatedPurchaseInvoiceDTO = PurchaseInvoiceMapper.instance.modelToDto(purchaseInvoiceEntity);
@@ -80,6 +87,7 @@ public class PurchaseInvoiceService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deletePurchaseInvoiceById(int purchaseInvoiceId){
+        logger.trace("Delete Purchase Invoice service is invoked.");
         purchaseInvoiceRepository.deleteById(purchaseInvoiceId);
         AddResponse response = new AddResponse();
         response.setMsg("PurchaseInvoice deleted");

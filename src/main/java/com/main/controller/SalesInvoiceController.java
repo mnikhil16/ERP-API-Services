@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.SalesInvoiceDTO;
 import com.main.service.SalesInvoiceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ public class SalesInvoiceController {
 
     @Autowired
     SalesInvoiceService salesInvoiceService;
+    Logger logger = LoggerFactory.getLogger(SalesInvoiceController.class);
 
     /**
      * Returns all the salesInvoice objects.
@@ -37,6 +40,7 @@ public class SalesInvoiceController {
      */
     @GetMapping("/SalesInvoices")
     public List<SalesInvoiceDTO> getAllSalesInvoices(){
+        logger.trace("Get all SalesInvoices controller is invoked.");
         return salesInvoiceService.getSalesInvoices();
     }
 
@@ -49,7 +53,7 @@ public class SalesInvoiceController {
      */
     @GetMapping("/getSalesInvoiceById/{salesInvoiceId}")
     public ResponseEntity<SalesInvoiceDTO> getSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId) {
-
+        logger.trace("Get SalesInvoice by Id controller is invoked.");
         try {
             SalesInvoiceDTO salesInvoiceDTO = salesInvoiceService.getSalesInvoiceById(salesInvoiceId);
             return new ResponseEntity<>(salesInvoiceDTO, HttpStatus.OK);
@@ -67,7 +71,7 @@ public class SalesInvoiceController {
      */
     @PostMapping("/createSalesInvoice")
     public SalesInvoiceDTO createSalesInvoice(@RequestBody SalesInvoiceDTO salesInvoiceDTO){
-
+        logger.trace("Create SalesInvoice controller is invoked.");
         return salesInvoiceService.createSalesInvoice(salesInvoiceDTO);
     }
 
@@ -80,6 +84,7 @@ public class SalesInvoiceController {
      */
     @PutMapping("/updateSalesInvoice")
     public ResponseEntity<SalesInvoiceDTO> updateSalesInvoice(@RequestBody SalesInvoiceDTO salesInvoiceDTO){
+        logger.trace("Update SalesInvoice controller is invoked.");
         try{
             SalesInvoiceDTO updatedSalesInvoiceDTO = salesInvoiceService.updateSalesInvoice(salesInvoiceDTO);
             return new ResponseEntity<>(updatedSalesInvoiceDTO,HttpStatus.OK);
@@ -98,6 +103,7 @@ public class SalesInvoiceController {
      */
     @DeleteMapping("/deleteSalesInvoiceById/{salesInvoiceId}")
     public AddResponse deleteSalesInvoiceById(@PathVariable(value = "salesInvoiceId") int salesInvoiceId){
+        logger.trace("Delete SalesInvoice controller is invoked.");
         return salesInvoiceService.deleteSalesInvoiceById(salesInvoiceId);
     }
 }

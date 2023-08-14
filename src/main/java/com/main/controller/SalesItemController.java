@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.SalesItemDTO;
 import com.main.service.SalesItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +19,7 @@ public class SalesItemController {
 
     @Autowired
     SalesItemService salesItemService;
-
+    Logger logger = LoggerFactory.getLogger(SalesItemController.class);
     /**
      * Retrieve a list of all sales items.
      *
@@ -25,6 +27,7 @@ public class SalesItemController {
      */
     @GetMapping("/SalesItems")
     public List<SalesItemDTO> getAllSalesItems() {
+        logger.trace("Get all Sales Items controller is invoked.");
         return salesItemService.getSalesItems();
     }
 
@@ -36,6 +39,7 @@ public class SalesItemController {
      */
     @GetMapping("/getSalesItemById/{itemId}")
     public ResponseEntity<SalesItemDTO> getSalesItemById(@PathVariable(value = "itemId") int itemId) {
+        logger.trace("Get Sales Item by Id controller is invoked.");
         try {
             SalesItemDTO salesItemDTO = salesItemService.getSalesItemById(itemId);
             return new ResponseEntity<>(salesItemDTO, HttpStatus.OK);
@@ -52,6 +56,7 @@ public class SalesItemController {
      */
     @PostMapping("/createSalesItem")
     public SalesItemDTO createSalesItem(@RequestBody SalesItemDTO salesItemDTO) {
+        logger.trace("Delete Sales Item controller is invoked.");
         return salesItemService.createSalesItem(salesItemDTO);
     }
 
@@ -63,6 +68,7 @@ public class SalesItemController {
      */
     @PutMapping("/updateSalesItem")
     public ResponseEntity<SalesItemDTO> updateSalesItem(@RequestBody SalesItemDTO salesItemDTO) {
+        logger.trace("Update Sales Item controller is invoked.");
         try {
             SalesItemDTO updatedSalesItemDTO = salesItemService.updateSalesItem(salesItemDTO);
             return new ResponseEntity<>(updatedSalesItemDTO, HttpStatus.OK);
@@ -79,6 +85,7 @@ public class SalesItemController {
      */
     @DeleteMapping("/deleteSalesItemById/{itemId}")
     public AddResponse deleteSalesItemById(@PathVariable(value = "itemId") int itemId) {
+        logger.trace("Delete Sales Item controller is invoked.");
         return salesItemService.deleteSalesItemById(itemId);
     }
 }

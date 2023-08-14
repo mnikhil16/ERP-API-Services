@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.StockInventoryDTO;
 import com.main.service.StockInventoryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,7 @@ public class StockInventoryController {
 
     @Autowired
     StockInventoryService stockInventoryService;
+    Logger logger = LoggerFactory.getLogger(StockInventoryController.class);
 
     /**
      * Returns all the inventory objects.
@@ -36,6 +39,7 @@ public class StockInventoryController {
      */
     @GetMapping("/StockInventories")
     public List<StockInventoryDTO> getAllStockInventories(){
+        logger.trace("Get all Stock Inventories controller is invoked.");
         return stockInventoryService.getStockInventories();
     }
 
@@ -48,7 +52,7 @@ public class StockInventoryController {
      */
     @GetMapping("/getStockInventoryById/{stockInventoryId}")
     public ResponseEntity<StockInventoryDTO> getStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId) {
-
+        logger.trace("Get Stock Inventory by Id controller is invoked.");
         try {
             StockInventoryDTO stockInventoryDTO = stockInventoryService.getStockInventoryById(stockInventoryId);
             return new ResponseEntity<>(stockInventoryDTO, HttpStatus.OK);
@@ -66,7 +70,7 @@ public class StockInventoryController {
      */
     @PostMapping("/createStockInventory")
     public StockInventoryDTO createStockInventory(@RequestBody StockInventoryDTO stockInventoryDTO){
-
+        logger.trace("Create Stock Inventory controller is invoked.");
         return stockInventoryService.createStockInventory(stockInventoryDTO);
     }
 
@@ -79,6 +83,7 @@ public class StockInventoryController {
      */
     @PutMapping("/updateStockInventory")
     public ResponseEntity<StockInventoryDTO> updateStockInventory(@RequestBody StockInventoryDTO stockInventoryDTO){
+        logger.trace("Update Stock Inventory controller is invoked.");
         try{
             StockInventoryDTO updatedStockInventoryDTO = stockInventoryService.updateStockInventory(stockInventoryDTO);
             return new ResponseEntity<>(updatedStockInventoryDTO,HttpStatus.OK);
@@ -97,6 +102,7 @@ public class StockInventoryController {
      */
     @DeleteMapping("/deleteStockInventoryById/{stockInventoryId}")
     public AddResponse deleteStockInventoryById(@PathVariable(value = "stockInventoryId") int stockInventoryId){
+        logger.trace("Delete Stock Inventory controller is invoked.");
         return stockInventoryService.deleteStockInventoryById(stockInventoryId);
     }
 }

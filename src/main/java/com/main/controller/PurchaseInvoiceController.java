@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.PurchaseInvoiceDTO;
 import com.main.service.PurchaseInvoiceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,7 @@ public class PurchaseInvoiceController {
 
     @Autowired
     PurchaseInvoiceService purchaseInvoiceService;
-
+    Logger logger = LoggerFactory.getLogger(PurchaseInvoiceController.class);
     /**
      * Returns all the purchaseInvoice objects.
      * URL : "http://localhost8080/PurchaseInvoices"
@@ -37,6 +39,7 @@ public class PurchaseInvoiceController {
      */
     @GetMapping("/PurchaseInvoices")
     public List<PurchaseInvoiceDTO> getAllPurchaseInvoices(){
+        logger.trace("Get all Purchase Invoices controller is invoked.");
         return purchaseInvoiceService.getPurchaseInvoices();
     }
 
@@ -49,7 +52,7 @@ public class PurchaseInvoiceController {
      */
     @GetMapping("/getPurchaseInvoiceById/{purchaseInvoiceId}")
     public ResponseEntity<PurchaseInvoiceDTO> getPurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId) {
-
+        logger.trace("Get Purchase Invoice by Id controller is invoked.");
         try {
             PurchaseInvoiceDTO purchaseInvoiceDTO = purchaseInvoiceService.getPurchaseInvoiceById(purchaseInvoiceId);
             return new ResponseEntity<>(purchaseInvoiceDTO, HttpStatus.OK);
@@ -62,24 +65,25 @@ public class PurchaseInvoiceController {
     /**
      * Creates the purchaseInvoice object.
      * URL : "http://localhost8080/createPurchaseInvoice"
-     * @param  purchaseInvoice object as an input.
+     * @param  purchaseInvoiceDTO object as an input.
      * @return  purchaseInvoice JSON object.
      */
     @PostMapping("/createPurchaseInvoice")
     public PurchaseInvoiceDTO createPurchaseInvoice(@RequestBody PurchaseInvoiceDTO purchaseInvoiceDTO){
-
+        logger.trace("Create Purchase Invoice controller is invoked.");
         return purchaseInvoiceService.createPurchaseInvoice(purchaseInvoiceDTO);
     }
 
     /**
      * Updates the purchaseInvoice object.
      * URL : "http://localhost8080/updatePurchaseInvoice"
-     * @param  purchaseInvoice object as an input.
+     * @param  purchaseInvoiceDTO object as an input.
      * @return ResponseEntity with purchaseInvoice information if updated, or 404 if not found.
      * @throws  if PurchaseInvoice object not found.
      */
     @PutMapping("/updatePurchaseInvoice")
     public ResponseEntity<PurchaseInvoiceDTO> updatePurchaseInvoice(@RequestBody PurchaseInvoiceDTO purchaseInvoiceDTO){
+        logger.trace("Update Purchase Invoice controller is invoked.");
         try{
             PurchaseInvoiceDTO updatedPurchaseInvoiceDTO = purchaseInvoiceService.updatePurchaseInvoice(purchaseInvoiceDTO);
             return new ResponseEntity<>(updatedPurchaseInvoiceDTO,HttpStatus.OK);
@@ -98,6 +102,7 @@ public class PurchaseInvoiceController {
      */
     @DeleteMapping("/deletePurchaseInvoiceById/{purchaseInvoiceId}")
     public AddResponse deletePurchaseInvoiceById(@PathVariable(value = "purchaseInvoiceId") int purchaseInvoiceId){
+        logger.trace("Delete Purchase Invoice controller is invoked.");
         return purchaseInvoiceService.deletePurchaseInvoiceById(purchaseInvoiceId);
     }
 }

@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.CompanyDTO;
 import com.main.service.CompanyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ public class CompanyController {
 
     @Autowired
     CompanyService companyService;
+    Logger logger = LoggerFactory.getLogger(CompanyController.class);
 
     /**
      * Returns all the company objects.
@@ -37,6 +40,7 @@ public class CompanyController {
      */
     @GetMapping("/Companies")
     public List<CompanyDTO> getAllCompanies(){
+        logger.trace("Get all Companies controller is invoked.");
         return companyService.getCompanies();
     }
 
@@ -49,7 +53,7 @@ public class CompanyController {
      */
     @GetMapping("/getCompanyById/{companyId}")
     public ResponseEntity<CompanyDTO> getCompanyById(@PathVariable(value = "companyId") int companyId) {
-
+        logger.trace("Get Company by Id controller is invoked.");
         try {
             CompanyDTO companyDTO = companyService.getCompanyById(companyId);
             return new ResponseEntity<>(companyDTO, HttpStatus.OK);
@@ -67,7 +71,7 @@ public class CompanyController {
      */
     @PostMapping("/createCompany")
     public CompanyDTO createCompany(@RequestBody CompanyDTO companyDTO){
-
+        logger.trace("Create Company controller is invoked.");
         return companyService.createCompany(companyDTO);
     }
 
@@ -80,6 +84,7 @@ public class CompanyController {
      */
     @PutMapping("/updateCompany")
     public ResponseEntity<CompanyDTO> updateCompany(@RequestBody CompanyDTO companyDTO){
+        logger.trace("Update Company controller is invoked");
         try{
             CompanyDTO updatedCompanyDTO = companyService.updateCompany(companyDTO);
             return new ResponseEntity<>(updatedCompanyDTO,HttpStatus.OK);
@@ -98,6 +103,7 @@ public class CompanyController {
      */
     @DeleteMapping("/deleteCompanyById/{companyId}")
     public AddResponse deleteCompanyById(@PathVariable(value = "companyId") int companyId){
+        logger.trace("Delete Company controller is invoked");
         return companyService.deleteCompanyById(companyId);
     }
 }

@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.AddressDTO;
 import com.main.service.AddressService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ public class AddressController {
     @Autowired
     AddressService addressService;
 
+    Logger logger = LoggerFactory.getLogger(AddressController.class);
     /**
      * Get a list of all addresses.
      *
@@ -24,6 +27,7 @@ public class AddressController {
      */
     @GetMapping("/Addresses")
     public List<AddressDTO> getAllAddresses() {
+        logger.trace("Get all Addresses controller is invoked.");
         return addressService.getAddresses();
     }
 
@@ -35,6 +39,7 @@ public class AddressController {
      */
     @GetMapping("/getAddressById/{addressId}")
     public ResponseEntity<AddressDTO> getAddressById(@PathVariable(value = "addressId") int addressId) {
+        logger.trace("Get Address by Id controller is invoked.");
         try {
             AddressDTO addressDTO = addressService.getAddressById(addressId);
             return new ResponseEntity<>(addressDTO, HttpStatus.OK);
@@ -51,6 +56,7 @@ public class AddressController {
      */
     @PostMapping("/createAddress")
     public AddressDTO createAddress(@RequestBody AddressDTO addressDTO) {
+        logger.trace("Create Address controller is invoked.");
         return addressService.createAddress(addressDTO);
     }
 
@@ -62,6 +68,7 @@ public class AddressController {
      */
     @PutMapping("/updateAddress")
     public ResponseEntity<AddressDTO> updateAddress(@RequestBody AddressDTO addressDTO) {
+        logger.trace("Update Address controller is invoked.");
         try {
             AddressDTO updatedAddressDTO = addressService.updateAddress(addressDTO);
             return new ResponseEntity<>(updatedAddressDTO, HttpStatus.OK);
@@ -78,6 +85,7 @@ public class AddressController {
      */
     @DeleteMapping("/deleteAddressById/{addressId}")
     public AddResponse deleteAddressById(@PathVariable(value = "addressId") int addressId) {
+        logger.trace("Delete Address controller is invoked.");
         return addressService.deleteAddressById(addressId);
     }
 }

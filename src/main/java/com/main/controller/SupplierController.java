@@ -2,6 +2,8 @@ package com.main.controller;
 
 import com.main.dto.SupplierDTO;
 import com.main.service.SupplierService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,7 @@ public class SupplierController {
 
     @Autowired
     SupplierService supplierService;
+    Logger logger = LoggerFactory.getLogger(StoreController.class);
 
     /**
      * Returns all the supplier objects.
@@ -37,6 +40,7 @@ public class SupplierController {
      */
     @GetMapping("/Suppliers")
     public List<SupplierDTO> getAllSuppliers(){
+        logger.trace("Get all Suppliers is invoked.");
         return supplierService.getSuppliers();
     }
 
@@ -49,7 +53,7 @@ public class SupplierController {
      */
     @GetMapping("/getSupplierById/{supplierId}")
     public ResponseEntity<SupplierDTO> getSupplierById(@PathVariable(value = "supplierId") int supplierId) {
-
+        logger.trace("Get Supplier by Id is invoked.");
         try {
             SupplierDTO supplierDTO = supplierService.getSupplierById(supplierId);
             return new ResponseEntity<>(supplierDTO, HttpStatus.OK);
@@ -67,7 +71,7 @@ public class SupplierController {
      */
     @PostMapping("/createSupplier")
     public SupplierDTO createSupplier(@RequestBody SupplierDTO supplierDTO){
-
+        logger.trace("Create Supplier is invoked.");
         return supplierService.createSupplier(supplierDTO);
     }
 
@@ -80,6 +84,7 @@ public class SupplierController {
      */
     @PutMapping("/updateSupplier")
     public ResponseEntity<SupplierDTO> updateSupplier(@RequestBody SupplierDTO supplierDTO){
+        logger.trace("Update Supplier is invoked.");
         try{
             SupplierDTO updatedSupplierDTO = supplierService.updateSupplier(supplierDTO);
             return new ResponseEntity<>(updatedSupplierDTO,HttpStatus.OK);
@@ -98,6 +103,7 @@ public class SupplierController {
      */
     @DeleteMapping("/deleteSupplierById/{supplierId}")
     public AddResponse deleteSupplierById(@PathVariable(value = "supplierId") int supplierId){
+        logger.trace("Delete Supplier is invoked.");
         return supplierService.deleteSupplierById(supplierId);
     }
 }

@@ -5,6 +5,8 @@ import com.main.controller.AddResponse;
 import com.main.dto.SupplierDTO;
 import com.main.mapper.SupplierMapper;
 import com.main.repository.SupplierRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +25,14 @@ public class SupplierService {
 
     @Autowired
     SupplierRepository supplierRepository;
-
+    Logger logger = LoggerFactory.getLogger(SupplierService.class);
     /**
      * Get all the supplier information.
      *
      * @return All the SupplierDTO objects.
      */
     public List<SupplierDTO> getSuppliers(){
+        logger.trace("Get all Suppliers service is invoked.");
         List<Supplier> supplierList = supplierRepository.findAll();
         List<SupplierDTO> supplierDTOList =  SupplierMapper.instance.modelToDtoList(supplierList);
         return supplierDTOList;
@@ -42,6 +45,7 @@ public class SupplierService {
      * @return The SupplierDTO object corresponding to the given ID.
      */
     public SupplierDTO getSupplierById(int supplierId){
+        logger.trace("Get Supplier by Id service is invoked.");
         Supplier supplierEntity = supplierRepository.findById(supplierId).get();
         SupplierDTO supplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
         return supplierDTO;
@@ -54,6 +58,7 @@ public class SupplierService {
      * @return The newly created SupplierDTO object with a generated ID.
      */
     public SupplierDTO createSupplier(SupplierDTO supplierDTO){
+        logger.trace("Create Supplier service is invoked.");
         Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
         supplierRepository.save(supplierEntity);
         SupplierDTO createdSupplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
@@ -67,6 +72,7 @@ public class SupplierService {
      * @return The updated SupplierDTO object.
      */
     public SupplierDTO updateSupplier(SupplierDTO supplierDTO){
+        logger.trace("Update Supplier service is invoked.");
         Supplier supplierEntity = SupplierMapper.instance.dtoToModel(supplierDTO);
         supplierRepository.save(supplierEntity);
         SupplierDTO updatedSupplierDTO = SupplierMapper.instance.modelToDto(supplierEntity);
@@ -80,6 +86,7 @@ public class SupplierService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteSupplierById(int supplierId){
+        logger.trace("Delete Supplier service is invoked.");
         supplierRepository.deleteById(supplierId);
         AddResponse response = new AddResponse();
         response.setMsg("Supplier deleted");

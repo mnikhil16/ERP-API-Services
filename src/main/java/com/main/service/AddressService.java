@@ -5,6 +5,8 @@ import com.main.dto.AddressDTO;
 import com.main.entity.Address;
 import com.main.mapper.AddressMapper;
 import com.main.repository.AddressRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +20,14 @@ public class AddressService {
 
     @Autowired
     AddressRepository addressRepository;
-
+    Logger logger = LoggerFactory.getLogger(AddressService.class);
     /**
      * Get all address information.
      *
      * @return All the AddressDTO objects.
      */
     public List<AddressDTO> getAddresses(){
+        logger.trace("Get all Addresses service is invoked.");
         // Retrieve all addresses from the repository
         List<Address> addressList = addressRepository.findAll();
         // Convert the list of address entities to DTOs using the mapper
@@ -39,6 +42,7 @@ public class AddressService {
      * @return The AddressDTO object corresponding to the given ID.
      */
     public AddressDTO getAddressById(int addressId){
+        logger.trace("Get Address by Id service is invoked.");
         // Retrieve the address entity by its ID from the repository
         Address addressEntity = addressRepository.findById(addressId).get();
         // Convert the address entity to a DTO using the mapper
@@ -53,6 +57,7 @@ public class AddressService {
      * @return The newly created address object with a generated ID.
      */
     public AddressDTO createAddress(AddressDTO addressDTO){
+        logger.trace("Create Address service is invoked.");
         // Convert the DTO to an entity using the mapper
         Address addressEntity = AddressMapper.instance.dtoToModel(addressDTO);
         // Save the new address entity to the repository
@@ -69,6 +74,7 @@ public class AddressService {
      * @return The updated AddressDTO object.
      */
     public AddressDTO updateAddress(AddressDTO addressDTO){
+        logger.trace("Update Address service is invoked.");
         // Convert the DTO to an entity using the mapper
         Address addressEntity = AddressMapper.instance.dtoToModel(addressDTO);
         // Save the updated address entity to the repository
@@ -85,6 +91,7 @@ public class AddressService {
      * @return An AddResponse indicating the deletion result.
      */
     public AddResponse deleteAddressById(int addressId){
+        logger.trace("Delete Address service is invoked.");
         // Delete the address entity by its ID from the repository
         addressRepository.deleteById(addressId);
         // Create a response indicating the successful deletion
