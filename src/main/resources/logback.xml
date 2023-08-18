@@ -13,7 +13,7 @@
 
     <appender name="FILE-AUDIT"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${FOLDER_NAME}/debug.log</file>
+        <file>${FOLDER_NAME}/trace.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 %date{ISO8601} %-5level %class{0}:%L - [%X] %msg%n
