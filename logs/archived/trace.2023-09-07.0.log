@@ -1,0 +1,12 @@
+2023-09-07 16:09:07,158 INFO  StartupInfoLogger:51 - [] Starting ERPAPIServicesApplication using Java 17.0.8 with PID 5608 (C:\practice\NewRepository\ERP-API-Services\target\classes started by mnikh in C:\practice\NewRepository\ERP-API-Services)
+2023-09-07 16:09:07,163 DEBUG StartupInfoLogger:52 - [] Running with Spring Boot v3.1.2, Spring v6.0.11
+2023-09-07 16:09:07,166 INFO  SpringApplication:634 - [] No active profile set, falling back to 1 default profile: "default"
+2023-09-07 16:09:14,562 INFO  StartupInfoLogger:57 - [] Started ERPAPIServicesApplication in 7.891 seconds (process running for 9.447)
+2023-09-07 16:09:50,605 TRACE SalesInvoiceController:43 - [] Get all SalesInvoices controller is invoked.
+2023-09-07 16:09:50,606 TRACE SalesInvoiceService:36 - [] Get all Sales Invoices service is invoked.
+2023-09-07 16:10:06,754 TRACE SalesInvoiceController:43 - [] Get all SalesInvoices controller is invoked.
+2023-09-07 16:10:06,756 TRACE SalesInvoiceService:36 - [] Get all Sales Invoices service is invoked.
+2023-09-07 16:17:28,124 INFO  StartupInfoLogger:51 - [] Starting ERPAPIServicesApplication using Java 17.0.8 with PID 9456 (C:\practice\NewRepository\ERP-API-Services\target\classes started by mnikh in C:\practice\NewRepository\ERP-API-Services)
+2023-09-07 16:17:28,127 DEBUG StartupInfoLogger:52 - [] Running with Spring Boot v3.1.2, Spring v6.0.11
+2023-09-07 16:17:28,129 INFO  SpringApplication:634 - [] No active profile set, falling back to 1 default profile: "default"
+2023-09-07 16:17:35,141 INFO  StartupInfoLogger:57 - [] Started ERPAPIServicesApplication in 7.637 seconds (process running for 8.481)

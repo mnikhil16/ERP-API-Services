@@ -1,6 +1,4 @@
-2023-08-18 18:35:38,822 INFO  StartupInfoLogger:51 - [] Starting ERPAPIServicesApplication using Java 17.0.8 with PID 14968 (C:\practice\NewRepository\ERP-API-Services\target\classes started by mnikh in C:\practice\NewRepository\ERP-API-Services)
-2023-08-18 18:35:38,824 DEBUG StartupInfoLogger:52 - [] Running with Spring Boot v3.1.2, Spring v6.0.11
-2023-08-18 18:35:38,825 INFO  SpringApplication:634 - [] No active profile set, falling back to 1 default profile: "default"
-2023-08-18 18:35:45,501 INFO  StartupInfoLogger:57 - [] Started ERPAPIServicesApplication in 7.348 seconds (process running for 8.185)
-2023-08-18 18:35:47,768 TRACE AddressController:30 - [] Get all Addresses controller is invoked.
-2023-08-18 18:35:47,770 TRACE AddressService:30 - [] Get all Addresses service is invoked.
+2023-09-11 19:13:37,844 INFO  StartupInfoLogger:51 - [] Starting ERPAPIServicesApplication using Java 17.0.8 with PID 22244 (C:\practice\NewRepository\ERP-API-Services\target\classes started by mnikh in C:\practice\NewRepository\ERP-API-Services)
+2023-09-11 19:13:37,847 DEBUG StartupInfoLogger:52 - [] Running with Spring Boot v3.1.2, Spring v6.0.11
+2023-09-11 19:13:37,848 INFO  SpringApplication:634 - [] No active profile set, falling back to 1 default profile: "default"
+2023-09-11 19:13:45,078 INFO  StartupInfoLogger:57 - [] Started ERPAPIServicesApplication in 7.724 seconds (process running for 9.176)
